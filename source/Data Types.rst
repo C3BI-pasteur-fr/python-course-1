@@ -1,4 +1,4 @@
-.. _Data_Types:
+.. _Data Types:
 
 **********
 Data Types
