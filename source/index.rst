@@ -11,7 +11,19 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-
+   Introduction
+   Object References
+   Data Types
+   Collection Data Types
+   Logical Operations
+   Control Flow Statements
+   Arithmetic Operator
+   Creating and Calling Funcions
+   Modules
+   Input/Output
+   Scripting
+   Debugging, Testing and Profiling
+   
 
 Indices and tables
 ==================
