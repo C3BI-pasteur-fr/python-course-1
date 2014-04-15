@@ -12,17 +12,17 @@ Contents:
    :maxdepth: 2
 
    Introduction
-   Object References
-   Data Types
-   Collection Data Types
-   Logical Operations
-   Control Flow Statements
-   Arithmetic Operator
-   Creating and Calling Funcions
+   Object_References
+   Data_Types
+   Collection_Data_Types
+   Logical_Operations
+   Control_Flow_Statements
+   Arithmetic_Operator
+   Creating_and_Calling_Funcions
    Modules
-   Input/Output
+   Input_Output
    Scripting
-   Debugging, Testing and Profiling
+   Debugging_Testing_Profiling
    
 
 Indices and tables
