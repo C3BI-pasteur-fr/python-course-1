@@ -6,9 +6,8 @@ Introduction
 
 
 
-Get and install Python
-======================
-
+Getting and installing Python
+=============================
 
 
 Creating and running Python Programs
