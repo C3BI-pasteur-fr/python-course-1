@@ -4,14 +4,13 @@
 Introduction
 ************
 
-.. todo:: 
-   a faire
+.. todo:: a faire
 
-.. note:: 
-   ceci est une note
+.. note:: ceci est une note
+
+.. seealso:: This is a **seealso** note
    
-.. warning::
-   et ca un warning
+.. warning:: et ca un warning
    
 code example: ::
    
@@ -21,6 +20,8 @@ code example: ::
       else:
          print None
    #attention les lignes blanches et les tabs sont importants
+
+le plus simple est de regarder la http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/rest_syntax.html
 
 Getting and installing Python
 =============================
