@@ -17,9 +17,10 @@ Contents:
    Collection_Data_Types
    Logical_Operations
    Control_Flow_Statements
-   Arithmetic_Operator
+   Arithmetic_Operators
    Creating_and_Calling_Funcions
-   Modules
+   Modules_and_Packages
+   pep_8
    Input_Output
    Scripting
    Debugging_Testing_Profiling
