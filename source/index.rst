@@ -12,7 +12,7 @@ Contents:
    :maxdepth: 2
 
    Introduction
-   Object_References
+   Variables
    Data_Types
    Collection_Data_Types
    Logical_Operations

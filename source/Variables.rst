@@ -1,12 +1,23 @@
-.. _Object_References:
+.. _Variables:
 
-*****************
-Object References
-*****************
+************************************
+Variables, Expression and statements
+************************************
 
-mutable
+Variables and Object References
+===============================
+
+Mutable objects
+===============
+
+
+Immutable objects
+=================
+
+
+Variable name and keywords
+==========================
+
+
+Summary
 =======
-
-
-immutable
-=========
