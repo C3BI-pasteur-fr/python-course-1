@@ -312,11 +312,77 @@ legal tokens, you can't have one right after the other.
 Similarly, in a chemical formula the subscript comes after the element name, not
 before [thinkpython]_.   
 
-Sytle of programming
+Style of programming
 ====================
-Procedural
-Object
-Functional
+
+A programming paradigm is a fundamental style of computer programming, a way of building the structure and elements of computer programs. 
+Capablities and styles of various programming languages are defined by their supported programming paradigms; 
+some programming languages are designed to follow only one paradigm, while others support multiple paradigms.
+
+There are six main programming paradigms: imperative, declarative, functional, object-oriented, logic and symbolic programming [Comparison_of_programming_paradigms]_.
+
+* **Procedural programming, structured programming** – specifies the steps the program must take to reach the desired state.
+* **Object-oriented programming (OOP)** – organizes programs as objects: data structures consisting of datafields and methods together with their interactions.
+* **Functional programming** – treats computation as the evaluation of mathematical functions and avoids state and mutable data.
+
+
+Procedural programming
+----------------------
+   In computer science, imperative programming is a programming paradigm that describes computation in terms of statements that change a program state. 
+   In much the same way that imperative mood in natural languages expresses commands to take action, 
+   imperative programs define sequences of commands for the computer to perform.
+
+   Procedural programming is imperative programming in which the program is built from one or more procedures (also known as subroutines or functions). 
+   The terms are often used as synonyms, but the use of procedures has a dramatic effect on how imperative programs appear and how they are constructed. 
+   Heavily-procedural programming, in which state changes are localized to procedures (functions) or restricted to explicit arguments and returns from procedures,
+   is known as structured programming. From the 1960s onwards, structured programming and modular programming in general have been promoted as 
+   techniques to improve the maintainability and overall quality of imperative programs. 
+   Object-oriented programming extends this approach.
+ 
+ 
+Object oriented programming
+---------------------------
+   Object-oriented programming is an approach to designing modular, reusable software systems. 
+   The real key to the object-oriented approach is that it is a modelling approach first. 
+   Although often hyped as a revolutionary way to develop software by zealous proponents, 
+   the object-oriented approach is in reality a logical extension of good design practices that go back to the very 
+   beginning of computer programming. Object-orientation is simply the logical extension of older techniques such as 
+   structured programming and abstract data types. 
+
+   Rather than structure programs as code and data, an object-oriented system integrates the two using the concept of an "object".
+   An object has state (data) and behavior (code).
+   The goals of object-oriented programming are [Object-oriented_programming]_:
+
+   * Increased understanding.
+   * Ease of maintenance.
+   * Ease of evolution.
+
+
+Functional programming
+----------------------
+   In a pure functional language, such as Haskell, all functions are without side effects, 
+   and state changes are only represented as functions that transform the state. 
+
+   In functional code, the output value of a function depends only on the arguments that are input to the function, 
+   so calling a function f twice with the same value for an argument x will produce the same result f(x) both times. 
+   Eliminating side effects, i.e. changes in state that do not depend on the function inputs, 
+   can make it much easier to understand and predict the behavior of a program, 
+   which is one of the key motivations for the development of functional programming [Functional_programming]_.
+
+   In contrast, imperative programming changes state with commands in the source language, the most simple example is the assignment. 
+   Functions do exist, not in the mathematical sense, but the sense of subroutine. 
+   They can have side effects that may change the value of program state. 
+   Functions without return value therefore make sense. 
+   Because of this, they lack referential transparency, i.e. the same language expression can result in different values at different times 
+   depending on the state of the executing program.
+
+   Although pure functional languages are non-imperative, they often provide a facility for 
+   describing the effect of a function as a series of steps. 
+   Other functional languages, such as Lisp, OCaml and Erlang, support a mixture of procedural and functional programming.
+
+Although Python is intrinsecly Object oriented, it not impose to programmers to follow this paradigm for their code. 
+Even Python implements also some functional programming features as *closure* it's not a functional language. 
+During this course we will focused on procedural programming.
 
 
 Python 2.x vs 3.x
@@ -390,6 +456,11 @@ References
    
 .. [python_glossary] https://docs.python.org/2.7/glossary.html
 
+.. [Comparison_of_programming_paradigms] http://en.wikipedia.org/wiki/Comparison_of_programming_paradigms
+
+.. [Functional_programming] http://en.wikipedia.org/wiki/Functional_programming
+
+.. [Object-oriented_programming] http://en.wikipedia.org/wiki/Object-oriented_programming
 
 .. [python2vs3] https://wiki.python.org/moin/Python2orPython3
 
