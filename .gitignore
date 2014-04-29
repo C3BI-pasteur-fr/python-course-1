@@ -26,3 +26,5 @@ build
 .pydevproject
 .settings
 
+#Ignore third_party directory (and its sub-diretories)
+third_party

@@ -146,15 +146,30 @@ There is several strategies to transform a program in high-level language in a p
 
 * interpreting
 * compiling
+
 An interpreter reads a high level program and executes it. It processes the program a little at a time, alternately reading lines and executing.
 
-.. figure:: 
+.. figure:: ../figs/interpret.png
+    :height: 85px
+    :align: center
+    :alt: interpreting work stream
+    :figclass: align-center
+
+    An interpreter process the program litlle at a time, alternately reading lines and performing computations.
 
 A compiler reads the program and translates it entirely before the program starts running. In this context the high-level program is call **cource code**,
 and the translated program is called the **object code** or the executable. Once the program is compiled, you can execute it  repeatedly without
-further translation.
+further translation [thinkpython]_.
 
-.. figure:: 
+.. figure::  ../figs/compile.png
+    :height: 85px
+    :align: center
+    :alt: compiling work stream
+    :figclass: align-center
+
+    A compiler transform a source code into object code, which is run by hardware executor.
+
+    
 
 Is Python Interpreted or Compiled?
 ----------------------------------
@@ -235,7 +250,13 @@ of otherwise interpreted code [python_2012]_.
  
 
  
-.. figure::
+.. figure:: ../figs/byte_code.png
+    :height: 85px
+    :align: center
+    :alt: bytecode work stream
+    :figclass: align-center
+
+    The actual Python code is compiled into Python bytecode. The bytecode is interpreted.
 
 
 Formal and natural language
@@ -314,3 +335,5 @@ References
    https://mail.python.org/pipermail/python-list/2012-June/625578.html
    
 .. [python_glossary] https://docs.python.org/2.7/glossary.html
+
+.. [thinkpython] http://www.greenteapress.com/thinkpython/
