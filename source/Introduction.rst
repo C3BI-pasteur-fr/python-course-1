@@ -162,7 +162,7 @@ Is Python Interpreted or Compiled?
 Python source code is compiled into bytecode, the internal representation of a Python program in the CPython interpreter. 
 The bytecode is also cached in `.pyc` and `.pyo` files so that executing the same file is faster the second time (recompilation from source to bytecode can be avoided). 
 This “intermediate language” is said to run on a virtual machine that executes the machine code corresponding to each bytecode. 
-Do note that bytecodes are not expected to work between different Python virtual machines (*VM*), nor to be stable between Python releases.
+Do note that bytecodes are not expected to work between different Python virtual machines (*VM*), nor to be stable between Python releases [python_glossary]_.
 
 Whenever a Python module is **imported**, the interpreter first checks
 whether a .pyc is available that has the appropriate "magic number"
@@ -173,7 +173,10 @@ the compilation step and just runs the bytecode from the .pyc file.
 
 Note though that when a .py file is **executed directly** (not imported),
 it does not look for or generate a .pyc file; it just compiles the .py
-unconditionally in memory and runs the bytecode. Let us illustrate this by a little example::
+unconditionally in memory and runs the bytecode. 
+
+Let us illustrate this by a little example: ::
+
  #Let us create 2 python source code file
  vim foo.py
  print "foo"
@@ -206,6 +209,7 @@ unconditionally in memory and runs the bytecode. Let us illustrate this by a lit
  -rw-rw-r-- 1 user grp  141 avril 29 11:00 bar.pyc
  #bar.py was compiled in bytcode and cahed in bar.pyc file
 
+| Then, is Python Interpreted or Compiled?
 Like other languages that use a VM bytecode, it's a little bit of both. 
 The actual Python code is compiled into Python bytecode.
 The bytecode is interpreted.
@@ -254,7 +258,7 @@ https://wiki.python.org/moin/Python2orPython3
 Exercices
 =========
 
-Just to make sure everything is correctly set up, create a file named ``hello.py`` with the ditor of your choice. ::
+Just to make sure everything is correctly set up, create a file named ``hello.py`` with the editor of your choice. ::
 
  #! /usr/bin/env python
  print "Hello World!"
@@ -308,3 +312,5 @@ References
  
 .. [python_2012] Is python a interpreted or compiled language?
    https://mail.python.org/pipermail/python-list/2012-June/625578.html
+   
+.. [python_glossary] https://docs.python.org/2.7/glossary.html
