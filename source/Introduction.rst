@@ -281,6 +281,36 @@ large complex task into smaller and smaller subtask until until the subtask are 
 Formal and natural language
 ===========================
 
+:Natural languages: 
+   are languages people speak, such as english, french. They were not design by people and evovle naturally.
+
+:Formal languages:
+   are laguages that are designed by people for specifi applications. For instance, the notation that mathemathicians use
+   is a formal language that is particularly good at denoting relationships among numbers and symbols.  
+   Chemists use a formal language to represent the chemical structure of molecules.  
+   And most importantly:
+
+   **Programming languages are formal languages that have been designed to express computations.**
+
+Formal languages tend to have strict rules about syntax.  For example,
+3 + 3 = 6 is a syntactically correct mathematical statement, but 
+3 + = 3$6 is not.
+|H2O| is a syntactically correct chemical formula, but :sub:`2`\ Zz is not.
+
+Syntax rules come in two flavors, pertaining to **tokens** and **structure**.  
+
+Tokens are the basic elements of the language, such as
+words, numbers, and chemical elements.  One of the problems with
+3 + = 3$6 is that $ is not a legal token in mathematics
+(at least as far as I know).  Similarly, :sub:`2`\ Zz is not legal because
+there is no element with the abbreviation Zz.
+
+The second type of syntax rule pertains to the structure of a
+statement; that is, the way the tokens are arranged.  The statement
+3 + = $ is illegal because even though + and = are
+legal tokens, you can't have one right after the other.  
+Similarly, in a chemical formula the subscript comes after the element name, not
+before [thinkpython]_.   
 
 Sytle of programming
 ====================
@@ -292,7 +322,7 @@ Functional
 Python 2.x vs 3.x
 =================
 
-https://wiki.python.org/moin/Python2orPython3
+[python2vs3]_
 
 
 Exercices
@@ -350,6 +380,10 @@ We will use Python 2.7 for the rest of this course and try to point out the diff
 References
 ==========
  
+.. [thinkpython] http://www.greenteapress.com/thinkpython/
+
+.. [prog_in_python3] http://www.qtrac.eu/py3book.html
+
 .. [python_2012] Is python a interpreted or compiled language?
   
    https://mail.python.org/pipermail/python-list/2012-June/625578.html
@@ -357,4 +391,7 @@ References
 .. [python_glossary] https://docs.python.org/2.7/glossary.html
 
 
-.. [thinkpython] http://www.greenteapress.com/thinkpython/
+.. [python2vs3] https://wiki.python.org/moin/Python2orPython3
+
+
+.. |H2O| replace:: H\ :sub:`2`\ O
