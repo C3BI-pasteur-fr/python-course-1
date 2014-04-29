@@ -258,7 +258,26 @@ of otherwise interpreted code [python_2012]_.
 
     The actual Python code is compiled into Python bytecode. The bytecode is interpreted.
 
+What is a program
+=================
 
+A **program** is a sequence of instructions that specifies how to perform a computation. 
+The computation might be something mathemathical, such as solving a system of equations or
+finding roots of a polunomial, but it can be also a symbolic computaion as searching and replacing 
+text in a document or (strangely enough) compiling a program.
+
+The details look different in different language, but a few basic instaructions apear in just about every language:
+
+* **input**: Get data from the keyboard, a file, or some other device.
+* **output**: Display data on the screen or send data to a file or other device.
+* **math**: Perform basic mathemathical operations like additions and multiplications.
+* **conditional execution**: check for certain conditions and execute the appropriate code.
+* **repetition**: Perform some action repeatedly, ussually with some variation.
+
+Believe it or not, that is pretty much all there is to it. Every program you've ever used, no matter how complicated 
+is made up of instructions that look pretty much like these. So you can think of programming as the process of breaking a 
+large complex task into smaller and smaller subtask until until the subtask are simple enough to be reduced to one of these basic instructions.   
+ 
 Formal and natural language
 ===========================
 
@@ -332,8 +351,10 @@ References
 ==========
  
 .. [python_2012] Is python a interpreted or compiled language?
+  
    https://mail.python.org/pipermail/python-list/2012-June/625578.html
    
 .. [python_glossary] https://docs.python.org/2.7/glossary.html
+
 
 .. [thinkpython] http://www.greenteapress.com/thinkpython/
