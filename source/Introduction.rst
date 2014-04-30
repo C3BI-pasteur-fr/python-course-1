@@ -388,6 +388,54 @@ During this course we will focused on procedural programming.
 Python 2.x vs 3.x
 =================
 
+
+Python was conceived in the late 1980s and its implementation was started in December 1989 by Guido van Rossum
+at CWI in the Netherlands as a successor to the ABC programming language capable of exception handling and
+interfacing with the Amoeba operating system.
+Van Rossum is Python's principal author, and his continuing central role in deciding the direction of Python 
+is reflected in the title given to him by the Python community, Benevolent Dictator for Life (BDFL).
+
+Python 2.0 was released on 16 October 2000, with many major new features including a full garbage collector and support for unicode. 
+However, the most important change was to the development process itself, 
+with a shift to a more transparent and community-backed process.
+
+Python 3.0
+----------
+Python 3.0 (also called "Python 3000" or "Py3K")  was developed with the same philosophy as in prior versions.
+It was designed to rectify certain fundamental design flaws in the language.
+Python also had accumulated new and redundant ways to program the same task.
+Python 3.0 had an emphasis on removing duplicative constructs and modules, 
+in keeping with "There should be one— and preferably only one —obvious way to do it".
+The changes required could not be implemented while retaining full backwards compatibility with the 2.x series, 
+which necessitated a new major version number. 
+The guiding principle of Python 3 was: "reduce feature duplication by removing old ways of doing things".
+
+Nonetheless, Python 3.0 remained a multi-paradigm language. 
+Coders still had options among object-orientation, structured programming, functional programming and other paradigms, 
+but within such broad choices, the details were intended to be more obvious in Python 3.0 than they were in Python 2.x. [python_history]_
+
+
+Should I use Python 2 or Python 3 for my development activity?
+--------------------------------------------------------------
+
+If you can do exactly what you want with Python 3.x, great! 
+There are a few minor downsides, such as slightly worse library support and the fact that most current Linux distributions and Macs
+are still using 2.x as default, but as a language Python 3.x is definitely ready. 
+As long as Python 3.x is installed on your user's computers 
+(which ought to be easy, since many people reading this may only be developing something for themselves or an environment they control) 
+and you're writing things where you know none of the Python 2.x modules are needed, it is an excellent choice. 
+Also, most linux distributions have Python 3.x already installed, and all have it available for end-users. 
+Some are phasing out Python 2 as preinstalled default.2
+
+However, there are some key issues that may require you to use Python 2 rather than Python 3.
+
+#. If you're deploying to an environment you don't control, 
+   that may impose a specific version, rather than allowing you a free selection from the available versions.
+#. If you want to use a specific third party package or utility that doesn't yet have a released version that is compatible with Python 3, 
+   and porting that package is a non-trivial task, you may choose to use Python 2 in order to retain access to that package. 
+
+biopython 1.63 is the first version to fully support Python 3 (3.3) (it support also python2.6 and 2.7)
+
 [python2vs3]_
 
 
@@ -461,6 +509,8 @@ References
 .. [Functional_programming] http://en.wikipedia.org/wiki/Functional_programming
 
 .. [Object-oriented_programming] http://en.wikipedia.org/wiki/Object-oriented_programming
+
+.. [python_history] http://en.wikipedia.org/wiki/History_of_Python
 
 .. [python2vs3] https://wiki.python.org/moin/Python2orPython3
 
