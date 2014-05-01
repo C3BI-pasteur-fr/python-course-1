@@ -14,6 +14,8 @@ Conditional Branching
 Looping
 -------
 
+.. _exceptions:
+
 Exception Handling
 ==================
 
