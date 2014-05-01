@@ -13,7 +13,7 @@ Value and type
 A **value** is one of the basic things a program works with, like a letter or a number.  
 The values we have seen so far are ``1``, ``2``, and ``'Hello, World!'``.
 
-These values belong to different **types**: ``2`` is an integer (:ref:`Integers`), and ``'Hello, World!'`` is a **string** (:ref:`toto`),
+These values belong to different **types**: ``2`` is an integer (:ref:`integers`), and ``'Hello, World!'`` is a **string** (:ref:`strings`),
 so-called because it contains a "string" of letters. You (and the interpreter) can identify
 strings because they are enclosed in quotation marks. We speak speak also of ``data type``.
 
@@ -26,7 +26,7 @@ If you are not sure what type a value has, the interpreter can tell you. ::
  
 Not surprisingly, strings belong to the type ``str`` and integers belong to the type ``int``.  
 Less obviously, numbers with a decimal point belong to a type called ``float``,
-because these numbers are represented in a format called ``floating-point`` (:ref:`Floating Point`). ::
+because these numbers are represented in a format called ``floating point`` (:ref:`floating point`). ::
 
    >>> type(3.2)
    <type 'float'>
@@ -101,6 +101,55 @@ Immutable objects
 
 Variable name and keywords
 ==========================
+
+Programmers generally choose names for their variables that
+are meaningful---they document what the variable is used for.
+
+Variable names can be arbitrarily long.  They can contain
+both letters and numbers, but they have to begin with a letter.
+It is legal to use uppercase letters, but it is a good idea
+to begin variable names with a lowercase letter (you'll
+see why later).
+
+The underscore character, ``"_"``, can appear in a name. It is often used in names with multiple words, 
+such as ``"my_name"`` or ``"airspeed_of_unladen_swallow"``.
+
+If you give a variable an illegal name, you get a syntax error: ::
+
+   >>> 76trombones = 'big parade'
+   SyntaxError: invalid syntax
+   >>> more@ = 1000000
+   SyntaxError: invalid syntax
+   >>> class = 'Advanced Theoretical Zymurgy'
+   SyntaxError: invalid syntax
+
+``76trombones`` is illegal because it does not begin with a letter.
+``more@`` is illegal because it contains an illegal character, ``@``.  
+But what's wrong with ``class``?
+
+It turns out that ``class`` is one of Python's **keywords**.  
+The interpreter uses keywords to recognize the structure of the program, and they cannot be used as variable names.
+
+Python 2 has 31 keywords:
+
+\begin{verbatim}
+and       del       from      not       while    
+as        elif      global    or        with     
+assert    else      if        pass      yield    
+break     except    import    print              
+class     exec      in        raise              
+continue  finally   is        return             
+def       for       lambda    try
+\end{verbatim}
+
+.. note:: In Python 3, ``exec`` is no longer a keyword, but ``nonlocal`` is.
+
+You might want to keep this list handy.  If the interpreter complains
+about one of your variable names and you don't know why, see if it
+is on this list.
+
+
+.. todo:: ref vers la pep8 et le nomage des variables
 
 
 Exercises
