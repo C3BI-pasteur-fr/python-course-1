@@ -149,7 +149,7 @@ There is several strategies to transform a program in high-level language in a p
 
 An interpreter reads a high level program and executes it. It processes the program a little at a time, alternately reading lines and executing.
 
-.. figure:: ../figs/interpret.png
+.. figure:: _static/figs/interpret.png
     :height: 85px
     :align: center
     :alt: interpreting work stream
@@ -161,7 +161,7 @@ A compiler reads the program and translates it entirely before the program start
 and the translated program is called the **object code** or the executable. Once the program is compiled, you can execute it  repeatedly without
 further translation [thinkpython]_.
 
-.. figure::  ../figs/compile.png
+.. figure::  _static/figs/compile.png
     :height: 85px
     :align: center
     :alt: compiling work stream
@@ -252,7 +252,7 @@ of otherwise interpreted code [python_2012]_.
  
 
  
-.. figure:: ../figs/byte_code.png
+.. figure:: _static/figs/byte_code.png
     :height: 85px
     :align: center
     :alt: bytecode work stream
@@ -458,12 +458,24 @@ and now execute your program. ::
  
 .. note:: 
 
-   In python3 the syntax for printing is slightly different: ::
+   In Python3 the syntax for printing is slightly different: ::
      
      print("hello world")
      
    These paraentesis indicate that ``print`` is not any longer a statement, but it has been replaced by a function (:ref:`Creating_and_Calling_Funcions`).
-   For the rest of this course we will use the statement.
+   For the rest of this course we will use the statement. If you want to use the print function instead of statement in python 2.7 for compatibility reasons for instance
+   it is possible. You have just to place this statement at the top of your file. ::
+
+      from __future__ import print_function 
+      
+   The only lines that can appear before a future_statement are:
+
+      * The module docstring (if any).
+      * Comments.
+      * Blank lines.
+      * Other future_statements.
+
+   
 
 .. note:: 
  
@@ -500,7 +512,7 @@ References
  
 .. [thinkpython] http://www.greenteapress.com/thinkpython/
 
-.. [prog_in_python3] http://www.qtrac.eu/py3book.html
+.. [prog_in_python3] Mark Summerfield, Programming in Python3 (addison wesley): http://www.qtrac.eu/py3book.html
 
 .. [python_2012] Is python a interpreted or compiled language?
   
