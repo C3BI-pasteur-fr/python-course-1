@@ -175,9 +175,11 @@ Is Python Interpreted or Compiled?
 ----------------------------------
 
 Python source code is compiled into bytecode, the internal representation of a Python program in the CPython interpreter. 
-The bytecode is also cached in `.pyc` and `.pyo` files so that executing the same file is faster the second time (recompilation from source to bytecode can be avoided). 
+The bytecode is also cached in `.pyc` and `.pyo` files so that executing the same file is faster the second time 
+(recompilation from source to bytecode can be avoided). 
 This “intermediate language” is said to run on a virtual machine that executes the machine code corresponding to each bytecode. 
-Do note that bytecodes are not expected to work between different Python virtual machines (*VM*), nor to be stable between Python releases [python_glossary]_.
+Do note that bytecodes are not expected to work between different Python virtual machines (*VM*), 
+nor to be stable between Python releases [python_glossary]_.
 
 Whenever a Python module is **imported**, the interpreter first checks
 whether a .pyc is available that has the appropriate "magic number"
@@ -319,7 +321,8 @@ A programming paradigm is a fundamental style of computer programming, a way of 
 Capablities and styles of various programming languages are defined by their supported programming paradigms; 
 some programming languages are designed to follow only one paradigm, while others support multiple paradigms.
 
-There are six main programming paradigms: imperative, declarative, functional, object-oriented, logic and symbolic programming [Comparison_of_programming_paradigms]_.
+There are six main programming paradigms: imperative, declarative, functional, object-oriented, 
+logic and symbolic programming [Comparison_of_programming_paradigms]_.
 
 * **Procedural programming, structured programming** – specifies the steps the program must take to reach the desired state.
 * **Object-oriented programming (OOP)** – organizes programs as objects: data structures consisting of datafields and methods together with their interactions.
@@ -328,16 +331,17 @@ There are six main programming paradigms: imperative, declarative, functional, o
 
 Procedural programming
 ----------------------
-   In computer science, imperative programming is a programming paradigm that describes computation in terms of statements that change a program state. 
-   In much the same way that imperative mood in natural languages expresses commands to take action, 
+   In computer science, imperative programming is a programming paradigm that describes computation in terms of statements 
+   that change a program state. In much the same way that imperative mood in natural languages expresses commands to take action, 
    imperative programs define sequences of commands for the computer to perform.
 
-   Procedural programming is imperative programming in which the program is built from one or more procedures (also known as subroutines or functions). 
-   The terms are often used as synonyms, but the use of procedures has a dramatic effect on how imperative programs appear and how they are constructed. 
-   Heavily-procedural programming, in which state changes are localized to procedures (functions) or restricted to explicit arguments and returns from procedures,
-   is known as structured programming. From the 1960s onwards, structured programming and modular programming in general have been promoted as 
-   techniques to improve the maintainability and overall quality of imperative programs. 
-   Object-oriented programming extends this approach.
+   Procedural programming is imperative programming in which the program is built from one or more procedures 
+   (also known as subroutines or functions). The terms are often used as synonyms, but the use of procedures has a dramatic 
+   effect on how imperative programs appear and how they are constructed. 
+   Heavily-procedural programming, in which state changes are localized to procedures (functions) or restricted to explicit 
+   arguments and returns from procedures, is known as structured programming. From the 1960s onwards, structured programming 
+   and modular programming in general have been promoted as techniques to improve the maintainability and overall quality of 
+   imperative programs. Object-oriented programming extends this approach.
  
  
 Object oriented programming
@@ -500,7 +504,7 @@ References
 
 .. [python_2012] Is python a interpreted or compiled language?
   
-   https://mail.python.org/pipermail/python-list/2012-June/625578.html
+      https://mail.python.org/pipermail/python-list/2012-June/625578.html
    
 .. [python_glossary] https://docs.python.org/2.7/glossary.html
 
