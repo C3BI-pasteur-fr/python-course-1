@@ -219,40 +219,24 @@ Variable name and keywords
 Programmers generally choose names for their variables that are meaningful, 
 they document what the variable is used for.
 
-Variable names can be arbitrarily long.  They can contain both letters and numbers, 
-but they have to begin with a letter.
-It is legal to use uppercase letters, but it is a good idea to begin variable names 
-with a lowercase letter.
+Variable names (also calls identifiers) non empty sequence of characters that can be arbitrarily long. 
+This sequence consists of a "start character" and a "non zero" or more "continuation characters".
+Such an identifier must obey a couple of rules and ideally follow some conventions.
 
-The underscore character, ``"_"``, can appear in a name. It is often used in names with multiple words, 
-such as ``"my_name"`` or ``"airspeed_of_unladen_swallow"``.
+* The first rule concern the start and continuation characters. It can be any letter or the underscore.
+  The continuation character can be any charcater that is permit as a start character, or pretty well
+  any non white space character including digit.
+  The underscore character, ``"_"`` is often used in names with multiple words such as ``scoring_matrix``.
+* Identifiers are case sensitive, so far GENESEQUENCE, GeneSequence, Genesequence or genesequence are different identifiers.
 
 .. note:: 
+   In Python3 the default encoding is utf8. So letter can be anything that Unicode considers to be a letter,
+   as non english letters.
 
-   All these naming conventions are details in :ref:`pep_8` (**P**\ ython **E**\ nhancement **P**\ roposal), Style Guide for Python Code.
-   The pep8 gives coding conventions for the Python code. These guidelines are intended to improve the readability of code and 
-   make it consistent across the wide spectrum of Python code.
-   Consistency with this style guide is important. Consistency within a project is more important.
-   Most of the time when you start a project you start it alone, it's your project you can choose the style you want.
-   But one day your code will be read by an other, for helping you to debug, because you want to start a collaboration,
-   a student get back your code to continue the project, because you want to publish your code. 
-   It will be very much easier to undetstand what you did if you follow these conventions.   
+.. note:: 
+   The precise set of chracaters that are permitted are describe in the Pyhton documentation (), and in PEP3131
 
-If you give a variable an illegal name, you get a syntax error: ::
-
-   >>> 76trombones = 'big parade'
-   SyntaxError: invalid syntax
-   >>> more@ = 1000000
-   SyntaxError: invalid syntax
-   >>> class = 'Advanced Theoretical Zymurgy'
-   SyntaxError: invalid syntax
-
-| ``76trombones`` is illegal because it does not begin with a letter.
-| ``more@`` is illegal because it contains an illegal character, ``@``.  
-| But what's wrong with ``class``?
-
-It turns out that ``class`` is one of Python's **keywords**.  
-The interpreter uses keywords to recognize the structure of the program, and they cannot be used as variable names.
+* The identifier cannot have the same name a one of the Python's keywords.
 
 Python 2 has 31 keywords:
 
@@ -274,10 +258,51 @@ Python 2 has 31 keywords:
 | def      | for     | lambda | try    |       |
 +----------+---------+--------+--------+-------+
 
+
 .. note:: In Python 3, ``exec`` is no longer a keyword, but ``nonlocal`` is.
 
-You might want to keep this list handy.  If the interpreter complains
-about one of your variable names and you don't know why, see if it is on this list.
+* The first convention is: Don't use the names of any of Python's predefined identifiers for you own identifiers.
+  So, avoid using NotImplemented or Ellipsis and the name of any of Python's built-in data types (such as int, float, str, list, tuple),
+  and any of Python's built-in functions or exceptions.
+
+* The second convetion concern the uses of underscore ``_``. Names that begin and end with two underscores as ``__eq__`` should not used.
+  Python defines varous special methods and variables that use such names. In the case of special methods, we can reimplement them, that is,
+  make our own version of them (we will not cover this topic during this course), but not to introduce new names. 
+  A single underscore can be used as an identifier, and inside an interactive interpreter or Python Shell, 
+  _ holds the results of the last expression that was evaluated. In normal program _ does not exists unles we use it explicitly.
+  Some develen oppers like to use _ when they don't intend to use it, for instance in loops when they don't care about the items being
+  looped over, or when they unpack a sequence and don't care of some value: ::
+  
+   for _ in (0,1,2,3,4,5):
+      print "Hello"
+      
+   a , _, b, _ = (1,2,3,4)
+   
+ 
+If you give a variable an illegal name, you get a syntax error: ::
+
+   >>> 76trombones = 'big parade'
+   SyntaxError: invalid syntax
+   >>> more@ = 1000000
+   SyntaxError: invalid syntax
+   >>> class = 'Advanced Theoretical Zymurgy'
+   SyntaxError: invalid syntax
+
+* ``76trombones`` is illegal because it does not begin with a letter.
+* ``more@`` is illegal because it contains an illegal character, ``@``.  
+* ``class`` is one of Python's **keywords**.  
+
+
+.. note:: 
+
+   All these naming conventions are details in :ref:`pep_8` (**P**\ ython **E**\ nhancement **P**\ roposal), Style Guide for Python Code.
+   The pep8 gives coding conventions for the Python code. These guidelines are intended to improve the readability of code and 
+   make it consistent across the wide spectrum of Python code.
+   Consistency with this style guide is important. Consistency within a project is more important.
+   Most of the time when you start a project you start it alone, it's your project you can choose the style you want.
+   But one day your code will be read by an other, for helping you to debug, because you want to start a collaboration,
+   a student get back your code to continue the project, because you want to publish your code. 
+   It will be very much easier to understand what you did if you follow these conventions.   
 
 
 
