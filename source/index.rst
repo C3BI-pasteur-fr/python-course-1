@@ -20,7 +20,6 @@ Contents:
    Arithmetic_Operators
    Creating_and_Calling_Funcions
    Modules_and_Packages
-   pep_8
    Input_Output
    Scripting
    Debugging_Testing_Profiling
