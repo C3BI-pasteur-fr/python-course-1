@@ -24,6 +24,7 @@ Contents:
    Input_Output
    Scripting
    Debugging_Testing_Profiling
+   Appendix
    
 
 Indices and tables
