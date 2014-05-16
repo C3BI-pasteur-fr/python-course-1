@@ -50,6 +50,55 @@ The switch between domains is transparent to the programmer.
 Integers
 ========
 
+The size of an integer is limited only by the machine's memory. So integers hundred digits long can easily be created and work with.
+Although they will be slower to use than integers that can be represent natively by the machine processor.
+
+.. tabularcolumns:: |l|l|l| 
+   common numerics operators and functions
+   
++--------------+--------------------------------------------------------------------------------------------+
+| Syntax       | Description                                                                                |
++==============+============================================================================================+
+| x + y        | Adds numbers x and y                                                                       |
++--------------+--------------------------------------------------------------------------------------------+
+| x - y        | Substracts y form x                                                                        |
++--------------+--------------------------------------------------------------------------------------------+
+| x * y        | Multiplies x by y                                                                          |
++--------------+--------------------------------------------------------------------------------------------+
+| x / y        | Divides x by y (be carefull ther are some differences beween python2 and 3 see below)      |
++--------------+--------------------------------------------------------------------------------------------+
+| x // y       | Divides x by y; truncates any fractional parts to produce an int see also round() function |
++--------------+--------------------------------------------------------------------------------------------+
+| x % y        | Produce the modulus (remainder) of dividing x by y                                         |
++--------------+--------------------------------------------------------------------------------------------+
+| x ** y       | Raise x to the power of y. See also pow() function.                                        |
++--------------+--------------------------------------------------------------------------------------------+
+| -x           | Negates x. Change x's sign if non zero. if zero do nothing                                 |
++--------------+--------------------------------------------------------------------------------------------+
+| +x           | Do nothing. It's sometimes used to clarify                                                 |
++--------------+--------------------------------------------------------------------------------------------+
+| abs(x)       | Return the absloute value of x                                                             |
++--------------+--------------------------------------------------------------------------------------------+
+| divmod(x, y) | Return the quotient and the remainder of dividing x by y as a tuple of two ints            |
++--------------+--------------------------------------------------------------------------------------------+
+| pow(x, y)    | Raises x to the power of y. the same as ** operator                                        |
++--------------+--------------------------------------------------------------------------------------------+
+| pow(x, y, z) | A faster alternative to (x ** y) % z                                                       |
++--------------+--------------------------------------------------------------------------------------------+
+| round(x, n)  | Returns x rounded to n integral digit if n is negative int,                                |
+|              | or x rounded to n decimal places if n is positive int.                                     |
+|              | The returned value has the same type as x                                                  |
++--------------+--------------------------------------------------------------------------------------------+
+
+Interger literals are written in 10 base by default but other number base can be used: ::
+
+   >>> 126       # decimal
+   >>> 0b1111110 # binary  (with a leading 0b)
+   >>> 0176      # octal   (with a leading 0)
+   >>> 0x7e      # hexadecimal (with a leading 0x)
+   
+All the binary numeric operators (+, -, \*, /, //, %  and \*\*) have an augmented assignment version
+(+=, -=, \*=, /=, //=, %  and \*\*=)  where *x op= y* is logically equivalent to *x = x op y*.
 
 
 .. _floating point:
@@ -61,7 +110,8 @@ Floating Point
 Decimal
 =======
 
-
+Complex
+=======
 
 .. _strings:
 
