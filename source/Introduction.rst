@@ -4,28 +4,6 @@
 Introduction
 ************
 
-.. todo:: a faire
-
-.. note:: ceci est une note
-
-.. seealso:: This is a **seealso** note
-   
-.. warning:: et ca un warning
-   
-code example: ::
-   
-   for i in range(3):
-      if i % 2 == 0:
-         print i
-      else:
-         print None
-   #attention les lignes blanches et les tabs sont importants
-
-le plus simple est de regarder là: 
-
-* http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/rest_syntax.html
-* http://docutils.sourceforge.net/docs/user/rst/quickref.html
-* http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html
 
 Getting and installing Python
 =============================
@@ -102,7 +80,7 @@ to edit your python file.
 
 .. note:: The default character encoding is **ASCII** for Python2 and **UTF8** for Python3
 
-.. warning::  Word or Libre Office are not text editors.
+.. warning::  Word or Libre Office are **NOT** text editors.
 
 Python source code file have normally ``.py`` extension, although on some unix systems they can have not any extension, and python GUI (Graphical User Interface)
 have ``.pyw``  extension on Mac and Windows.
@@ -440,7 +418,10 @@ However, there are some key issues that may require you to use Python 2 rather t
 
 biopython 1.63 is the first version to fully support Python 3 (3.3) (it support also python2.6 and 2.7)
 
-[python2vs3]_
+.. seealso::
+   
+   :ref:`python3`
+   [python2vs3]_
 
 
 Exercices
