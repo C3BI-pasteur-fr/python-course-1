@@ -1,8 +1,8 @@
-.. _Creating_and_Calling_Funcions:
+.. _Creating_and_Calling_Functions:
 
-*****************************
-Creating and Calling Funcions
-*****************************
+******************************
+Creating and Calling Functions
+******************************
 
 Creating and Calling Functions
 ==============================
