@@ -10,7 +10,7 @@ The Python 3 major improvements
 The GIL
 -------
 
-The **G**\ lobal **I**\ nteruptor **L**\ ock is an internal Python feature, which you have not to borrow unless 
+The **G**\ lobal **I**\ nteruptor **L**\ ock is an internal Python feature, which you have not to bother with unless 
 you want to parallelized a program using multithreads.
 
 The GIL is a mutex that prevents multiple native threads from executing Python bytecodes at once. 
