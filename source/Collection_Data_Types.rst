@@ -4,6 +4,8 @@
 Collection Data Types
 *********************
 
+.. _sequences:
+
 Sequence Types
 ==============
 
