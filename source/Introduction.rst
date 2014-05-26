@@ -443,7 +443,7 @@ and now execute your program. ::
      
      print("hello world")
      
-   These paraentesis indicate that ``print`` is not any longer a statement, but it has been replaced by a function (:ref:`Creating_and_Calling_Funcions`).
+   These paraentesis indicate that ``print`` is not any longer a statement, but it has been replaced by a function (:ref:`Creating_and_Calling_Functions`).
    For the rest of this course we will use the statement. If you want to use the print function instead of statement in python 2.7 for compatibility reasons for instance
    it is possible. You have just to place this statement at the top of your file. ::
 
@@ -480,7 +480,59 @@ and now execute your program. ::
     python /tmp/toto
     toto est à l'école
   
-  
+Python Documentation
+====================
+
+On the web
+----------
+
+The `http://https://www.python.org/ <Python website>`_ contains all documentation needed for Python programming, for all supported versions. 
+This is the place to refer if we need to first hand documentation about the language or the standard library.
+
+Some other web sites are very usefull:
+ 
+* `http://stackoverflow.com/ <stackoverflow>`_ is not a python specific forum but for *professional and enthusiast programmers*. 
+* `https://www.biostars.org/ <biostar exchange>`_ is not python specific forum but focused on *bioinformatics questions*. 
+ 
+On command line
+---------------
+
+Python come with the executable pydoc wich provide help on python. 
+In a terminal just type *pydoc* following any module, keyword, or topic.::
+ 
+   $pydoc print
+   
+(press ``q`` to exit)
+
+
+In the interpreter
+------------------ 
+
+We can also acces to documentation interactively in an python interpreter, 
+just Type help() for interactive help, or help(object) for help about object.::
+
+   python
+   $ python
+   Python 2.7.6 (default, Mar 22 2014, 22:59:56) 
+   [GCC 4.8.2] on linux2
+   help()
+   Welcome to Python 2.7!  This is the online help utility.
+
+   If this is your first time using Python, you should definitely check out
+   the tutorial on the Internet at http://docs.python.org/2.7/tutorial/.
+
+   Enter the name of any module, keyword, or topic to get help on writing
+   Python programs and using Python modules.  To quit this help utility and
+   return to the interpreter, just type "quit".
+
+   To get a list of available modules, keywords, or topics, type "modules",
+   "keywords", or "topics".  Each module also comes with a one-line summary
+   of what it does; to list the modules whose summaries contain a given word
+   such as "spam", type "modules spam".
+
+   help> 
+     
+
 Summary
 =======
 
