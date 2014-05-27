@@ -20,7 +20,8 @@ None is also frequently used to represent the absence of a value as when default
    >>> id(b)
    9568656 
 
- ..note:: 
+.. note::
+ 
    the id() function returns an integer representing its identity (currently implemented as its address). 
    so if 2 objects have the same id it's the same object.
 
