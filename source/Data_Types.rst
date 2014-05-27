@@ -422,9 +422,9 @@ The equality operator is ``==`` and allow to test if the string in right operand
    For instance, the character Å can be represented in UTF-8 endoded bytes in three differents ways:
    [0xE2, 0x84, 0xAB], [0xC3, 0x85], [0x41, 0xCC, 0x 8A]. So before to compare unicode strings we need to normalize them. ::
    
-   import unicodedata
-   s = "Génétique"
-   unicodedata.normalize("NFKC", s)
+      import unicodedata
+      s = "Génétique"
+      unicodedata.normalize("NFKC", s)
    
    (Complete api is accessible here https://docs.python.org/3.4/library/unicodedata.html#unicodedata.normalize)
    
@@ -586,6 +586,250 @@ for an exhaustive list of the strings methods: https://docs.python.org/2/library
 
 String formating
 ----------------
+
+There are 2 ways to formats strings.
+The old way using the operator ``%`` , it has been abandonned in python 3 in favor of the method ``format`` introduce in python2.6.
+So, here we will describe only the ``format`` method 
+(the documentation on the ``%`` operator is available `here <https://docs.python.org/2.7/library/stdtypes.html#string-formatting-operations>`_).
+
+The ``format`` method provide a very powerfull and versatile way to creating strings.
+The ``format`` method returns a new string with the *replacement fields* in its string replaced with its arguments suitably formatted.
+For instance: ::
+   
+   >>> id = 'EcoR1'
+   >>> comment = 'restriction site 1 for Ecoli'
+   >>> seq = 'gaattc'
+   >>> fasta = '>{0} {1}\n{2}'.format(id, comment, seq)
+   >>> print fasta
+   >EcoR1 restriction site 1 for Ecoli
+   gaattc
+
+Each replacement fields is identified by a filed name in braces.
+If the field name is a simply integer, it is taken to be index position of one of the argumants passed to ``str.format()``.
+So in this case, the field whose name was 0 was replaced by the first argument, and so on.
+
+If wee need to include braces inside format strings, we can do so by doubling them up. ::
+
+   >>> "{{{0}}}, {1}.".format("I'm in braces", "I'm not")
+   "{I'm in braces}, I'm not."
+   
+As we saw, we can use ``format`` to concatenate strings but join is better for that. 
+``format`` allow to perform conversion and concatenation in the same time. This is what ``format`` is made for this.::
+
+   >>> "e_value = {0:f}".format(0.12)
+   'e_value = 0.120000'
+
+The replacement field can have any of the following general syntaxes:
+
+   * *{field_name}*
+   * *{field_name!conversion}*
+   * *{field_name:format_specification}*
+   * *{field_name!conversion:format_specification}*
+
+Field Names
+^^^^^^^^^^^
+A field name can be either an integer corresponding to one of the ``str.format()`` arguments, or the name of one of the keywords :ref:`arguments` ::
+
+   >>> fasta = '>{0} {1}\n{2}'.format(id = 'EcoR1', comment = 'restriction site 1 for Ecoli', seq = 'gaattc')
+   >EcoR1 restriction site 1 for Ecoli
+   gaattc
+   
+It can be also an item in a collection data types. ::
+
+   >>> ecor1 = ['EcoR1', 'restriction site 1 for Ecoli', 'gaattc]
+   >>> '>{0[0]} {0[1]}\n{0[2]}'.format(ecor1)
+   >>> ecor1 = {id : 'EcoR1', seq : 'gaattc, com : 'restriction site 1 for Ecoli'}
+   >>> '>{0[id]} {0[com]}\n{0[seq]}'.format(ecor1)
+   
+ one very useful way to format string using mapping is to :ref:`unpack` the mapping in the ``format`` arguments.::
+ 
+   >>> d = {'a' : 1 , 'b' : 2}
+   >>> 'a = {a}, b = {b}'.format(**d)
+   'a = 1, b = 2'
+   
+ or a name attributes. ::
+  
+   import math
+   >>> 'pi = {0.pi} e = {0.e}'.format(math) 
+   'pi = 3.14159265359 e = 2.71828182846'
+   
+   
+Conversions
+^^^^^^^^^^^
+
+Every object in Python have a representational form. 
+The pupose of this form is to provide a string which if interpreted by python recreated the object it represents.
+For instance the representational form of ``sys`` module is the string *<module 'sys' (built-in)>*. 
+Some objects have a second form, a string form.The purpose of this form aimed at human readers. 
+All built-in data types have a string form. we can add a string form to our own object (this topic will not cover in this course).
+If an object does not have string form python use the representational form.
+In str.format we can force which representaion we want to use in our string there is 2 specifiers ``r`` for representational form or ``s`` 
+for string form. ::
+
+   >>> import decimal
+   >>> 'z as string : {0!s} or z resentational form : {0!r}'.format(z)
+   "z as string : 3.14159 or z resentational form : Decimal('3.14159')"
+   
+.. note:: In Python3 there is a third specifier: ``a`` to force representational form but in ASCII characters only.
+
+
+Format Specifications
+^^^^^^^^^^^^^^^^^^^^^
+
+The default formating work well and can be fine for basic operation. 
+But we can exercise a fine control on how the values formatted using the format specifications.
+
+String
+""""""
+
+For strings, we can control the fill character, the alignment within the field, and the minimum and maximum field widths.
+
+String format specifications is introduced with a semicolon(:) and has the following syntax ::
+
+   format_spec ::=  [[fill]align][#][0][minimum width][.maximum width]
+   fill        ::=  <any character>
+   align       ::=  "<" | ">" | "^"
+   minimum width       ::=  integer
+   maximum precision   ::=  integer
+
+string format examples: ::
+
+   >>> '{:30}'.format('minimum size') # minimum width 30
+   >>> '{:<30}'.format('left aligned') # minimum width 30 and left aligned
+   'left aligned                  '
+   >>> '{:>30}'.format('right aligned') # minimum width 30 and right aligned
+   '                 right aligned'
+   >>> '{:^30}'.format('centered') # minimum width 30 and centered
+   '           centered           '
+   >>> '{:*^30}'.format('centered')  # use '*' as a fill char
+   '***********centered***********'
+   >>> '{:^.5}'.format('centered')  # maximum 5 chars width
+   'cente'
+   
+Number (Integer, Float, Decimal)
+""""""""""""""""""""""""""""""""
+
+The syntax for numbers is the same as for string but there is some specific fields. ::   
+   
+   format_spec ::=  [[fill]align][sign][#][0][width][,][.precision][type]
+   fill        ::=  <any character>
+   align       ::=  "<" | ">" | "=" | "^"
+   sign        ::=  "+" | "-" | " "
+   width       ::=  integer
+   precision   ::=  integer
+   type        ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" | "o" | "s" | "x" | "X" | "%"
+
+
+*sign*: The sign option is only valid for number types, and can be one of the following:
+
+.. tabularcolumns:: |l|l| 
+
++--------+----------------------------------------------------------------------------------------------------------+
+| Option | Meaning                                                                                                  |
++========+==========================================================================================================+
+| '+'    | indicates that a sign should be used for both positive as well as negative numbers.                      |
++--------+----------------------------------------------------------------------------------------------------------+
+| '-'    | indicates that a sign should be used only for negative numbers (this is the default behavior).           |
++--------+----------------------------------------------------------------------------------------------------------+
+| space  | indicates that a leading space should be used on positive numbers, and a minus sign on negative numbers. |
++--------+----------------------------------------------------------------------------------------------------------+
+
+*#*: option is only valid for integers, and only for binary, octal, or hexadecimal output. 
+If present, it specifies that the output will be prefixed by '0b', '0o', or '0x', respectively.
+
+*width*: is a decimal integer defining the minimum field width. 
+If not specified, then the field width will be determined by the content.
+
+*precision*: is a decimal number indicating how many digits should be displayed after the decimal 
+point for a floating point value formatted with 'f' and 'F', 
+or before and after the decimal point for a floating point value formatted with 'g' or 'G'. 
+
+*type*: determines how the data should be presented.
+
+The available integer presentation types are:
+
+.. tabularcolumns:: |l|l| 
+
++------+----------------------------------------------------------------------------------------------------------------------------------------+
+| Type | Meaning                                                                                                                                |
++======+========================================================================================================================================+
+| 'b'  | Binary format. Outputs the number in base 2.                                                                                           |
++------+----------------------------------------------------------------------------------------------------------------------------------------+
+| 'c'  | Character. Converts the integer to the corresponding unicode character before printing.                                                |
++------+----------------------------------------------------------------------------------------------------------------------------------------+
+| 'd'  | Decimal Integer. Outputs the number in base 10.                                                                                        |
++------+----------------------------------------------------------------------------------------------------------------------------------------+
+| 'o'  | Octal format. Outputs the number in base 8.                                                                                            |
++------+----------------------------------------------------------------------------------------------------------------------------------------+
+| 'x'  | Hex format. Outputs the number in base 16, using lower- case letters for the digits above 9.                                           |
++------+----------------------------------------------------------------------------------------------------------------------------------------+
+| 'X'  | Hex format. Outputs the number in base 16, using upper- case letters for the digits above 9.                                           |
++------+----------------------------------------------------------------------------------------------------------------------------------------+
+| 'n'  | Number. This is the same as 'd', except that it uses the current locale setting to insert the appropriate number separator characters. |
++------+----------------------------------------------------------------------------------------------------------------------------------------+
+| None | The same as 'd'.                                                                                                                       |
++------+----------------------------------------------------------------------------------------------------------------------------------------+
+
+
+In addition to the above presentation types, integers can be formatted with the floating point presentation types listed below (except 'n' and None). When doing so, float() is used to convert the integer to a floating point number before formatting.
+
+The available presentation types for floating point and decimal values are:
+
+.. tabularcolumns:: |l|l| 
+
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Type | Meaning                                                                                                                                                                                      |
++======+==============================================================================================================================================================================================+
+| 'e'  | Exponent notation. Prints the number in scientific notation using the letter ‘e’ to indicate the exponent. The default precision is 6.                                                       |
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 'E'  | Exponent notation. Same as 'e' except it uses an upper case ‘E’ as the separator character.                                                                                                  |
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 'f'  | Fixed point. Displays the number as a fixed-point number. The default precision is 6.                                                                                                        |
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 'F'  | Fixed point. Same as 'f'.                                                                                                                                                                    |
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 'g'  | General format.                                                                                                                                                                              |
+|      | For a given precision p >= 1, this rounds the number to p significant digits and then formats the result in either fixed-point format or in scientific notation, depending on its magnitude. |
+|      | The precise rules are as follows: suppose that the result formatted with presentation type 'e'                                                                                               |
+|      | and precision p-1 would have exponent exp. Then if -4 <= exp < p,                                                                                                                            |
+|      | the number is formatted with presentation type 'f' and precision p-1-exp. Otherwise,                                                                                                         |
+|      | the number is formatted with presentation type 'e' and precision p-1.                                                                                                                        |
+|      | In both cases insignificant trailing zeros are removed from the significand,                                                                                                                 |
+|      | and the decimal point is also removed if there are no remaining digits following it.                                                                                                         |
+|      |                                                                                                                                                                                              |
+|      | Positive and negative infinity, positive and negative zero, and nans,                                                                                                                        |
+|      | are formatted as inf, -inf, 0, -0 and nan respectively, regardless of the precision.                                                                                                         |
+|      |                                                                                                                                                                                              |
+|      | A precision of 0 is treated as equivalent to a precision of 1. The default precision is 6.                                                                                                   |
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 'G'  | General format. Same as 'g' except switches to 'E' if the number gets too large. The representations of infinity and NaN are uppercased, too.                                                |
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 'n'  | Number. This is the same as 'g', except that it uses the current locale setting to insert the appropriate number separator characters.                                                       |
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| '%'  | Percentage. Multiplies the number by 100 and displays in fixed ('f') format, followed by a percent sign.                                                                                     |
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| None | The same as 'g'.                                                                                                                                                                             |
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+numbers format examples: ::
+
+   >>> import decimal
+   >>> z = decimal.Decimal("3.14159")
+   >>> "{:.2}".format(z) #format a decimal number with 2 digit width
+   '3.1'
+   >>> "{:.2f}".format(z) #format a decimal number with 2 digits after the dot.
+   '3.14'
+   >>> "{:012.1f}".format(z*10) # pad the left with 0
+   '0000000031.4'
+   >>> "{0:12.2e}".format(math.pi * 100) # dispaly using exponential notation
+   '     3.14e+02'
+   >>> 'gc coverage = {:.2%}'.format(float(125)/230) 
+   'gc coverage = 54.35%'
+   >>> # display percentage in python2 we need to convert one operand in float 
+   >>> # to perform a float division 
+   >>> # in python3 it's no necessary
+   
+For full description of strings formating see https://docs.python.org/2.7/library/string.html#formatstrings
 
 
 Characters Encoding
