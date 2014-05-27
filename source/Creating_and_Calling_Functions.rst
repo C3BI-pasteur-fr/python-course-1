@@ -10,8 +10,12 @@ Creating and Calling Functions
 Names and Docstrings
 --------------------
 
+.. _arguments:
+
 Arguments and Parameters
 ------------------------
+
+.. _unpack:
 
 Parameter Unpacking
 -------------------
