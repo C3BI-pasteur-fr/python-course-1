@@ -11,6 +11,9 @@ build
 *.orig
 *.rej
 
+#Ignores libreoffice lock file
+.~lock.*
+
 #Ignore these hidden files from Mac OS X
 .DS_Store
 
