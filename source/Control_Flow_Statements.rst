@@ -8,8 +8,12 @@ Control Flow Statements
 Control Structures
 ==================
 
+.. _condition:
+
 Conditional Branching
 ---------------------
+
+.. _loop:
 
 Looping
 -------

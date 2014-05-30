@@ -95,13 +95,18 @@ and *t.index(x)*, which returns the index position of the left most occurence of
 Named Tuples
 ------------
 
-A named tuple behaves just like a plain tuple, and has the same performance characteristics.
+A named tuple behaves just like a plain tuple, and has the same performance and characteristics.
 It simply adds the possibilty to access to the data items in the tuple either by their index position
 or by name.
-A name tuple allow us to aggregate data and improve code readibility
+A name tuple allow us to aggregate data and improve code readibility.
 
-The ``collections`` module from the standard library provides the *namedtuple()* fuction. 
-This function is used to create custom tuple data types. 
+We must first create a new named tuple data type, then we can use this new datatype to create tuple with values.
+To create the new custom tuple data type ``collections`` module from the standard library provides the *namedtuple()* fuction. 
+The first argument is the name of the custom data type (After the creation the built-in function type() 
+call on a tuple will return this name). The second argument is a string space delimiter names, 
+one for each item that our custom tuples will take.
+The function return a new custom class (new data type) that can be used to creates named tuple.
+ 
 For example: ::
 
    >>> import collections
@@ -135,21 +140,52 @@ lists support the same extracting, slicing syntax as ``strings`` or ``tuples``.
 Unlike ``strings`` and ``tuples``, lists are *mutable*, so we can replace, delete any of their items.
 It is also possible to insert, replace, and delete slices of lists.
 
+The list data type can be called as function, ``list()``, with no arguments it return an empty list,
+with a list as argument, it returns a shallow copy of the argument, and with any other argument,
+it attempts to convert the given object to a list. It does not accept more than one argument. 
+
+The is others ways to created *lists*, 
+ 
+ * by enclosing a comma separated sequence of object references between square brackets.
+ * using a list comprehension.
+ 
+Since all the items in a list are really object references, data item can be of any data type, including collections
+tuple, list, ... 
+
 ::
 
    >>> digest = [ecor1, bamh1]
-   >>> hindIII =  RestrictEnzyme("HindIII", "type II site-specific nuclease from Haemophilus influenzae", "aagctt", 1 , "sticky")
+   >>>
+   >>> digest2 = list(digest)
+   >>> id(digest)
+   139847879780184
+   >>> id(digest2)
+   139847879857648
+   >>> list("argument")
+   ['a', 'r', 'g', 'u', 'm', 'e', 'n', 't']
+   >>>   
+   >>> hind3 =  RestrictEnzyme("HindIII", "type II site-specific nuclease from Haemophilus influenzae", "aagctt", 1 , "sticky")
    >>> digest.append(hindIII)
-   
+   >>>
    >>> tree = [ ’Bovine’, [ ’Gibbon’, [’Orang’, [ ’Gorilla’, [ ’Chimp’, ’Human’ ]]]], ’Mouse’ ]
-
+   >>>
    >>> aas = "ALA TYR TRP SER GLY".split()
    >>> print aas
    [’ALA’, ’TYR’, ’TRP’, ’SER’, ’GLY’]
    >>> " ".join(aas)
    
-   
-   
+List can be compared using the standard comparison operators (==, !=, >=, <=, <, >). 
+The comparison will be applied item by item (and recursively for nested item such as list in list). ::
+     
+   >>> l1 = [1,2,3]
+   >>> l2 = [1,4]
+   >>> l1 > l2
+   False
+   >>> l1 = [1,2,[3,4]]
+   >>> l2 = [1,2,[3,5]]
+   >>> l2 > l1
+   True
+
 The following operations are defined on mutable sequence types (where x is an arbitrary object):
 
 .. tabularcolumns:: |l|l|l| 
@@ -236,7 +272,34 @@ Notes:
        or even inspect, the list is undefined. The C implementation of Python 2.3 and newer makes the list
        appear empty for the duration, and raises ValueError if it can detect that the list has been mutated during a sort.
 
+examples of item replacing and deleting: ::
 
+   >>> sma1 =  RestrictEnzyme("SmaI", "Serratia marcescens", "cccggg", 3 , "blunt")
+   >>> print digest
+   
+   >>> digest[1] = sma1 #replace bamH1 whith smai in digest
+   >>> del digest[-1]   #remove hind3 from digest. Is hind3 exist any more?
+    
+   
+Lists Comprehensions
+^^^^^^^^^^^^^^^^^^^^
+
+Small list are often created using literals but long lists are usually created programmatically. 
+To create a list from an other sequence object Python offer a very convenient syntax: the ``lists comprehension``.
+A ``list comprehension`` is an expression and a :ref:`loop <loop>` with an optional :ref:`condition <condition>` enclosed in brackets
+where the loop is use to generate items for the list and where condition filter out unwanted items.
+
+| [*expression* for *item* in *iterable*]
+| [*expression* for *item* in *iterable* if *condition*]  
+
+::
+   
+   >>> [enz.name for enz in digest]
+   ['EcoR1', 'SmaI', 'HindIII']
+   >>> [enz.name for enz in digest if enz.end != 'blunt']
+   ['EcoR1', 'HindIII']
+   
+   
 Set Types
 =========
 
