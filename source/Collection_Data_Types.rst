@@ -280,6 +280,7 @@ examples of item replacing and deleting: ::
    >>> digest[1] = sma1 #replace bamH1 whith smai in digest
    >>> del digest[-1]   #remove hind3 from digest. Is hind3 exist any more?
     
+.. _lists_comprehension:
    
 Lists Comprehensions
 ^^^^^^^^^^^^^^^^^^^^
@@ -434,9 +435,32 @@ Set methods and Operators
 | s.update(t)                   | Adds every item in set t that is not in set s , to set s                                                                           |                               |
 +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+
 
+.. _sets_comprehension:
 
+Set Comprehension
+^^^^^^^^^^^^^^^^^
+As we can build a list using an expresion (see :ref:`lists_comprehension`) we can create sets ::
 
+| {*expression* for *item* in *iterable*}
+| {*expression* for *item* in *iterable* if *condition*}  
 
+::
+   import collections
+   RestrictEnzyme = collections.namedtuple("RestrictEnzyme", "name comment sequence cut end")
+   ecor1 = RestrictEnzyme("EcoR1", "Ecoli restriction enzime I", "gaattc", 1, "sticky")
+   bamh1 = RestrictEnzyme("BamH1", "type II restriction endonuclease from Bacillus amyloliquefaciens ", "ggatcc", 1, "sticky")
+   hind3 =  RestrictEnzyme("HindIII", "type II site-specific nuclease from Haemophilus influenzae", "aagctt", 1 , "sticky")
+   sma1 =  RestrictEnzyme("SmaI", "Serratia marcescens", "cccggg", 3 , "blunt")
+   digest = [ecor1, bamh1, hind3, sma1]
+   >>> 
+   >>> {enz.name for enz in digest}
+   set(['SmaI', 'BamH1', 'EcoR1', 'HindIII'])
+   >>> 
+   >>> {enz.name for enz in digest if enz.end != 'blunt'}
+   set(['BamH1', 'EcoR1', 'HindIII'])
+   
+   
+   
 Frozen Sets
 -----------
 
