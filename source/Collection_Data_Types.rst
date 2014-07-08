@@ -464,6 +464,16 @@ As we can build a list using an expresion (see :ref:`lists_comprehension`) we ca
 Frozen Sets
 -----------
 
+A frozen set is a set that, once created, cannot be changed.
+
+Since frozen sets are immutable, they support only those methods and oper-
+ators that produce a result without affecting the frozen set or sets to which
+they are applied ( see :ref:`set_methods_and_operator`).
+
+Another consequence of the immutability of frozen sets is that they meet
+the hashable criterion for set items, so sets and frozen sets can contain frozen
+sets.
+
 Mapping Types
 =============
 
