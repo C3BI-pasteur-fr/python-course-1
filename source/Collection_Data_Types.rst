@@ -303,8 +303,94 @@ where the loop is use to generate items for the list and where condition filter 
 Set Types
 =========
 
+A set type is a collection data type that support ``in`` and ``len`` operator and is iterable. 
+But the the interest of sets is they support operations like ``union``, ``intersection``, ``difference``, ``isdisjoint``.
+When iterated, set types provide their items in an **arbitrary** order.
+
+Only *hashable* objects may be added to a set. Hashable objects are objects
+ whose return value is always the same throughout the object’s lifetime, 
+ and which can be compared for equality.
+ 
+All the built-in immutable data types, such as float , frozenset , int , str , and
+tuple , are hashable and can be added to sets. The built-in mutable data types,
+such as dict, list, and set, are not hashable since their hash value changes
+depending on the items they contain, so they cannot be added to sets.
+
+
 Sets
 ----
+
+A set is an unordered collection of zero or more object references that refer to
+hashable objects. Sets are mutable, so we can easily ``add`` or ``remove`` items, but
+since they are unordered they have **no** notion of index position and so **cannot**
+be sliced or strided. 
+
+The set data type can be called as function, ``set()``, with no arguments and it return an empty set,
+the items can be add one by one using the ``add`` method::
+   s = set()
+   s.add('a')
+   s.add('b')
+   s.add((1,2))
+
+With a set as argument it returns a shallow copy of the argument, and with any other argument it attempts 
+to convert the given object to a set. It does not accept more than one argument.::
+   l = [1,2,3,4,3,2]
+   s = set(l)
+   print s
+   set([1, 2, 3, 4])
+   
+.. warning::
+   If you want to have a string in your set, you cannot use the expression: ::
+      >>> s = set("toto")
+   
+   As the strings are sequence data types "t", "o", "t", "o" will be added to the set.
+   And as set is a collection of unique items your set will contains only "t", "o" ::
+      >>> print s
+      set(['t', 'o'])
+   To have "toto" in the set you need to use the ``add`` method or create the set dircetly with the string with curly brackets (see below).
+      
+The other way to create a set is by enclosing a comma separated sequence of object references between curly brackets.
+(see figure below). ::
+      s.add("toto")
+
+.. figure:: _static/figs/set.png
+   :width: 600px
+   :alt: set
+   :figclass: align-center
+    
+This figure illustrates the set created by the following code snippet:
+   S = {'foo bar', 2, ecor1, frozenset({8, 4, 7}), -29, (3, 4, 5)}
+
+.. container:: clearer
+
+    .. image :: _static/figs/spacer.png
+       
+Sets always contains unique items. It safe to add several times the same item but pointless.
+Sets support ``len`` and fast membership testing ``in`` and ``not in``.
+Tey also support ususal set operators: Union, Intersection, Difference, Symetric difference::
+
+   >>> pecan = set("pecan")
+   >>> pie = set("pie")
+   >>> print pecan ," ... ", pie
+   set(['a', 'p', 'c', 'e', 'n'])  ...  set(['i', 'p', 'e'])
+   >>> ## Union ## 
+   >>> pecan | pie 
+   set(['a', 'c', 'e', 'i', 'n', 'p'])
+   >>> ## Intersection ##
+   >>> pecan & pie 
+   set(['p', 'e'])
+   >>> ## Difference ##
+   >>> pecan - pie
+   set(['a', 'c', 'n'])
+   >>> pie - pecan
+   set(['i'])
+   >>> Symetric Difference ##
+   >>> pecan ^ pie
+   set(['a', 'c', 'i', 'n'])
+   >>> pie ^ pecan
+   set(['a', 'c', 'i', 'n'])
+
+
 
 Frozen Sets
 -----------
@@ -326,3 +412,17 @@ Iterating and copying collections
 
 Exercices
 =========
+
+From a list return a new list without any duplicate, regardless of the order of items. 
+For example: ::
+
+   >>> l = [5,2,3,2,2,3,5,1]
+   >>> uniqify(l)
+   >>> [1,2,3,5] #is one of the solutions 
+
+From a list return a new list without any duplicate, but keeping the order of items. 
+For example: ::
+
+   >>> l = [5,2,3,2,2,3,5,1]
+   >>> uniqify_wit_order(l)
+   >>> [5,2,3,1]  
