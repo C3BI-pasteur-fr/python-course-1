@@ -359,7 +359,7 @@ The other way to create a set is by enclosing a comma separated sequence of obje
    :alt: set
    :figclass: align-center
     
-This figure illustrates the set created by the following code snippet:
+This figure illustrates the set created by the following code snippet::
    S = {'foo bar', 2, ecor1, frozenset({8, 4, 7}), -29, (3, 4, 5)}
 
 .. container:: clearer
@@ -441,8 +441,8 @@ Set Comprehension
 ^^^^^^^^^^^^^^^^^
 As we can build a list using an expresion (see :ref:`lists_comprehension`) we can create sets ::
 
-| {*expression* for *item* in *iterable*}
-| {*expression* for *item* in *iterable* if *condition*}  
+ {*expression* for *item* in *iterable*}
+ {*expression* for *item* in *iterable* if *condition*}  
 
 ::
    import collections
@@ -468,18 +468,171 @@ A frozen set is a set that, once created, cannot be changed.
 
 Since frozen sets are immutable, they support only those methods and oper-
 ators that produce a result without affecting the frozen set or sets to which
-they are applied ( see :ref:`set_methods_and_operator`).
+they are applied ( see :ref:`set methods and operator <set_methods_and_operator>`).
 
 Another consequence of the immutability of frozen sets is that they meet
 the hashable criterion for set items, so sets and frozen sets can contain frozen
 sets.
 
+.. _mapping_types:
+
 Mapping Types
 =============
+
+Mappings are collections of key–value items and provide methods for accessing items and their keys and values.
+In mapping type we associated an item to a key. The key provide a direct access to the item, the value, without 
+iterating over all the collection.
+In Python the mapping type are also call ``dictionary``.
+
+Only hashable objects may be used as dictionary keys, so immutable data types
+such as float , frozenset , int , str , and tuple can be used as dictionary keys, but
+mutable types such as dict , list , and set cannot.
+On the other hand, each key’s
+associated value can be an object reference referring to an object of any type,
+including numbers, strings, lists, sets, dictionaries, functions, and so on.
+
+Dictionary types can be compared using the standard equality comparison op-
+erators ( == and != ), with the comparisons being applied item by item (and recur-
+sively for nested items such as tuples or dictionaries inside dictionaries). Com-
+parisons using the other comparison operators ( < , <= , >= , > ) are not supported
+since they don’t make sense for unordered collections such as dictionaries.
+
+Python provide 3 kind of mapping type:
+
+* the built-in dict type 
+* the standard library’s collections.defaultdict type. 
+* and an ordered mapping type, collections.OrderedDict.
+
+
+
+.. _dictionaries:
 
 Dictionaries
 ------------
 
+A dict is an unordered collection of zero or more key–value pairs whose keys
+are object references that refer to hashable objects, and whose values are object
+references referring to objects of any type. Dictionaries are mutable, so we can
+easily add or remove items, but since they are unordered they have no notion
+of index position and so cannot be sliced or strided.
+
+The ``dict`` data type can be called as a function, dict(), with no arguments it
+returns an empty dictionary, and with a mapping argument it returns a shallow copy if the
+argument is a dictionary or a dict based on the arguments if it is a DefaultDict or OrderedDict. 
+It is also possible to use a sequence argument, providing that each item in the sequence is itself
+ a sequence of two objects, the first of which is used as a key and the second of which is used as a value.
+Dictionaries can also be created using braces—empty braces, {} ,
+create an empty dictionary; nonempty braces must contain one or more comma-
+separated items, each of which consists of a key, a literal colon, and a value.
+Another way of creating dictionaries is to use a dictionary comprehension—a
+topic we will cover later in this subsection.
+Here are some examples to illustrate the various syntaxes—they all produce
+the same dictionary: ::
+
+   dict({"id": 1948, "name": "Washer", "size": 3})
+   dict(id=1948, name="Washer", size=3)
+   dict([("id", 1948), ("name", "Washer"), ("size", 3)])
+   dict(zip(("id", "name", "size"), (1948, "Washer", 3)))
+   {"id": 1948, "name": "Washer", "size": 3}
+
+Dictionary keys are unique, so if we add a key–value item whose key is the
+same as an existing key, the effect is to **replace** that key’s value with a new value.
+
+.. figure:: _static/figs/dict.png
+   :width: 600px
+   :alt: set
+   :figclass: align-center
+   
+
+Illustrates the dictionary created by the following code snippet::
+   >>> d1 = {0 : 1 , (2,10) : “foo”, -1 : [ “a”, ”b”, ”c ], “Ecor1” : ecor1 }
+      
+Brackets are used to access individual values—for example, d[0] returns 1,
+d["foo"] returns -1 , and d[91] causes a KeyError exception
+to be raised, given the dictionary above.
+
+Brackets can also be used to add and delete dictionary items. To add an item
+we use the = operator, for example, d["X"] = 59 . And to delete an item we use
+the del statement—for example, del d["foo"] will delete the item whose key
+is “foo” from the dictionary, or raise a KeyError exception if no item has that
+key. Items can also be removed (and returned) from the dictionary using the
+dict.pop() method.
+
+.. _set_methods_and_operator:
+
+Set methods and Operators
+
+.. tabularcolumns:: |l|l|
++--------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| Syntax Description |                                                                                                                             |
++====================+=============================================================================================================================+
+| d.clear()          | Removes all items from dict d                                                                                               |
++--------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| d.copy()           | Returns a shallow copy of dict d d.fromkeys(s, v)                                                                           |
+|                    | Returns a dict whose keys are the items in sequence s and whose values are None or v if v is given Shallow and deep copying |
++--------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| d.get(k)           | Returns key k’s associated value, or None if k isn’t in dict d                                                              |
++--------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| d.get(k, v)        | Returns key k’s associated value, or v if k isn’t in dict d                                                                 |
++--------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| d.items()          | Returns a view  of all the (key, value) pairs in dict d                                                                     |
++--------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| d.keys()           | Returns a view of all the keys in dict d d.pop(k) Returns key k’s associated value and removes the item                     |
+|                    | whose key is k, or raises a KeyError exception if k isn’t in d                                                              |
+|                    | whose key is k, or returns v if k isn’t in dict d                                                                           |
++--------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| d.popitem()        | Returns and removes an arbitrary (key, value) pair from dict d , or raises a KeyError exception if d is empty               |
+|                    | d.setdefault(k, v) The same as the dict.get() method, except that if the key is                                             |
+|                    | not in dict d, a new item is inserted with the key k , and with                                                             |
+|                    | a value of None or of v if v is given d.update(a).                                                                          |
+|                    | Adds every (key, value) pair from a that isn’t in dict d to d ,                                                             |
+|                    | and for every key that is in both d and a, replaces the corre-                                                              |
+|                    | sponding value in d with the one in a — a can be a dictionary,                                                              |
+|                    | an iterable of (key, value) pairs, or keyword arguments                                                                     |
++--------------------+-----------------------------------------------------------------------------------------------------------------------------+
+
+.. note::
+
+   In Python 3, the dict.items(), dict.keys(), and dict.values() methods all return dictionary
+   views. A dictionary view is effectively a read-only iterable object that appears
+   to hold the dictionary’s items or keys or values, depending on the view we have
+   asked for. In general, we can simply treat views as iterables. However, two things make
+   a view different from a normal iterable. One is that if the dictionary the view
+   refers to is changed, the view reflects the change. The other is that key and
+   item views support some set-like operations. Given dictionary view v and set
+   or dictionary view x , the supported operations are:
+   
+      * Intersection: v & x
+      * Union: v | x
+      * Difference: v - x
+      * Symmetric difference: v ^ x
+
+   In Python3 ::
+      >>> d = {1:'a',2:'b',3:'c',4:'e'}
+      >>> v = d.keys()
+      >>> v
+      dict_keys([1, 2, 3, 4])
+      >>> type(v)
+      <class 'dict_keys'>
+      >>> d[5] = 'c'
+      >>> v
+      dict_keys([1, 2, 3, 4, 5])
+      >>> 
+   
+   In python2 ::
+      >>> d = {1:'a',2:'b',3:'c',4:'e'}
+      >>> d.keys()
+      [1, 2, 3, 4]
+      >>> l = d.keys()
+      >>> type(l)
+      <type 'list'>
+      >>> d[5] = 'c'
+      >>> l
+      [1, 2, 3, 4]
+      >>> d
+      {1: 'a', 2: 'b', 3: 'c', 4: 'e', 5: 'c'}
+   
+   
 Default Dictionaries
 --------------------
 
@@ -505,3 +658,19 @@ For example: ::
    >>> l = [5,2,3,2,2,3,5,1]
    >>> uniqify_wit_order(l)
    >>> [5,2,3,1]  
+
+list and count occurences of every 3mers in the following sequence
+
+"""gtcagaccttcctcctcagaagctcacagaaaaacacgctttctgaaagattccacactcaatgccaaaatataccacag
+gaaaattttgcaaggctcacggatttccagtgcaccactggctaaccaagtaggagcacctcttctactgccatgaaagg
+aaaccttcaaaccctaccactgagccattaactaccatcctgtttaagatctgaaaaacatgaagactgtattgctcctg
+atttgtcttctaggatctgctttcaccactccaaccgatccattgaactaccaatttggggcccatggacagaaaactgc
+agagaagcataaatatactcattctgaaatgccagaggaagagaacacagggtttgtaaacaaaggtgatgtgctgtctg
+gccacaggaccataaaagcagaggtaccggtactggatacacagaaggatgagccctgggcttccagaagacaaggacaa
+ggtgatggtgagcatcaaacaaaaaacagcctgaggagcattaacttccttactctgcacagtaatccagggttggcttc
+tgataaccaggaaagcaactctggcagcagcagggaacagcacagctctgagcaccaccagcccaggaggcacaggaaac
+acggcaacatggctggccagtgggctctgagaggagaaagtccagtggatgctcttggtctggttcgtgagcgcaacaca"""
+
+and finally print the results one 3mer and it's occurence per line. 
+
+write first the pseudocode, then implement it.
