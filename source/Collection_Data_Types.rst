@@ -632,7 +632,33 @@ Set methods and Operators
       >>> d
       {1: 'a', 2: 'b', 3: 'c', 4: 'e', 5: 'c'}
    
+ 
+Dict Comprehension
+^^^^^^^^^^^^^^^^^^
+ 
+A *dictionary comprehension* is an expression and a loop with an optional
+condition enclosed in braces, very similar to a set comprehension. Like list and
+set comprehensions, two syntaxes are supported: ::
+   {keyexpression: valueexpression for key, value in iterable}
+   {keyexpression: valueexpression for key, value in iterable if condition}
    
+   
+::
+
+   import collections
+   RestrictEnzyme = collections.namedtuple("RestrictEnzyme", "name comment sequence cut end")
+   ecor1 = RestrictEnzyme("EcoR1", "Ecoli restriction enzime I", "gaattc", 1, "sticky")
+   bamh1 = RestrictEnzyme("BamH1", "type II restriction endonuclease from Bacillus amyloliquefaciens ", "ggatcc", 1, "sticky")
+   hind3 =  RestrictEnzyme("HindIII", "type II site-specific nuclease from Haemophilus influenzae", "aagctt", 1 , "sticky")
+   sma1 =  RestrictEnzyme("SmaI", "Serratia marcescens", "cccggg", 3 , "blunt")
+   digest = [ecor1, bamh1, hind3, sma1]
+   # now I need a collection to acces direcly to the enzyme given its name
+   # so I will create a dictionary where keys are enzyme name and values the enzymes 
+   frig = {enz.name : enz for enz in digest}
+   # if I want a collection with only cohesive end enzymes  
+   cohesive_enz = {enz.name : enz  for enz in digest if enz.end != 'blunt'}
+   
+      
 Default Dictionaries
 --------------------
 
@@ -674,3 +700,9 @@ acggcaacatggctggccagtgggctctgagaggagaaagtccagtggatgctcttggtctggttcgtgagcgcaacaca
 and finally print the results one 3mer and it's occurence per line. 
 
 write first the pseudocode, then implement it.
+
+
+given the following dict 
+d = {1 : 'a', 2 : 'b', 3 : 'c' , 4 : 'd'}
+We want to invert this dict so we will obtain
+inverted_d  {'a': 1, 'c': 3, 'b': 2, 'd': 4}
