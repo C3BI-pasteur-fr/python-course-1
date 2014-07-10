@@ -554,8 +554,8 @@ to be raised, given the dictionary above.
 Brackets can also be used to add and delete dictionary items. To add an item
 we use the = operator, for example, d["X"] = 59 . And to delete an item we use
 the del statement—for example, del d["foo"] will delete the item whose key
-is “foo” from the dictionary, or raise a KeyError exception if no item has that
-key. Items can also be removed (and returned) from the dictionary using the
+is “foo” from the dictionary, or raise a KeyError :ref:`_exceptions` 
+if no item has that key. Items can also be removed (and returned) from the dictionary using the
 dict.pop() method.
 
 .. _set_methods_and_operator:
