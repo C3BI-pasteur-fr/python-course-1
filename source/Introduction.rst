@@ -1,3 +1,5 @@
+.. sectnum::
+
 .. _Introduction:
 
 ************
@@ -486,13 +488,13 @@ Python Documentation
 On the web
 ----------
 
-The `http://https://www.python.org/ <Python website>`_ contains all documentation needed for Python programming, for all supported versions. 
+The `Python website <https://www.python.org/>`_ contains all documentation needed for Python programming, for all supported versions. 
 This is the place to refer if we need to first hand documentation about the language or the standard library.
 
 Some other web sites are very usefull:
  
-* `http://stackoverflow.com/ <stackoverflow>`_ is not a python specific forum but for *professional and enthusiast programmers*. 
-* `https://www.biostars.org/ <biostar exchange>`_ is not python specific forum but focused on *bioinformatics questions*. 
+* `stackoverflow <http://stackoverflow.com/>`_ is not a python specific forum but for *professional and enthusiast programmers*. 
+* `biostar exchange <https://www.biostars.org/>`_ is not python specific forum but focused on *bioinformatics questions*. 
  
 On command line
 ---------------
