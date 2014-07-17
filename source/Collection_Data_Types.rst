@@ -1,3 +1,6 @@
+.. sectnum:: 
+   :start: 4
+
 .. _Collection_Data_types:
 
 *********************
@@ -61,7 +64,7 @@ Sometimes tuple are surrounding by parenthesis to avoid syntactic ambiguity.
 
    .. image :: _static/figs/spacer.png
     
-\ ::
+::
 
    >>> tuple()
    ()
@@ -167,11 +170,11 @@ tuple, list, ...
    >>> hind3 =  RestrictEnzyme("HindIII", "type II site-specific nuclease from Haemophilus influenzae", "aagctt", 1 , "sticky")
    >>> digest.append(hindIII)
    >>>
-   >>> tree = [ ’Bovine’, [ ’Gibbon’, [’Orang’, [ ’Gorilla’, [ ’Chimp’, ’Human’ ]]]], ’Mouse’ ]
+   >>> tree = ['Bovine', ['Gibbon', ['Orang', ['Gorilla', ['Chimp', 'Human']]]], 'Mouse' ]
    >>>
    >>> aas = "ALA TYR TRP SER GLY".split()
    >>> print aas
-   [’ALA’, ’TYR’, ’TRP’, ’SER’, ’GLY’]
+   ['ALA', 'TYR', 'TRP', 'SER', 'GLY']
    >>> " ".join(aas)
    
 List can be compared using the standard comparison operators (==, !=, >=, <=, <, >). 
@@ -328,6 +331,7 @@ be sliced or strided.
 
 The set data type can be called as function, ``set()``, with no arguments and it return an empty set,
 the items can be add one by one using the ``add`` method::
+
    s = set()
    s.add('a')
    s.add('b')
@@ -335,6 +339,7 @@ the items can be add one by one using the ``add`` method::
 
 With a set as argument it returns a shallow copy of the argument, and with any other argument it attempts 
 to convert the given object to a set. It does not accept more than one argument.::
+
    l = [1,2,3,4,3,2]
    s = set(l)
    print s
@@ -346,12 +351,15 @@ to convert the given object to a set. It does not accept more than one argument.
    
    As the strings are sequence data types "t", "o", "t", "o" will be added to the set.
    And as set is a collection of unique items your set will contains only "t", "o" ::
+   
       >>> print s
       set(['t', 'o'])
+      
    To have "toto" in the set you need to use the ``add`` method or create the set dircetly with the string with curly brackets (see below).
       
 The other way to create a set is by enclosing a comma separated sequence of object references between curly brackets.
 (see figure below). ::
+
       s.add("toto")
 
 .. figure:: _static/figs/set.png
@@ -445,6 +453,7 @@ As we can build a list using an expresion (see :ref:`lists_comprehension`) we ca
  {*expression* for *item* in *iterable* if *condition*}  
 
 ::
+
    import collections
    RestrictEnzyme = collections.namedtuple("RestrictEnzyme", "name comment sequence cut end")
    ecor1 = RestrictEnzyme("EcoR1", "Ecoli restriction enzime I", "gaattc", 1, "sticky")
@@ -558,11 +567,12 @@ is “foo” from the dictionary, or raise a KeyError :ref:`_exceptions`
 if no item has that key. Items can also be removed (and returned) from the dictionary using the
 dict.pop() method.
 
-.. _set_methods_and_operator:
+.. _dict_methods_and_operator:
 
-Set methods and Operators
+Dictionary methods and Operators
 
 .. tabularcolumns:: |l|l|
+
 +--------------------+-----------------------------------------------------------------------------------------------------------------------------+
 | Syntax Description |                                                                                                                             |
 +====================+=============================================================================================================================+
@@ -608,6 +618,7 @@ Set methods and Operators
       * Symmetric difference: v ^ x
 
    In Python3 ::
+   
       >>> d = {1:'a',2:'b',3:'c',4:'e'}
       >>> v = d.keys()
       >>> v
@@ -620,6 +631,7 @@ Set methods and Operators
       >>> 
    
    In python2 ::
+   
       >>> d = {1:'a',2:'b',3:'c',4:'e'}
       >>> d.keys()
       [1, 2, 3, 4]
@@ -639,9 +651,9 @@ Dict Comprehension
 A *dictionary comprehension* is an expression and a loop with an optional
 condition enclosed in braces, very similar to a set comprehension. Like list and
 set comprehensions, two syntaxes are supported: ::
+
    {keyexpression: valueexpression for key, value in iterable}
    {keyexpression: valueexpression for key, value in iterable if condition}
-   
    
 ::
 
@@ -671,6 +683,45 @@ Iterating and copying collections
 Exercices
 =========
 
+Exercice
+--------
+
+Draw the representation in memory of the following expressions.
+what is the data type of each object? ::   
+
+   x = [1, 2, 3, 4]
+   y = x[1]
+   y = 3.14
+   x[1] = 'foo'
+   
+
+Exercice
+--------
+
+wihout using python shell, what is the results of the following statements:  
+ 
+.. note:: 
+   sum is a function which return the sum of each elements of a list.
+      
+::
+
+   x = [1, 2, 3, 4]
+   x[3] = -4 # what is the value of x now ?
+   y = sum(x)/len(x) #what is the value of y ? why ?
+   
+Exercice
+--------
+
+How to compute safely the average of a list?
+
+exercise
+--------
+
+generate a list containing all codons.
+
+exercice
+--------
+
 From a list return a new list without any duplicate, regardless of the order of items. 
 For example: ::
 
@@ -678,31 +729,78 @@ For example: ::
    >>> uniqify(l)
    >>> [1,2,3,5] #is one of the solutions 
 
+
+exercice
+--------
+
+let the following enzymes collection: ::
+ 
+   import collections
+   RestrictEnzyme = collections.namedtuple("RestrictEnzyme", "name comment sequence cut end")
+
+   ecor1 = RestrictEnzyme("EcoRI", "Ecoli restriction enzime I", "gaattc", 1, "sticky")
+   ecor5 = RestrictEnzyme("EcoRV", "Ecoli restriction enzime V", "gatatc", 3, "blunt")
+   bamh1 = RestrictEnzyme("BamHI", "type II restriction endonuclease from Bacillus amyloliquefaciens ", "ggatcc", 1, "sticky")
+   hind3 = RestrictEnzyme("HindIII", "type II site-specific nuclease from Haemophilus influenzae", "aagctt", 1 , "sticky")
+   taq1 = RestrictEnzyme("TaqI", "Thermus aquaticus", "tcga", 1 , "sticky")
+   not1 = RestrictEnzyme("NotI", "Nocardia otitidis", "gcggccgc", 2 , "sticky")
+   sau3a1 = RestrictEnzyme("Sau3aI", "Staphylococcus aureus", "gatc", 0 , "sticky")
+   hae3 = RestrictEnzyme("HaeIII", "Haemophilus aegyptius", "ggcc", 2 , "blunt")
+   sma1 =  RestrictEnzyme("SmaI", "Serratia marcescens", "cccggg", 3 , "blunt")
+
+and the 2 dna fragments: ::
+
+   dna_1 = """tcgcgcaacgtcgcctacatctcaagattcagcgccgagatccccgggggttgagcgatccccgtcagttggcgtgaattcag
+   cagcagcgcaccccgggcgtagaattccagttgcagataatagctgatttagttaacttggatcacagaagcttccaga
+   ccaccgtatggatcccaacgcactgttacggatccaattcgtacgtttggggtgatttgattcccgctgcctgccagg"""
+
+   dna_2 = """gagcatgagcggaattctgcatagcgcaagaatgcggccgcttagagcgatgctgccctaaactctatgcagcgggcgtgagg
+   attcagtggcttcagaattcctcccgggagaagctgaatagtgaaacgattgaggtgttgtggtgaaccgagtaag
+   agcagcttaaatcggagagaattccatttactggccagggtaagagttttggtaaatatatagtgatatctggcttg"""
+
+| which enzymes cut the dna_1 ?
+|                  the dna_2 ?
+|                  the dna_1 but not the dna_2?
+
+
+exercice
+--------
 From a list return a new list without any duplicate, but keeping the order of items. 
 For example: ::
 
    >>> l = [5,2,3,2,2,3,5,1]
-   >>> uniqify_wit_order(l)
+   >>> uniqify_with_order(l)
    >>> [5,2,3,1]  
 
-list and count occurences of every 3mers in the following sequence
+exercice
+--------
 
-"""gtcagaccttcctcctcagaagctcacagaaaaacacgctttctgaaagattccacactcaatgccaaaatataccacag
-gaaaattttgcaaggctcacggatttccagtgcaccactggctaaccaagtaggagcacctcttctactgccatgaaagg
-aaaccttcaaaccctaccactgagccattaactaccatcctgtttaagatctgaaaaacatgaagactgtattgctcctg
-atttgtcttctaggatctgctttcaccactccaaccgatccattgaactaccaatttggggcccatggacagaaaactgc
-agagaagcataaatatactcattctgaaatgccagaggaagagaacacagggtttgtaaacaaaggtgatgtgctgtctg
-gccacaggaccataaaagcagaggtaccggtactggatacacagaaggatgagccctgggcttccagaagacaaggacaa
-ggtgatggtgagcatcaaacaaaaaacagcctgaggagcattaacttccttactctgcacagtaatccagggttggcttc
-tgataaccaggaaagcaactctggcagcagcagggaacagcacagctctgagcaccaccagcccaggaggcacaggaaac
-acggcaacatggctggccagtgggctctgagaggagaaagtccagtggatgctcttggtctggttcgtgagcgcaacaca"""
+list and count occurences of every 3mers in the following sequence ::
+
+   """gtcagaccttcctcctcagaagctcacagaaaaacacgctttctgaaagattccacactcaatgccaaaatataccacag
+   gaaaattttgcaaggctcacggatttccagtgcaccactggctaaccaagtaggagcacctcttctactgccatgaaagg
+   aaaccttcaaaccctaccactgagccattaactaccatcctgtttaagatctgaaaaacatgaagactgtattgctcctg
+   atttgtcttctaggatctgctttcaccactccaaccgatccattgaactaccaatttggggcccatggacagaaaactgc
+   agagaagcataaatatactcattctgaaatgccagaggaagagaacacagggtttgtaaacaaaggtgatgtgctgtctg
+   gccacaggaccataaaagcagaggtaccggtactggatacacagaaggatgagccctgggcttccagaagacaaggacaa
+   ggtgatggtgagcatcaaacaaaaaacagcctgaggagcattaacttccttactctgcacagtaatccagggttggcttc
+   tgataaccaggaaagcaactctggcagcagcagggaacagcacagctctgagcaccaccagcccaggaggcacaggaaac
+   acggcaacatggctggccagtgggctctgagaggagaaagtccagtggatgctcttggtctggttcgtgagcgcaacaca"""
 
 and finally print the results one 3mer and it's occurence per line. 
 
 write first the pseudocode, then implement it.
 
+bonus:
+print the kmer by incresing occurences.
 
-given the following dict 
-d = {1 : 'a', 2 : 'b', 3 : 'c' , 4 : 'd'}
-We want to invert this dict so we will obtain
-inverted_d  {'a': 1, 'c': 3, 'b': 2, 'd': 4}
+exercice
+--------
+
+given the following dict : ::
+
+   d = {1 : 'a', 2 : 'b', 3 : 'c' , 4 : 'd'}
+   
+We want obtain a new dict with the keys and the values inverted so we will obtain: ::
+
+   inverted_d  {'a': 1, 'c': 3, 'b': 2, 'd': 4}
