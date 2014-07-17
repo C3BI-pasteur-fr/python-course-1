@@ -1,3 +1,6 @@
+.. sectnum:: 
+   :start: 3
+
 .. _Data_Types:
 
 **********
@@ -70,7 +73,7 @@ common numerics operators and functions
 +--------------+--------------------------------------------------------------------------------------------+
 | x * y        | Multiplies x by y                                                                          |
 +--------------+--------------------------------------------------------------------------------------------+
-| x / y        | Divides x by y (be carefull ther are some differences beween python2 and 3 see below)      |
+| x / y        | Divides x by y (be carefull there are some differences beween python2 and 3 see below)     |
 +--------------+--------------------------------------------------------------------------------------------+
 | x // y       | Divides x by y; truncates any fractional parts to produce an int see also round() function |
 +--------------+--------------------------------------------------------------------------------------------+
@@ -841,4 +844,5 @@ Characters Encoding
 
 Exercices
 =========
- 
+
+
