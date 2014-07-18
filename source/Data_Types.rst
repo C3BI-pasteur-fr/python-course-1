@@ -98,7 +98,50 @@ common numerics operators and functions
 |              | The returned value has the same type as x                                                  |
 +--------------+--------------------------------------------------------------------------------------------+
 
-.. _numop:
+.. note:: python2 vs Python3 regarding the division.
+
+   To highlight the before and after, let's (re)define some terminology and their relationships and behavior with integer and floating-point operands.
+   
+   **Classic Division**
+
+   This is the default division operator behavior in Python 2.x as well as in today's dominant programming languages such as Java and C/C++. 
+   When presented with integer operands, classic division truncates the decimal place, returning an integer (also known as floor division). 
+   When given a pair of floating-point operands, it returns the actual floating-point quotient (aka true division).
+
+   Here is an example illustrating classic division functionality: ::
+
+      >>> 1 / 2          # integer truncation (floor division)
+      0
+      >>> 1.0 / 2.0      # returns real quotient (true division)
+      0.5
+
+   **True Division**
+
+   True division is where the result is always the real floating-point quotient, regardless of operand type. 
+   This is the default division operation in any Python 3.x release. 
+   As mentioned earlier, most Python 2 releases have both behaviors built-in; 
+   to take advantage of true division in 2.2 and newer 2.x releases, either start the interpreter with the -Qnew option or import division from __future__. 
+   Once you do that, the division operator ( / ) only performs true division: ::
+
+      >>> from __future__ import division  # 2.2+-only
+      >>>
+      >>> 1 / 2               # returns real quotient
+      0.5
+      >>> 1.0 / 2.0           # returns real quotient
+      0.5
+
+
+   **Floor Division**
+
+   A new division operator ( // ) always truncates the fraction and rounds it to the next smallest whole number toward the left on the number line,
+   regardless of the operands' numeric types. This operator works starting in 2.2 and does not require the __future__ directive above. ::
+
+      >>> 1.0 // 2.0      # floors result, returns float
+      0.0
+      >>> -1 // 2         # negatives move left on number line
+      -1
+
+
 
 Interger literals are written in 10 base by default but other number base can be used: ::
 
