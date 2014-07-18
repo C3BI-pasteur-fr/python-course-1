@@ -698,7 +698,7 @@ what is the data type of each object? ::
 Exercice
 --------
 
-wihout using python shell, what is the results of the following statements:  
+without using python shell, what is the results of the following statements:  
  
 .. note:: 
    sum is a function which return the sum of each elements of a list.
@@ -714,6 +714,17 @@ Exercice
 
 How to compute safely the average of a list?
 
+exercise
+--------
+
+Draw the representation in memory of the following expressions. ::
+
+   x = [1, ['a','b','c'], 3, 4]
+   y = x[1]
+   y[2] = 'z'
+   # what is the value of x ?
+   
+   
 exercise
 --------
 
