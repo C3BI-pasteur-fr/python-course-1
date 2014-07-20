@@ -674,8 +674,67 @@ set comprehensions, two syntaxes are supported: ::
 Default Dictionaries
 --------------------
 
+Default dictionaries are dictionaries. They have all the operators and methods
+that dictionaries provide. What makes default dictionaries different from
+plain dictionaries is the way they handle missing keys; in all other respects
+they behave identically to dictionaries.
+
+If we use a nonexistent (“missing”) key when accessing a dictionary, a KeyError
+is raised. This is useful because we often want to know whether a key that we
+expected to be present is absent. But in some cases we want every key we use
+to be present, even if it means that an item with the key is inserted into the
+dictionary at the time we first access it.
+
+collections.\ **defaultdict**\ ([default_factory[, ...]])
+
+* The first argument provides the initial value for the default_factory attribute; it defaults to None. 
+* All remaining arguments are treated the same as if they were passed to the dict constructor, including keyword arguments.
+
+behavior of defaultdict when a key is missing:
+
+* If the default_factory attribute is None, this raises a **KeyError** exception with the key as argument.
+* If default_factory is not None, it is **called without arguments** (that means that *default_factory* must be *callable*)
+  to provide a default value for the given key, 
+  this value is inserted in the dictionary for the key, and returned.
+  For example, if we have a dictionary *d* which does not have an item with
+  key *m* , the code *x = d[m]* will raise a KeyError exception. But if d is a suitably
+  created default dictionary, if an item with key *m* is in the default dictionary, the
+  corresponding value is returned the same as for a dictionary—but if *m* is not a
+  key in the default dictionary, a new item with key *m* is created with a default
+  value, and the newly created item’s value is returned.
+* Note that the mechanism to provide a default value is triggered only if we try to access keys with *[]* notation. 
+  This means that get() will, like normal dictionaries, return None as a default rather than using default_factory. ::
+
+   >>> import collections
+   >>> # If the default_factory attribute is None, this raises a **KeyError** exception
+   >>> d= collections.defaultdict()
+   >>> d[3]
+   Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+   KeyError: 3
+
+   >>> # If default_factory is not None, it is **called without arguments** (that means that *default_factory* must be *callable*)
+   >>> d= collections.defaultdict("toto")
+   Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+   TypeError: first argument must be callable
+
+   >>> # the mechanism to provide a default value is triggered only if we try to access keys with *[]* notation.
+   >>> d= collections.defaultdict(lambda : "toto")
+   >>> d[3]
+   'toto'
+   >>> print d.get(4) # the default value is not return, the missing key is not created
+   None
+   >>> print d.get(3)
+   toto
+   >>> print d
+   defaultdict(<function <lambda> at 0x7f87b2662938>, {3: 'toto'})
+
+
 Ordered Dictionaries
 --------------------
+
+
 
 Iterating and copying collections
 =================================
