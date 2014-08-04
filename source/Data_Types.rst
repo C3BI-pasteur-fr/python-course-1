@@ -892,16 +892,19 @@ Exercise
 --------
 
 Assume that we execute the following assignment statements: ::
+
    width = 17
    height = 12.0
    delimiter ='.'
 
 For each of the following expressions, write the value of the expression and the type (of the value of
-the expression) and explain. ::
-   1. width / 2
-   2. width / 2.0
-   3. height / 3
-   4. 1 + 2 * 5
+the expression) and explain:
+
+ # width / 2
+ # width / 2.0
+ # height / 3
+ # 1 + 2 * 5
+   
 Use the Python interpreter to check your answers.
 
 
@@ -911,6 +914,7 @@ Exercise
 Practice using the Python interpreter as a calculator:
 1. The volume of a sphere with radius r is 4/3 πr\ :sup:`3` . What is the volume of a sphere with radius 5?
 Hint: π is in math module, so to access it you need to import the math module ::
+
       >>> import math
       >>> math.pi
    
@@ -947,7 +951,7 @@ create a representation in fasta format of following sequence :
 Exercise
 --------
 
-For the following exercise use the python file :download:`sv40 in fasta <data/sv40.py>` which is a python file with the sequence of sv40 in fasta format
+For the following exercise use the python file :download:`sv40 in fasta <_static/code/sv40.py>` which is a python file with the sequence of sv40 in fasta format
 already embeded, and use python -i sv40.py to work.
 
 how long is the sv40 in bp? 
