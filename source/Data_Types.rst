@@ -888,4 +888,111 @@ Characters Encoding
 Exercices
 =========
 
+Exercise
+--------
+
+Assume that we execute the following assignment statements: ::
+   width = 17
+   height = 12.0
+   delimiter ='.'
+
+For each of the following expressions, write the value of the expression and the type (of the value of
+the expression) and explain. ::
+   1. width / 2
+   2. width / 2.0
+   3. height / 3
+   4. 1 + 2 * 5
+Use the Python interpreter to check your answers.
+
+
+Exercise
+--------
+
+Practice using the Python interpreter as a calculator:
+1. The volume of a sphere with radius r is 4/3 πr\ :sup:`3` . What is the volume of a sphere with radius 5?
+Hint: π is in math module, so to access it you need to import the math module ::
+      >>> import math
+      >>> math.pi
+   
+Hint: 392.7 is wrong!
+
+Exercise
+--------
+
+how to obtain a new sequence which is the 10 times repetition of the this motif : "AGGTCGACCAGATTANTCCG"
+
+Exercise
+--------
+
+create a representation in fasta format of following sequence :
+
+.. note::
+   A sequence in FASTA format begins with a single-line description, followed by lines of sequence data. 
+   The description line is distinguished from the sequence data by a greater-than (">") symbol in the first column. 
+   The word following the ">" symbol is the identifier of the sequence, and the rest of the line is the description (optional). 
+   There should be no space between the ">" and the first letter of the identifier. 
+   The sequence ends if another line starting with a ">" appears; this indicates the start of another sequence. 
+
+::
+
+   id = "sp|P60568|IL2_HUMAN"
+
+   comment = "Interleukin-2 OS=Homo sapiens GN=IL2 PE=1 SV=1"
+
+   sequence = """MYRMQLLSCIALSLALVTNSAPTSSSTKKTQLQLEHLLLDLQMILNGINNYKNPKLTRML
+   TFKFYMPKKATELKHLQCLEEELKPLEEVLNLAQSKNFHLRPRDLISNINVIVLELKGSE
+   TTFMCEYADETATIVEFLNRWITFCQSIISTLT"""
+   
+   
+Exercise
+--------
+
+For the following exercise use the python file :download:`sv40 in fasta <data/sv40.py>` which is a python file with the sequence of sv40 in fasta format
+already embeded, and use python -i sv40.py to work.
+
+how long is the sv40 in bp? 
+(the fasta header is 61bp long)
+http://www.ncbi.nlm.nih.gov/nuccore/J02400.1 
+5243
+
+Is that the following enzymes: 
+* BamHI (ggatcc), 
+* EcorI (gaattc), 
+* HindIII (aagctt), 
+* SmaI (cccggg) 
+have recogition sites in sv40?
+
+for the enzymes which have a recognition site can you give their positions?
+
+is there only one site in sv40 per enzyme?
+
+
+Exercise
+--------
+
+we want to perform a PCR on sv40, can you give the length and the sequence of the amplicon?
+to simplify the 2 primers are given in 5'3' 
+| CGGGACTATGGTTGCTGACT
+| TCTTTCCGCCTCAGAAGGTA
+write the peudocode before to implement it
+
+
+Exercise
+--------
+
+reverse the following sequence "TACCTTCTGAGGCGGAAAGA" (don't compute the complement):
+
+Exercise
+--------
+
+| il2_human = 'MYRMQLLSCIALSLALVTNSAPTSSSTKKTQLQLEHLLLDLQMILNGINNYKNPKLTRMLTFKFYMPKKATELKHLQCLEEELKPLEEVLNLAQSKNFHLRPRDLISNINVIVLELKGSETTFMCEYADETATIVEFLNRWITFCQSIISTLT'
+the il2_human contains 4 cysteins (C) in positions 9, 78, 125, 145. We want to generate the sequence of a mutatnt were the cysteins 78 and 125 are replaced by serins (S) 
+| write the pseudo code, before to propose an implementation:
+
+
+Exercise
+--------
+
+# use again the sv40 sequence and compute the gc%
+# generate a "micro" report like this 'the sv40 is 5243 bp lenght and have 40.80% gc' 
 

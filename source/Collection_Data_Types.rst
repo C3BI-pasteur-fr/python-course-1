@@ -734,10 +734,62 @@ behavior of defaultdict when a key is missing:
 Ordered Dictionaries
 --------------------
 
-
+The ordered dictionaries, ``OrderedDict``, does not belong to the built-in data types but are in the module ``collections`` as ``defaultdict``. 
+Ordered dictionaries can be used as drop-in replacements for unordered dicts because they provide the same API.
+The difference between the two is that ordered dictionaries store their items in
+the order in which they were inserted.
+ 
 
 Iterating and copying collections
 =================================
+
+Once we have collections of data items, it is natural to want to iterate over all
+the items they contain. 
+Another common requirement is to copy a collection. There are some subtleties
+involved here because of Python’s use of object references (for the sake of
+efficiency), so in this section’s second subsection, we will examine how to copy
+collections and get the behavior we want.
+
+Iterating over collections
+--------------------------
+
+iterator
+^^^^^^^^
+
+difference entre 
+reversed(l) et l.reverse()
+sorted(l) et l.sort()
+
+copying collections
+-------------------
+
+>> ascii=['a','b','c']
+>>> integer=[1,2,3]
+>>> l = [ascii, integer]
+>>> l2= l[:]
+>>> 
+>>> l[0]
+['a', 'b', 'c']
+>>> ascii[0] = z
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'z' is not defined
+>>> ascii[0] = 'z'
+>>> l[0]
+['z', 'b', 'c']
+>>> l2[0]
+['z', 'b', 'c']
+>>> tuple(ascii,integer)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: tuple() takes at most 1 argument (2 given)
+>>> tpl = (ascii,integer)
+>>> tpl
+(['z', 'b', 'c'], [1, 2, 3])
+>>> integer[0] = -99
+>>> tpl
+(['z', 'b', 'c'], [-99, 2, 3])
+
 
 Exercices
 =========
@@ -745,8 +797,7 @@ Exercices
 Exercice
 --------
 
-Draw the representation in memory of the following expressions.
-what is the data type of each object? ::   
+Draw the representation in memory and specify the data type of each object of the following expressions: ::   
 
    x = [1, 2, 3, 4]
    y = x[1]
@@ -863,6 +914,21 @@ write first the pseudocode, then implement it.
 
 bonus:
 print the kmer by incresing occurences.
+
+exercice
+--------
+
+reversed complement
+acggcaacatggctggccagtgggctctgagaggagaaagtccagtggatgctcttggtctggttcgtgagcgcaacaca
+
+complement = { 'a' : 't', 
+               'c' : 'g',
+               'g' : 'c',
+               't' : 'a'}
+for c in s:
+   complement += complement[c]
+
+rev_comp = complement[::-1]
 
 exercice
 --------
