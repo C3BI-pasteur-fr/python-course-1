@@ -529,7 +529,7 @@ The ``dict`` data type can be called as a function, dict(), with no arguments it
 returns an empty dictionary, and with a mapping argument it returns a shallow copy if the
 argument is a dictionary or a dict based on the arguments if it is a DefaultDict or OrderedDict. 
 It is also possible to use a sequence argument, providing that each item in the sequence is itself
- a sequence of two objects, the first of which is used as a key and the second of which is used as a value.
+a sequence of two objects, the first of which is used as a key and the second of which is used as a value.
 Dictionaries can also be created using braces—empty braces, {} ,
 create an empty dictionary; nonempty braces must contain one or more comma-
 separated items, each of which consists of a key, a literal colon, and a value.
@@ -753,8 +753,32 @@ collections and get the behavior we want.
 Iterating over collections
 --------------------------
 
+An iterable data type is one that can return each of its items one at a time.
+
 iterator
 ^^^^^^^^
+An iterator is an object which is able read through a collection and return items one by one in turn.
+the next method of iterator returns each successive item in turn, and raises a StopIteration
+exception when there are no more items.
+
+The order in which items are returned depends on the underlying iterable. In
+the case of lists and tuples, items are normally returned in sequential order
+starting from the first item (index position 0), but some iterators return the
+items in an arbitrary order—for example, dictionary and set iterators.
+
+The for ... in Statement
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Python’s for loop reuses the in keyword (which in other contexts is the mem-
+bership operator), and has the following syntax:
+for variable in iterable:
+suite
+Just like the while loop, the for loop supports both break and continue , and also
+has an optional else clause. The variable is set to refer to each object in the
+iterable in turn. An iterable is any data type that can be iterated over, and
+includes strings (where the iteration is character by character), lists, tuples,
+and Python’s other collection data types.
+
 
 difference entre 
 reversed(l) et l.reverse()
@@ -763,10 +787,10 @@ sorted(l) et l.sort()
 copying collections
 -------------------
 
->> ascii=['a','b','c']
->>> integer=[1,2,3]
+>>> ascii = ['a','b','c']
+>>> integer = [1,2,3]
 >>> l = [ascii, integer]
->>> l2= l[:]
+>>> l2 = l[:]
 >>> 
 >>> l[0]
 ['a', 'b', 'c']
@@ -779,11 +803,11 @@ NameError: name 'z' is not defined
 ['z', 'b', 'c']
 >>> l2[0]
 ['z', 'b', 'c']
->>> tuple(ascii,integer)
+>>> tuple(ascii, integer)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: tuple() takes at most 1 argument (2 given)
->>> tpl = (ascii,integer)
+>>> tpl = (ascii, integer)
 >>> tpl
 (['z', 'b', 'c'], [1, 2, 3])
 >>> integer[0] = -99
@@ -791,10 +815,10 @@ TypeError: tuple() takes at most 1 argument (2 given)
 (['z', 'b', 'c'], [-99, 2, 3])
 
 
-Exercices
+Exercises
 =========
 
-Exercice
+Exercise
 --------
 
 Draw the representation in memory and specify the data type of each object of the following expressions: ::   
@@ -804,8 +828,13 @@ Draw the representation in memory and specify the data type of each object of th
    y = 3.14
    x[1] = 'foo'
    
+and ::
 
-Exercice
+   x = [1, 2, 3, 4]
+   x += [5, 6]
+
+compare with the exercise on string and integers   
+Exercise
 --------
 
 without using python shell, what is the results of the following statements:  
@@ -819,12 +848,12 @@ without using python shell, what is the results of the following statements:
    x[3] = -4 # what is the value of x now ?
    y = sum(x)/len(x) #what is the value of y ? why ?
    
-Exercice
+Exercise
 --------
 
 How to compute safely the average of a list?
 
-exercise
+Exercise
 --------
 
 Draw the representation in memory of the following expressions. ::
@@ -835,12 +864,17 @@ Draw the representation in memory of the following expressions. ::
    # what is the value of x ?
    
    
-exercise
+Exercise
 --------
 
+from the list l = [1, 2, 3, 4, 5, 6, 7, 8, 9] generate 2 lists l1 containing all odd values, and l2 all even values.
+
+
+Exercise
+--------
 generate a list containing all codons.
 
-exercice
+Exercise
 --------
 
 From a list return a new list without any duplicate, regardless of the order of items. 
@@ -851,7 +885,7 @@ For example: ::
    >>> [1,2,3,5] #is one of the solutions 
 
 
-exercice
+Exercise
 --------
 
 let the following enzymes collection: ::
@@ -884,7 +918,7 @@ and the 2 dna fragments: ::
 |                  the dna_1 but not the dna_2?
 
 
-exercice
+Exercise
 --------
 From a list return a new list without any duplicate, but keeping the order of items. 
 For example: ::
@@ -893,7 +927,7 @@ For example: ::
    >>> uniqify_with_order(l)
    >>> [5,2,3,1]  
 
-exercice
+Exercise
 --------
 
 list and count occurences of every 3mers in the following sequence ::
@@ -915,7 +949,7 @@ write first the pseudocode, then implement it.
 bonus:
 print the kmer by incresing occurences.
 
-exercice
+Exercise
 --------
 
 reversed complement
@@ -930,7 +964,7 @@ for c in s:
 
 rev_comp = complement[::-1]
 
-exercice
+Exercise
 --------
 
 given the following dict : ::
@@ -940,3 +974,15 @@ given the following dict : ::
 We want obtain a new dict with the keys and the values inverted so we will obtain: ::
 
    inverted_d  {'a': 1, 'c': 3, 'b': 2, 'd': 4}
+
+Exercise
+--------
+   copy de liste : shalow copy => effet de bord potentiel
+   deepcopy
+   
+Exercise
+--------
+
+   copy de dictionaire?
+   
+      
