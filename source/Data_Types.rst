@@ -900,10 +900,10 @@ Assume that we execute the following assignment statements: ::
 For each of the following expressions, write the value of the expression and the type (of the value of
 the expression) and explain:
 
- # width / 2
- # width / 2.0
- # height / 3
- # 1 + 2 * 5
+ #. width / 2
+ #. width / 2.0
+ #. height / 3
+ #. 1 + 2 * 5
    
 Use the Python interpreter to check your answers.
 
@@ -912,13 +912,30 @@ Exercise
 --------
 
 Practice using the Python interpreter as a calculator:
-1. The volume of a sphere with radius r is 4/3 πr\ :sup:`3` . What is the volume of a sphere with radius 5?
+
+| The volume of a sphere with radius r is 4/3 πr\ :sup:`3`. What is the volume of a sphere with radius 5?
+
 Hint: π is in math module, so to access it you need to import the math module ::
 
       >>> import math
       >>> math.pi
    
 Hint: 392.7 is wrong!
+
+Exercise
+--------
+
+Draw what happen in memory when the following statements are executed: ::
+
+   i = 12
+   i += 2
+   
+and ::
+
+   s = 'gaa'
+   s = s + 'ttc' 
+
+      
 
 Exercise
 --------
@@ -960,10 +977,12 @@ http://www.ncbi.nlm.nih.gov/nuccore/J02400.1
 5243
 
 Is that the following enzymes: 
+
 * BamHI (ggatcc), 
 * EcorI (gaattc), 
 * HindIII (aagctt), 
 * SmaI (cccggg) 
+
 have recogition sites in sv40?
 
 for the enzymes which have a recognition site can you give their positions?
@@ -976,27 +995,30 @@ Exercise
 
 we want to perform a PCR on sv40, can you give the length and the sequence of the amplicon?
 to simplify the 2 primers are given in 5'3' 
+
 | CGGGACTATGGTTGCTGACT
 | TCTTTCCGCCTCAGAAGGTA
+
 write the peudocode before to implement it
 
 
 Exercise
 --------
 
-reverse the following sequence "TACCTTCTGAGGCGGAAAGA" (don't compute the complement):
+#. reverse the following sequence "TACCTTCTGAGGCGGAAAGA" (don't compute the complement):
+#. using the smaller string  s = 'gaattc' compute draw what happen in memory when you reverse the s
 
 Exercise
 --------
 
 | il2_human = 'MYRMQLLSCIALSLALVTNSAPTSSSTKKTQLQLEHLLLDLQMILNGINNYKNPKLTRMLTFKFYMPKKATELKHLQCLEEELKPLEEVLNLAQSKNFHLRPRDLISNINVIVLELKGSETTFMCEYADETATIVEFLNRWITFCQSIISTLT'
-the il2_human contains 4 cysteins (C) in positions 9, 78, 125, 145. We want to generate the sequence of a mutatnt were the cysteins 78 and 125 are replaced by serins (S) 
+| the il2_human contains 4 cysteins (C) in positions 9, 78, 125, 145. We want to generate the sequence of a mutatnt were the cysteins 78 and 125 are replaced by serins (S) 
 | write the pseudo code, before to propose an implementation:
 
 
 Exercise
 --------
 
-# use again the sv40 sequence and compute the gc%
-# generate a "micro" report like this 'the sv40 is 5243 bp lenght and have 40.80% gc' 
+#. use again the sv40 sequence and compute the gc%
+#. generate a "micro" report like this: 'the sv40 is 5243 bp lenght and have 40.80% gc' 
 
