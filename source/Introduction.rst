@@ -87,6 +87,18 @@ to edit your python file.
 Python source code file have normally ``.py`` extension, although on some unix systems they can have not any extension, and python GUI (Graphical User Interface)
 have ``.pyw``  extension on Mac and Windows.
 
+.. note::
+   Unlike most other programming languages, Python uses indentation to signify
+   its block structure. Since suites are indicated using indentation, the question that naturally arises is, 
+   “What kind of indentation?” The Python style guidelines (pep 8) recommend
+   four spaces per level of indentation, and only spaces (no tabs). 
+   Most modern text editors can be set up to handle this automatically (IDLE’s editor does of
+   course, and so do most other Python-aware editors). Python will work fine with
+   any number of spaces or with tabs or with a mixture of both, providing that
+   the indentation used is consistent. In this course, we follow the official Python
+   guidelines. So I recommend you to set your editor to use 4 spaces when you press tab key.
+   
+
 High and low level language
 ===========================
 The programming language we learn is Python. Python is a high level language. 
