@@ -1075,7 +1075,8 @@ collection and by the copied collection.
 
 
 In these conditions we must keep in mind that if we mutate an item of the collection the both collections are modified. 
-In programmation, we call this a *side effect*.
+In programmation, we call this a *side effect*. We saw the side effect problem on *list* and *tuple* example but it's also true with
+dictionnaries.
 
 If we really need independent copies of arbitrarily nested collections, 
 we have to do a *deep-copy*. ::
