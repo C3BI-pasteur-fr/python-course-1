@@ -570,6 +570,7 @@ dict.pop() method.
 .. _dict_methods_and_operator:
 
 Dictionary methods and Operators
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. tabularcolumns:: |l|l|
 
@@ -757,6 +758,7 @@ An iterable data type is one that can return each of its items one at a time.
 
 iterator
 ^^^^^^^^
+
 An iterator is an object which is able read through a collection and return items one by one in turn.
 the next method of iterator returns each successive item in turn, and raises a StopIteration
 exception when there are no more items.
@@ -764,20 +766,203 @@ exception when there are no more items.
 The order in which items are returned depends on the underlying iterable. In
 the case of lists and tuples, items are normally returned in sequential order
 starting from the first item (index position 0), but some iterators return the
-items in an arbitrary order—for example, dictionary and set iterators.
+items in an arbitrary order for example, dictionary and set iterators.
+
+Any (finite) iterable, i , can be converted into a tuple by calling tuple(i) , or can
+be converted into a list by calling list(i) .
+
+Iterator support also  ``all()``, ``any()``, ``len()``, ``min()``, ``max()``, and ``sum()`` functions.
+Here are a couple of usage examples: ::
+
+   >>> x = [-2, 9, 7, -4, 3]
+   >>> all(x), any(x), len(x), min(x), max(x), sum(x)
+   (True, True, 5, -4, 9, 13)
+   >>> x.append(0)
+   >>> all(x), any(x), len(x), min(x), max(x), sum(x)
+   (False, True, 6, -4, 9, 13)
+
+The enumerate() function takes an iterator and returns an enumerator object.
+This object can be treated like an iterator, and at each iteration it returns a
+2-tuple with the tuple’s first item the iteration number (by default starting
+from 0) ::
+
+   seq = 'TACCTTCTGAGGCGGAAAGA'
+   for i , b in enumerate(seq):
+      print i,b
+
+   0 T
+   1 A
+   2 C
+   3 C
+   4 T
+   5 T
+   6 C
+   ... on so on
+   
+   
+   140
+
+
+.. _iterable_operators:
+
+Common Iterable Operators and Functions
+
+.. tabularcolumns:: |l|l|l| 
+
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Syntax                    | Description                                                                                                                                                                                                                                          |
++===========================+======================================================================================================================================================================================================================================================+
+| s + t                     | Returns a sequence that is the concatenation of sequences s and t                                                                                                                                                                                    |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| s * n                     | Returns a sequence that is int n concatenations of sequence s and t                                                                                                                                                                                  |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| x in i                    | Returns True if item x is in iterable i ; use not in to reverse the test                                                                                                                                                                             |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| all(i)                    | Returns True if every item in iterable i evaluates to True                                                                                                                                                                                           |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| any(i)                    | Returns True if any item in iterable i evaluates to True                                                                                                                                                                                             |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| enumerate(i, start)       | Normally used in for ... in loops to provide a sequence of (index, item) tuples with indexes starting at 0 or start ;                                                                                                                                |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| len(x)                    | Returns the “length” of x . If x is a collection it is the number  of items; if x is a string it is the number of characters.                                                                                                                        |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| max(i, key)               | Returns the biggest item in iterable i or the item with the  biggest key(item) value if a key function is given                                                                                                                                      |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| min(i, key)               | Returns the smallest item in iterable i or the item with the smallest key(item) value if a key function is given                                                                                                                                     |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| range(start, stop,  step) | Returns an integer iterator. With one argument ( stop ), the iterator goes from 0 to stop - 1; with two arguments ( start , stop )  the iterator goes from start to stop - 1; with three arguments it goes from start to stop - 1 in steps of step . |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| reversed(i)               | Returns an iterator that returns the items from iterator i in  reverse order                                                                                                                                                                         |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| sorted(i, key, reverse)   | Returns a list of the items from iterator i in sorted order; key is used to provide DSU (Decorate, Sort, Undecorate) sorting. If reverse is True the sorting is done in reverse order.                                                               |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| sum(i, start)             | Returns the sum of the items in iterable i plus start (which defaults to 0); i may not contain strings                                                                                                                                               |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| zip(i1, ..., iN)          | Returns an iterator of tuples using the iterators i1 to iN ;  see text                                                                                                                                                                               |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
 
 The for ... in Statement
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Python’s for loop reuses the in keyword (which in other contexts is the mem-
-bership operator), and has the following syntax:
-for variable in iterable:
-suite
-Just like the while loop, the for loop supports both break and continue , and also
-has an optional else clause. The variable is set to refer to each object in the
-iterable in turn. An iterable is any data type that can be iterated over, and
-includes strings (where the iteration is character by character), lists, tuples,
-and Python’s other collection data types.
+Python’s for loop has the following syntax:
+
+**for** *variable* **in** *iterable*\ **:**
+   do something
+**else:**
+   do something else
+
+the **else** block is optional.
+
+.. note::
+   We already specify that Python uses indentation to signify its block structure. 
+   So here the identation is very important.
+   The block "for" begin with the **for** ... **in** statement and included all lines 
+   which are right indented. The block ends when the code is align again with the **for** ... **in**  statement
+   for instance: 
+   
+   .. code-block:: python
+      :linenos:
+   
+      for i in [1,2,3]:
+         begin of **for** block of code
+         do something
+         do another thing
+      print "foo"
+      
+   | The block of code begin line n°1. 
+   | The lines n° 2,3,4 are executed 3 times with the variable i which is bound successively to 1, 2, 3.
+   | The line n° 5 start a new block of code, and is executed when the for loop is fnished.
+     
+   The Python style guidelines (pep 8) recommend four spaces per level of indentation, and only spaces (no tabs). 
+   
+In for ... in loop, the variable is set to refer to each object in the iterable in turn.
+each line of code in the for .. in block is executed at each turn using the variable refering the new object. ::
+
+
+   bases = 'acgt'
+   for b in bases:
+      print 'base = ', b
+   a
+   c
+   g
+   t    
+   
+   z = 0
+   for i in [1,2,3]:
+      z += i
+      print "i = {0}, z = {1}".format(i, z)
+   i = 1, z = 1
+   i = 2, z = 3
+   i = 3, z = 5
+   
+.. figure:: _static/figs/for_loop_flow.png
+   :width: 600px
+   :alt: for loop code execution flow
+   :figclass: right-center
+   
+   the schema above symbolizes the code execution flow with the "for" loop.
+   
+The for loops has an optional else clause. This latter is rather confusingly named since the else clause’s
+suite is always executed if the loop terminates normally. If the loop is broken
+out of due to a break statement, or a return statement (if the loop is in a
+function or method), or if an exception is raised, the else clause’s suite is not
+executed.
+
+The *variable* is normally often a single variable but may be a sequence of variables,
+usually in the form of a tuple. If a tuple or list is used for the *variable* , each
+item is unpacked into the *variable*’s items. ::
+
+   enzymes = [('ecor1', 'gaattc'), ('bamh1','ggatcc'), ('hind3', 'aagctt')]
+   for name, seq in enzymes:
+      print name, ' .... ', seq
+   ecor1 .... gaattc
+   bamh1 .... ggatcc
+   hind3 .... aagctt
+
+
+break and continue
+""""""""""""""""""
+
+If a ``continue`` statement is executed inside the for ... in loop’s suite, control is
+immediately passed to the top of the loop and the next iteration begins. If the
+loop runs to completion it terminates, and any ``else`` suite is executed. If the
+loop is broken out of due to a ``break`` statement, or a ``return`` statement (if the loop
+is in a function), or if an exception is raised, the ``else`` clause’s suite
+is **not** executed. (If an exception occurs, Python skips the else clause and looks
+for a suitable exception handler—this is covered in the next section.) ::
+
+   enzymes = [('ecor1', 'gaattc'), ('bamh1','ggatcc'), ('hind3', 'aagctt')]
+   for name, seq in enzymes:
+      if name == 'bamh1':
+         continue
+      print name, ' .... ', seq
+   ecor1 .... gaattc
+   hind3 .... aagctt
+   
+.. figure:: _static/figs/continue_flow.png
+   :width: 600px
+   :alt: for loop code execution flow
+   :figclass: right-center
+   
+   the schema above symbolizes the code execution flow with the "for" loop, with a **continue** statement.
+      
+::
+
+   enzymes = [('ecor1', 'gaattc'), ('bamh1','ggatcc'), ('hind3', 'aagctt')]
+   for name, seq in enzymes:
+      if name == 'bamh1':
+         break
+      print name, ' .... ', seq
+   ecor1 .... gaattc
+   
+.. figure:: _static/figs/break_flow.png
+   :width: 600px
+   :alt: for loop code execution flow
+   :figclass: right-center
+   
+   the schema above symbolizes the code execution flow with the "for" loop, with a **break** statement.
 
 
 difference entre 
