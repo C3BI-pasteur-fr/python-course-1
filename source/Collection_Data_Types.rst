@@ -904,6 +904,10 @@ each line of code in the for .. in block is executed at each turn using the vari
    
    the schema above symbolizes the code execution flow with the "for" loop.
    
+   * in green the source code
+   * in blue the execution source code results
+   * in orange the execution flow
+
 The for loops has an optional else clause. This latter is rather confusingly named since the else clause’s
 suite is always executed if the loop terminates normally. If the loop is broken
 out of due to a break statement, or a return statement (if the loop is in a
@@ -947,7 +951,11 @@ for a suitable exception handler—this is covered in the next section.) ::
    :figclass: right-center
    
    the schema above symbolizes the code execution flow with the "for" loop, with a **continue** statement.
-      
+   
+   * in green the source code
+   * in blue the execution source code results
+   * in orange the execution flow   
+
 ::
 
    enzymes = [('ecor1', 'gaattc'), ('bamh1','ggatcc'), ('hind3', 'aagctt')]
@@ -963,42 +971,127 @@ for a suitable exception handler—this is covered in the next section.) ::
    :figclass: right-center
    
    the schema above symbolizes the code execution flow with the "for" loop, with a **break** statement.
+   
+   * in green the source code
+   * in blue the execution source code results
+   * in orange the execution flow
 
-
-difference entre 
-reversed(l) et l.reverse()
-sorted(l) et l.sort()
 
 copying collections
 -------------------
 
->>> ascii = ['a','b','c']
->>> integer = [1,2,3]
->>> l = [ascii, integer]
->>> l2 = l[:]
->>> 
->>> l[0]
-['a', 'b', 'c']
->>> ascii[0] = z
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'z' is not defined
->>> ascii[0] = 'z'
->>> l[0]
-['z', 'b', 'c']
->>> l2[0]
-['z', 'b', 'c']
->>> tuple(ascii, integer)
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-TypeError: tuple() takes at most 1 argument (2 given)
->>> tpl = (ascii, integer)
->>> tpl
-(['z', 'b', 'c'], [1, 2, 3])
->>> integer[0] = -99
->>> tpl
-(['z', 'b', 'c'], [-99, 2, 3])
+Since Python uses object references, when we use the assignment operator ( = ),
+no copying takes place. If the right-hand operand is a literal such as a string
+or a number, the left-hand operand is set to be an object reference that refers to
+the in-memory object that holds the literal’s value. If the right-hand operand
+is an object reference, the left-hand operand is set to be an object reference that
+refers to the same object as the right-hand operand. One consequence of this
+is that assignment is very efficient.
 
+In some situations, we really do want a separate copy of the collection
+(or other mutable object). For sequences, when we take a slice.
+The slice is always an independent copy of the items copied. So to
+copy an entire sequence we can do this: ::
+
+   >>> ascii = ['a','b','c']
+   >>> ascii_copy = asci[:]
+
+For dictionaries and sets, copying can be achieved using dict.copy() and
+set.copy() . In addition, the copy module provides the copy.copy() function that
+returns a copy of the object it is given. Another way to copy the built-in collec-
+tion types is to use the type as a function with the collection to be copied as its
+argument. Here are some examples:
+
+* copy_of_dict_d = dict(d)
+* copy_of_list_L = list(L)
+* copy_of_set_s = set(s)
+
+Note, though, that all of these copying techniques are **shallow** that is, 
+**only object references are copied and not the objects themselves**. 
+ 
+
+::
+
+   >>> ascii = ['a','b','c']
+   >>> ascii_copy = ascii[:] # shallow copy
+   >>> ascii[2] = 'z'
+   >>> ascii
+   ['a', 'b', 'z']
+   >>> ascii_copy = ['a','b','c']
+   >>> ascii_copy.append('e')
+   >>> ascii_copy
+   ['a','b','c','e']
+   
+.. figure:: _static/figs/shallow_copy_of_col_of_imutable.png 
+   :width: 600px
+   :alt: shallow copy
+   :figclass: right-center
+
+   the schema above represent what python do behind the scene when we do a shallow copy.
+   Only object references are copied and not the objects themselves.
+
+For immutable data types like numbers and strings this has the same effect as copying 
+(except that it is more efficient).
+But for mutable data types such as nested collections
+this means that the objects they refer to are referred to both by the original
+collection and by the copied collection.
+
+::
+
+   >>> ascii = ['a','b','c']
+   >>> integer = [1,2,3]
+   >>> l = [ascii, integer]
+   >>> l2 = l[:] # shallow copy
+   >>> 
+   >>> l[0]
+   ['a', 'b', 'c']
+
+.. figure:: _static/figs/shallow_copy_of_col_of_mutable.png 
+   :width: 600px
+   :alt: shallow copy
+   :figclass: right-center
+
+   the schema above represent what python do behind the scene when we do a shallow copy.
+   
+::
+
+   >>> ascii[0] = 'z'
+   >>> l[0]
+   ['z', 'b', 'c']
+   >>> l2[0]
+   ['z', 'b', 'c']
+   >>> l2.append('foo')
+   >>> l2
+   [['z', 'b', 'c'],[1, 2, 3], 'foo']
+   >>> l
+   [['z', 'b', 'c'],[1, 2, 3]]
+
+   >>> tpl = (ascii, integer)
+   >>> tpl
+   (['z', 'b', 'c'], [1, 2, 3])
+   >>> integer[0] = -99
+   >>> tpl
+   (['z', 'b', 'c'], [-99, 2, 3])
+
+
+In these conditions we must keep in mind that if we mutate an item of the collection the both collections are modified. 
+In programmation, we call this a *side effect*.
+
+If we really need independent copies of arbitrarily nested collections, 
+we have to do a *deep-copy*. ::
+
+   >>> ascii = ['a','b','c']
+   >>> integer = [1,2,3]
+   >>> l = [ascii, integer]
+   >>> l2 = copy.deepcopy(l)
+   >>> ascii[0] = 'z'
+   >>> l
+   [['z', 'b', 'c'], [1, 2, 3]]
+   >>> l2
+   [['a', 'b', 'c'], [1, 2, 3]]
+
+Usually the terms *copy* and *shallow copy* are used interchangeably. 
+For *deep copy* we have to mentioned it explicitly.
 
 Exercises
 =========
