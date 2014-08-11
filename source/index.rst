@@ -17,7 +17,6 @@ Contents:
    Collection_Data_Types
    Logical_Operations
    Control_Flow_Statements
-   Arithmetic_Operators
    Creating_and_Calling_Functions
    Modules_and_Packages
    Input_Output
