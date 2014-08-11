@@ -1034,7 +1034,7 @@ For immutable data types like numbers and strings this has the same effect as co
 (except that it is more efficient).
 But for mutable data types such as nested collections
 this means that the objects they refer to are referred to both by the original
-collection and by the copied collection.
+collection and by the copied collection (the object in l and l0 have the same *id()*).
 
 ::
 
@@ -1045,6 +1045,16 @@ collection and by the copied collection.
    >>> 
    >>> l[0]
    ['a', 'b', 'c']
+   >>> print id(l), id(l2)
+   140530764842408 140530764842480 # l and l2 are 2 different objects
+   >>> id(ascii)
+   140504986917992
+   >>> id(l[0])
+   140504986917992
+   >>> id(l2[0])
+   140504986917992
+   # the object they refer are the same
+   
 
 .. figure:: _static/figs/shallow_copy_of_col_of_mutable.png 
    :width: 600px
@@ -1081,16 +1091,27 @@ dictionnaries.
 If we really need independent copies of arbitrarily nested collections, 
 we have to do a *deep-copy*. ::
 
+   >>> import copy
    >>> ascii = ['a','b','c']
    >>> integer = [1,2,3]
    >>> l = [ascii, integer]
    >>> l2 = copy.deepcopy(l)
+   140481236949328 140481236947168 # l and l2 are 2 different objects
+   >>> print id(l[0]), id(l2[0])
+   139909363381672 139909362940312 # the objects they refer have the same value but are distincts.
    >>> ascii[0] = 'z'
    >>> l
    [['z', 'b', 'c'], [1, 2, 3]]
    >>> l2
    [['a', 'b', 'c'], [1, 2, 3]]
 
+.. figure:: _static/figs/deep_copy_of_mutable_col.png 
+   :width: 600px
+   :alt: deep copy
+   :figclass: right-center
+
+   the schema above represent what python do behind the scene when we do a deep copy.
+   
 Usually the terms *copy* and *shallow copy* are used interchangeably. 
 For *deep copy* we have to mentioned it explicitly.
 
@@ -1231,8 +1252,9 @@ print the kmer by incresing occurences.
 Exercise
 --------
 
-reversed complement
-acggcaacatggctggccagtgggctctgagaggagaaagtccagtggatgctcttggtctggttcgtgagcgcaacaca
+compute the reversed complement of the following sequence: ::
+
+   seq = 'acggcaacatggctggccagtgggctctgagaggagaaagtccagtggatgctcttggtctggttcgtgagcgcaacaca'
 
 complement = { 'a' : 't', 
                'c' : 'g',
