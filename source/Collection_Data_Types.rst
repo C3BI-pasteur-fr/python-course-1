@@ -1259,14 +1259,6 @@ compute the reversed complement of the following sequence: ::
 
    seq = 'acggcaacatggctggccagtgggctctgagaggagaaagtccagtggatgctcttggtctggttcgtgagcgcaacaca'
 
-complement = { 'a' : 't', 
-               'c' : 'g',
-               'g' : 'c',
-               't' : 'a'}
-for c in s:
-   complement += complement[c]
-
-rev_comp = complement[::-1]
 
 Exercise
 --------
