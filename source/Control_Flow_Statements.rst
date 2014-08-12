@@ -127,7 +127,7 @@ If the loop does not terminate normally, any optional else
 clause’s suite is skipped.
 
 If the loop is broken out of due to a *break* statement, or a *return* statement
-(if the loop is in a :ref:`function <_Creating_and_Calling_Functions>`)
+(if the loop is in a :ref:`function <Creating_and_Calling_Functions>`)
 or if an :ref:`exception <exceptions>` is raised, the *else* clause’s suite is **not
 executed**. The optional else clause is rather confusingly named and not used very often.
 
@@ -180,6 +180,7 @@ for instance: ::
    3
    4
    5      
+
 When to use a a *while* loop?
 
 * When there is a loop exit condition
