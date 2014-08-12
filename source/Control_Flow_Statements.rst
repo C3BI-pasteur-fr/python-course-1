@@ -17,7 +17,7 @@ We mentioned earlier that each statement encountered in a .py file is executed
 in turn, starting with the first one and progressing line by line. The flow of
 control can be controlled by a :ref:`_Creating_and_Calling_Functions <function>` or method call or by a control structure,
 such as a conditional branch or a loop statement. Control is also diverted when
-an :ref:`_exceptions <exception>` is raised.
+an :ref:`exception <exceptions>` is raised.
 
 A Boolean expression is anything that can be evaluated to produce a Boolean
 value (True or False). In Python, such an expression evaluates to False if it is
@@ -88,7 +88,7 @@ This syntax is often used to set a default value, and changed the vlue if necess
 
 can be reduce like this ::
 
-   bases = 'acgt' if nucleiq_type == 'DNA' else 'acgu'
+   bases = 'acgt' if nucleiq_type != 'RNA' else 'acgu'
 
    
    
@@ -97,12 +97,95 @@ can be reduce like this ::
 Looping
 -------
 
-*For ... in* loop
+*for ... in* loop
 ^^^^^^^^^^^^^^^^^
 
+The *for ... in* statement is used to :ref:`iterate over a collection <iterating_over_col>`.
 
 while loop
 ^^^^^^^^^^
+
+Some times we need to repeat the same block of code until a condition is met.
+To do this we use the *while* loop. Here is the complete general syntax: ::
+
+   
+   while boolean_expression:
+      while_suite
+   else:
+      else_suite
+      
+      
+      
+The *else* clause is optional. As long as the *boolean_expression* is ``True``, the while
+block’s suite is executed. If the *boolean_expression* is or becomes ``False``, the
+loop terminates, and if the optional *else* clause is present, its suite is executed.
+Inside the *while* block’s suite, if a *continue* statement is executed, control
+is immediately returned to the top of the loop, and the boolean_expression is
+evaluated again. 
+
+If the loop does not terminate normally, any optional else
+clause’s suite is skipped.
+
+If the loop is broken out of due to a *break* statement, or a *return* statement
+(if the loop is in a :ref:`function <_Creating_and_Calling_Functions>`)
+or if an :ref:`exception <exceptions>` is raised, the *else* clause’s suite is **not
+executed**. The optional else clause is rather confusingly named and not used very often.
+
+a while loop in action: ::
+
+   #to print a sequence 50 character per line
+   i = 0 
+   while i < len(seq):
+      print seq[i:i+51]
+      i += 50  
+
+
+Beware to the infinite loop. 
+If the boolean expression is always ``True`` the program will loop endless. ::
+
+   while True:
+      do something 
+      # this is an inifinite loop
+      # unless something in the loop break it
+      # a break statement
+      # a return
+      # an exeption is raised
+
+In some language there is a statement
+   
+|   *do* 
+|      block of code
+|   *while*  boolean expression
+  
+To do something at least once and while the boolean expresion is met.
+In python thwe is not *do ... while* statement but we can write it easily 
+with *while* stament: 
+   
+|   while True:
+|      do something at least once
+|      if boolean_expression:
+|         break
+
+for instance: ::
+
+   i = 0 
+      
+   while True:
+      i += 1
+      print i
+      if i > :
+         break
+   1
+   2
+   3
+   4
+   5      
+When to use a a *while* loop?
+
+* When there is a loop exit condition
+* When you want to start a loop only upon a given condition
+* When it may happen that nothing is done at all
+* When you are searching for a particular element in a list
 
 
 .. _exceptions:
