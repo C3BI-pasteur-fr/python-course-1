@@ -751,6 +751,9 @@ involved here because of Python’s use of object references (for the sake of
 efficiency), so in this section’s second subsection, we will examine how to copy
 collections and get the behavior we want.
 
+
+.. _iterating_over_col:
+
 Iterating over collections
 --------------------------
 
