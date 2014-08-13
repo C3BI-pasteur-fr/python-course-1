@@ -158,8 +158,8 @@ In some language there is a statement
 |   *while*  boolean expression
   
 To do something at least once and while the boolean expresion is met.
-In python thwe is not *do ... while* statement but we can write it easily 
-with *while* stament: 
+In python there is not *do ... while* statement but we can write it easily 
+with a *while* stament: 
    
 |   while True:
 |      do something at least once
@@ -168,25 +168,21 @@ with *while* stament:
 
 for instance: ::
 
-   i = 0 
+   i = 10 
       
    while True:
-      i += 1
       print i
-      if i > :
+      if i > 5:
          break
-   1
-   2
-   3
-   4
-   5      
+   10
 
 When to use a a *while* loop?
 
+* When you need to loop but not over a collection.
 * When there is a loop exit condition
 * When you want to start a loop only upon a given condition
 * When it may happen that nothing is done at all
-* When you are searching for a particular element in a list
+* When you are searching for a particular element in a sequence data type.
 
 
 .. _exceptions:
@@ -194,8 +190,278 @@ When to use a a *while* loop?
 Exception Handling
 ==================
 
+Until now error messages haven’t been more than mentioned, but if you have tried out the examples you have probably seen some. 
+There are (at least) two distinguishable kinds of errors: 
+
+* syntax errors 
+* and exceptions.
+
+Syntax Errors
+-------------
+
+Syntax errors, also known as parsing errors, 
+are perhaps the most common kind of complaint you get while you are still learning Python: ::
+
+
+   >>> while True print 'Hello world'
+     File "<stdin>", line 1, in ?
+      while True print 'Hello world'
+                   ^
+   SyntaxError: invalid syntax
+
+The parser repeats the offending line and displays a little ‘arrow’ pointing at the earliest point
+ in the line where the error was detected. 
+ The error is caused by (or at least detected at) the token preceding the arrow: 
+ in the example, the error is detected at the keyword print, since a colon (':') is missing before it. 
+ File name and line number are printed so you know where to look in case the input came from a script.
+
+
 Catching and raising Exceptions
 -------------------------------
 
-Custom Exceptions
------------------
+Even if a statement or expression is syntactically correct, 
+it may cause an error when an attempt is made to execute it. 
+Errors detected during execution are called exceptions and are not unconditionally fatal: 
+We will learn how to handle them in Python programs. 
+
+Most exceptions are not handled by programs, however, and result in error messages as shown here: ::
+
+   >>> 10 * (1/0)
+   Traceback (most recent call last):
+      File "<stdin>", line 1, in ?
+   ZeroDivisionError: integer division or modulo by zero
+   >>> 4 + spam*3
+   Traceback (most recent call last):
+      File "<stdin>", line 1, in ?
+   NameError: name 'spam' is not defined
+   >>> '2' + 2
+   Traceback (most recent call last):
+      File "<stdin>", line 1, in ?
+   TypeError: cannot concatenate 'str' and 'int' objects
+
+The last line of the error message indicates what happened. 
+Exceptions come in different types, and the type is printed as part of the message: 
+the types in the example are ``ZeroDivisionError``, ``NameError`` and ``TypeError``. 
+The string printed as the exception type is the name of the built-in exception that occurred. 
+This is true for all built-in exceptions, but need not be true for user-defined exceptions (although it is a useful convention). 
+Standard exception names are built-in identifiers (not reserved keywords) 
+(`built-in exceptions <https://docs.python.org/2/library/exceptions.html#bltin-exceptions>`_).
+
+The rest of the line provides detail based on the type of exception and what caused it.
+
+The preceding part of the error message shows the context where the exception happened, 
+in the form of a stack traceback. In general it contains a stack traceback listing source lines; 
+however, it will not display lines read from standard input.
+
+
+Catching Exceptions
+-------------------
+
+It is possible to write programs that handle selected exceptions.
+
+ ::
+
+   try:
+      try_suite
+   except exception1 as variable1:
+      exception_suite1
+   except exceptionN as variableN:
+      exception_suiteN
+   else:
+      else suite
+   finally:
+      finally_suite
+
+
+There must be at least one except block, but both the else and the finally
+blocks are optional. When else clause is present, it must follow all except clauses. 
+The else block’s suite is executed when the try block’s suite
+has finished normally, **but** it is **not** executed if an exception occurs. If there
+is a finally block, it is **always** executed at the end.
+
+Each except clause’s exception group can be a single exception or a parenthesized tuple of exceptions. 
+For each group, the as variable part is optional; if used, 
+the variable contains the exception that occurred, and can be accessed in the exception block’s suite.
+we may care only that a particular
+exception was raised and not be interested in its message text.
+
+If an exception occurs in the try block’s suite, each except clause is tried in
+turn. If the exception matches an exception group, the corresponding suite is
+executed. To match an exception group, the exception must be of the same type.
+
+The logic works like this. If the statements in the try block’s suite all execute
+without raising an exception, the except blocks are skipped. If an exception
+is raised inside the try block, control is immediately passed to the suite corresponding 
+to the first matching exception. This means that any statements in
+the suite that follow the one that caused the exception will not be executed. 
+If this occurs and if the as variable part is given, then inside the exception-handling suite, 
+variable refers to the exception object.
+If an exception occurs in the handling except block, or if an exception is raised
+that does not match any of the except blocks in the first place, Python looks for
+a matching except block in the next enclosing scope. The search for a suitable
+exception handler works outward in scope and up the call stack until either
+a match is found and the exception is handled, or no match is found, in which
+case the program terminates with an unhandled exception. In the case of
+an unhandled exception, Python prints a traceback as well as the exception’s
+message text.
+Here is an example: ::
+
+   s = input("enter an integer: ")
+   try:
+      i = int(s)
+      print("valid integer entered:", i)
+   except ValueError as err:
+      print(err)
+
+If the user enters “3.5”, the output will be: ::
+
+   invalid literal for int() with base 10: '3.5'
+
+But if they were to enter “13”, the output will be: ::
+   valid integer entered: 13
+
+
+The last except clause may omit the exception name(s), to serve as a wildcard. 
+Use this with **extreme** caution, since it is easy to mask a real programming error in this way! 
+It can also be used to print an error message and then re-raise the exception 
+(allowing a caller to handle the exception as well):
+
+
+
+
+.. note::
+
+   very often you can see a syntax slightly diferent for try ... except statement
+   on except line the exception the variable is not introduce by the reserved keyword ``as``
+   but hust separate by a comma. ::
+
+      try:
+         try_suite
+      except exception1, variable1:
+         exception_suite1
+      except (exceptionN, exceptionN+1), variableN:
+         exception_suiteN
+      finally:
+         finally_suite
+         
+   In Python3 the syntax using the comma is **not** allowed.
+   
+      
+Raising Exceptions
+------------------
+
+The ``raise`` statement allows the programmer to force a specified exception to occur. For example: ::
+
+   >>> raise NameError('HiThere')
+   Traceback (most recent call last):
+      File "<stdin>", line 1, in ?
+   NameError: HiThere
+
+If you need to determine whether an exception was raised but don’t intend to handle it, just log it for instance,
+a simpler form of the raise statement allows you to re-raise the exception: ::
+
+   >>> try:
+   ...     raise NameError('HiThere')
+   ... except NameError:
+   ...     print 'An exception flew by!'
+   ...     raise
+
+   An exception flew by!
+   Traceback (most recent call last):
+      File "<stdin>", line 2, in ?
+   NameError: HiThere
+
+The hierarchy of some `built-in exceptions <https://docs.python.org/2/library/exceptions.html#bltin-exceptions>`_:
+
+.. graphviz:: 
+
+   digraph builtin_exception_hierarchy {
+      edge[dir=back];
+      "object" -> "Exception" ->"BaseException";
+      "Exception" -> "StandardError";
+      "StandardError" -> "ArithmeticError";
+      "ArithmeticError" -> "OverflowError";
+      "ArithmeticError" -> "ZeroDivisionError";
+      "ArithmeticError" -> "FloatingPointError";
+      "StandardError" -> "EnvironementError";
+      "EnvironementError" -> "IOError";
+      "EnvironementError" -> "OSError";
+      "StandardError" -> "AttributeError";
+      "StandardError" -> "EOFError";
+      "StandardError" -> "BufferError";
+      "StandardError" -> "LookupError";
+      "LookupError" -> "IndexError";
+      "LookupError" -> "KeyError";
+      "StandardError" -> "ValueError";
+      "BaseException" -> "StopIteration";
+      "BaseException" -> "GeneratorExit";
+      "BaseException" -> "KeyboardInterrupt";
+   }
+   
+   
+User defined Exceptions
+-----------------------
+ 
+Programs may name their own exceptions by creating a new exception class.
+User defined Exceptions should typically be derived from the Exception class, either directly or indirectly.
+Most exceptions are defined with names that end in “Error,” similar to the naming of the standard exceptions.
+
+Exception classes can be defined which do anything any other class can do,
+but are usually kept simple, often only offering a number of attributes 
+that allow information about the error to be extracted by handlers for the exception. 
+When creating a module that can raise several distinct errors, 
+a common practice is to create a base class for exceptions defined by that module, 
+and subclass that to create specific exception classes for different error conditions:
+ 
+Exercises
+=========
+
+Exercise
+--------
+
+Calculates the 10 first number of the Fibonacci sequence .
+The Fibonacci sequence are the numbers in the following integer sequence:
+
+    0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
+
+By definition, the first two numbers in the Fibonacci sequence are 0 and 1, 
+and each subsequent number is the sum of the previous two.
+The fibonacci suite can be defined as following:
+
+|    F\ :sub:`0` = 0, F\ :sub:`1` = 1. 
+|    
+|    F\ :sub:`n` = F\ :sub:`n-1` + F\ :sub:`n-2` 
+
+
+
+Exercise
+--------
+
+let the following enzymes collection: ::
+ 
+   import collections
+   RestrictEnzyme = collections.namedtuple("RestrictEnzyme", "name comment sequence cut end")
+
+   ecor1 = RestrictEnzyme("EcoRI", "Ecoli restriction enzime I", "gaattc", 1, "sticky")
+   ecor5 = RestrictEnzyme("EcoRV", "Ecoli restriction enzime V", "gatatc", 3, "blunt")
+   bamh1 = RestrictEnzyme("BamHI", "type II restriction endonuclease from Bacillus amyloliquefaciens ", "ggatcc", 1, "sticky")
+   hind3 = RestrictEnzyme("HindIII", "type II site-specific nuclease from Haemophilus influenzae", "aagctt", 1 , "sticky")
+   taq1 = RestrictEnzyme("TaqI", "Thermus aquaticus", "tcga", 1 , "sticky")
+   not1 = RestrictEnzyme("NotI", "Nocardia otitidis", "gcggccgc", 2 , "sticky")
+   sau3a1 = RestrictEnzyme("Sau3aI", "Staphylococcus aureus", "gatc", 0 , "sticky")
+   hae3 = RestrictEnzyme("HaeIII", "Haemophilus aegyptius", "ggcc", 2 , "blunt")
+   sma1 =  RestrictEnzyme("SmaI", "Serratia marcescens", "cccggg", 3 , "blunt")
+
+and the 2 dna fragments: ::
+
+   dna_1 = """tcgcgcaacgtcgcctacatctcaagattcagcgccgagatccccgggggttgagcgatccccgtcagttggcgtgaattcag
+   cagcagcgcaccccgggcgtagaattccagttgcagataatagctgatttagttaacttggatcacagaagcttccaga
+   ccaccgtatggatcccaacgcactgttacggatccaattcgtacgtttggggtgatttgattcccgctgcctgccagg"""
+
+   dna_2 = """gagcatgagcggaattctgcatagcgcaagaatgcggccgcttagagcgatgctgccctaaactctatgcagcgggcgtgagg
+   attcagtggcttcagaattcctcccgggagaagctgaatagtgaaacgattgaggtgttgtggtgaaccgagtaag
+   agcagcttaaatcggagagaattccatttactggccagggtaagagttttggtaaatatatagtgatatctggcttg"""
+
+| which enzymes cut the dna_1 get the name of the enzymes and all their positions of binding site?
+| do the same for dna_2
+| give the name of the enzymes that cut the dna_1 but not the dna_2?

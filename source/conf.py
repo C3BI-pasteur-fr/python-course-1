@@ -30,7 +30,8 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.intersphinx', 
               'sphinx.ext.todo', 
               'sphinx.ext.ifconfig', 
-              'sphinx.ext.viewcode']
+              'sphinx.ext.viewcode',
+              'sphinx.ext.graphviz']
 
 #to display todo notes
 todo_include_todos=True
