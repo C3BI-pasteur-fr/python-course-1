@@ -39,8 +39,8 @@
 |                                                                                                                      | a                                                                  |
 +----------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | Just as we can unpack a sequence to populate a function's positionalarguments,                                                                                                            |
-| we can unpack a mapping using the mapping unpacking operator **.                                                                                                                          |
-| We can use ** to pass a dictionary to a argument.                                                                                                                                         |
+| we can unpack a mapping using the mapping unpacking operator \*\*.                                                                                                                        |
+| We can use \*\* to pass a dictionary to a argument.                                                                                                                                       |
 | Here the options dictionary's key-value pairs are unpackecd                                                                                                                               |
 | with each key's value being assigned to the parameter whose name is the same as the  key.                                                                                                 |
 | If the dictionnary contains a key for wich there is no corresponding parameter,                                                                                                           |
