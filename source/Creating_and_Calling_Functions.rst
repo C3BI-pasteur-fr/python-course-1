@@ -45,11 +45,8 @@ making the purpose and use of the function clear to other programmers and
 to ourselves some time after we have created the function. 
 Here are a few rules of thumb that you might like to consider.
 
-* Use a naming scheme, and use it consistently. In this book we use UPPERCASE
-  for constants, TitleCase for classes (including exceptions), camel-
-  Case for GUI (Graphical User Interface) functions and methods (covered
-  in Chapter 15), and lowercase or lowercase_with_underscores for everything
-  else.
+* Use a naming scheme, and use it consistently. see `Style Guide for Python Code <http://legacy.python.org/dev/peps/pep-0008/#naming-conventions>`_  
+  for naming convention
 * For all names, avoid abbreviations, unless they are both standardized and
   widely used.
 * Be proportional with variable and parameter names: x is a perfectly good
@@ -72,24 +69,24 @@ All three functions return the index position of the first occurrence of a
 name in a list of names, starting from the given starting index and using an
 algorithm that assumes the list is already sorted.
 
-The first one is bad because the name gives no clue as to what will be found,
-and its parameters (presumably) indicate the required types (list, string, integer)
-without indicating what they mean. 
-
-The second one is bad because the
-function name describes the algorithm originally used—it might have been
-changed since. This may not matter to users of the function, but it will probably
-confuse maintainers if the name implies a linear search, but the algorithm
-implemented has been changed to a binary search. 
-
-The third one is good be
-cause the function name says what is returned,and the parameter namesclearly
-indicate what is expected.
+* The first one is bad because the name gives no clue as to what will be found,
+  and its parameters (presumably) indicate the required types (list, string, integer)
+  without indicating what they mean. 
+* The second one is bad because the
+  function name describes the algorithm originally used—it might have been
+  changed since. This may not matter to users of the function, but it will probably
+  confuse maintainers if the name implies a linear search, but the algorithm
+  implemented has been changed to a binary search. 
+* The third one is good be
+  cause the function name says what is returned,and the parameter namesclearly
+  indicate what is expected.
 
 None of the functions have any way of indicating what happens if the name
 isn’t found do they return, say, -1, or do they raise an exception? Somehow
 such information needs to be documented for users of the function.
-We can add documentation to any function by using a docstring this is simply
+
+There is several possibilities to document python code. For simple and small
+project, we can add documentation to any function by using a docstring this is simply
 a string that comes immediately after the def line, and before the function’s
 code proper begins. For example, here is the shorten() function we saw earlier,
 but this time reproduced in full: ::
@@ -118,6 +115,10 @@ then to reproducesome examples as they would appear if typed in interactively.
 In Chapter 5 and Chapter 9 we will see how examples in function documentation
 can be used to provide unit tests.
 
+For bigger project I recommand to use sphinx. `sphinx <http://sphinx-doc.org/index.html>`_is a Python Document Generator.
+It is powerfull and simple the learning curve is not too steep and it allow to provide to user and developper a full documentation of the project
+in different formats: web site, pdf, epub, ...
+`Lot of python project use sphinx <http://sphinx-doc.org/examples.html>`_: python, NumPy, this course has been written using sphinx, ...
 
 functions are objects
 ---------------------
@@ -191,6 +192,7 @@ So in this case, *a* is set to 3, *b* to 4, and *c* to 5, when the function is c
 
 Some functiond have parameters for which there can be sensible default.
 
+.. _arguments_n_parameters:
 
 Argument and Parameter unpacking
 --------------------------------
@@ -219,7 +221,7 @@ we can use keyword arguments, passing each argument in the form name = value. ::
 
 .. warning::    
    
-   When default values are given they are created at the time the def statement is executed (i.e. when the function is created), 
+   When default values are given they are created at the time of the *def* statement is executed (i.e. when the function is created), 
    **not** when the function is called. For immutable argumments like numbers or strings this doesn't make any difference, 
    but for mutable arguments a subtle trap is lurking. ::
 
@@ -278,9 +280,9 @@ Sequence unpacking
    *  - Python2
       - Python3
    *  - The unpacking operator does not exist in Python 2
-      - We can unpack any iterables (list, tuples, ...) with the operator *.
+      - We can unpack any iterables (list, tuples, ...) with the operator \*.
         When used with two or more variables on the left-hand side of an assignment,
-        one of which is preceded by *, items are assigned to the variables,
+        one of which is preceded by \*, items are assigned to the variables,
         with all those left over assigned to the stared variables. ::
         
          >>> first, *rest = [1,2,3,4]
