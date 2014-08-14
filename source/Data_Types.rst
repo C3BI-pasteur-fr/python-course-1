@@ -675,7 +675,7 @@ The replacement field can have any of the following general syntaxes:
 
 Field Names
 ^^^^^^^^^^^
-A field name can be either an integer corresponding to one of the ``str.format()`` arguments, or the name of one of the keywords :ref:`arguments` ::
+A field name can be either an integer corresponding to one of the ``str.format()`` arguments, or the name of one of the keywords :ref:`arguments_n_parameters` ::
 
    >>> fasta = '>{0} {1}\n{2}'.format(id = 'EcoR1', comment = 'restriction site 1 for Ecoli', seq = 'gaattc')
    >EcoR1 restriction site 1 for Ecoli
