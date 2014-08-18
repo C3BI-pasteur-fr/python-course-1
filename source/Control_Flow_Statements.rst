@@ -421,7 +421,7 @@ note that in all cases the finally clause is executed.
 .. warning::
 
    It's usually a bad practice to catch directly Exception and not a more specific subclass since it catch all exceptions
-   and could mask non predicted error and logical errors. There is one case wher it is acceptable to catch all excetions 
+   and could mask non predicted error and logical errors. There is one case where it is acceptable to catch all excetions 
    It's when you want to log the error and re-raise it just after.
    It's also possible to write except: without any exception group at all. This case is similar to except Exception: ::
    
