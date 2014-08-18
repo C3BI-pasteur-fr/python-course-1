@@ -315,6 +315,8 @@ and exit scope when a non-nested function is called or the context ends.
 
 If a name is used prior to variable initialization, this raises a ``syntax error``.
 
+.. _variable_resolution_rules:
+
 Variable resolution rules
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -475,6 +477,77 @@ it also has to do with how function calls are implemented in Python and many oth
 There isn’t any syntax we can use to get the value of the variable x at this point - it literally doesn’t exist! 
 The namespace created for our function *foo* is created from scratch each time the function is called and it is destroyed when the function ends [Franklin]_.
 
+
+Lambda functions
+----------------
+
+In addition the def statement, Python also provides an expression form that generates function objects.
+The lambda’s syntax is keyword *lambda*, followed by one or more arguments (exactly like the arguments list you enclose in parentheses in a def header), followed by an expression after a colon:
+
+| **lambda** argument1, argument2,... argumentN **:** expression using arguments
+
+Function objects returned by running lambda expressions work exactly the same as those created and assigned by defs, but there are a few differences that make lambdas useful in specialized roles:
+
+* ``lambda`` is an expression, **not** a statement. Then a ``lambda`` can appear in places a ``def`` is not allowed by Python’s syntax: 
+  
+  * inside a list literal 
+  * or a function call’s arguments, for example. As an expression, lambda returns a value (a new function) that can optionally be assigned a name. In contrast, the def statement always assigns the new function to the name in the header, instead of returning it as a result.
+
+* ``lambda``’s body is a single expression, not a block of statements. The ``lambda``’s body is similar to what you’d put in a ``def`` body’s return statement; you simply type the result as a naked expression, instead of explicitly returning it. 
+   Because it is limited to an expression, a ``lambda`` is less general than a ``def`` you can only squeeze so much logic into a ``lambda`` body without using statements such as ``if``. 
+   This is by design, to limit program nesting: ``lambda`` is designed for coding simple functions, and ``def`` handles larger tasks.
+
+Apart from those distinctions, defs and lambdas do the same sort of work: ::
+
+
+   >>> def func(x, y, z): return x + y + z
+   ...
+   >>> func(2, 3, 4)
+   9
+   
+   >>> f = lambda x, y, z: x + y + z
+   >>> f(2, 3, 4)
+   9
+   
+We can use default arguments or tuple or dict argument like *args or **kwargs exactly as in ``def`` functions.
+The code in a ``lambda`` body also follows the same scope lookup rules (:ref:`variable_resolution_rules <LGEB>`) 
+as code inside a def. lambda expressions introduce a local scope much like a nested def, 
+which automatically sees names in enclosing functions, the module, and the built-in scope.
+
+
+Why Use lambda?
+^^^^^^^^^^^^^^^
+
+Generally speaking, lambdas come in handy as a sort of function shorthand that allows you to embed a function’s definition 
+within the code that uses it. They are entirely optional (you can always use defs instead), 
+but they tend to be simpler coding constructs in scenarios where you just need to embed small bits of executable code.
+
+For instance, it will very often use in function that take a function as parameter, as ``sort``, ``filter``, ... ::
+
+   from collections import namedtuple  
+   Sequence = namedtuple("Sequence", "id comment sequence")
+   sequences = [
+      Sequence('abcd3_rat', '', 'MAAFSKYLTARNSSLAGAAFLLFCLLHKRRRALGLHGKKSGKPPLQNNEKEGKKERAVVDKVFLSRLSQILKI'),
+      Sequence('il2_human_matured', 'matured sequence of il2_human', 'APTSSSTKKTQLQLEHLLLDLQMILNGINNYKNPKLTRMLTFKFYMPKKATELKHLQCLEEELKPLEEV'),
+      Sequence('il2_human', '', 'MYRMQLLSCIALSLALVTNSAPTSSSTKKTQLQLEHLLLDLQMILNGINNYKNPKLTRMLTFKFYMPKKATELKHLQCLE'),
+      Sequence('TRYP_PIG', '' , 'FPTDDDDKIVGGYTCAANSIPYQVSLNSGSHFCGGSLINSQWVVSAAHCYKSRIQVRLGE')]
+
+   filter(lambda seq: seq.sequence.startswith('M'), sequences)
+
+   [Sequence(id='il2_human', comment='', sequence='MYRMQLLSCIALSLALVTNSAPTSSSTKKTQLQLEHLLLDLQMILNGINNYKNPKLTRMLTFKFYMPKKATELKHLQCLE'),
+    Sequence(id='abcd3_rat', comment='', sequence='MAAFSKYLTARNSSLAGAAFLLFCLLHKRRRALGLHGKKSGKPPLQNNEKEGKKERAVVDKVFLSRLSQILKIMVPRTFC')]
+
+   sequences.sort(lambda seq1, seq2: len(seq2.sequence)- len(seq1.sequence))
+   
+   [ (seq.id, len(seq.sequence)) for seq in sequences]
+   [('il2_human', 80), ('abcd3_rat', 73), ('il2_human_matured', 69), ('TRYP_PIG', 60)]
+   
+Without due care, they can lead to unreadable (a.k.a. obfuscated) Python code. 
+In general, simple is better than complex, explicit is better than implicit, and full statements are better than arcane expressions.
+That’s why lambda is limited to expressions. If you have larger logic to code, use def; lambda is for small pieces of inline code. 
+On the other hand, you may find these techniques useful in moderation.
+
+   
 References
 ==========
   
