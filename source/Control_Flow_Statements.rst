@@ -347,6 +347,55 @@ Use this with **extreme** caution, since it is easy to mask a real programming e
 It can also be used to print an error message and then re-raise the exception 
 (allowing a caller to handle the exception as well):
 
+.. container:: clearer
+ 
+   .. image :: _static/figs/spacer.png
+   
+see with on the following code the execution flow when exception is raised or not:
+ 
+.. literalinclude:: _static/code/div.py
+      :linenos:
+      :language: python
+
+
+.. container::
+
+   .. figure:: _static/figs/try_handled_flow1.png
+      :width: 500px
+      :alt: try whith handled exception flow
+      :figclass: align-left
+      
+      The execution flow if an error is raised and was handled by an except
+      
+   .. figure:: _static/figs/try_handled_flow2.png
+      :width: 500px
+      :alt: try whith handled exception flow
+      :figclass: align-right
+      
+
+.. container::
+
+   .. figure:: _static/figs/try_normal_flow.png
+      :width: 500px
+      :alt: try except normal flow
+      :figclass: align-left
+      
+      The execution flow if no error is raised
+      
+   .. figure:: _static/figs/try_unhandled_flow.png
+      :width: 500px
+      :alt: try whith unhandled exception flow
+      :figclass: align-right
+      
+      The execution flow if an error is raised but not handled by an except
+   
+   
+.. container:: clearer
+
+   .. image :: _static/figs/spacer.png
+      
+note that in all cases the finally clause is executed. 
+         
 
 
 
