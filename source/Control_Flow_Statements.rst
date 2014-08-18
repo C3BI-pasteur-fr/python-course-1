@@ -37,13 +37,19 @@ The *if* statement syntax
 ::
 
    if boolean_expression1:
-      suite1
+      block of statements executed
+      only if boolean_expression1 is true
    elif boolean_expression2:
-      suite2
+      block of statements executed
+      only if boolean_expression2 is true
+      and condition is false
    elif boolean_expressionN:
-      suiteN
+      block of statements executed
+      only if boolean_expression1 AND boolean_expression2 is false
+      and boolean_expressionN is true
    else:
-      else_suite
+      block of statements executed
+      only if all conditions are false
 
 There can be zero or more elif clauses, and the final else clause is optional. If
 we want to account for a particular case, but want to do nothing if it occurs, we
@@ -90,7 +96,22 @@ can be reduce like this ::
 
    bases = 'acgt' if nucleiq_type != 'RNA' else 'acgu'
 
+
+Nested conditions
+"""""""""""""""""
    
+However, construction with multiple alternatives are sometimes not sufficient and you need to nest condition like this::
+
+   >>> primerLen = len(primer)
+   >>> primerGC = float(count(primer, ’g’) + count(primer, ’c’))/ primerLen
+   
+   if primerGC > 50:
+      if primerLen > 20:
+         PCRprogram = 1
+      else:
+         PCRprogram = 2
+   else:
+      PCRprogram = 3   
    
 .. _loop:
 
@@ -347,6 +368,32 @@ It can also be used to print an error message and then re-raise the exception
    In Python3 the syntax using the comma is **not** allowed.
    
       
+      
+.. warning::
+
+   It's usually a bad practice to catch directly Exception and not a more specific subclass since it catch all exceptions
+   and could mask non predicted error and logical errors. There is one case wher it is acceptable to catch all excetions 
+   It's when you want to log the error and re-raise it just after.
+   It's also possible to write except: without any exception group at all. This case is similar to except Exception: ::
+   
+      try:
+         i = int(s)
+         print("valid integer entered:", i)
+      except Expection:         #BAD PRACTICE
+         print "i is not an integer"
+         
+      if s is None the execption raise is a TypeError wheras if s  = '3.2' a ValueError is raised.
+      so the treatement of the execption should differ in the 2 cases      
+      i is None mean that the function call is incorrect.
+      
+      try: 
+         i = int(s)
+         print("valid integer entered:", i)
+      except Expection as err:         # acceptable PRACTICE
+         log.error(str(err))
+         raise
+      see below for raising exceptions
+   
 Raising Exceptions
 ------------------
 
