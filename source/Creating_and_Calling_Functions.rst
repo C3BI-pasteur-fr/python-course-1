@@ -268,8 +268,12 @@ we can use keyword arguments, passing each argument in the form name = value. ::
          lst.append(x)
          return lst
     
- 
- 
+    
+Variable number of parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ A function can take additional optional arguments by prefixing the last parameter with an * (asterix). Optional
+arguments are then available in the tuple referenced by this parameter.
+
 Sequence unpacking
 ^^^^^^^^^^^^^^^^^^  
 
