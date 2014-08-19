@@ -37,13 +37,19 @@ The *if* statement syntax
 ::
 
    if boolean_expression1:
-      suite1
+      block of statements executed
+      only if boolean_expression1 is true
    elif boolean_expression2:
-      suite2
+      block of statements executed
+      only if boolean_expression2 is true
+      and condition is false
    elif boolean_expressionN:
-      suiteN
+      block of statements executed
+      only if boolean_expression1 AND boolean_expression2 is false
+      and boolean_expressionN is true
    else:
-      else_suite
+      block of statements executed
+      only if all conditions are false
 
 There can be zero or more elif clauses, and the final else clause is optional. If
 we want to account for a particular case, but want to do nothing if it occurs, we
@@ -90,7 +96,22 @@ can be reduce like this ::
 
    bases = 'acgt' if nucleiq_type != 'RNA' else 'acgu'
 
+
+Nested conditions
+"""""""""""""""""
    
+However, construction with multiple alternatives are sometimes not sufficient and you need to nest condition like this::
+
+   >>> primerLen = len(primer)
+   >>> primerGC = float(count(primer, ’g’) + count(primer, ’c’))/ primerLen
+   
+   if primerGC > 50:
+      if primerLen > 20:
+         PCRprogram = 1
+      else:
+         PCRprogram = 2
+   else:
+      PCRprogram = 3   
    
 .. _loop:
 
@@ -326,6 +347,55 @@ Use this with **extreme** caution, since it is easy to mask a real programming e
 It can also be used to print an error message and then re-raise the exception 
 (allowing a caller to handle the exception as well):
 
+.. container:: clearer
+ 
+   .. image :: _static/figs/spacer.png
+   
+see with on the following code the execution flow when exception is raised or not:
+ 
+.. literalinclude:: _static/code/div.py
+      :linenos:
+      :language: python
+
+
+.. container::
+
+   .. figure:: _static/figs/try_handled_flow1.png
+      :width: 500px
+      :alt: try whith handled exception flow
+      :figclass: align-left
+      
+      The execution flow if an error is raised and was handled by an except
+      
+   .. figure:: _static/figs/try_handled_flow2.png
+      :width: 500px
+      :alt: try whith handled exception flow
+      :figclass: align-right
+      
+
+.. container::
+
+   .. figure:: _static/figs/try_normal_flow.png
+      :width: 500px
+      :alt: try except normal flow
+      :figclass: align-left
+      
+      The execution flow if no error is raised
+      
+   .. figure:: _static/figs/try_unhandled_flow.png
+      :width: 500px
+      :alt: try whith unhandled exception flow
+      :figclass: align-right
+      
+      The execution flow if an error is raised but not handled by an except
+   
+   
+.. container:: clearer
+
+   .. image :: _static/figs/spacer.png
+      
+note that in all cases the finally clause is executed. 
+         
 
 
 
@@ -347,6 +417,32 @@ It can also be used to print an error message and then re-raise the exception
    In Python3 the syntax using the comma is **not** allowed.
    
       
+      
+.. warning::
+
+   It's usually a bad practice to catch directly Exception and not a more specific subclass since it catch all exceptions
+   and could mask non predicted error and logical errors. There is one case where it is acceptable to catch all excetions 
+   It's when you want to log the error and re-raise it just after.
+   It's also possible to write except: without any exception group at all. This case is similar to except Exception: ::
+   
+      try:
+         i = int(s)
+         print("valid integer entered:", i)
+      except Expection:         #BAD PRACTICE
+         print "i is not an integer"
+         
+      if s is None the execption raise is a TypeError wheras if s  = '3.2' a ValueError is raised.
+      so the treatement of the execption should differ in the 2 cases      
+      i is None mean that the function call is incorrect.
+      
+      try: 
+         i = int(s)
+         print("valid integer entered:", i)
+      except Expection as err:         # acceptable PRACTICE
+         log.error(str(err))
+         raise
+      see below for raising exceptions
+   
 Raising Exceptions
 ------------------
 
