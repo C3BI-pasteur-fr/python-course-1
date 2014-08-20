@@ -167,10 +167,10 @@ Such function are often called *nested* functions or *locals* functions. ::
 function argument vs parameters
 -------------------------------
 
-These two terms parameter and argument are sometimes loosely used interchangeably, 
+These two terms *parameter* and *argument* are sometimes loosely used interchangeably, 
 and the context is used to distinguish the meaning. 
 The term *parameter* (sometimes called *formal parameter*) is often used to refer to the variable as found in the function definition, 
-while argument (sometimes called *actual parameter*) refers to the actual value passed. 
+while *argument* (sometimes called *actual parameter*) refers to the actual value passed. 
 To avoid confusion, it is common to view a parameter as a variable, and an argument as a value. 
 Python allow us to pass argumants to functions. 
 The parameter names become local variable of our function [parameters_and_arguments]_. 
@@ -194,8 +194,8 @@ Some functiond have parameters for which there can be sensible default.
 
 .. _arguments_n_parameters:
 
-Argument and Parameter unpacking
---------------------------------
+Arguments and Parameters
+------------------------
 
 Python has different ways to define function parameters and pass arguments to them. Function parameters can be either
 
@@ -271,8 +271,13 @@ we can use keyword arguments, passing each argument in the form name = value. ::
     
 Variable number of parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- A function can take additional optional arguments by prefixing the last parameter with an * (asterix). Optional
+
+A function can take additional optional arguments by prefixing the last parameter with an * (asterix). Optional
 arguments are then available in the tuple referenced by this parameter.
+Optional variables can also by passed as keywords, if the last parameter is preceded by **. In this case, the
+optional variables are available within the function as a dictionary.
+The operation consiting to get the arguemnts passed as sequence is call *argument unpacking*.
+Let look how it work, especially there are significant differences between python 2 and 3. 
 
 Sequence unpacking
 ^^^^^^^^^^^^^^^^^^  
@@ -304,10 +309,10 @@ Sequence unpacking
          4
          
          
-Parameter unpacking
-^^^^^^^^^^^^^^^^^^^
+Argument unpacking
+^^^^^^^^^^^^^^^^^^
     
-.. include:: parameter_unpacking.rst
+.. include:: argument_unpacking.rst
 
   
 Scope of variables
@@ -319,11 +324,11 @@ and exit scope when a non-nested function is called or the context ends.
 
 If a name is used prior to variable initialization, this raises a ``syntax error``.
 
+
 .. _variable_resolution_rules:
 
 Variable resolution rules
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-
 
 Although scopes are determined statically, they are used dynamically. 
 At any time during execution, there are at least three nested scopes whose namespaces are directly accessible:
