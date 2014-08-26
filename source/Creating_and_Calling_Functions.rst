@@ -272,9 +272,9 @@ we can use keyword arguments, passing each argument in the form name = value. ::
 Variable number of parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A function can take additional optional arguments by prefixing the last parameter with an * (asterix). Optional
+A function can take additional optional arguments by prefixing the last parameter with an \* (asterix). Optional
 arguments are then available in the tuple referenced by this parameter.
-Optional variables can also by passed as keywords, if the last parameter is preceded by **. In this case, the
+Optional variables can also by passed as keywords, if the last parameter is preceded by \*\*. In this case, the
 optional variables are available within the function as a dictionary.
 The operation consiting to get the arguemnts passed as sequence is call *argument unpacking*.
 Let look how it work, especially there are significant differences between python 2 and 3. 
@@ -518,8 +518,8 @@ Apart from those distinctions, defs and lambdas do the same sort of work: ::
    >>> f(2, 3, 4)
    9
    
-We can use default arguments or tuple or dict argument like *args or **kwargs exactly as in ``def`` functions.
-The code in a ``lambda`` body also follows the same scope lookup rules (:ref:`variable_resolution_rules <LGEB>`) 
+We can use default arguments or tuple or dict argument like \*args or \*\*kwargs exactly as in ``def`` functions.
+The code in a ``lambda`` body also follows the same scope lookup rules (:ref:`LGEB <variable_resolution_rules>`) 
 as code inside a def. lambda expressions introduce a local scope much like a nested def, 
 which automatically sees names in enclosing functions, the module, and the built-in scope.
 
