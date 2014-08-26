@@ -288,7 +288,9 @@ you could **run out** of resources, or **overwrite** something.
 The place to close the input file is right after you're done reading the 
 data, and before opening the output file.
 
-but examine in practice how to close a file. ::
+but examine in practice how to close a file.
+
+.. code-block:: python
 
    try:
       f = open('/tmp/foo' ,'r')
@@ -303,8 +305,10 @@ but examine in practice how to close a file. ::
 In this piece of code we protect the open in a try/except but what happen 
 if an error occured during the data processing, if one line have not a firlds[2] for instance.
 an error is raise but the file is not closed. If this piece of code is en closed in a larger
-try/except the file will stay open until the end of the script. ::  
-    
+try/except the file will stay open until the end of the script.
+
+.. code-block:: python
+
    try:
       f = open('/tmp/foo' ,'r')
       for line in f:
@@ -317,8 +321,10 @@ try/except the file will stay open until the end of the script. ::
       f.close()   
 
 OK now we can catch all error and we close the file if an error occured during the data reading/processing
-but it is not closed if the process finish normally. So we can again improve our code::
+but it is not closed if the process finish normally. So we can again improve our code: 
 
+.. code-block:: python
+   
    try:
       f = open('/tmp/foo' ,'r')
       for line in f:
@@ -332,7 +338,9 @@ but it is not closed if the process finish normally. So we can again improve our
         
 It's work perfectly but we have to write technical code (ty/except/finally) and the ``close`` can be far away the ``open`` which not increase the code reading.
 Python introduce in python2.6 the notion of context manager with the ``with`` keywords.
-which is a generalization of ::
+which is a generalization of: 
+
+.. code-block:: python
 
    try:
       use a ressource
