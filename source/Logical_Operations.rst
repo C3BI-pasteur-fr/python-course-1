@@ -1,3 +1,6 @@
+.. sectnum:: 
+   :start: 5
+   
 .. _Logical_Operations:
 
 ******************

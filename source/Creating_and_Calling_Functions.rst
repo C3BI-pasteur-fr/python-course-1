@@ -1,3 +1,6 @@
+.. sectnum:: 
+   :start: 7
+   
 .. _Creating_and_Calling_Functions:
 
 ******************************
