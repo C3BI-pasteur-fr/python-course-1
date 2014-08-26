@@ -507,7 +507,8 @@ but are usually kept simple, often only offering a number of attributes
 that allow information about the error to be extracted by handlers for the exception. 
 When creating a module that can raise several distinct errors, 
 a common practice is to create a base class for exceptions defined by that module, 
-and subclass that to create specific exception classes for different error conditions:
+and subclass that to create specific exception classes for different error conditions.
+ 
  
 Exercises
 =========
