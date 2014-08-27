@@ -83,13 +83,13 @@ in module_2.py we need to use both module_1 and some math functions: ::
 ``pi`` was defined in both module here ``pi`` from ``math`` was rebound to the ``pi`` function from module_1 
 so we cannot use the *from* syntax, we have to use the *import* and full qualified name.
 
-In the last syntax, the * means “import everything that is not private” ,which in
+In the last syntax, the \* means “import everything that is not private” ,which in
 practical termsmeans either that every object in the module is imported except
 for those whose names begin with a leading __all__
 
-The from importable import * syntax imports all the objects from the module (or
+The from importable import \* syntax imports all the objects from the module (or
 all the modules from the package), this could be hundreds of names. In the
-case of from os.path import *, almost 40 names are imported, including dirname,
+case of from os.path import \*, almost 40 names are imported, including dirname,
 exists, and split, any of which might be names we would prefer to use for our
 own variables or functions.
 
