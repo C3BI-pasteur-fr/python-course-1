@@ -9,4 +9,3 @@ Contents:
    :maxdepth: 2
 
    python3
-   pep_8
