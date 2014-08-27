@@ -323,18 +323,137 @@ readthedoc
 `readthedoc <https://readthedocs.org/>`_ is a web plateform which hosts documentation.
 It's based on sphinx and you can link you vcs to *readthedoc* for instance there is a webhook in github
 to link your github repository to readthedoc so each time you make a change in github (commit), the documentation is updateded on readthedocs.
-readthedocs host freely your project for the open source community.
+readthedocs host freely projects for the open source community.
 
  
-Unit tests
-==========
+Tests
+=====
+
+writing test systematically and before or at the same time to write code provides a lot of benefits by:
+
+* Preventing software regression
+* Improving code quality
+* Providing the best low-level documentation
+* Producing robust code faster
+
+Preventing Software Regression
+   Software regression is a new bug introduced by a change. 
+   Regressions happen because of the simple fact that it is impossible at some point 
+   to guess what a single change in a codebase might lead to. 
+   Changing some code might break some other features, and sometimes lead to
+   vicious side effects, such as silently corrupting data.
+
+   To avoid regression, the whole set of features software provides should be tested
+   every time a change occurs.
+
+   Opening a codebase to several developers amplifies the problem, since each person
+   will not be fully aware of all development activities. 
+   While having a version control system prevents conflicts, it does not prevent all unwanted interactions.
+
+Providing the Best Developer Documentation
+   Tests are the best place for a developer to learn how software works. 
+   They are the use cases the code was primarily created for. Reading them provides a quick and deep
+   insight into how the code works. Sometimes, an example is worth a thousand words
+   
+Producing Robust Code Faster
+   Writing without tests leads to extensive debugging sessions. A bug in one part of the
+   software might be felt in a distant part of that software. 
+   Since you don't know who to blame, you spend an inordinate amount of time debugging. 
+   It's better to fight small bugs one at a time when a test fails, because you'll have a better clue as to where the
+   real problem is.
+
+What Kind of Tests?
+-------------------
+
+There are several kinds of tests that can be made on any software. 
+The main ones are:
+
+* functional tests (or acceptance tests) 
+* and unit tests.
+
+Acceptance Tests
+   An acceptance test focuses on a feature, and deals with the software like a black box.
+   It just makes sure that the software really does what it is supposed to do, using the
+   same media as that of the users, and controlling the output. These tests are usually
+   written out of the development cycle to validate that the application meets the
+   requirements.
+
+Unit Tests
+   Unit tests are low-level tests that perfectly fit the TDD approach. They focus on a
+   single module (for example, one unit) and provide tests for it. No other modules are
+   involved. The tests isolate the module from the rest of the application. When external
+   dependencies are required, such as a database access, they are replaced by fake objects or mocks.
+
+Python Standard Test Tools
+   Python provides two modules in the standard library to write tests:
+   
+   * unittest
+   * doctest
+
+Fakes and Mocks
+   Writing unit tests presupposes that you isolate the module being tested. 
+   Tests feed the function or method with some data and test the output.
+
+   This is mainly to make sure the tests:
+   
+   * Are concerning an atomic part of the application, which can be a function or a class
+   * Provide deterministic, reproducible results
+
+   Sometimes, isolation of a part of the program is not obvious. When you use a datatbase for instance 
+
+   Mock objects are generic fake objects (see http://en.wikipedia.org/wiki/Mock_object ) 
+   that can be used to isolate the tested code. They automate the build of input
+   and output. There is a greater use of mock objects in statically typed language, where
+   monkey patching is harder but they are still useful in Python to shorten the code to
+   mimic external APIs.
+
+   http://www.voidspace.org.uk/python/mock/
 
 unittest automation
-https://travis-ci.org/
-https://travis-ci.org/mobyle2/mobyle2.exec_engine
+-------------------
 
-`coverage <http://nedbatchelder.com/code/coverage/>`_
+Earlier we discover a bug faster one has a chance to fix it. So the unit tests must be run
+each time the code base change. But its tedious to run the test campaign each time and 
+very often developers forget to run tests, so they become useless.
+Some framework provides systems to link your code repository to the tests and run 
+the laters each time de repository is modified (commit). We call this *continuous integartion*.
 
+`Travis-CI <https://travis-ci.org/>`_ is a hosted continuous integration service. 
+It is integrated with GitHub and offers first class support for lot of programming language.
+Travis-CI allow to build a new virtual machine, build your project with it's dependencies
+and run the unit tests. It can be trigger each time a developper modify your code repository
+(with a web hook on github for instance), and send you an email reporting the status of the project:
+success or fail and you can access to the logs, so you can see what happen (`example of travis-ci logs <https://travis-ci.org/mobyle2/mobyle2.exec_engine>`_).
+Travis-CI is free for open source project.
+
+tests coverage
+--------------
+
+It's not easy to test every lines of code and to know which lines are cover by a test or not.
+When developers write unit test code they can forget some case. Thus some branch of code are not tested.
+To help developpers to cover all his code with tests it exists libraries which detect which code is 
+cover by tests and more which code are not. So it become easy to add a test to cover this specific 
+part of code. In python the package `coverage <http://nedbatchelder.com/code/coverage/>`_ do that and provide report indifferent format notably in html
+to browse the code and see if it is covered by test or not   
+
+.. figure:: _static/figs/coverage_output.png
+   :height: 500px
+   :figclass: align-left
+   :alt: coverage output
+
+   the code in green is covered by test
+   the code in red is not covered.
+   
+   here we clearly see that in __str__ method 
+   
+   | The cases ``if self.loner`` or ``if self.analog`` is True are not covered by tests
+   | Now it's easy to add test to covered this part of code.
+
+.. container:: clearer
+
+   .. image :: _static/figs/spacer.png
+   
+   
 Debuging
 ========
 
