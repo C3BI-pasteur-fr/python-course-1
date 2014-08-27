@@ -185,38 +185,38 @@ it does not look for or generate a .pyc file; it just compiles the .py
 unconditionally in memory and runs the bytecode. 
 
 Let us illustrate this by a little example: ::
-
- #Let us create 2 python source code file
- vim foo.py
- print "foo"
- 
- vim bar.py
- print "bar"
- 
- #let us execute them directly
- python foo.py
- foo
- python bar.py
- bar
- ls -ltr
- -rw-rw-r-- 1 user grp   13 avril 29 10:59 foo.py
- -rw-rw-r-- 1 user grp   12 avril 29 10:59 bar.py
- #no bytecode cached file has been created
- 
- #now let us modified foo.py
- vim foo.py
- import bar
- print "foo"
- 
- #let us execute foo.py
- python foo.py
- bar
- foo
- ls -ltr
- -rw-rw-r-- 1 user grp   12 avril 29 10:59 bar.py
- -rw-rw-r-- 1 user grp   24 avril 29 11:00 foo.py
- -rw-rw-r-- 1 user grp  141 avril 29 11:00 bar.pyc
- #bar.py was compiled in bytcode and cahed in bar.pyc file
+   
+   #Let us create 2 python source code file
+   vim foo.py
+   print "foo"
+   
+   vim bar.py
+   print "bar"
+   
+   #let us execute them directly
+   python foo.py
+   foo
+   python bar.py
+   bar
+   ls -ltr
+   -rw-rw-r-- 1 user grp   13 avril 29 10:59 foo.py
+   -rw-rw-r-- 1 user grp   12 avril 29 10:59 bar.py
+   #no bytecode cached file has been created
+   
+   #now let us modified foo.py
+   vim foo.py
+   import bar
+   print "foo"
+   
+   #let us execute foo.py
+   python foo.py
+   bar
+   foo
+   ls -ltr
+   -rw-rw-r-- 1 user grp   12 avril 29 10:59 bar.py
+   -rw-rw-r-- 1 user grp   24 avril 29 11:00 foo.py
+   -rw-rw-r-- 1 user grp  141 avril 29 11:00 bar.pyc
+   #bar.py was compiled in bytcode and cached in bar.pyc file
 
 | Then, is Python Interpreted or Compiled?
 Like other languages that use a VM bytecode, it's a little bit of both. 
