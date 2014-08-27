@@ -31,7 +31,7 @@ or ::
  sudo apt-get install python3-py
  
 | for gentoo with the root privilege: 
-for python 3.3.3  ::
+| for python 3.3.3  ::
  
  emerge -va dev-lang/python 
  
@@ -219,6 +219,7 @@ Let us illustrate this by a little example: ::
    #bar.py was compiled in bytcode and cached in bar.pyc file
 
 | Then, is Python Interpreted or Compiled?
+
 Like other languages that use a VM bytecode, it's a little bit of both. 
 The actual Python code is compiled into Python bytecode.
 The bytecode is interpreted.
