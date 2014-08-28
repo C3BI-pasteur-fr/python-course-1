@@ -372,8 +372,8 @@ The main ones are:
 * functional tests (or acceptance tests) 
 * and unit tests.
 
-Acceptance Tests
-   An acceptance test focuses on a feature, and deals with the software like a black box.
+Functional Tests
+   An Functional test focuses on a feature, and deals with the software like a black box.
    It just makes sure that the software really does what it is supposed to do, using the
    same media as that of the users, and controlling the output. These tests are usually
    written out of the development cycle to validate that the application meets the
