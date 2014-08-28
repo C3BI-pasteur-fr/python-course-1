@@ -170,6 +170,7 @@ main conventions
       Constants are usually defined on a module level and written in all capital letters with underscores separating words. 
       Examples include MAX_OVERFLOW and TOTAL.
 
+.. _vcs:
 
 Managing code
 =============
@@ -457,11 +458,241 @@ to browse the code and see if it is covered by test or not
 Debuging
 ========
 
+because programming is done by humans, mistakes are made.
+
+Mistakes fall into several categories. The quickest to reveal themselves and
+the easiest to fix are syntax errors, since these are usually due to typos. More
+challenging are logical errors. 
+With these, the program runs, but some aspect of its behavior is not what we intended or expected. 
+Many errors of this kind can be prevented from happening by using TDD (Test Driven Development),
+where when we want to add a new feature, we begin by writing a test for the
+feature—which will fail since we haven’t added the feature yet—and then implement
+the feature itself. 
+
+When editing a program to fix a bug there is always the risk that we end up
+with a program that has the original bug plus new bugs, that is, it is even worse
+than it was when we started! And if we don’t use version control, it
+could be very hard to even get back to where we just had the original bug.
+So before starting to debug, it is always best to check our code into
+the :ref:`version control system <vcs>`_  so that we have a known position 
+that we can revert to if we get into a mess.
+
+comments
+--------
+
+As programs get bigger and more complicated, they get more difficult to read. 
+Formal languages are dense, and it is often difficult to look at a piece of code and figure out what it is doing, or why.
+
+For this reason, it is a good idea to add notes to your programs to explain in natural language what the program is doing. ::
+
+   # compute the percentage of the hour that has elapsed
+   percentage = (minute * 100) / 60
+
+Comments are most useful when they document non-obvious features of the code. 
+It is reasonable to assume that the reader can figure out `what` the code does; 
+it is much more useful to explain `why`.
+
+This comment is redundant with the code and useless: ::
+
+   v = 5     # assign 5 to v
+
+This comment contains useful information that is not in the code: ::
+
+   v = 5     # velocity in meters/second. 
+
+Good variable names can reduce the need for comments, but long names can make complex expressions hard to read, 
+so there is a tradeoff.
+
+Syntax Errors
+-------------
+
+If we try to run a program that has a syntax error, Python will stop execution
+and print the filename, line number, and offending line, with a caret (^) underneath
+indicating exactly where the error was detected. Here’s an example: ::
+
+   File "blocks.py", line 383
+   if BlockOutput.save_blocks_as_svg(blocks, svg)
+                                                ^
+   SyntaxError: invalid syntax
+
+Some times the problem isn’t so obvious.
+There is no syntax error in the line indicated, so both the line number and the
+caret’s position are wrong. In general, when we are faced with an error that
+we are convinced is not in the specified line, in almost every case the error will
+be in an earlier line. Check for an unbalanced parenthesis.
+
+Runtime Errors
+--------------
+
+If an unhandled exception occurs at runtime, Python will stop executing our
+program and print a traceback. Here is an example of a traceback for an
+unhandled exception
+
+To be able to kill a bug we must be able to do the following.
+
+#. Reproduce the bug.
+#. Locate the bug.
+#. Fix the bug.
+#. Test the fix.
+
+Reproducing the bug is sometimes easy—it always occurs on every run; and
+sometimes hard—it occurs intermittently. In either case we should try to
+reduce the bug’s dependencies, that is, find the smallest input and the least
+amount of processing that can still produce the bug.
+
+Once the fix is in place we must test it. Naturally,we must test to see if the bug
+it is intended to fix has gone away. But this is not sufficient; after all, our fix
+may have solved the bug we were concerned about, but the fix might also have
+introduced another bug, one that affects some other aspect of the program.
+This is where the unit tests are very usefull and allow us save lot of time. 
+
+There are two ways to instrument a program—intrusively,by inserting print()
+statements;or less intrusively, by using a debugger. Both approaches
+are used to achieve the same end and both are valid, but some programmers
+have a strong preference for one or the other. 
+
+python provide a debugger name `pdb <https://docs.python.org/2/library/pdb.html>`_
+
+The debugger’s prompt is (Pdb). Typical usage to run a program under control of the debugger is: ::
+
+   >>> import pdb
+   >>> import mymodule
+   >>> pdb.run('mymodule.test()')
+
+pdb.py can also be invoked as a script to debug other scripts. For example: ::
+
+   python -m pdb myscript.py
+
+The typical usage to break into the debugger from a running program is to insert ::
+
+   import pdb; pdb.set_trace()
+
+at the location you want to break into the debugger.
+You can then step through the code following this statement.
+see above some of pdb commands
+
+s(tep)
+    Execute the current line, stop at the first possible occasion (either in a function that is called or on the next line in the current function).
+n(ext)
+    Continue execution until the next line in the current function is reached or it returns. 
+    (The difference between next and step is that step stops inside a called function, 
+    while next executes called functions at (nearly) full speed, only stopping at the next line in the current function.)
+
+r(eturn)
+    Continue execution until the current function returns.
+
+c(ont(inue))
+    Continue execution, only stop when a breakpoint is encountered.    
+
+a(rgs)
+    Print the argument list of the current function.
+
+p expression
+    Evaluate the expression in the current context and print its value.
+   
+pdb offer more commands and notably command to analyses trecaback *post mortem*
+   
+code analyzer
+-------------
+
+In languages which are strongly types and compiled lot of code checking are perform during the compilation phase.
+The language as Python with dynamic typing and compilaton on the fly offer more flexibilty to developpers but
+don't perform this checking so the errors occurs at run time. To avoid this some tools has been developped to 
+finds problems that are typically caught by a compiler. The mos wel known code checker in python are 
+`Pylint <http://www.pylint.org/>`_ and `PyChecker <http://pychecker.sourceforge.net/>`_
+
 pylint
-http://www.pylint.org/
+""""""
+
+`Pylint <http://www.pylint.org/>`_ is a Python source code analyzer which looks for programming errors, helps enforcing a coding standard 
+
+Types of problems that can be found by pylint:
+
+* checking line-code's length,
+* checking if variable names are well-formed according to your coding standard
+* checking if imported modules are used
+* checking if declared interfaces are truly implemented
+* checking if modules are imported
+* and much more
+* Pylint detects duplicated code
+
+Pylint can be integrated in various IDEs :
+
+* Spyder
+* Editra
+* TextMate
+* Eclipse with PyDev
+  
+below an output produce by pylint after :download:`average_errors.py <_static/code/average_errors.py>` with pylint 
+
+.. literalinclude:: _static/code/average_errors.py
+   :linenos:
+   :language: python
+
+
+.. literalinclude:: _static/data/pylint.out
+
+
+pylint have 3 kinds of messages:
+
+| C... violate conventions (pep 8 by default) 
+| W... warnings there is a probably a problem but not raise error
+| E... errors raise error at runtime
+
+| E0602: 11:average: Undefined variable 'result_path'
+| W0612:  8:average: Unused variable 'result'
+
+Are due to a typo result should be result_path this error will apear
+quickly if we run the program, but if the same error is in if branch
+it can occur only in some conditons and not so obvious to detect
+
+| W0613:  3:average: Unused argument 'dir_path' 
+
+A parameter dir_path is define but never used inside the fucntion so
+if we call the function we must provide it but it never take in account.
+may be we used it in previous version but we change the algorithm but forget to change
+the function parameter.
+    
+    
+pychecker
+"""""""""
+Types of problems that can be found by pychecker include:
+
+* No global found (e.g., using a module without importing it)
+* Passing the wrong number of parameters to functions/methods/constructors
+* Passing the wrong number of parameters to builtin functions & methods
+* Using format strings that don't match arguments
+* Using class methods and attributes that don't exist
+* Changing signature when overriding a method
+* Redefining a function/class/method in the same scope
+* Using a variable before setting it
+* self is not the first parameter defined for a method
+* Unused globals and locals (module or variable)
+* Unused function/method arguments (can ignore self)
+* No doc strings in modules, classes, functions, and methods 
+* ...
+
+to use pychecker on the same file::
+   
+   pychecker /tmp/average_errors.py
+   Processing module average (/tmp/average.py)...
+
+   Warnings...
+   
+   /tmp/average.py:1: Imported module (sys) not used
+   /tmp/average.py:3: Parameter (dir_path) not used
+   /tmp/average.py:8: Local variable (result) not used
+   /tmp/average.py:11: No global (result_path) found
 
 Optimization
 ============
+
+Another mistake is to create a program that has
+needlessly poor performance. This is almost always due to a poor choice of algorithm
+or data structure or both. However, before attempting any optimization
+we should start by finding out exactly where the performance bottleneck
+lies—since it might not be where we expect—and then we should carefully decide
+what optimization we want to do, rather than working at random
 
 profiling
 
