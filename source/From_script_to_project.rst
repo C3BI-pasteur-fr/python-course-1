@@ -687,14 +687,42 @@ to use pychecker on the same file::
 Optimization
 ============
 
-Another mistake is to create a program that has
-needlessly poor performance. This is almost always due to a poor choice of algorithm
-or data structure or both. However, before attempting any optimization
-we should start by finding out exactly where the performance bottleneck
-lies—since it might not be where we expect—and then we should carefully decide
-what optimization we want to do, rather than working at random
+Sometimes we create a program that do what we expected but it has needlessly poor performance. 
+This is almost always due to a poor choice of algorithm or data structure or both. 
+However, before attempting any optimization we should start by finding out exactly where the performance bottleneck
+lies since it might not be where we expect and then we should carefully decide
+what optimization we want to do, rather than working at random.
 
-profiling
+It is best to find out precisely where the problem lies rather than just
+inspecting our code and trying to optimize it. Randomly optimizing can cause
+us to introduce bugs or to speed up parts of our program that actually have no
+effect on the program’s overall performance because the improvements are not
+in places where the interpreter spends most of its time.
+
+because the interpreter do some optimization during the compiling phase,
+and performance of language vary in function of the implementation,
+It's very hard to know the code where the program waste time or memory just
+in reading the code.
+
+there are two kinds of performance trouble in programming:
+
+* when a programm is too slow
+* when a program use too much memory  
+
+programm is too slow
+--------------------
+
+Python’s standard library provides two modules that are particularly useful
+when we want to investigate the performance of our code. One of these is the
+timeit module this is useful for timing small pieces of Python code, and can be
+used, for example, to compare the performance of two or more implementations
+of a particular function or method. The other is the cProfile module which can
+be used to profile a program’s performance it provides a detailed breakdown
+of call counts and times and so can be used to find performance bottlenecks
+
+program use too much memory
+---------------------------
+
 
 Virtualenv
 ==========
