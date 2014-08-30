@@ -716,6 +716,64 @@ of a particular function or method. The other is the cProfile module which can
 be used to profile a program’s performance it provides a detailed breakdown
 of call counts and times and so can be used to find performance bottlenecks
 
+:download:`optimization_time.py <_static/code/optimization_time.py>`
+
+.. literalinclude:: _static/code/optimization_time.py
+   :linenos:
+   :language: python
+
+::
+   
+   python -m cProfile optimization.py
+   
+   
+.. code-block:: text
+   :emphasize-lines: 12,13,14
+   :linenos:
+
+         304052 function calls in 60.927 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.000    0.000 __future__.py:48(<module>)
+        1    0.000    0.000    0.000    0.000 __future__.py:74(_Feature)
+        7    0.000    0.000    0.000    0.000 __future__.py:75(__init__)
+        1    0.001    0.001    0.001    0.001 hashlib.py:55(<module>)
+        6    0.000    0.000    0.000    0.000 hashlib.py:94(__get_openssl_constructor)
+        1    0.003    0.003   60.927   60.927 optimization.py:1(<module>)
+        1    0.083    0.083   60.923   60.923 optimization.py:12(compare_algo)
+   100000   60.777    0.001   60.777    0.001 optimization.py:5(algo_1)
+   100000    0.009    0.000    0.009    0.000 optimization.py:9(algo_2)
+        1    0.000    0.000    0.000    0.000 random.py:100(seed)
+        1    0.034    0.034    0.040    0.040 random.py:275(shuffle)
+        1    0.001    0.001    0.001    0.001 random.py:40(<module>)
+        1    0.000    0.000    0.000    0.000 random.py:650(WichmannHill)
+        1    0.000    0.000    0.000    0.000 random.py:72(Random)
+        1    0.000    0.000    0.000    0.000 random.py:800(SystemRandom)
+        1    0.000    0.000    0.000    0.000 random.py:91(__init__)
+        1    0.000    0.000    0.000    0.000 {_hashlib.openssl_md5}
+        1    0.000    0.000    0.000    0.000 {_hashlib.openssl_sha1}
+        1    0.000    0.000    0.000    0.000 {_hashlib.openssl_sha224}
+        1    0.000    0.000    0.000    0.000 {_hashlib.openssl_sha256}
+        1    0.000    0.000    0.000    0.000 {_hashlib.openssl_sha384}
+        1    0.000    0.000    0.000    0.000 {_hashlib.openssl_sha512}
+        1    0.000    0.000    0.000    0.000 {binascii.hexlify}
+        1    0.000    0.000    0.000    0.000 {function seed at 0x7f149e2078c0}
+        6    0.000    0.000    0.000    0.000 {getattr}
+        6    0.000    0.000    0.000    0.000 {globals}
+        1    0.000    0.000    0.000    0.000 {len}
+        1    0.000    0.000    0.000    0.000 {math.exp}
+        2    0.000    0.000    0.000    0.000 {math.log}
+        1    0.000    0.000    0.000    0.000 {math.sqrt}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+     2000    0.001    0.000    0.001    0.000 {method 'flush' of 'file' objects}
+    99999    0.005    0.000    0.005    0.000 {method 'random' of '_random.Random' objects}
+     2000    0.012    0.000    0.012    0.000 {method 'write' of 'file' objects}
+        1    0.000    0.000    0.000    0.000 {posix.urandom}
+        1    0.001    0.001    0.001    0.001 {range}
+
+
 program use too much memory
 ---------------------------
 
