@@ -347,6 +347,7 @@ to convert the given object to a set. It does not accept more than one argument.
    
 .. warning::
    If you want to have a string in your set, you cannot use the expression: ::
+   
       >>> s = set("toto")
    
    As the strings are sequence data types "t", "o", "t", "o" will be added to the set.
@@ -1188,47 +1189,7 @@ For example: ::
    >>> [1,2,3,5] #is one of the solutions 
 
 
-Exercise
---------
 
-let the following enzymes collection: ::
- 
-   import collections
-   RestrictEnzyme = collections.namedtuple("RestrictEnzyme", "name comment sequence cut end")
-
-   ecor1 = RestrictEnzyme("EcoRI", "Ecoli restriction enzime I", "gaattc", 1, "sticky")
-   ecor5 = RestrictEnzyme("EcoRV", "Ecoli restriction enzime V", "gatatc", 3, "blunt")
-   bamh1 = RestrictEnzyme("BamHI", "type II restriction endonuclease from Bacillus amyloliquefaciens ", "ggatcc", 1, "sticky")
-   hind3 = RestrictEnzyme("HindIII", "type II site-specific nuclease from Haemophilus influenzae", "aagctt", 1 , "sticky")
-   taq1 = RestrictEnzyme("TaqI", "Thermus aquaticus", "tcga", 1 , "sticky")
-   not1 = RestrictEnzyme("NotI", "Nocardia otitidis", "gcggccgc", 2 , "sticky")
-   sau3a1 = RestrictEnzyme("Sau3aI", "Staphylococcus aureus", "gatc", 0 , "sticky")
-   hae3 = RestrictEnzyme("HaeIII", "Haemophilus aegyptius", "ggcc", 2 , "blunt")
-   sma1 =  RestrictEnzyme("SmaI", "Serratia marcescens", "cccggg", 3 , "blunt")
-
-and the 2 dna fragments: ::
-
-   dna_1 = """tcgcgcaacgtcgcctacatctcaagattcagcgccgagatccccgggggttgagcgatccccgtcagttggcgtgaattcag
-   cagcagcgcaccccgggcgtagaattccagttgcagataatagctgatttagttaacttggatcacagaagcttccaga
-   ccaccgtatggatcccaacgcactgttacggatccaattcgtacgtttggggtgatttgattcccgctgcctgccagg"""
-
-   dna_2 = """gagcatgagcggaattctgcatagcgcaagaatgcggccgcttagagcgatgctgccctaaactctatgcagcgggcgtgagg
-   attcagtggcttcagaattcctcccgggagaagctgaatagtgaaacgattgaggtgttgtggtgaaccgagtaag
-   agcagcttaaatcggagagaattccatttactggccagggtaagagttttggtaaatatatagtgatatctggcttg"""
-
-| which enzymes cut the dna_1 ?
-|                  the dna_2 ?
-|                  the dna_1 but not the dna_2?
-
-
-Exercise
---------
-From a list return a new list without any duplicate, but keeping the order of items. 
-For example: ::
-
-   >>> l = [5,2,3,2,2,3,5,1]
-   >>> uniqify_with_order(l)
-   >>> [5,2,3,1]  
 
 Exercise
 --------

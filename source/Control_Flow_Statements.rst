@@ -475,6 +475,8 @@ The hierarchy of some `built-in exceptions <https://docs.python.org/2/library/ex
 .. graphviz:: 
 
    digraph builtin_exception_hierarchy {
+      graph[fontsize = 8];
+      node[fontsize = 9];
       edge[dir=back];
       "object" -> "Exception" ->"BaseException";
       "Exception" -> "StandardError";
@@ -565,3 +567,15 @@ and the 2 dna fragments: ::
 | which enzymes cut the dna_1 get the name of the enzymes and all their positions of binding site?
 | do the same for dna_2
 | give the name of the enzymes that cut the dna_1 but not the dna_2?
+
+
+
+Exercise
+--------
+
+From a list return a new list without any duplicate, but keeping the order of items. 
+For example: ::
+
+   >>> l = [5,2,3,2,2,3,5,1]
+   >>> uniqify_with_order(l)
+   >>> [5,2,3,1] 
