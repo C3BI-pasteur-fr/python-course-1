@@ -308,11 +308,6 @@ If you give a variable an illegal name, you get a syntax error: ::
    It will be very much easier to understand what you did if you follow these conventions.   
 
 
-
-Exercises
-=========
-
-
 Summary
 =======
 
