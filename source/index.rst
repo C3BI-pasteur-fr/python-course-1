@@ -21,7 +21,6 @@ Contents:
    Creating_and_Calling_Functions
    Modules_and_Packages
    Input_Output
-   Scripting
    From_script_to_project
    Further_Reading
    Appendix
