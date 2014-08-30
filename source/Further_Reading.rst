@@ -12,7 +12,7 @@ Further Reading
    But the concepts of Python are clearly exposed and 
    after reading it every thing in the language make sense.
    Lot of parts of this course come from this book.
-   I highly recommand it.   
+   I highly recommend it.   
    
 **Think Python, How to Think Like a Computer Scientist**
     *Allen B. Downey* http://www.greenteapress.com/thinkpython/

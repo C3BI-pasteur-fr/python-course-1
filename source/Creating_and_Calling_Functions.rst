@@ -115,7 +115,7 @@ then to reproducesome examples as they would appear if typed in interactively.
 In Chapter 5 and Chapter 9 we will see how examples in function documentation
 can be used to provide unit tests.
 
-For bigger project I recommand to use sphinx. `sphinx <http://sphinx-doc.org/index.html>`_is a Python Document Generator.
+For bigger project I recommend to use sphinx. `sphinx <http://sphinx-doc.org/index.html>`_is a Python Document Generator.
 It is powerfull and simple the learning curve is not too steep and it allow to provide to user and developper a full documentation of the project
 in different formats: web site, pdf, epub, ...
 `Lot of python project use sphinx <http://sphinx-doc.org/examples.html>`_: python, NumPy, this course has been written using sphinx, ...
