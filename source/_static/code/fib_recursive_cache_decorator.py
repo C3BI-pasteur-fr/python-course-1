@@ -1,11 +1,11 @@
 def memoize(func):
     cache = {}
-    def inner_func(arg):
-        if n in cache:
-            return cache(n)
+    def inner_func(*args):
+        if args in cache:
+            return cache(args)
         else:
-            res = func(*args, **kwargs)
-            cache[arg] = res
+            res = func(*args)
+            cache[args] = res
             return res
     return inner_func
 
