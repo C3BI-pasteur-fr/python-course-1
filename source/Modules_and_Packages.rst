@@ -1,6 +1,3 @@
-.. sectnum:: 
-   :start: 8
-
 .. _Modules_and_Packages:
 
 ********************

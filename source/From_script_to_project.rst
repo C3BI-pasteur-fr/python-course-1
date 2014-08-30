@@ -1,7 +1,3 @@
-.. sectnum:: 
-   :start: 10
-   
-   
 .. _From_script_to_project:
 
 **********************************
@@ -466,7 +462,7 @@ challenging are logical errors.
 With these, the program runs, but some aspect of its behavior is not what we intended or expected. 
 Many errors of this kind can be prevented from happening by using TDD (Test Driven Development),
 where when we want to add a new feature, we begin by writing a test for the
-feature—which will fail since we haven’t added the feature yet—and then implement
+feature which will fail since we haven’t added the feature yet and then implement
 the feature itself. 
 
 When editing a program to fix a bug there is always the risk that we end up

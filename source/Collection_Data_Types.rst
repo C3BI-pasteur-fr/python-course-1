@@ -1,5 +1,3 @@
-.. sectnum:: 
-   :start: 4
 
 .. _Collection_Data_types:
 

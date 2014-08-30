@@ -10,7 +10,8 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
-
+   :numbered:
+   
    Introduction
    Variables
    Data_Types
