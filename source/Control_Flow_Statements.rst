@@ -532,6 +532,11 @@ The fibonacci suite can be defined as following:
 |    F\ :sub:`n` = F\ :sub:`n-1` + F\ :sub:`n-2` 
 
 
+Exercise
+--------
+
+return the largest element in list (containing float or integer only)?
+
 
 Exercise
 --------
