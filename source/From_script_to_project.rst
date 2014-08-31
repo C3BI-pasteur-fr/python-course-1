@@ -773,17 +773,68 @@ of call counts and times and so can be used to find performance bottlenecks
         1    0.000    0.000    0.000    0.000 {posix.urandom}
         1    0.001    0.001    0.001    0.001 {range}
 
+The first line indicates that 304052 calls were monitored. Sometimes you will see *Of those calls, xxx were primitive*, 
+the primitive calls are not induded via recursion. 
+
+The next line: *Ordered by: standard name*, 
+indicates that the text string in the far right column was used to sort the output. The column headings include:
+
+ncalls
+    for the number of calls,
+tottime
+    for the total time spent in the given function (and excluding time made in calls to sub-functions)
+percall
+    is the quotient of tottime divided by ncalls
+cumtime
+    is the cumulative time spent in this and all subfunctions (from invocation till exit). This figure is accurate even for recursive functions.
+percall
+    is the quotient of cumtime divided by primitive calls
+filename:lineno(function)
+    provides the respective data of each function 
+
+:ref:`cProfile user manual <https://docs.python.org/2/library/profile.html#instant-user-s-manual>`_
+
+
+I want you focused on lines 12,13,14 (in red).
+We see that the fonction compare_algo spent 60.927 for 1 call (see cumtime  percall col).
+But most of the time is spent in subfunction as tottime is only 0.083 sec.
+Of course in this obvious example it's esay to know where the time is spend, in algo_1
+and algo_2 functions. The difference at each call is very minial (0.001 sec) but as we call these 2 functions
+100000 times each at the end the difference is meaningful.
+
+Play with this code and lets vary the number of call. The difference does not increase linearly.
+ 
+.. note:
+   You have to profile your program in conditions near that you will encouter in production.
+   As we saw the time spend in function can vary with the data used. An other thing is the access
+   to the file can vary a lot between to system for instance on you machine with a local disk or on 
+   cluster with network file system. nfs sytem can be 10 fold slower than local filesystems.
+   
+   
 
 program use too much memory
 ---------------------------
+
+There are several exteral libraies which can be used to profile the memory usage:
+
+* `guppy <http://guppy-pe.sourceforge.net/>`_ (heapy is the part of guppy to profile memory) for python 2.x
+* `Pympler <https://pythonhosted.org/Pympler/>`_  for python 2 and 3
+* `memprof <http://jmdana.github.io/memprof/>`_ for python2 and 3 (plot memory usage)
+* ...
+
+all these methods are intrusive (they need to add code inside your program).
+
 
 
 Virtualenv
 ==========
 
-http://virtualenv.readthedocs.org/en/latest/virtualenv.html
-virtualenv, help developers and packagers. 
-virtualenv builds python sandboxes where it is possible to do whatever you want as a simple user without putting in jeopardy your global environment.
+`virtualenv <http://virtualenv.readthedocs.org/en/latest/virtualenv.html>`_ allow you to test different versions of the same library within in your python installation.
+virtualenv can also to allow you to install library although you can’t install packages into the global 
+*site-packages* directory.
+
+virtualenv builds python sandboxes where it is possible to do whatever you want 
+as a simple user without putting in jeopardy your global environment.
 
 virtualenv allows you to safety:
 
@@ -792,3 +843,8 @@ virtualenv allows you to safety:
 * switch between python versions
 * try your code as you are a final user
 * and so on ...
+
+It creates an environment that has its own installation directories, 
+that doesn’t share libraries with other virtualenv environments 
+(and optionally doesn’t access the globally installed libraries either).
+
