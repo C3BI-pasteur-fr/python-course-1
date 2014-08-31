@@ -485,3 +485,52 @@ and write the average in a file named 'my_script.out' in a new directory 'result
    :language: python
    
 :download:`script average.py<_static/code/average.py>` :download:`average_inputs<_static/data/average_inputs>`
+
+
+Exercises
+=========
+
+Exercise
+--------
+
+Write a function which take the path of file as parameter
+and display it's content on the screen.
+
+We wait same behavior as the shell *cat* command. 
+
+Exercise
+--------
+
+Write a function which take the path of a file in rebase format
+and return in a dictionnary the collection of the enzyme contains in the file.
+The sequence of the binding site must be cleaned up.
+
+:download:`rebase_light.dat <_static/data/rebase_light.dat>`_ .
+ 
+Exercise
+--------
+
+write a function which take the path of a fasta file
+and return a data structure of your choice that allow to stock 
+the id of the sequence and the sequence itself.
+
+:download:`seq.fasta <_static/data/seq.fasta>`_ .
+
+
+Exercise
+--------
+
+we ran a blast with the folowing command *blastall -p blastp -d uniprot_sprot -i query_seq.fasta -e 1e-05 -m 8 -o blast2.txt*
+
+-m 8 is the tabular output. So each fields is separate to the following by a '\t' 
+
+The fields are: query id, database sequence (subject) id, percent identity, alignment length, number of mismatches, number of gap openings, 
+query start, query end, subject start, subject end, Expect value, HSP bit score. 
+
+:download:`blast2.txt <_static/data/blast2.txt>`_ .
+
+| parse the file
+| sort the hits by their *percent identity* in the descending order.
+| write the results in a new file.
+
+(adapted from *managing your biological data with python*)
