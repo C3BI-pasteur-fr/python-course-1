@@ -966,7 +966,7 @@ Exercise
 --------
 
 For the following exercise use the python file :download:`sv40 in fasta <_static/code/sv40.py>` which is a python file with the sequence of sv40 in fasta format
-already embeded, and use python -i sv40.py to work.
+already embeded, and use *python -i sv40.py* to work.
 
 how long is the sv40 in bp? 
 (the fasta header is 61bp long)
@@ -1003,7 +1003,7 @@ Exercise
 --------
 
 #. reverse the following sequence "TACCTTCTGAGGCGGAAAGA" (don't compute the complement):
-#. using the smaller string  s = 'gaattc' compute draw what happen in memory when you reverse the s
+#. using the smaller string  s = 'gaattc' draw what happen in memory when you reverse the s
 
 Exercise
 --------
