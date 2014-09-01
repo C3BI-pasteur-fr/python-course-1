@@ -602,12 +602,12 @@ We give you a genetic code : ::
          }
 
 bonus
-"""""
+^^^^^
 
 This function have to take the phase as parameter
 
 bonus
-"""""
+^^^^^
 
 This function can take genetique code as default parameter
 

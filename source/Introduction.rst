@@ -256,10 +256,10 @@ What is a program
 
 A **program** is a sequence of instructions that specifies how to perform a computation. 
 The computation might be something mathemathical, such as solving a system of equations or
-finding roots of a polunomial, but it can be also a symbolic computaion as searching and replacing 
+finding roots of a polynomial, but it can be also a symbolic computaion as searching and replacing 
 text in a document or (strangely enough) compiling a program.
 
-The details look different in different language, but a few basic instaructions apear in just about every language:
+The details look different in different language, but a few basic instructions apear in just about every language:
 
 * **input**: Get data from the keyboard, a file, or some other device.
 * **output**: Display data on the screen or send data to a file or other device.
@@ -278,7 +278,7 @@ Formal and natural language
    are languages people speak, such as english, french. They were not design by people and evovle naturally.
 
 :Formal languages:
-   are laguages that are designed by people for specifi applications. For instance, the notation that mathemathicians use
+   are languages that are designed by people for specific applications. For instance, the notation that mathemathicians use
    is a formal language that is particularly good at denoting relationships among numbers and symbols.  
    Chemists use a formal language to represent the chemical structure of molecules.  
    And most importantly:
@@ -316,7 +316,7 @@ There are six main programming paradigms: imperative, declarative, functional, o
 logic and symbolic programming [Comparison_of_programming_paradigms]_.
 
 * **Procedural programming, structured programming** – specifies the steps the program must take to reach the desired state.
-* **Object-oriented programming (OOP)** – organizes programs as objects: data structures consisting of datafields and methods together with their interactions.
+* **Object-oriented programming (OOP)** – organizes programs as objects: data structures consisting of data fields and methods together with their interactions.
 * **Functional programming** – treats computation as the evaluation of mathematical functions and avoids state and mutable data.
 
 

@@ -11,7 +11,7 @@ Each collection data types have properties which make it more suitable
 for some problems and inappropriate for the others.
 
 There is 2 kinds of data collection the *imutables* and *mutables*.
-As we seen in :ref` Variables chapter <_immutable obj>` 
+As we seen in :ref:`Variables chapter <immutable obj>` 
 
 * *imutable* objects are objects that we **cannot** change the state (the value).
   So the collection is frozen after it's creation, of course we can access to the items, 
