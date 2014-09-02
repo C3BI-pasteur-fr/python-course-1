@@ -516,6 +516,27 @@ the id of the sequence and the sequence itself.
 
 :download:`seq.fasta <_static/data/seq.fasta>` .
 
+Exercise
+--------
+
+Modify the code at the previous exercise to read multiple sequences fasta file.
+use the file :download:`abcd.fasta <_static/data/abcd.fasta>` to test your code.
+    
+
+Exercise
+--------
+
+Read a multiple sequence file in fasta format and write to a new file, one sequence by file,
+only sequences starting with methionine and containing at least six tryptophanes (W).
+
+Use the same file as previous exercise to test you code. 
+(*you should create files for sequences: ABCD1_HUMAN, ABCD1_MOUSE, ABCD2_HUMAN, ABCD2_MOUSE, ABCD2_RAT, ABCD4_HUMAN, ABCD4_MOUSE*)
+
+bonus
+^^^^^
+
+Write sequences with 80 aa/line
+
 
 Exercise
 --------
