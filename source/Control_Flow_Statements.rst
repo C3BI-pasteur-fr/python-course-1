@@ -15,7 +15,7 @@ Conditional Branching
 
 We mentioned earlier that each statement encountered in a .py file is executed
 in turn, starting with the first one and progressing line by line. The flow of
-control can be controlled by a :ref:`_Creating_and_Calling_Functions <function>` or method call or by a control structure,
+control can be controlled by a :ref:`Creating_and_Calling_Functions <function>` or method call or by a control structure,
 such as a conditional branch or a loop statement. Control is also diverted when
 an :ref:`exception <exceptions>` is raised.
 
