@@ -580,7 +580,7 @@ in a sequence.
 Exercise
 --------
 
-Write a function translate taht have a nucleic sequence as parameter, and return the translate sequence.
+Write a function translate that have a nucleic sequence as parameter, and return the translate sequence.
 We give you a genetic code : ::
   
    code = {  'ttt': 'F', 'tct': 'S', 'tat': 'Y', 'tgt': 'C',
@@ -605,13 +605,6 @@ bonus
 ^^^^^
 
 This function have to take the phase as parameter
-
-bonus
-^^^^^
-
-This function can take genetique code as default parameter
-
-         
 
 
 
