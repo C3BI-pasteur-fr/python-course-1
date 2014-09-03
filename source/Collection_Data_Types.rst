@@ -1136,6 +1136,7 @@ and ::
    x += [5, 6]
 
 compare with the exercise on string and integers   
+
 Exercise
 --------
 
@@ -1174,6 +1175,7 @@ from the list l = [1, 2, 3, 4, 5, 6, 7, 8, 9] generate 2 lists l1 containing all
 
 Exercise
 --------
+
 generate a list containing all codons.
 
 Exercise
@@ -1185,8 +1187,6 @@ For example: ::
    >>> l = [5,2,3,2,2,3,5,1]
    >>> uniqify(l)
    >>> [1,2,3,5] #is one of the solutions 
-
-
 
 
 Exercise
@@ -1232,12 +1232,26 @@ We want obtain a new dict with the keys and the values inverted so we will obtai
 
 Exercise
 --------
-   copy de liste : shalow copy => effet de bord potentiel
-   deepcopy
-   
-Exercise
---------
 
-   copy de dictionaire?
+We assume that we have a phylogenic tree of mammals represented as nested lists. ::
+    
+   mammals = ['Bovine', ['Gibbon', ['Orang Utan', ['Gorilla', ['Chimp', 'Human']]]], 'Mouse' ]
+   
+We want to work on the subtree of apes (Gibbon, Orang Utan, Gorilla, Chimp, Human) 
+* extract the this subtree in a new tree
+* then insert 'Bonobo' at the same level of Chimp we want to obtanin something like this :[chimp, bonobo], Human]
+   
+what's append on mammals? explain the result. ::
+
+   import copy
+     
+   mammals = ['Bovine', ['Gibbon', ['Orang Utan', ['Gorilla', ['Chimp', 'Human']]]], 'Mouse' ]
+   apes = copy.copy(mammals[1])
+   apes [1][1][1] = [['Chimp', 'Bonobo'], 'Human']
+   print mammals
+   ['Bovine', ['Gibbon', ['Orang Utan', ['Gorilla', ['Chimp', 'Human']]]], 'Mouse' ]
+
+what we should do to work with apes without modify mammals?
+
    
       
