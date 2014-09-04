@@ -1238,6 +1238,7 @@ We assume that we have a phylogenic tree of mammals represented as nested lists.
    mammals = ['Bovine', ['Gibbon', ['Orang Utan', ['Gorilla', ['Chimp', 'Human']]]], 'Mouse' ]
    
 We want to work on the subtree of apes (Gibbon, Orang Utan, Gorilla, Chimp, Human) 
+
 * extract the this subtree in a new tree
 * then insert 'Bonobo' at the same level of Chimp we want to obtanin something like this :[chimp, bonobo], Human]
    
