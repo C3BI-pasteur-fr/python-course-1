@@ -607,4 +607,133 @@ bonus
 This function have to take the phase as parameter
 
 
+Exercise
+--------
 
+Implement a matrix and functions to handle it.
+choose the data structure of your choice.
+The API (**A**\ pplication **P**\ rogramming **I**\ nterface) to implemet is the following:
+
+**matrix_maker**
+   have parameter:
+   
+   * the number of rows
+   * the number of columns
+   * a default value to fill the matrix
+   
+   and return a matrix of rows_num x col_num
+
+**matrix_size**
+   have parameter:
+   
+   * a matrix
+   
+   return the number of rows, and number of columns
+   
+**matrix_get_cell**
+   have parameter:
+   
+   * a matrix
+   * the number of rows
+   * the number of columns
+   
+   the content of cell corresponding to row numberx col number
+  
+**matrix_set_cell**
+   have parameter:
+   
+   * a matrix
+   * the row number of cell to set
+   * the column number of cell to set
+   * the value to set in cell
+   
+   set the value val in cell sepcified by row number x column number
+   
+**matrix_to_str**
+   have parameter:
+   
+   * a matrix
+   
+   return a string representation of the matrix
+   
+**matrix_mult**
+   have parameter:
+   
+   * a matrix
+   * val the value to multiply the matrix with
+   
+   return a new matrix which is the scalar product of matrix x val
+   
+ **matrix_get_row**
+   have parameter:
+   
+   * a matrix
+   * the number of rows
+   
+   return a copy of the row corresponding to row number
+   
+ **matrix_set_row**
+   have parameter:
+   
+   * a matrix
+   * the row number
+   * the value to put in cells of the row
+   
+   set value in each cells of the row specify by the row number
+   
+**matrix_get_col**
+   have parameter:
+   
+   * a matrix
+   * the column number
+   
+   return a copy of the column corresponding to the column number
+   
+**matrix_set_col**   
+   have parameter:
+   
+   * a matrix
+   * the column number
+   * the value to put in cells
+   
+   set all cells of a column with value
+   
+**matrix_replace_col**
+   have parameter:
+   
+   * a matrix  
+   * the column number to replace
+   * the list of values to use as replacement of column
+   
+   replace a column col_no with list of values
+   
+**matrix_replace_row**
+   have parameter:
+   
+   * a matrix  
+   * the row number to replace
+   * the list of values to use as replacement of row
+   
+   replace a row row_no with list of values
+     
+Exercise
+--------
+
+Write a program that calculates the similarity of 2 RNA sequences.
+
+* To compute the simalirity you need to parse a file containing the similarity matrix.
+* The similarity of the 2 sequences is the sum of base similarities. 
+  so you have to compare the first base of to sequence and use the matrix to get the similarity
+  from the similarity table, on so on for all bases then sum these similarities.
+  
+.. note::
+   as we  don't yet see how to read a file, we provide a list of strings that represents the file
+   as we can get them if we read that file.
+   
+::
+
+   lines = iter(['  A G C U\n'
+                 'A 1.0 0.5 0.0 0.0\n',
+                 'G 0.5 1.0 0.0 0.0\n',
+                 'C 0.0 0.0 1.0 0.5\n',
+                 'U 0.0 0.0 0.5 1.0\n']) 
