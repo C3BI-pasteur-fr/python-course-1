@@ -612,7 +612,7 @@ Exercise
 
 Implement a matrix and functions to handle it.
 choose the data structure of your choice.
-The API (**A**\ pplication **P**\ rogramming **I**\ nterface) to implemet is the following:
+The API (**A**\ pplication **P**\ rogramming **I**\ nterface) to implement is the following:
 
 **matrix_maker**
    have parameter:
