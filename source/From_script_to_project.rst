@@ -322,7 +322,12 @@ It's based on sphinx and you can link you vcs to *readthedoc* for instance there
 to link your github repository to readthedoc so each time you make a change in github (commit), the documentation is updateded on readthedocs.
 readthedocs host freely projects for the open source community.
 
- 
+Don't reinvent the wheel
+========================
+
+TODO
+
+
 Tests
 =====
 
@@ -413,14 +418,15 @@ Earlier we discover a bug faster one has a chance to fix it. So the unit tests m
 each time the code base change. But its tedious to run the test campaign each time and 
 very often developers forget to run tests, so they become useless.
 Some framework provides systems to link your code repository to the tests and run 
-the laters each time de repository is modified (commit). We call this *continuous integartion*.
+the laters each time de repository is modified (commit). We call this *continuous integration*.
 
 `Travis-CI <https://travis-ci.org/>`_ is a hosted continuous integration service. 
 It is integrated with GitHub and offers first class support for lot of programming language.
 Travis-CI allow to build a new virtual machine, build your project with it's dependencies
 and run the unit tests. It can be trigger each time a developper modify your code repository
 (with a web hook on github for instance), and send you an email reporting the status of the project:
-success or fail and you can access to the logs, so you can see what happen (`example of travis-ci logs <https://travis-ci.org/mobyle2/mobyle2.exec_engine>`_).
+success or fail and you can access to the logs, so you can see what happen 
+(`example of travis-ci logs <https://travis-ci.org/mobyle2/mobyle2.exec_engine>`_).
 Travis-CI is free for open source project.
 
 tests coverage
@@ -430,11 +436,12 @@ It's not easy to test every lines of code and to know which lines are cover by a
 When developers write unit test code they can forget some case. Thus some branch of code are not tested.
 To help developpers to cover all his code with tests it exists libraries which detect which code is 
 cover by tests and more which code are not. So it become easy to add a test to cover this specific 
-part of code. In python the package `coverage <http://nedbatchelder.com/code/coverage/>`_ do that and provide report indifferent format notably in html
-to browse the code and see if it is covered by test or not   
+part of code. In python the package `coverage <http://nedbatchelder.com/code/coverage/>`_ 
+do that and provide report indifferent format notably in html
+to browse the code and see if it is covered by test or not.
 
 .. figure:: _static/figs/coverage_output.png
-   :height: 500px
+   :height: 600px
    :figclass: align-left
    :alt: coverage output
 
