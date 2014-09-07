@@ -808,6 +808,50 @@ help you by drawing diagram.
    print x
    print y
 
+
+Exercice
+--------
+
+Without executing the code in Python interpreter, can you determine what the code below print out. 
+help you by drawing diagram.
+
+::
+
+   x = {'a' : 4}
+   
+   def func(a):
+      x['b'] = 5
+      def func2():
+         a['b'] = 6 
+      func2()
+      return a
+       
+   y = func(x)
+   
+   print x
+  
+  
+Exercice
+--------
+
+Without executing the code in Python interpreter, can you determine what the code below print out. 
+help you by drawing diagram.
+
+::
+
+   x = {'a' : 4}
+   
+   def func(a):
+      x['b'] = 5
+      def func2(x):
+         x['b'] = 6 
+      func2(a.copy())
+      return a
+       
+   y = func(x)
+   print x
+   
+   
 Exercice
 --------
 
