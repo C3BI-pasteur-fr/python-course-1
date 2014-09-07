@@ -901,7 +901,7 @@ The API (**A**\ pplication **P**\ rogramming **I**\ nterface) to implement is th
    
    return a new matrix which is the scalar product of matrix x val
    
- **get_row**
+**get_row**
    have parameter:
    
    * a matrix
@@ -909,7 +909,7 @@ The API (**A**\ pplication **P**\ rogramming **I**\ nterface) to implement is th
    
    return a copy of the row corresponding to row number
    
- **set_row**
+**set_row**
    have parameter:
    
    * a matrix
