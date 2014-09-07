@@ -571,11 +571,248 @@ References
 Exercises
 =========
 
+Exercise
+--------
+
+Without executing the code in Python interpreter, can you determine what the code above print out. 
+help you by drawing diagram.
+
+**Hint** locals print a dictionnary with local variable as keys and theire respectives values.
+
+::
+ 
+   x = 4 
+   
+   def func():
+      y  = 5
+      print locals()
+    
+   func()
+   print x  
+   
+
+   
+Exercise
+--------
+
+   
+Without executing the code in Python interpreter, can you determine what the code above print out. 
+help you by drawing diagram.
+
+**Hint** locals print a dictionnary with local variable as keys and theire respectives values.
+
+::
+
+   x = 4 
+   
+   def func():
+      y = 5 
+      x = 8
+      print locals()
+      x = x + 2
+   
+   y = func()
+   
+   print y
+   print x
+
+Exercise
+--------
+
+Without executing the code in Python interpreter, can you determine what the code above print out. 
+help you by drawing diagram.
+
+**Hint** locals print a dictionnary with local variable as keys and theire respectives values.
+
+::
+
+   x = 4
+   
+   def func(a):
+      y = x + 2 
+      print locals()
+      x = y
+      return y
+       
+   y = func(x)
+   
+   print y
+   print y == x     
+
+
+Exercise
+--------
+
+Without executing the code in Python interpreter, can you determine what the code above print out. 
+help you by drawing diagram.
+
+**Hint** locals print a dictionnary with local variable as keys and theire respectives values.
+
+::
+
+   x = 4
+   
+   def func(a):
+      x = x + 2 
+      print locals()
+      return x
+       
+   y = func(x)
+   
+   print y
+   print y == x     
+
+
 Exercice
 --------
 
-Use the code of the exetrcise 4.5.7 on the kmer. Make a function which compute all kmer of a given lenght
-in a sequence.
+Without executing the code in Python interpreter, can you determine what the code above print out. 
+help you by drawing diagram.
+
+::
+
+   x = 4
+   
+   def func(x):
+      x = x + 2 
+      return x
+       
+   y = func(x)
+   
+   print x
+   print y
+
+
+Exercice
+--------
+
+Without executing the code in Python interpreter, can you determine what the code above print out. 
+help you by drawing diagram.
+
+::
+
+   def func():
+      y = x
+      return y
+   
+   x = 4 
+   z = func()
+   
+   print x
+   print z
+   print id(z) == id(x)
+
+
+
+Exercice
+--------
+
+Without executing the code in Python interpreter, can you determine what the code above print out. 
+help you by drawing diagram.
+
+::
+
+   x = 4
+   
+   def func(x = 5):
+      x = x + 2 
+      return x
+       
+   y = func()
+   
+   print x
+   print y 
+
+Exercice
+--------
+
+Without executing the code in Python interpreter, can you determine what the code above print out. 
+help you by drawing diagram.
+
+**Hint** locals print a dictionnary with local variable as keys and theire respectives values.
+
+::
+
+   x = 4
+   
+   def func(a):
+      global x
+      def func2():
+         print locals()
+         y = x + 4
+         return y
+      z = func2()
+      return z
+       
+   y = func(x)
+   
+   print x
+   print y
+
+Exercice
+--------
+
+Without executing the code in Python interpreter, can you determine what the code above print out. 
+help you by drawing diagram.
+
+::
+
+   x = {'a' : 4}
+   
+   def func(a):
+      a['b'] = 5 
+      return a
+       
+   y = func(x)
+   
+   print x
+   print y
+   print x is y 
+
+Exercice
+--------
+
+Without executing the code in Python interpreter, can you determine what the code above print out. 
+help you by drawing diagram.
+
+::
+
+   x = {'a' : 4}
+   
+   def func(a):
+      a['b'] = 5 
+       
+   y = func(x)
+   
+   print x
+   print y
+
+Exercice
+--------
+
+Without executing the code in Python interpreter, can you determine what the code above print out. 
+help you by drawing diagram.
+
+::
+
+   x = {'a' : 4}
+   
+   def func(a):
+      x['b'] = 5
+      def func2():
+         a['b'] = 6 
+      return a
+       
+   y = func(x)
+   
+   print x
+   print y
+
+Exercice
+--------
+
+Use the code of the exetrcise 4.5.7 on the kmer. 
+Make a function which compute all kmer of a given lenght in a sequence.
 
 Exercise
 --------
@@ -604,17 +841,17 @@ We give you a genetic code : ::
 bonus
 ^^^^^
 
-This function have to take the phase as parameter
+This function **can** to take the phase as parameter 
 
 
 Exercise
 --------
 
-Implement a matrix and functions to handle it.
+in a new file named *matrix.py* Implement a matrix and functions to handle it.
 choose the data structure of your choice.
 The API (**A**\ pplication **P**\ rogramming **I**\ nterface) to implement is the following:
 
-**matrix_maker**
+**maker**
    have parameter:
    
    * the number of rows
@@ -623,14 +860,14 @@ The API (**A**\ pplication **P**\ rogramming **I**\ nterface) to implement is th
    
    and return a matrix of rows_num x col_num
 
-**matrix_size**
+**size**
    have parameter:
    
    * a matrix
    
    return the number of rows, and number of columns
    
-**matrix_get_cell**
+**get_cell**
    have parameter:
    
    * a matrix
@@ -639,7 +876,7 @@ The API (**A**\ pplication **P**\ rogramming **I**\ nterface) to implement is th
    
    the content of cell corresponding to row numberx col number
   
-**matrix_set_cell**
+**set_cell**
    have parameter:
    
    * a matrix
@@ -649,14 +886,14 @@ The API (**A**\ pplication **P**\ rogramming **I**\ nterface) to implement is th
    
    set the value val in cell sepcified by row number x column number
    
-**matrix_to_str**
+**to_str**
    have parameter:
    
    * a matrix
    
    return a string representation of the matrix
    
-**matrix_mult**
+**mult**
    have parameter:
    
    * a matrix
@@ -664,7 +901,7 @@ The API (**A**\ pplication **P**\ rogramming **I**\ nterface) to implement is th
    
    return a new matrix which is the scalar product of matrix x val
    
- **matrix_get_row**
+ **get_row**
    have parameter:
    
    * a matrix
@@ -672,7 +909,7 @@ The API (**A**\ pplication **P**\ rogramming **I**\ nterface) to implement is th
    
    return a copy of the row corresponding to row number
    
- **matrix_set_row**
+ **set_row**
    have parameter:
    
    * a matrix
@@ -681,7 +918,7 @@ The API (**A**\ pplication **P**\ rogramming **I**\ nterface) to implement is th
    
    set value in each cells of the row specify by the row number
    
-**matrix_get_col**
+**get_col**
    have parameter:
    
    * a matrix
@@ -689,7 +926,7 @@ The API (**A**\ pplication **P**\ rogramming **I**\ nterface) to implement is th
    
    return a copy of the column corresponding to the column number
    
-**matrix_set_col**   
+**set_col**   
    have parameter:
    
    * a matrix
@@ -698,7 +935,7 @@ The API (**A**\ pplication **P**\ rogramming **I**\ nterface) to implement is th
    
    set all cells of a column with value
    
-**matrix_replace_col**
+**replace_col**
    have parameter:
    
    * a matrix  
@@ -707,7 +944,7 @@ The API (**A**\ pplication **P**\ rogramming **I**\ nterface) to implement is th
    
    replace a column col_no with list of values
    
-**matrix_replace_row**
+**replace_row**
    have parameter:
    
    * a matrix  
@@ -716,24 +953,3 @@ The API (**A**\ pplication **P**\ rogramming **I**\ nterface) to implement is th
    
    replace a row row_no with list of values
      
-Exercise
---------
-
-Write a program that calculates the similarity of 2 RNA sequences.
-
-* To compute the simalirity you need to parse a file containing the similarity matrix.
-* The similarity of the 2 sequences is the sum of base similarities. 
-  so you have to compare the first base of to sequence and use the matrix to get the similarity
-  from the similarity table, on so on for all bases then sum these similarities.
-  
-.. note::
-   as we  don't yet see how to read a file, we provide a list of strings that represents the file
-   as we can get them if we read that file.
-   
-::
-
-   lines = iter(['  A G C U\n'
-                 'A 1.0 0.5 0.0 0.0\n',
-                 'G 0.5 1.0 0.0 0.0\n',
-                 'C 0.0 0.0 1.0 0.5\n',
-                 'U 0.0 0.0 0.5 1.0\n']) 
