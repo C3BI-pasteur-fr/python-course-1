@@ -73,7 +73,7 @@ of the builtin function ``open`` has changed between these two python branches.
    
 the different values for acces mode :
 
-.. tabularcolumns:: |l{9cm}|l{9cm}|
+.. tabularcolumns:: |p{2cm}|p{8cm}|p{2cm}|p{8cm}|
 
 +-----------+-----------------------------------------------------------------+-----------+-----------------------------------------------------------------+
 | Python 2  |                                                                 | Python 3  |                                                                 |
@@ -99,7 +99,7 @@ the different values for acces mode :
 
 The values can be combine as following
 
-.. tabularcolumns:: |l{9cm}|l{9cm}|
+.. tabularcolumns:: |p{2cm}|p{8cm}|p{2cm}|p{8cm}|
 
 +----------+--------------------------------------------------------------------------------------------+--------------+--------------------------------------------------------------------------------------------+
 | Python 2 |                                                                                            | Python 3     |                                                                                            |

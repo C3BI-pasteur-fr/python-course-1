@@ -59,7 +59,7 @@ Although they will be slower to use than integers that can be represent natively
 common numerics operators and functions
 ---------------------------------------
 
-.. tabularcolumns:: |l|l|l| 
+.. tabularcolumns:: |p{2cm}|p{15cm}|
    
 +--------------+--------------------------------------------------------------------------------------------+
 | Syntax       | Description                                                                                |
@@ -334,7 +334,7 @@ except that three unescaped quotes in a row terminate the string.
 
 Python ASCII string escape
 
-.. tabularcolumns:: |l|l|l| 
+.. tabularcolumns:: |p{2cm}|p{10cm}|p{2cm}| 
 
 +------------+-------------------------------------------------------------+-------+
 | escape     | Meaning                                                     | notes |
@@ -766,7 +766,7 @@ The syntax for numbers is the same as for string but there is some specific fiel
 
 *sign*: The sign option is only valid for number types, and can be one of the following:
 
-.. tabularcolumns:: |l|l| 
+.. tabularcolumns:: |p{2cm}|p{15cm}|
 
 +--------+----------------------------------------------------------------------------------------------------------+
 | Option | Meaning                                                                                                  |
@@ -792,7 +792,7 @@ or before and after the decimal point for a floating point value formatted with 
 
 The available integer presentation types are:
 
-.. tabularcolumns:: |l|l| 
+.. tabularcolumns:: |p{2cm}|p{15cm}|
 
 +------+----------------------------------------------------------------------------------------------------------------------------------------+
 | Type | Meaning                                                                                                                                |
@@ -819,7 +819,7 @@ In addition to the above presentation types, integers can be formatted with the 
 
 The available presentation types for floating point and decimal values are:
 
-.. tabularcolumns:: |l|l| 
+.. tabularcolumns:: |p{2cm}|p{15cm}|
 
 +------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Type | Meaning                                                                                                                                                                                      |

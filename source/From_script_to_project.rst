@@ -477,7 +477,7 @@ with a program that has the original bug plus new bugs, that is, it is even wors
 than it was when we started! And if we don’t use version control, it
 could be very hard to even get back to where we just had the original bug.
 So before starting to debug, it is always best to check our code into
-the :ref:`version control system <vcs>`_  so that we have a known position 
+the :ref:`version control system <vcs>`  so that we have a known position 
 that we can revert to if we get into a mess.
 
 comments
@@ -799,7 +799,7 @@ percall
 filename:lineno(function)
     provides the respective data of each function 
 
-:ref:`cProfile user manual <https://docs.python.org/2/library/profile.html#instant-user-s-manual>`_
+`cProfile user manual <https://docs.python.org/2/library/profile.html#instant-user-s-manual>`_
 
 
 I want you focused on lines 12,13,14 (in red).

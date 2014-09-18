@@ -189,7 +189,7 @@ The comparison will be applied item by item (and recursively for nested item suc
 
 The following operations are defined on mutable sequence types (where x is an arbitrary object):
 
-.. tabularcolumns:: |l|l|l| 
+.. tabularcolumns:: |p{5cm}|p{10cm}|p{2cm}| 
 
 +---------------------------------+------------------------------------------------------------------------------+---------------+
 | Operation                       | Result                                                                       | notes         |
@@ -402,7 +402,7 @@ Tey also support ususal set operators: Union, Intersection, Difference, Symetric
 
 Set methods and Operators
 
-.. tabularcolumns:: |l|l|l| 
+.. tabularcolumns:: |p{3cm}|p{8cm}|p{2cm}| 
 
 +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+
 | Syntax                        | Description                                                                                                                        | also available for frozen set |
@@ -441,6 +441,8 @@ Set methods and Operators
 +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+
 | s.update(t)                   | Adds every item in set t that is not in set s , to set s                                                                           |                               |
 +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+
+
+
 
 .. _sets_comprehension:
 
@@ -571,7 +573,7 @@ dict.pop() method.
 Dictionary methods and Operators
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. tabularcolumns:: |l|l|
+.. tabularcolumns:: |p{3cm}|p{12cm}|
 
 +--------------------+-----------------------------------------------------------------------------------------------------------------------------+
 | Syntax Description |                                                                                                                             |
@@ -809,7 +811,7 @@ from 0) ::
 
 Common Iterable Operators and Functions
 
-.. tabularcolumns:: |l|l|l| 
+.. tabularcolumns:: |p{2.5cm}|p{15cm}|
 
 +---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Syntax                    | Description                                                                                                                                                                                                                                          |
@@ -978,7 +980,11 @@ for a suitable exception handler—this is covered in the next section.) ::
    * in blue the execution source code results
    * in orange the execution flow
 
-
+.. container:: clearer
+ 
+   .. image :: _static/figs/spacer.png
+   
+   
 copying collections
 -------------------
 
@@ -993,7 +999,9 @@ is that assignment is very efficient.
 In some situations, we really do want a separate copy of the collection
 (or other mutable object). For sequences, when we take a slice.
 The slice is always an independent copy of the items copied. So to
-copy an entire sequence we can do this: ::
+copy an entire sequence we can do this: 
+
+.. code-block:: python
 
    >>> ascii = ['a','b','c']
    >>> ascii_copy = asci[:]
@@ -1011,8 +1019,7 @@ argument. Here are some examples:
 Note, though, that all of these copying techniques are **shallow** that is, 
 **only object references are copied and not the objects themselves**. 
  
-
-::
+.. code-block:: python
 
    >>> ascii = ['a','b','c']
    >>> ascii_copy = ascii[:] # shallow copy
@@ -1023,6 +1030,7 @@ Note, though, that all of these copying techniques are **shallow** that is,
    >>> ascii_copy.append('e')
    >>> ascii_copy
    ['a','b','c','e']
+   
    
 .. figure:: _static/figs/shallow_copy_of_col_of_imutable.png 
    :width: 600px
@@ -1038,7 +1046,7 @@ But for mutable data types such as nested collections
 this means that the objects they refer to are referred to both by the original
 collection and by the copied collection (the object in l and l0 have the same *id()*).
 
-::
+.. code-block:: python
 
    >>> ascii = ['a','b','c']
    >>> integer = [1,2,3]
@@ -1065,7 +1073,7 @@ collection and by the copied collection (the object in l and l0 have the same *i
 
    the schema above represent what python do behind the scene when we do a shallow copy.
    
-::
+.. code-block:: python
 
    >>> ascii[0] = 'z'
    >>> l[0]
@@ -1091,7 +1099,9 @@ In programmation, we call this a *side effect*. We saw the side effect problem o
 dictionnaries.
 
 If we really need independent copies of arbitrarily nested collections, 
-we have to do a *deep-copy*. ::
+we have to do a *deep-copy*. 
+
+.. code-block:: python
 
    >>> import copy
    >>> ascii = ['a','b','c']
@@ -1107,6 +1117,8 @@ we have to do a *deep-copy*. ::
    >>> l2
    [['a', 'b', 'c'], [1, 2, 3]]
 
+
+
 .. figure:: _static/figs/deep_copy_of_mutable_col.png 
    :width: 600px
    :alt: deep copy
@@ -1114,8 +1126,10 @@ we have to do a *deep-copy*. ::
 
    the schema above represent what python do behind the scene when we do a deep copy.
    
+
 Usually the terms *copy* and *shallow copy* are used interchangeably. 
 For *deep copy* we have to mentioned it explicitly.
+
 
 Exercises
 =========

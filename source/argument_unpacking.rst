@@ -1,4 +1,4 @@
-.. tabularcolumns:: |l{8cm}|l{8cm}| 
+.. tabularcolumns:: |p{8cm}|p{8cm}| 
 
 +----------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | Python2                                                                                                              | Python3                                                            |
@@ -9,10 +9,10 @@
 | This useful when we want to create functions that can                                                                                                                                     |
 | take a variable number of positional arguments. Here a product() function [prog_in_python3]_ .                                                                                            |
 |                                                                                                                                                                                           |
-| >>> def product(*args):                                                                                                                                                                   |
+| >>> def product(\*args):                                                                                                                                                                  |
 | ...     result = 1                                                                                                                                                                        |
 | ...     for arg in args:                                                                                                                                                                  |
-| ...             result *= arg                                                                                                                                                             |
+| ...             result \*= arg                                                                                                                                                            |
 | ...     return result                                                                                                                                                                     |
 | ...                                                                                                                                                                                       |
 | >>> product(1, 2, 3, 4)                                                                                                                                                                   |
@@ -25,9 +25,9 @@
 +----------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | We cannot have arguments after unpacking sequence                                                                    | Python3 support keywords arguments following positional arguments, |
 |                                                                                                                      | even if it's an unpacking sequence argument.                       |
-| >>> def func(*arg, arg2 = None):                                                                                     |                                                                    |
-| File "<stdin>", line 1                                                                                               | >>> def func( *arg, arg2 = None):                                  |
-| def func(*arg, arg2 = None):                                                                                         | ...     print(arg)                                                 |
+| >>> def func(\*arg, arg2 = None):                                                                                    |                                                                    |
+| File "<stdin>", line 1                                                                                               | >>> def func( \*arg, arg2 = None):                                 |
+| def func(\*arg, arg2 = None):                                                                                        | ...     print(arg)                                                 |
 | ^                                                                                                                    | ...     print(arg2)                                                |
 | SyntaxError: invalid syntax                                                                                          | ...                                                                |
 |                                                                                                                      | >>> func([1,2,3])                                                  |
@@ -49,15 +49,15 @@
 | >>> def func(a = 2, b = 3):                                                                                                                                                               |
 | ...     print(a, b)                                                                                                                                                                       |
 | ...                                                                                                                                                                                       |
-| >>> func(**{'a':4,'b':5})                                                                                                                                                                 |
+| >>> func(\* \*{'a':4,'b':5})                                                                                                                                                              |
 |                                                                                                                                                                                           |
 | >>>                                                                                                                                                                                       |
-| >>> func(**{'a':4,'c':5})                                                                                                                                                                 |
+| >>> func(\* \*{'a':4,'c':5})                                                                                                                                                              |
 | Traceback (most recent call last):                                                                                                                                                        |
 | File "<stdin>", line 1, in <module>                                                                                                                                                       |
 | TypeError: func() got an unexpected keyword argument 'c'                                                                                                                                  |
 | >>>                                                                                                                                                                                       |
-| >>> func(**{'a':4})                                                                                                                                                                       |
+| >>> func(\* \*{'a':4})                                                                                                                                                                    |
 | >>>                                                                                                                                                                                       |
 |                                                                                                                                                                                           |
 | We can also use mapping unpacking operator with parameter.                                                                                                                                |
@@ -69,13 +69,13 @@
 | ...     print b                                                                                                                                                                           |
 | ...     print kwargs                                                                                                                                                                      |
 | ...                                                                                                                                                                                       |
-| >>> def func(a = 2, b = 3, **kwargs, d = 4):                                                                                                                                              |
+| >>> def func(a = 2, b = 3, \* \*kwargs, d = 4):                                                                                                                                           |
 | File "<stdin>", line 1                                                                                                                                                                    |
-| def func(a = 2, b = 3, **kwargs, d = 4):                                                                                                                                                  |
+| def func(a = 2, b = 3, \* \*kwargs, d = 4):                                                                                                                                               |
 | ^                                                                                                                                                                                         |
 | SyntaxError: invalid syntax                                                                                                                                                               |
 | >>>                                                                                                                                                                                       |
-| >>> def func(*arg, **kwarg):                                                                                                                                                              |
+| >>> def func(\*arg, \* \*kwarg):                                                                                                                                                          |
 | ...     print(arg)                                                                                                                                                                        |
 | ...     print(kwarg)                                                                                                                                                                      |
 | ...                                                                                                                                                                                       |
@@ -91,3 +91,5 @@
 | ([1, 2, 3], {'a': 'A', 'b': 'B'})                                                                                                                                                         |
 | {}                                                                                                                                                                                        |
 +----------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+
+

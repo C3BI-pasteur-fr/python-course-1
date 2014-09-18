@@ -240,7 +240,7 @@ Such an identifier must obey a couple of rules and ideally follow some conventio
 
 Python 2 has 31 keywords:
 
-.. tabularcolumns:: |l|l|l|
+.. tabularcolumns:: |l|l|l|l|l|
 
 +----------+---------+--------+--------+-------+
 | and      | del     | from   | not    | while |
