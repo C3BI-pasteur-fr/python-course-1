@@ -339,8 +339,8 @@ If the user enters “3.5”, the output will be: ::
    invalid literal for int() with base 10: '3.5'
 
 But if they were to enter “13”, the output will be: ::
-   valid integer entered: 13
 
+   valid integer entered: 13
 
 The last except clause may omit the exception name(s), to serve as a wildcard. 
 Use this with **extreme** caution, since it is easy to mask a real programming error in this way! 
@@ -542,6 +542,7 @@ return the largest element in list (containing float or integer only)?
 Exercise
 --------
 
+
 let the following enzymes collection: ::
  
    import collections
@@ -549,8 +550,10 @@ let the following enzymes collection: ::
 
    ecor1 = RestrictEnzyme("EcoRI", "Ecoli restriction enzime I", "gaattc", 1, "sticky")
    ecor5 = RestrictEnzyme("EcoRV", "Ecoli restriction enzime V", "gatatc", 3, "blunt")
-   bamh1 = RestrictEnzyme("BamHI", "type II restriction endonuclease from Bacillus amyloliquefaciens ", "ggatcc", 1, "sticky")
-   hind3 = RestrictEnzyme("HindIII", "type II site-specific nuclease from Haemophilus influenzae", "aagctt", 1 , "sticky")
+   bamh1 = RestrictEnzyme("BamHI", "type II restriction endonuclease from Bacillus amyloliquefaciens",
+                          "ggatcc", 1, "sticky")
+   hind3 = RestrictEnzyme("HindIII", "type II site-specific nuclease from Haemophilus influenzae", 
+                          "aagctt", 1 , "sticky")
    taq1 = RestrictEnzyme("TaqI", "Thermus aquaticus", "tcga", 1 , "sticky")
    not1 = RestrictEnzyme("NotI", "Nocardia otitidis", "gcggccgc", 2 , "sticky")
    sau3a1 = RestrictEnzyme("Sau3aI", "Staphylococcus aureus", "gatc", 0 , "sticky")
@@ -559,18 +562,49 @@ let the following enzymes collection: ::
 
 and the 2 dna fragments: ::
 
-   dna_1 = """tcgcgcaacgtcgcctacatctcaagattcagcgccgagatccccgggggttgagcgatccccgtcagttggcgtgaattcag
-   cagcagcgcaccccgggcgtagaattccagttgcagataatagctgatttagttaacttggatcacagaagcttccaga
-   ccaccgtatggatcccaacgcactgttacggatccaattcgtacgtttggggtgatttgattcccgctgcctgccagg"""
+   dna_1 = """tcgcgcaacgtcgcctacatctcaagattcagcgccgagatccccgggggtt
+   gagcgatccccgtcagttggcgtgaattcagcagcagcgcaccccgggcgtagaattccagtt
+   gcagataatagctgatttagttaacttggatcacagaagcttccagaccaccgtatggatccc
+   aacgcactgttacggatccaattcgtacgtttggggtgatttgattcccgctgcctgccagg"""
 
-   dna_2 = """gagcatgagcggaattctgcatagcgcaagaatgcggccgcttagagcgatgctgccctaaactctatgcagcgggcgtgagg
-   attcagtggcttcagaattcctcccgggagaagctgaatagtgaaacgattgaggtgttgtggtgaaccgagtaag
-   agcagcttaaatcggagagaattccatttactggccagggtaagagttttggtaaatatatagtgatatctggcttg"""
+   dna_2 = """gagcatgagcggaattctgcatagcgcaagaatgcggccgcttagagcgatg
+   ctgccctaaactctatgcagcgggcgtgaggattcagtggcttcagaattcctcccgggagaa
+   gctgaatagtgaaacgattgaggtgttgtggtgaaccgagtaagagcagcttaaatcggagag
+   aattccatttactggccagggtaagagttttggtaaatatatagtgatatctggcttg"""
 
-| which enzymes cut the dna_1 get the name of the enzymes and all their positions of binding site?
-| do the same for dna_2
-| give the name of the enzymes that cut the dna_1 but not the dna_2?
+| which enzymes cut the dna_1 ?
+|                  the dna_2 ?
+|                  the dna_1 but not the dna_2?
 
+
+
+#. create a function *one_line_dna* that transform a multiligne sequence in a single ligne dna sequence.
+#. create a collection containing all enzymes
+#. create a function which take 2 parameters :
+   #. a sequence of dna
+   #. a list of enzyme
+   
+   and return a collection containing the enzymes which cut the dna.
+   
+
+Exercise
+--------
+  
+with the same dna and enzymes we want now get the name of the enzymes which cut the dna but we want
+to have all binding sites?
+  
+#. create a function *binding_sites* which take 2 parameters 
+   #. a sequence of dna
+   #. one enzyme
+   
+   and return all the positions of binding sites
+    
+#. using the function *binding_sites* create a list of tuples, each tuple of two items
+   contain a reference to an enzyme as first item and the position of the binding site in second.
+#. generalize this to all enzymes of the *enzymes* collection
+
+in bonus we can try to sort the list in the order of the position of the binding sites like this:
+[('Sau3aI', 38), ('SmaI', 42), ('Sau3aI', 56), ('EcoRI', 75), ...
 
 
 Exercise
