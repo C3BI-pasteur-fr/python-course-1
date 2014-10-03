@@ -294,27 +294,20 @@ These libraies are called "standard library".
 Exercises
 =========
 
-
 Exercise
 --------
 
 Write a program that calculates the similarity of 2 RNA sequences.
 
-* To compute the simalirity you need to parse a file containing the similarity matrix.
+* To compute the simalirity you need to parse a file containing the :download:`similarity matrix <_static/data/similarity_matrix>`.
   **Hint**: use the module containing the functions that handle a matrix from previous chapter.
-  and import it in your current program.
+  put this matrix.py file in a directory named "my_python_lib" in your home or Desktop
+  and import it in your current program (the similarity script must be placed elsewhere).
 * The similarity of the 2 sequences is the sum of base similarities. 
-  so you have to compare the first base of to sequence and use the matrix to get the similarity
+  so you have to compare the first base of two sequences and use the matrix to get the similarity
   from the similarity table, on so on for all bases then sum these similarities.
   
-.. note::
-   as we  don't yet see how to read a file, we provide a list of strings that represents the file
-   as we can get them if we read that file.
-   
-::
+ 
 
-   lines = iter(['  A G C U\n'
-                 'A 1.0 0.5 0.0 0.0\n',
-                 'G 0.5 1.0 0.0 0.0\n',
-                 'C 0.0 0.0 1.0 0.5\n',
-                 'U 0.0 0.0 0.5 1.0\n']) 
+
+
