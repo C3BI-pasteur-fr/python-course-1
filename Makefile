@@ -42,16 +42,19 @@ clean:
 	-rm -rf $(BUILDDIR)/*
 
 html:
+	ln -sfr source/html_argument_unpacking.rst source/argument_unpacking.rst
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
 dirhtml:
+	ln -sfr source/html_argument_unpacking.rst source/argument_unpacking.rst
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/dirhtml."
 
 singlehtml:
+	ln -nsf source/html_argument_unpacking.rst source/argument_unpacking.rst
 	$(SPHINXBUILD) -b singlehtml $(ALLSPHINXOPTS) $(BUILDDIR)/singlehtml
 	@echo
 	@echo "Build finished. The HTML page is in $(BUILDDIR)/singlehtml."
@@ -91,11 +94,13 @@ devhelp:
 	@echo "# devhelp"
 
 epub:
+	ln -sfr source/html_argument_unpacking.rst source/argument_unpacking.rst
 	$(SPHINXBUILD) -b epub $(ALLSPHINXOPTS) $(BUILDDIR)/epub
 	@echo
 	@echo "Build finished. The epub file is in $(BUILDDIR)/epub."
 
 latex:
+	ln -sfr source/pdf_argument_unpacking.rst source/argument_unpacking.rst
 	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
 	@echo
 	@echo "Build finished; the LaTeX files are in $(BUILDDIR)/latex."
@@ -103,6 +108,7 @@ latex:
 	      "(use \`make latexpdf' here to do that automatically)."
 
 latexpdf:
+	ln -sfr source/pdf_argument_unpacking.rst source/argument_unpacking.rst
 	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
 	@echo "Running LaTeX files through pdflatex..."
 	$(MAKE) -C $(BUILDDIR)/latex all-pdf

@@ -296,3 +296,6 @@ epub_copyright = u'2014, Éric Deveaud, Bertrand Néron'
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'http://docs.python.org/': None}
+
+
+    
