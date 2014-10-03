@@ -32,8 +32,12 @@ But this also influence the way the command line is passed to the Popen construc
   ::
 
    from subprocess import Popen
-   blast_process = Popen( args = ['/local/gensoft/scripts/blastall', '-p', 'blastp', '-d', 'uniprot_sprot', 
-                                  '-i', 'DataBio/Sequences/Proteique/abcd2_mouse.fa', '-b', '2', '-v', '5'])
+   blast_process = Popen( args = ['/local/gensoft/scripts/blastall', 
+                                  '-p', 'blastp', 
+                                  '-d', 'uniprot_sprot', 
+                                  '-i', 'DataBio/Sequences/Proteique/abcd2_mouse.fa', 
+                                  '-b', '2', 
+                                  '-v', '5'])
 
 * **shell = True** : in this case the subprocessus is executed in a sub-shell, args must be a ``string`` formatted as the command is typed in a terminal.
   This include the *quote* or *backslash* to escape spaces etc.
@@ -42,7 +46,9 @@ But this also influence the way the command line is passed to the Popen construc
   ::
 
    from subprocess import Popen
-   blast_process = Popen(args = 'blastall -p blastp -d uniprot_sprot -i DataBio/Sequences/Proteique/abcd2_mouse.fa -b 2 -v 5', shell = True)
+   blast_process = Popen(args = 'blastall -p blastp -d uniprot_sprot \
+                                    -i DataBio/Sequences/Proteique/abcd2_mouse.fa -b 2 -v 5', 
+                         shell = True)
 
 Environment Variables
 =====================
@@ -55,7 +61,9 @@ If we want that the subprocess inherits of a environement variable simply add it
    import os
    os.environ['BLASTDB'] = '/home/toto/BioBank/blast'
    from subprocess import Popen
-   blast_process = Popen(args = 'blastall -p blastp -d my_bank -i DataBio/Sequences/Proteique/abcd2_mouse.fa -b 2 -v 5', shell = True)
+   blast_process = Popen(args = 'blastall -p blastp -d my_bank \
+                                     -i DataBio/Sequences/Proteique/abcd2_mouse.fa -b 2 -v 5', 
+                         shell = True)
 
 It is also possible to specify a new environement to the subprocess *via* the ``env`` argument.
 But be carefull, in this case all the environemnt is replaced. **BEWARE** to the PATH. In this case the ``env`` is a dictionary.
@@ -66,7 +74,9 @@ But be carefull, in this case all the environemnt is replaced. **BEWARE** to the
                'BLASTDB' : '/home/toto/BioBank/blast', 
                'BLASTMAT' : '/home/toto/share/Matrix'
               }
-   blast_process = Popen(args = 'blastall -p blastp -d my_bank -i DataBio/Sequences/Proteique/abcd2_mouse.fa -b 2 -v 5', env = new_env, shell = True)
+   blast_process = Popen(args = 'blastall -p blastp -d my_bank \
+                                     -i DataBio/Sequences/Proteique/abcd2_mouse.fa -b 2 -v 5', 
+                          env = new_env, shell = True)
 
 
 Get the standard and error output
@@ -77,7 +87,11 @@ By default ``Popen`` redirect subprocess the *standard* and *error* outputs on `
 ::
 
    import sys
-   blast_process = Popen('blastall -p blastp -d my_bank  -i DataBio/Sequences/Proteique/abcd2_mouse.fa -b 2 -v 5', shell = True, stdout = blast_out, stderr = blast_err)
+   blast_process = Popen('blastall -p blastp -d my_bank \
+                                   -i DataBio/Sequences/Proteique/abcd2_mouse.fa -b 2 -v 5', 
+                          shell = True, 
+                          stdout = blast_out, 
+                          stderr = blast_err)
 
 Redirect outputs in files
 -------------------------
@@ -90,8 +104,11 @@ instead to diplay ``stderr`` and ``stdout`` it's often usefull to harvest result
    blast_out = open('blast.out', 'w')
    blast_err = open('blast.err', 'w')
    try:
-      blast_process = Popen('blastall -p blastp -d uniprot_sprot  -i DataBio/Sequences/Proteique/abcd2_mouse.fa -b 2 -v 5', shell=True, 
-                              stdout = blast_out, stderr = blast_err)
+      blast_process = Popen('blastall -p blastp -d uniprot_sprot \
+                                      -i DataBio/Sequences/Proteique/abcd2_mouse.fa -b 2 -v 5', 
+                             shell=True, 
+                             stdout = blast_out, 
+                             stderr = blast_err)
       blast_process.wait()
    finally:
       blast_out.close()
@@ -121,8 +138,11 @@ To do this we need to pass the constant ``subprocress.PIPE`` to the arguments *s
 
    from subprocess import Popen, PIPE
    
-   blast_process = Popen('blastall -p blastp -d uniprot_sprot -i DataBio/Sequences/Proteique/abcd2_mouse.fa', 
-                         shell = True, stdout = PIPE, stderr = PIPE)
+   blast_process = Popen('blastall -p blastp -d uniprot_sprot \
+                                   -i DataBio/Sequences/Proteique/abcd2_mouse.fa', 
+                         shell = True, 
+                         stdout = PIPE, 
+                         stderr = PIPE)
    blast_process.wait()
  
    print "ce code risque de ne jamais etre excuter"
@@ -151,7 +171,8 @@ pseudo code of poll using
       check which flow generate this event
           
     créer un objet poll
-    enregistrer les flux que l'on veut surveiller avec le filtre correspondant à ce que l'on désire surveiller
+    enregistrer les flux que l'on veut surveiller avec le filtre correspondant 
+                                                à ce que l'on désire surveiller
     démarrer la surveillance des flux
     à chaque evenment sur un flux
         analyser quel type d'évenement a été
@@ -162,7 +183,9 @@ pseudo code of poll using
 
    import select
    process_ = Popen(
-                     'blastall -p blastp -d uniprot_sprot -i DataBio/Sequences/Proteique/abcd2_mouse.fa', shell = True,
+                     'blastall -p blastp -d uniprot_sprot \
+                     -i DataBio/Sequences/Proteique/abcd2_mouse.fa', 
+                     shell = True,
                      shell = True ,
                      stdout = PIPE ,
                      stdin = None ,
@@ -179,8 +202,10 @@ pseudo code of poll using
        # at each poll call we have a liste of tuple with 2 int.
        # [(fd1, flag) , (fd2,flag)]
        # fd is a filedescriptor
-       # flag match a combination of select.POLLIN | select.POLLPRI | select.POLLHUP | select.POLLERR
-       # this list match with the fd ready to be processed in reading or writing depending of their creation.
+       # flag match a combination of 
+       # select.POLLIN | select.POLLPRI | select.POLLHUP | select.POLLERR
+       # this list match with the fd ready to be processed in 
+       # reading or writing depending of their creation.
        # beware this is a blaocking call while a fd is not ready (we provide a timeout as argument) 
        events =  poller.poll()
        while events :
@@ -213,17 +238,20 @@ It is possible to implement the solution using select.select()
 
    import select
    process_ = Popen(
-                     'blastall -p blastp -d uniprot_sprot  -i DataBio/Sequences/Proteique/abcd2_mouse.fa', shell=True,
+                     'blastall -p blastp -d uniprot_sprot \
+                               -i DataBio/Sequences/Proteique/abcd2_mouse.fa',
+                     shell=True,
                      shell = True ,
                      stdout = PIPE ,
                      stdin = None ,
                      stderr = PIPE ,
-                     )
+                  )
    inputs = [process_.stdout, process_.stderr]
    while process_.poll() is None:
        # select have 3 parameters, 3 lists , the sockets, the fileobject to watch
        # in reading, writing, the errors
-       # in addition a timeout in option (the call is blacking while a fileObject is not ready to be processed)
+       # in addition a timeout in option (the call is blacking while a fileObject 
+       # is not ready to be processed)
        # by return we get 3 lists with the fileObject to be processed
        # in reading, writing, errors
        readable , writable, exceptional = select.select(inputs, [], [] , 1)
@@ -256,16 +284,20 @@ This method interact with process: Send data to stdin. Read data from stdout and
     
     
 .. warning::
-   The data read is buffered in memory, so do **NOT** use this method if the data size is large or unlimited.
+   The data read is buffered in memory, 
+   so do **NOT** use this method if the data size is large or unlimited.
     
 .. code-block:: python
 
    from subprocess import Popen, PIPE
    
-   blast_process = Popen('blastall -p blastp -d uniprot_sprot -i DataBio/Sequences/Proteique/abcd2_mouse.fa', 
-                         shell = True, stdout = PIPE, stderr = PIPE)
+   blast_process = Popen('blastall -p blastp -d uniprot_sprot \
+                                   -i DataBio/Sequences/Proteique/abcd2_mouse.fa', 
+                          shell = True, 
+                          stdout = PIPE, 
+                          stderr = PIPE)
    stdout, stderr = blast_process.communicate()
 
    return_code = blast_process.poll()
    if return_code != 0 :
-      raise RuntimeError("something goes wrong with blastp :"+stderr)
+      raise RuntimeError("something goes wrong with blastp :" + stderr)
