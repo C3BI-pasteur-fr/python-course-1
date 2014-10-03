@@ -73,7 +73,7 @@ of the builtin function ``open`` has changed between these two python branches.
    
 the different values for acces mode :
 
-.. tabularcolumns:: |p{2cm}|p{8cm}|p{2cm}|p{8cm}|
+.. tabularcolumns:: |p{1cm}|p{7cm}|p{1cm}|p{7cm}|
 
 +-----------+-----------------------------------------------------------------+-----------+-----------------------------------------------------------------+
 | Python 2  |                                                                 | Python 3  |                                                                 |
