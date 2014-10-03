@@ -218,9 +218,10 @@ Construction from an integer or a float performs an exact conversion of the valu
    >>> Decimal(3.14)
    Decimal('3.140000000000000124344978758017532527446746826171875')
    >>> # From tuple  
-   >>> #   - The first value in the tuple should be an integer; either 0 for a positive number or 1 for a negative number.
-   >>> #   - The second value must be a tuple composed of intergers in the range 0 through  9  
-   >>> #   - The third value is an integer representing the exponant
+   >>> # - The first value in the tuple should be an integer; either 0 for a positive number 
+   >>> #    or 1 for a negative number.
+   >>> # - The second value must be a tuple composed of intergers in the range 0 through  9  
+   >>> # - The third value is an integer representing the exponant
    >>> Decimal((0, (3, 1, 4), -2))
    Decimal('3.14')
    >>> Decimal(str(2.0 ** 0.5))
@@ -685,7 +686,7 @@ It can be also an item in a collection data types. ::
    >>> ecor1 = {id : 'EcoR1', seq : 'gaattc, com : 'restriction site 1 for Ecoli'}
    >>> '>{0[id]} {0[com]}\n{0[seq]}'.format(ecor1)
    
- one very useful way to format string using mapping is to :ref:`unpack` the mapping in the ``format`` arguments.::
+one very useful way to format string using mapping is to :ref:`unpack` the mapping in the ``format`` arguments.::
  
    >>> d = {'a' : 1 , 'b' : 2}
    >>> 'a = {a}, b = {b}'.format(**d)
@@ -761,7 +762,8 @@ The syntax for numbers is the same as for string but there is some specific fiel
    sign        ::=  "+" | "-" | " "
    width       ::=  integer
    precision   ::=  integer
-   type        ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" | "o" | "s" | "x" | "X" | "%"
+   type        ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" | "o" | "s" |
+                     "x" | "X" | "%"
 
 
 *sign*: The sign option is only valid for number types, and can be one of the following:
@@ -991,24 +993,25 @@ Exercise
 --------
 
 we want to perform a PCR on sv40, can you give the length and the sequence of the amplicon?
-to simplify the 2 primers are given in 5'3' 
+to simplify the 2 primers can be read directly in the sv40 sequence. 
 
 | CGGGACTATGGTTGCTGACT
 | TCTTTCCGCCTCAGAAGGTA
 
-write the peudocode before to implement it
+write the pseudocode before to implement it.
 
 
 Exercise
 --------
 
 #. reverse the following sequence "TACCTTCTGAGGCGGAAAGA" (don't compute the complement):
-#. using the smaller string  s = 'gaattc' draw what happen in memory when you reverse the s
+#. using the shorter string  s = 'gaattc' draw what happen in memory when you reverse the s
 
 Exercise
 --------
 
-| il2_human = 'MYRMQLLSCIALSLALVTNSAPTSSSTKKTQLQLEHLLLDLQMILNGINNYKNPKLTRMLTFKFYMPKKATELKHLQCLEEELKPLEEVLNLAQSKNFHLRPRDLISNINVIVLELKGSETTFMCEYADETATIVEFLNRWITFCQSIISTLT'
+| il2_human = 
+| 'MYRMQLLSCIALSLALVTNSAPTSSSTKKTQLQLEHLLLDLQMILNGINNYKNPKLTRMLTFKFYMPKKATELKHLQCLEEELKPLEEVLNLAQSKNFHLRPRDLISNINVIVLELKGSETTFMCEYADETATIVEFLNRWITFCQSIISTLT'
 | the il2_human contains 4 cysteins (C) in positions 9, 78, 125, 145. We want to generate the sequence of a mutatnt were the cysteins 78 and 125 are replaced by serins (S) 
 | write the pseudo code, before to propose an implementation:
 
@@ -1017,5 +1020,5 @@ Exercise
 --------
 
 #. use again the sv40 sequence and compute the gc%
-#. generate a "micro" report like this: 'the sv40 is 5243 bp lenght and have 40.80% gc' 
+#. generate a "micro" report like this: 'the sv40 is 5243 bp length and have 40.80% gc' 
 
