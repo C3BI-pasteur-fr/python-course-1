@@ -28,7 +28,7 @@
 | >>> def func(*arg, arg2 = None):                                                                                     |                                                                    |
 | File "<stdin>", line 1                                                                                               | >>> def func( *arg, arg2 = None):                                  |
 | def func(*arg, arg2 = None):                                                                                         | ...     print(arg)                                                 |
-| ^                                                                                                                    | ...     print(arg2)                                                |
+|                 ^                                                                                                    | ...     print(arg2)                                                |
 | SyntaxError: invalid syntax                                                                                          | ...                                                                |
 |                                                                                                                      | >>> func([1,2,3])                                                  |
 |                                                                                                                      | ([1, 2, 3],)                                                       |
@@ -38,9 +38,10 @@
 |                                                                                                                      | ([1, 2, 3],)                                                       |
 |                                                                                                                      | a                                                                  |
 +----------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| Just as we can unpack a sequence to populate a function's positionalarguments,                                                                                                            |
+| Just as we can unpack a sequence to populate a function's positional arguments,                                                                                                           |
 | we can unpack a mapping using the mapping unpacking operator ** .                                                                                                                         |
 | We can use ** to pass a dictionary to a argument.                                                                                                                                         |
+|                                                                                                                                                                                           |
 | Here the options dictionary's key-value pairs are unpackecd                                                                                                                               |
 | with each key's value being assigned to the parameter whose name is the same as the  key.                                                                                                 |
 | If the dictionnary contains a key for wich there is no corresponding parameter,                                                                                                           |
@@ -80,16 +81,21 @@
 | ...     print(kwarg)                                                                                                                                                                      |
 | ...                                                                                                                                                                                       |
 | >>> func(1, 2, 3)                                                                                                                                                                         |
-| (1, 2, 3)                                                                                                                                                                                 |
-| {}                                                                                                                                                                                        |
+| arg = (1, 2, 3)                                                                                                                                                                           |
+| kwatg = {}                                                                                                                                                                                |
 | >>>                                                                                                                                                                                       |
 | >>> func([1, 2, 3], a= 'A', b = 'B')                                                                                                                                                      |
-| ([1, 2, 3],)                                                                                                                                                                              |
-| {'a': 'A', 'b': 'B'}                                                                                                                                                                      |
+| arg = ([1, 2, 3],)                                                                                                                                                                        |
+| kwarg = {'a': 'A', 'b': 'B'}                                                                                                                                                              |
 | >>>                                                                                                                                                                                       |
 | >>> func([1, 2, 3],{'a':'A', 'b':'B'})                                                                                                                                                    |
-| ([1, 2, 3], {'a': 'A', 'b': 'B'})                                                                                                                                                         |
-| {}                                                                                                                                                                                        |
+| arg = ([1, 2, 3], {'a': 'A', 'b': 'B'})                                                                                                                                                   |
+| kwarg = {}                                                                                                                                                                                |
+| >>> l = [1, 2, 3]                                                                                                                                                                         |
+| >>> d = {'a':'A', 'b':'B'}                                                                                                                                                                |
+| >>> func(*l, **d)                                                                                                                                                                         |
+| arg = (1, 2, 3)                                                                                                                                                                           |
+| kwarg = {'a': 'A', 'b': 'B'}                                                                                                                                                              |
 +----------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 
 
