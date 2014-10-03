@@ -31,7 +31,7 @@ To return a value we explicitely use the keyword ``return`` if we do not do that
 We can leave a function at any point by using the ``return`` statement (the yield can be used also but will not cover here) [prog_in_python3]_. 
 We can call functions by appending parentehesis to the function name. ::
 
-   >>> def global_func(param_1):
+   >>> def global_func():
          return "global_func is a global function"
  
    >>> print global_func()
@@ -115,10 +115,10 @@ then to reproducesome examples as they would appear if typed in interactively.
 In Chapter 5 and Chapter 9 we will see how examples in function documentation
 can be used to provide unit tests.
 
-For bigger project I recommend to use sphinx. `sphinx <http://sphinx-doc.org/index.html>`_is a Python Document Generator.
+For bigger project I recommend to use sphinx. `sphinx <http://sphinx-doc.org/index.html>`_ is a Python Document Generator.
 It is powerfull and simple the learning curve is not too steep and it allow to provide to user and developper a full documentation of the project
 in different formats: web site, pdf, epub, ...
-`Lot of python project use sphinx <http://sphinx-doc.org/examples.html>`_: python, NumPy, this course has been written using sphinx, ...
+`Lot of python project use sphinx <http://sphinx-doc.org/examples.html>`_ : python, NumPy, this course has been written using sphinx, ...
 
 functions are objects
 ---------------------
@@ -279,6 +279,8 @@ optional variables are available within the function as a dictionary.
 The operation consiting to get the arguemnts passed as sequence is call *argument unpacking*.
 Let look how it work, especially there are significant differences between python 2 and 3. 
 
+.. unpack_:
+
 Sequence unpacking
 ^^^^^^^^^^^^^^^^^^  
 
@@ -311,13 +313,13 @@ Sequence unpacking
          
 Argument unpacking
 ^^^^^^^^^^^^^^^^^^
-    
+
 .. include:: argument_unpacking.rst
 
-  
+      
 Scope of variables
 ------------------
-
+ 
 For variables, Python has function scope, module scope, and global scope (in python the term of namespaces is often used) [Franklin]_. 
 Names enter scope at the start of a context (function, module, or globally), 
 and exit scope when a non-nested function is called or the context ends. 
@@ -536,15 +538,21 @@ For instance, it will very often use in function that take a function as paramet
    from collections import namedtuple  
    Sequence = namedtuple("Sequence", "id comment sequence")
    sequences = [
-      Sequence('abcd3_rat', '', 'MAAFSKYLTARNSSLAGAAFLLFCLLHKRRRALGLHGKKSGKPPLQNNEKEGKKERAVVDKVFLSRLSQILKI'),
-      Sequence('il2_human_matured', 'matured sequence of il2_human', 'APTSSSTKKTQLQLEHLLLDLQMILNGINNYKNPKLTRMLTFKFYMPKKATELKHLQCLEEELKPLEEV'),
-      Sequence('il2_human', '', 'MYRMQLLSCIALSLALVTNSAPTSSSTKKTQLQLEHLLLDLQMILNGINNYKNPKLTRMLTFKFYMPKKATELKHLQCLE'),
-      Sequence('TRYP_PIG', '' , 'FPTDDDDKIVGGYTCAANSIPYQVSLNSGSHFCGGSLINSQWVVSAAHCYKSRIQVRLGE')]
+      Sequence('abcd3_rat', '', 
+               'MAAFSKYLTARNSSLAGAAFLLFCLLHKRRRALGLHGKKSGKPPLQNNEKEGKKERAVVDKVFLSRLSQILKI'),
+      Sequence('il2_human_matured', 'matured sequence of il2_human', 
+               'APTSSSTKKTQLQLEHLLLDLQMILNGINNYKNPKLTRMLTFKFYMPKKATELKHLQCLEEELKPLEEV'),
+      Sequence('il2_human', '', 
+               'MYRMQLLSCIALSLALVTNSAPTSSSTKKTQLQLEHLLLDLQMILNGINNYKNPKLTRMLTFKFYMPKKATELKHLQCLE'),
+      Sequence('TRYP_PIG', '' , 
+               'FPTDDDDKIVGGYTCAANSIPYQVSLNSGSHFCGGSLINSQWVVSAAHCYKSRIQVRLGE')]
 
    filter(lambda seq: seq.sequence.startswith('M'), sequences)
 
-   [Sequence(id='il2_human', comment='', sequence='MYRMQLLSCIALSLALVTNSAPTSSSTKKTQLQLEHLLLDLQMILNGINNYKNPKLTRMLTFKFYMPKKATELKHLQCLE'),
-    Sequence(id='abcd3_rat', comment='', sequence='MAAFSKYLTARNSSLAGAAFLLFCLLHKRRRALGLHGKKSGKPPLQNNEKEGKKERAVVDKVFLSRLSQILKIMVPRTFC')]
+   [Sequence(id='il2_human', comment='', 
+            sequence='MYRMQLLSCIALSLALVTNSAPTSSSTKKTQLQLEHLLLDLQMILNGINNYKNPKLTRMLTFKFYMPKKATELKHLQCLE'),
+    Sequence(id='abcd3_rat', comment='', 
+            sequence='MAAFSKYLTARNSSLAGAAFLLFCLLHKRRRALGLHGKKSGKPPLQNNEKEGKKERAVVDKVFLSRLSQILKIMVPRTFC')]
 
    sequences.sort(lambda seq1, seq2: len(seq2.sequence)- len(seq1.sequence))
    
@@ -577,7 +585,7 @@ Exercise
 Without executing the code in Python interpreter, can you determine what the code above print out. 
 help you by drawing diagram.
 
-**Hint** locals print a dictionnary with local variable as keys and theire respectives values.
+**Hint** locals print a dictionnary with local variable as keys and their respectives values.
 
 ::
  
