@@ -481,7 +481,8 @@ and now execute your program. ::
   
     python /tmp/toto
     File "/tmp/toto", line 3
-    SyntaxError: Non-ASCII character '\xc3' in file /tmp/toto on line 3, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
+    SyntaxError: Non-ASCII character '\xc3' in file /tmp/toto on line 3, 
+                           but no encoding declared; see http://www.python.org/peps/pep-0263.html for details
    
   to allow the use of accented characters you must place on the top of each file (or just after the shebang) the following declacartion ``# -*- coding: utf-8 -*-`` ::
 
