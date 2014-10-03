@@ -113,7 +113,8 @@ For example: ::
    >>> import collections
    >>> RestrictEnzyme = collections.namedtuple("RestrictEnzyme", "name comment sequence cut end")
    >>> ecor1 = RestrictEnzyme("EcoR1", "Ecoli restriction enzime I", "gaattc", 1, "sticky")
-   >>> bamh1 = RestrictEnzyme("BamH1", "type II restriction endonuclease from Bacillus amyloliquefaciens ", "ggatcc", 1, "sticky")
+   >>> bamh1 = RestrictEnzyme("BamH1", "type II restriction endonuclease from Bacillus amyloliquefaciens",
+                              "ggatcc", 1, "sticky")
    >>>
    >>> ecor1[2]
    'gaattc'
@@ -136,7 +137,7 @@ For example: ::
 Lists
 -----
 
-A list is an ordered ``sequence`` of zero or more object refernces.
+A list is an ordered ``sequence`` of zero or more object refrences.
 lists support the same extracting, slicing syntax as ``strings`` or ``tuples``.
 Unlike ``strings`` and ``tuples``, lists are *mutable*, so we can replace, delete any of their items.
 It is also possible to insert, replace, and delete slices of lists.
@@ -165,8 +166,9 @@ tuple, list, ...
    >>> list("argument")
    ['a', 'r', 'g', 'u', 'm', 'e', 'n', 't']
    >>>   
-   >>> hind3 =  RestrictEnzyme("HindIII", "type II site-specific nuclease from Haemophilus influenzae", "aagctt", 1 , "sticky")
-   >>> digest.append(hindIII)
+   >>> hind3 =  RestrictEnzyme("HindIII", "type II site-specific nuclease from Haemophilus influenzae", 
+                               "aagctt", 1 , "sticky")
+   >>> digest.append(hind3)
    >>>
    >>> tree = ['Bovine', ['Gibbon', ['Orang', ['Gorilla', ['Chimp', 'Human']]]], 'Mouse' ]
    >>>
@@ -328,7 +330,7 @@ since they are unordered they have **no** notion of index position and so **cann
 be sliced or strided. 
 
 The set data type can be called as function, ``set()``, with no arguments and it return an empty set,
-the items can be add one by one using the ``add`` method::
+the items can be add one by one using the ``add`` method ::
 
    s = set()
    s.add('a')
@@ -336,7 +338,7 @@ the items can be add one by one using the ``add`` method::
    s.add((1,2))
 
 With a set as argument it returns a shallow copy of the argument, and with any other argument it attempts 
-to convert the given object to a set. It does not accept more than one argument.::
+to convert the given object to a set. It does not accept more than one argument. ::
 
    l = [1,2,3,4,3,2]
    s = set(l)
@@ -366,7 +368,8 @@ The other way to create a set is by enclosing a comma separated sequence of obje
    :alt: set
    :figclass: align-center
     
-This figure illustrates the set created by the following code snippet::
+This figure illustrates the set created by the following code snippet ::
+
    S = {'foo bar', 2, ecor1, frozenset({8, 4, 7}), -29, (3, 4, 5)}
 
 .. container:: clearer
@@ -375,7 +378,7 @@ This figure illustrates the set created by the following code snippet::
        
 Sets always contains unique items. It safe to add several times the same item but pointless.
 Sets support ``len`` and fast membership testing ``in`` and ``not in``.
-Tey also support ususal set operators: Union, Intersection, Difference, Symetric difference::
+Tey also support ususal set operators: Union, Intersection, Difference, Symetric difference ::
 
    >>> pecan = set("pecan")
    >>> pie = set("pie")
@@ -458,8 +461,10 @@ As we can build a list using an expresion (see :ref:`lists_comprehension`) we ca
    import collections
    RestrictEnzyme = collections.namedtuple("RestrictEnzyme", "name comment sequence cut end")
    ecor1 = RestrictEnzyme("EcoR1", "Ecoli restriction enzime I", "gaattc", 1, "sticky")
-   bamh1 = RestrictEnzyme("BamH1", "type II restriction endonuclease from Bacillus amyloliquefaciens ", "ggatcc", 1, "sticky")
-   hind3 =  RestrictEnzyme("HindIII", "type II site-specific nuclease from Haemophilus influenzae", "aagctt", 1 , "sticky")
+   bamh1 = RestrictEnzyme("BamH1", "type II restriction endonuclease from Bacillus amyloliquefaciens",
+                          "ggatcc", 1, "sticky")
+   hind3 =  RestrictEnzyme("HindIII", "type II site-specific nuclease from Haemophilus influenzae", 
+                           "aagctt", 1 , "sticky")
    sma1 =  RestrictEnzyme("SmaI", "Serratia marcescens", "cccggg", 3 , "blunt")
    digest = [ecor1, bamh1, hind3, sma1]
    >>> 
@@ -554,7 +559,8 @@ same as an existing key, the effect is to **replace** that key’s value with a 
    :figclass: align-center
    
 
-Illustrates the dictionary created by the following code snippet::
+Illustrates the dictionary created by the following code snippet ::
+
    >>> d1 = {0 : 1 , (2,10) : “foo”, -1 : [ “a”, ”b”, ”c ], “Ecor1” : ecor1 }
       
 Brackets are used to access individual values—for example, d[0] returns 1,
@@ -662,8 +668,10 @@ set comprehensions, two syntaxes are supported: ::
    import collections
    RestrictEnzyme = collections.namedtuple("RestrictEnzyme", "name comment sequence cut end")
    ecor1 = RestrictEnzyme("EcoR1", "Ecoli restriction enzime I", "gaattc", 1, "sticky")
-   bamh1 = RestrictEnzyme("BamH1", "type II restriction endonuclease from Bacillus amyloliquefaciens ", "ggatcc", 1, "sticky")
-   hind3 =  RestrictEnzyme("HindIII", "type II site-specific nuclease from Haemophilus influenzae", "aagctt", 1 , "sticky")
+   bamh1 = RestrictEnzyme("BamH1", "type II restriction endonuclease from Bacillus amyloliquefaciens",
+                          "ggatcc", 1, "sticky")
+   hind3 =  RestrictEnzyme("HindIII", "type II site-specific nuclease from Haemophilus influenzae", 
+                          "aagctt", 1 , "sticky")
    sma1 =  RestrictEnzyme("SmaI", "Serratia marcescens", "cccggg", 3 , "blunt")
    digest = [ecor1, bamh1, hind3, sma1]
    # now I need a collection to acces direcly to the enzyme given its name
@@ -1149,8 +1157,29 @@ and ::
    x = [1, 2, 3, 4]
    x += [5, 6]
 
-compare with the exercise on string and integers   
+compare ::
 
+   x = 3
+   y = x
+   y += 3
+   x = ?
+   y = ?
+   
+and ::
+
+   x = [1,2]
+   y = x
+   y += [3,4]
+   x = ?
+   y = ?  
+
+With mutable object like ``list`` when we mutate the object the state of the object is modified.
+but the reference to the object is still unchanged.
+So in this exemple we have to way to access to the list [1,2] if we modify the state of the list itself.
+but not the refernces to this object, then the 2 variables x and y still reference the list containing
+[1,2,3,4]. 
+
+  
 Exercise
 --------
 
@@ -1223,7 +1252,10 @@ and finally print the results one 3mer and it's occurence per line.
 write first the pseudocode, then implement it.
 
 bonus:
-print the kmer by incresing occurences.
+print the kmer by increasing occurences.
+
+
+
 
 Exercise
 --------
