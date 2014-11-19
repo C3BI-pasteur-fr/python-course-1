@@ -36,8 +36,8 @@ We cannot have arguments after unpacking sequence
                   ^
    SyntaxError: invalid syntax
 
-we can unpack a mapping to populate function's name arguments
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+we can unpack a dictionnary to populate function's name arguments
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Just as we can unpack a sequence to populate a function's positional arguments,
 we also, can unpack a mapping using the mapping unpacking operator ** .
@@ -63,8 +63,8 @@ a TypeError is raised. Any argument for which the dictionary has no correspondin
    >>> func(**d)
    >>> 4 3
 
-We can also use mapping to specify a variable number of named argument.
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+We can also use dictionary to specify a variable number of named argument.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 For this we use the \*\* operator.
 In this case, the \*\* operator **must be the last** argument. ::

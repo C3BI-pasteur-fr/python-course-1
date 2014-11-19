@@ -45,7 +45,8 @@ making the purpose and use of the function clear to other programmers and
 to ourselves some time after we have created the function. 
 Here are a few rules of thumb that you might like to consider.
 
-* Use a naming scheme, and use it consistently. see `Style Guide for Python Code <http://legacy.python.org/dev/peps/pep-0008/#naming-conventions>`_  
+* Use a naming scheme, and use it consistently. see 
+  `Style Guide for Python Code <http://legacy.python.org/dev/peps/pep-0008/#naming-conventions>`_  
   for naming convention
 * For all names, avoid abbreviations, unless they are both standardized and
   widely used.
@@ -140,7 +141,7 @@ They are callable objects. Since functions are objects, they can be handled as a
          return "global_func is a global function"
 
    >>> other_func = global_func
-   >>> print other_func()
+   >>> print other_func() # () mean call/execute the function
    "global_func is a global function"
 
 .. container:: clearer
@@ -358,7 +359,7 @@ and assigning to global or nonlocal variables [scope]_ .
    
    ::
 
-      G = 14
+      G = 4
       I = 12
       def func(p):
          I = 5
@@ -416,7 +417,9 @@ and assigning to global or nonlocal variables [scope]_ .
 
    .. image :: _static/figs/spacer.png 
    
-We can see this mechanism in action as in Python we can view the content of the local the global namespace via two built-in functions *locals* and *globals*
+We can see this mechanism in action as in Python we can view the content of the local the global namespace 
+via two built-in functions *locals* and *globals*
+The code below is written in Python3.
 
 .. code-block:: python
    :linenos:
