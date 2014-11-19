@@ -15,7 +15,7 @@ As we seen in :ref:`Variables chapter <immutable obj>`
 
 * *imutable* objects are objects that we **cannot** change the state (the value).
   So the collection is frozen after it's creation, of course we can access to the items, 
-  but we cannot change the colection add, remove, reorder the collection.
+  but we cannot change the collection, for instance add, remove or reorder the collection.
   
 * *mutable* objects are objects that we can modify the state (the value). 
   So we can access to the items but we **can** modify the collection: add, remove, change or sort items
@@ -28,7 +28,7 @@ Sequence Types
 
 A *sequence* type is one that supports the membership operator ``in``, the size function ``len()``, slices ``[]``.
 Python provide three sequence types ``tuple``, ``list`` and ``string`` (in python 3 there is also ``bytearray`` and ``bytes``).
-The string are covered in :ref:`previous chapter <strings>`.
+The strings are covered in :ref:`previous chapter <strings>`.
 Some other sequence type are also provide by the standard library for instance ``collections.namedtuple``  or ``collections.set``.
 
 Tuples
@@ -42,7 +42,12 @@ As they are immutable, we cannot replace or delete or add any items after creati
 The tuple data type can be called as a function, *tuple()*, without any arguments it return an empty tuple, 
 with a tuple as argument it returns a shallow copy of the argument, and with any other argument it 
 attempts to convert the given object to a tuple. 
-Ther is a more convnient way to create tuple. an empty tuple is create with parenthesis (), 
+Ther is a more convenient way to create tuple. an empty tuple is create with parenthesis ()::
+
+   >>> a = ()
+   >>> type(a)
+   <type 'tuple'>
+    
 and a tuple of one or more items with commas. 
 Sometimes tuple are surrounding by parenthesis to avoid syntactic ambiguity.
 
@@ -137,7 +142,7 @@ For example: ::
 Lists
 -----
 
-A list is an ordered ``sequence`` of zero or more object refrences.
+A list is an ordered ``sequence`` of zero or more object references.
 lists support the same extracting, slicing syntax as ``strings`` or ``tuples``.
 Unlike ``strings`` and ``tuples``, lists are *mutable*, so we can replace, delete any of their items.
 It is also possible to insert, replace, and delete slices of lists.
@@ -293,8 +298,8 @@ To create a list from an other sequence object Python offer a very convenient sy
 A ``list comprehension`` is an expression and a :ref:`loop <loop>` with an optional :ref:`condition <condition>` enclosed in brackets
 where the loop is use to generate items for the list and where condition filter out unwanted items.
 
-| [*expression* for *item* in *iterable*]
-| [*expression* for *item* in *iterable* if *condition*]  
+| [*expression* **for** *item* **in** *iterable*]
+| [*expression* **for** *item* **in** *iterable* **if** *condition*]  
 
 ::
    
@@ -307,7 +312,7 @@ where the loop is use to generate items for the list and where condition filter 
 Set Types
 =========
 
-A set type is a collection data type that support ``in`` and ``len`` operator and is iterable. 
+A set type is a mutable collection data type that support ``in`` and ``len`` operator and is iterable. 
 But the the interest of sets is they support operations like ``union``, ``intersection``, ``difference``, ``isdisjoint``.
 When iterated, set types provide their items in an **arbitrary** order.
 
@@ -356,7 +361,8 @@ to convert the given object to a set. It does not accept more than one argument.
       >>> print s
       set(['t', 'o'])
       
-   To have "toto" in the set you need to use the ``add`` method or create the set dircetly with the string with curly brackets (see below).
+   To have "toto" in the set you need to use the ``add`` method or create the set directly 
+   with the string with curly brackets (see below).
       
 The other way to create a set is by enclosing a comma separated sequence of object references between curly brackets.
 (see figure below). ::
@@ -378,7 +384,7 @@ This figure illustrates the set created by the following code snippet ::
        
 Sets always contains unique items. It safe to add several times the same item but pointless.
 Sets support ``len`` and fast membership testing ``in`` and ``not in``.
-Tey also support ususal set operators: Union, Intersection, Difference, Symetric difference ::
+They also support ususal set operators: Union, Intersection, Difference, Symetric difference ::
 
    >>> pecan = set("pecan")
    >>> pie = set("pie")
@@ -451,12 +457,12 @@ Set methods and Operators
 
 Set Comprehension
 ^^^^^^^^^^^^^^^^^
-As we can build a list using an expresion (see :ref:`lists_comprehension`) we can create sets ::
+As we can build a list using an expresion (see :ref:`lists_comprehension`) we can create sets
 
- {*expression* for *item* in *iterable*}
- {*expression* for *item* in *iterable* if *condition*}  
+| {*expression* **for** *item* **in** *iterable*}
+| {*expression* **for** *item* **in** *iterable* **if** *condition*}  
 
-::
+.. code-block:: python
 
    import collections
    RestrictEnzyme = collections.namedtuple("RestrictEnzyme", "name comment sequence cut end")
@@ -481,8 +487,8 @@ Frozen Sets
 
 A frozen set is a set that, once created, cannot be changed.
 
-Since frozen sets are immutable, they support only those methods and oper-
-ators that produce a result without affecting the frozen set or sets to which
+Since frozen sets are immutable, they support only those methods and 
+operators that produce a result without affecting the frozen set or sets to which
 they are applied ( see :ref:`set methods and operator <set_methods_and_operator>`).
 
 Another consequence of the immutability of frozen sets is that they meet
@@ -500,17 +506,17 @@ iterating over all the collection.
 In Python the mapping type are also call ``dictionary``.
 
 Only hashable objects may be used as dictionary keys, so immutable data types
-such as float , frozenset , int , str , and tuple can be used as dictionary keys, but
-mutable types such as dict , list , and set cannot.
+such as ``float``, ``frozenset``, ``int``, ``str``, and ``tuple`` can be used as dictionary keys, but
+mutable types such as ``dict``, ``list``, and ``set`` cannot.
 On the other hand, each key’s
 associated value can be an object reference referring to an object of any type,
 including numbers, strings, lists, sets, dictionaries, functions, and so on.
 
-Dictionary types can be compared using the standard equality comparison op-
-erators ( == and != ), with the comparisons being applied item by item (and recur-
-sively for nested items such as tuples or dictionaries inside dictionaries). Com-
-parisons using the other comparison operators ( < , <= , >= , > ) are not supported
-since they don’t make sense for unordered collections such as dictionaries.
+Dictionary types can be compared using the standard equality comparison 
+operators ( == and != ), with the comparisons being applied item by item (and 
+recursively for nested items such as tuples or dictionaries inside dictionaries). 
+Comparisons using the other comparison operators ( ``<`` , ``<=`` , ``>=`` , ``>`` ) 
+are not supported since they don’t make sense for unordered collections such as dictionaries.
 
 Python provide 3 kind of mapping type:
 
@@ -757,7 +763,7 @@ Once we have collections of data items, it is natural to want to iterate over al
 the items they contain. 
 Another common requirement is to copy a collection. There are some subtleties
 involved here because of Python’s use of object references (for the sake of
-efficiency), so in this section’s second subsection, we will examine how to copy
+efficiency), so in the last :ref:`subsection <copying_coll>`, we will examine how to copy
 collections and get the behavior we want.
 
 
@@ -860,7 +866,7 @@ Common Iterable Operators and Functions
 The for ... in Statement
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Python’s for loop has the following syntax:
+Python’s **for** loop has the following syntax:
 
 **for** *variable* **in** *iterable*\ **:**
    do something
@@ -928,16 +934,18 @@ out of due to a break statement, or a return statement (if the loop is in a
 function or method), or if an exception is raised, the else clause’s suite is not
 executed.
 
-The *variable* is normally often a single variable but may be a sequence of variables,
-usually in the form of a tuple. If a tuple or list is used for the *variable* , each
-item is unpacked into the *variable*’s items. ::
+.. note::
 
-   enzymes = [('ecor1', 'gaattc'), ('bamh1','ggatcc'), ('hind3', 'aagctt')]
-   for name, seq in enzymes:
-      print name, ' .... ', seq
-   ecor1 .... gaattc
-   bamh1 .... ggatcc
-   hind3 .... aagctt
+   The *variable* is normally often a single variable but may be a sequence of variables,
+   usually in the form of a tuple. If a tuple or list is used for the *variable* , each
+   item is unpacked into the *variable*’s items. ::
+
+      enzymes = [('ecor1', 'gaattc'), ('bamh1','ggatcc'), ('hind3', 'aagctt')]
+      for name, seq in enzymes:
+         print name, ' .... ', seq
+      ecor1 .... gaattc
+      bamh1 .... ggatcc
+      hind3 .... aagctt
 
 
 break and continue
@@ -970,7 +978,7 @@ for a suitable exception handler—this is covered in the next section.) ::
    * in blue the execution source code results
    * in orange the execution flow   
 
-::
+.. code-block:: python
 
    enzymes = [('ecor1', 'gaattc'), ('bamh1','ggatcc'), ('hind3', 'aagctt')]
    for name, seq in enzymes:
@@ -994,6 +1002,14 @@ for a suitable exception handler—this is covered in the next section.) ::
  
    .. image :: _static/figs/spacer.png
    
+
+.. raw:: latex
+
+    \newpage
+    
+
+
+.. _copying_coll:
    
 copying collections
 -------------------
@@ -1054,7 +1070,7 @@ For immutable data types like numbers and strings this has the same effect as co
 (except that it is more efficient).
 But for mutable data types such as nested collections
 this means that the objects they refer to are referred to both by the original
-collection and by the copied collection (the object in l and l0 have the same *id()*).
+collection and by the copied collection (the objects in l and l2 have the same *id()*).
 
 .. code-block:: python
 
@@ -1082,6 +1098,7 @@ collection and by the copied collection (the object in l and l0 have the same *i
    :figclass: right-center
 
    the schema above represent what python do behind the scene when we do a shallow copy.
+   
    
 .. code-block:: python
 
@@ -1175,11 +1192,7 @@ and ::
    x = ?
    y = ?  
 
-With mutable object like ``list`` when we mutate the object the state of the object is modified.
-but the reference to the object is still unchanged.
-So in this exemple we have to way to access to the list [1,2] if we modify the state of the list itself.
-but not the refernces to this object, then the 2 variables x and y still reference the list containing
-[1,2,3,4]. 
+
 
   
 Exercise
@@ -1237,7 +1250,7 @@ For example: ::
 Exercise
 --------
 
-list and count occurences of every 3mers in the following sequence ::
+list and count occurences of every 6mers in the following sequence ::
 
    """gtcagaccttcctcctcagaagctcacagaaaaacacgctttctgaaagattccacactcaatgccaaaatataccacag
    gaaaattttgcaaggctcacggatttccagtgcaccactggctaaccaagtaggagcacctcttctactgccatgaaagg
@@ -1249,11 +1262,12 @@ list and count occurences of every 3mers in the following sequence ::
    tgataaccaggaaagcaactctggcagcagcagggaacagcacagctctgagcaccaccagcccaggaggcacaggaaac
    acggcaacatggctggccagtgggctctgagaggagaaagtccagtggatgctcttggtctggttcgtgagcgcaacaca"""
 
-and finally print the results one 3mer and it's occurence per line. 
+and finally print the results one 6mer and it's occurence per line. 
 
 write first the pseudocode, then implement it.
 
 bonus:
+
 print the kmer by increasing occurences.
 
 
@@ -1278,29 +1292,5 @@ We want obtain a new dict with the keys and the values inverted so we will obtai
 
    inverted_d  {'a': 1, 'c': 3, 'b': 2, 'd': 4}
 
-Exercise
---------
 
-We assume that we have a phylogenic tree of mammals represented as nested lists. ::
-    
-   mammals = ['Bovine', ['Gibbon', ['Orang Utan', ['Gorilla', ['Chimp', 'Human']]]], 'Mouse' ]
-   
-We want to work on the subtree of apes (Gibbon, Orang Utan, Gorilla, Chimp, Human) 
-
-* extract the this subtree in a new tree
-* then insert 'Bonobo' at the same level of Chimp we want to obtanin something like this :[chimp, bonobo], Human]
-   
-what's append on mammals? explain the result. ::
-
-   import copy
-     
-   mammals = ['Bovine', ['Gibbon', ['Orang Utan', ['Gorilla', ['Chimp', 'Human']]]], 'Mouse' ]
-   apes = copy.copy(mammals[1])
-   apes [1][1][1] = [['Chimp', 'Bonobo'], 'Human']
-   print mammals
-   ['Bovine', ['Gibbon', ['Orang Utan', ['Gorilla', ['Chimp', 'Human']]]], 'Mouse' ]
-
-what we should do to work with apes without modify mammals?
-
-   
       
