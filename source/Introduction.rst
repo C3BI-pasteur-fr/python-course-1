@@ -80,10 +80,10 @@ to edit your python file.
 
 .. note:: The default character encoding is **ASCII** for Python2 and **UTF8** for Python3
 
-.. warning::  Word or Libre Office are **NOT** text editors.
+.. warning::  Word or LibreOffice are **NOT** text editors.
 
-Python source code file have normally ``.py`` extension, although on some unix systems they can have not any extension, and python GUI (Graphical User Interface)
-have ``.pyw``  extension on Mac and Windows.
+Python source code file have normally ``.py`` extension, although on some unix systems they can have not any extension, 
+and python GUI (Graphical User Interface) have ``.pyw``  extension on Mac and Windows.
 
 .. note::
    Unlike most other programming languages, Python uses indentation to signify
@@ -108,16 +108,18 @@ making the process of developing a program simpler and more understandable relat
 The amount of abstraction provided defines how "high-level" a programming language is.
 Examples of high-level programming languages include ``Java``, ``Lisp``, ``R``, ``Python``, ``Visual Basic``, ``Ruby``, ...
 
-By opposition a a `low-level programming language <http://en.wikipedia.org/wiki/Low-level_programming_language>`_ 
+By opposition a `low-level programming language <http://en.wikipedia.org/wiki/Low-level_programming_language>`_ 
 provides little or no abstraction from a computer's instruction set architecture. 
 Generally this refers to either machine code or assembly language. 
 The word "low" refers to the small or nonexistent amount of abstraction between the language and machine language.
 Low-level languages can be converted to machine code without using a compiler or interpreter, 
-and the resulting code runs directly on the processor. A program written in a low-level language can be made to run very quickly, 
-and with a very small memory footprint; an equivalent program in a highLow-level languages can be converted to machine code without 
+and the resulting code runs directly on the processor. 
+
+An equivalent program in a high-level languages can be converted to machine code  
 using a compiler or interpreter, and the resulting code runs directly on the processor. 
 A program written in a low-level language can be made to run very quickly, and with a very small memory footprint; 
 an equivalent program in a high-level language will be more heavyweight. 
+
 Low-level languages are simple, but are considered difficult to use, due to the numerous technical details which must be remembered.
 
 By comparison, a high-level programming language isolates the execution semantics of a computer architecture from the specification of the program, 
@@ -168,8 +170,10 @@ Python source code is compiled into bytecode, the internal representation of a P
 The bytecode is also cached in `.pyc` and `.pyo` files so that executing the same file is faster the second time 
 (recompilation from source to bytecode can be avoided). 
 This “intermediate language” is said to run on a virtual machine that executes the machine code corresponding to each bytecode. 
-Do note that bytecodes are not expected to work between different Python virtual machines (*VM*), 
-nor to be stable between Python releases [python_glossary]_.
+
+.. warning:: 
+   Do note that bytecodes are not expected to work between different Python virtual machines (*VM*), 
+   nor to be stable between Python releases [python_glossary]_.
 
 Whenever a Python module is **imported**, the interpreter first checks
 whether a .pyc is available that has the appropriate "magic number"
