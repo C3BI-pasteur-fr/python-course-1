@@ -31,7 +31,7 @@ flash memory, or CD-ROM
 You have not to manipulate directly these media. 
 Python provides basic functions and methods necessary to manipulate files by default. 
 You can do your most of the file manipulation using a ``file object``. 
-A file object a high level representation of a file that abstract the media on wich 
+A file object is a high level representation of a file that abstract the media on wich 
 the data are stored.
 
 Files are like books. You open them to start working, then read or write in them and you close them when you
@@ -99,7 +99,7 @@ the different values for acces mode :
 
 The values can be combine as following
 
-.. tabularcolumns:: |p{2cm}|p{8cm}|p{2cm}|p{8cm}|
+.. tabularcolumns:: |p{1cm}|p{7cm}|p{1cm}|p{7cm}|
 
 +----------+--------------------------------------------------------------------------------------------+--------------+--------------------------------------------------------------------------------------------+
 | Python 2 |                                                                                            | Python 3     |                                                                                            |
@@ -303,8 +303,8 @@ but examine in practice how to close a file.
       comment = fields[2]
 
 In this piece of code we protect the open in a try/except but what happen 
-if an error occured during the data processing, if one line have not a firlds[2] for instance.
-an error is raise but the file is not closed. If this piece of code is en closed in a larger
+if an error occured during the data processing, if one line have not a fields[2] for instance.
+An error is raised but the file is not closed. If this piece of code is en closed in a larger
 try/except the file will stay open until the end of the script.
 
 .. code-block:: python
