@@ -15,41 +15,40 @@ Conditional Branching
 
 We mentioned earlier that each statement encountered in a .py file is executed
 in turn, starting with the first one and progressing line by line. The flow of
-control can be controlled by a :ref:`function <Creating_and_Calling_Functions>` or method call or by a control structure,
-such as a conditional branch or a loop statement. Control is also diverted when
-an :ref:`exception <exceptions>` is raised.
+control can be controlled by a :ref:`function <Creating_and_Calling_Functions>` 
+or method call or by a control structure, such as a conditional branch or a loop statement. 
+Control is also diverted when an :ref:`exception <exceptions>` is raised.
 
 A Boolean expression is anything that can be evaluated to produce a Boolean
-value (True or False). In Python, such an expression evaluates to False if it is
-the predefined constant False, the special object None, an empty sequence or
+value (``True`` or ``False``). In Python, such an expression evaluates to ``False`` if it is
+the predefined constant ``False``, the special object ``None``, an empty sequence or
 collection (e.g., an empty string, list, or tuple, dictionnary), or a numeric data item of value
-0; anything else is considered to be True.
+0; anything else is considered to be ``True``.
 
 In Python-speak a block of code, that is, a sequence of one or more statements,
 is called a suite. Because some of Python’s syntax requires that a suite be
-present, Python provides the keyword pass which is a statement that does
+present, Python provides the keyword ``pass`` which is a statement that does
 nothing and that can be used where a suite is required (or where we want to
 indicate that we have considered a particular case) but where no processing
 is necessary.
 
 The *if* statement syntax
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-::
 
-   if boolean_expression1:
-      block of statements executed
-      only if boolean_expression1 is true
-   elif boolean_expression2:
-      block of statements executed
-      only if boolean_expression2 is true
-      and condition is false
-   elif boolean_expressionN:
-      block of statements executed
-      only if boolean_expression1 AND boolean_expression2 is false
-      and boolean_expressionN is true
-   else:
-      block of statements executed
-      only if all conditions are false
+ |  **if** *boolean_expression1*\ **:**
+ |     block of statements executed
+ |     only if boolean_expression1 is true
+ |  **elif** *boolean_expression2*\ **:**
+ |     block of statements executed
+ |     only if boolean_expression2 is true
+ |     and condition is false
+ |  **elif** *boolean_expressionN*\ **:**
+ |     block of statements executed
+ |     only if boolean_expression1 AND boolean_expression2 is false
+ |     and boolean_expressionN is true
+ |  **else:**
+ |     block of statements executed
+ |     only if all conditions are false
 
 There can be zero or more elif clauses, and the final else clause is optional. If
 we want to account for a particular case, but want to do nothing if it occurs, we
@@ -57,8 +56,8 @@ can use pass as that branch’s suite.
 
 all *if/elif/else* form **one** statement. The flow of code execute the first block
 where the conditon is True, after that the flow exit the statement.
-The flow will be very differrent if we use a suite of *if* without *elif*.
-in this latter case all *if* statements will be evaluated independantely. 
+The flow will be very different if we use a suite of *if* without *elif*.
+In this latter case all *if* statements will be evaluated independantely. 
 See the example of :download:`script if.py<_static/code/if.py>`
 
 .. figure:: _static/figs/if_vs_elif.png
@@ -72,29 +71,32 @@ See the example of :download:`script if.py<_static/code/if.py>`
       
 The output of the if.py script execution::
 
-   if elif
+   if elif statement
    i > 1
-   suite of if
+   suite of if statements
    i > 1
    i > 2
    i > 3
  
 In some very simple cases we can reduce the *if ... else* statement to a single conditional expression.
-The syntax for such cases is: ::
+The syntax for such cases is:
+
+.. code-block:: python
    
-   exepression1 if boolean_expression else expression2
+   expression1 if boolean_expression else expression2
    
 If the boolean expression is evaluated to ``True``, the result of the conditional expression is expression1;
 otherwise, the result is expression2.
 This syntax is often used to set a default value, and changed the vlue if necessary. For instance::
 
-   bases = 'acgt'
    if nucleiq_type == 'RNA':
       bases = 'acgu'
+   else:
+      bases = 'acgt'
 
 can be reduce like this ::
 
-   bases = 'acgt' if nucleiq_type != 'RNA' else 'acgu'
+   bases = 'acgu' if nucleiq_type == 'RNA' else 'acgt'
 
 
 Nested conditions
@@ -280,18 +282,16 @@ Catching Exceptions
 
 It is possible to write programs that handle selected exceptions.
 
- ::
-
-   try:
-      try_suite
-   except exception1 as variable1:
-      exception_suite1
-   except exceptionN as variableN:
-      exception_suiteN
-   else:
-      else suite
-   finally:
-      finally_suite
+ |  **try:**
+ |     try_suite
+ |  **except** *exception1* **as** *variable1*\ **:**
+ |     exception_suite1
+ |  **except** *exceptionN* **as** *variableN*\ **:**
+ |     exception_suiteN
+ |  **else:**
+ |     else suite
+ |  **finally:**
+ |     finally_suite
 
 
 There must be at least one except block, but both the else and the finally
@@ -301,9 +301,9 @@ has finished normally, **but** it is **not** executed if an exception occurs. If
 is a finally block, it is **always** executed at the end.
 
 Each except clause’s exception group can be a single exception or a parenthesized tuple of exceptions. 
-For each group, the as variable part is optional; if used, 
+For each group, the ``as`` variable part is optional; if used, 
 the variable contains the exception that occurred, and can be accessed in the exception block’s suite.
-we may care only that a particular
+We may care only that a particular
 exception was raised and not be interested in its message text.
 
 If an exception occurs in the try block’s suite, each except clause is tried in
@@ -581,6 +581,7 @@ and the 2 dna fragments: ::
 #. create a function *one_line_dna* that transform a multiligne sequence in a single ligne dna sequence.
 #. create a collection containing all enzymes
 #. create a function which take 2 parameters :
+
    #. a sequence of dna
    #. a list of enzyme
    
@@ -594,6 +595,7 @@ with the same dna and enzymes we want now get the name of the enzymes which cut 
 to have all binding sites?
   
 #. create a function *binding_sites* which take 2 parameters 
+
    #. a sequence of dna
    #. one enzyme
    
