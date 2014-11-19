@@ -49,7 +49,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'E2I2B.python'
+project = u'Python Course I'
 copyright = u'2014, Éric Deveaud, Bertrand Néron'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -100,7 +100,7 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'E2I2B'
+html_theme = 'pasteur_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -173,7 +173,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'E2I2Bpythondoc'
+htmlhelp_basename = 'PythonCourseIdoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -192,7 +192,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'E2I2Bpython.tex', u'E2I2B.python Documentation',
+  ('index', 'PythonCourseI.tex', u'Python Course I Documentation',
    u'Éric Deveaud, Bertrand Néron', 'manual'),
 ]
 
@@ -254,7 +254,7 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'E2I2B.python'
+epub_title = u'Python course I'
 epub_author = u'Éric Deveaud, Bertrand Néron'
 epub_publisher = u'Éric Deveaud, Bertrand Néron'
 epub_copyright = u'2014, Éric Deveaud, Bertrand Néron'
