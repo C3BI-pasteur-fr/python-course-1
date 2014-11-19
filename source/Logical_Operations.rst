@@ -9,8 +9,8 @@ The Identity Operator
 
 Since all Python variables are really object references, it sometimes makes
 sense to ask whether two or more object references are referring to the same
-object. The is operator is a binary operator that returns True if its left-hand ob-
-ject reference is referring to the same object as its right-hand object reference.
+object. The ``is`` operator is a binary operator that returns True if its left-hand 
+object reference is referring to the same object as its right-hand object reference.
 Here are some examples: ::
    
    >>> import collections
@@ -31,18 +31,18 @@ Here are some examples: ::
    >>> a
    True
 
-Note that it usually does not make sense to use is for comparing ints, strs, and
+Note that it usually does not make sense to use ``is`` for comparing ints, strs, and
 most other data types since we almost invariably want to compare their values.
-In fact, using is to compare data items can lead to unintuitive results, as we
+In fact, using ``is`` to compare data items can lead to unintuitive results, as we
 can see in the preceding example, where although a and b are initially set to
 the same list values, the lists themselves are held as separate list objects and
-so is returns False the first time we use it.
+so ``is`` returns False the first time we use it.
 One benefit of identity comparisons is that they are very fast. This is because
-the objects referred to do not have to be examined themselves. The is operator
+the objects referred to do not have to be examined themselves. The ``is`` operator
 needs to compare only the memory addresses of the objects the same address
 means the same object.
-The most common use case for is is to compare a data item with the built-in
-null object, None , which is often used as a place-marking value to signify
+The most common use case for ``is`` is to compare a data item with the built-in
+null object, ``None`` , which is often used as a place-marking value to signify
 “unknown” or “nonexistent”: ::
 
    >>> a = "Something"
@@ -60,9 +60,10 @@ Comparison Operators
 ====================
 
 Python provides the standard set of binary comparison operators, with the
-expected semantics: < less than, <= less than or equal to, == equal to, != not
-equal to, >= greater than or equal to, and > greater than. These operators
-compare object values, that is, the objects that the object references used in the
+expected semantics: ``<`` less than, ``<=`` less than or equal to, ``==`` equal to, 
+``!=`` not equal to, ``>=`` greater than or equal to, and ``>`` greater than. 
+These operators compare object values, that is, 
+the objects that the object references used in the
 comparison refer to. Here are a few examples typed into a Python Shell: ::
 
    >>> a = 2
@@ -88,16 +89,16 @@ the same values, so they compare equal.
 
 .. warning::
    Be aware, though, that because
-   Python uses Unicode for representing strings, comparing strings that contain
+   Python3 uses Unicode for representing strings, comparing strings that contain
    non-ASCII characters can be a lot subtler and more complicated than it might
    at first appear
 
 
 .. warning::
    In some cases, comparing the identity of two strings or numbers—for example,
-   using a is b —will return True , even if each has been assigned separately as we
+   using a is b will return True , even if each has been assigned separately as we
    did here. This is because some implementations of Python will reuse the same
-   object (since the value is the same and is immutable) for the sake of efficiency.
+   object (since the value is the same and the data type is immutable) for the sake of efficiency.
    The moral of this is to *use == and != when comparing values*, and to *use is and
    is not only when comparing with None* or when we really do want to see if two
    object references, rather than their values, are the same.
@@ -168,7 +169,7 @@ of length 1.)
 Logical Operators
 =================
 
-Python provides three logical operators: ``and`` , ``or`` , and ``not`` . Both ``and`` and ``or`` use
+Python provides three logical operators: ``and``, ``or``, and ``not``. Both ``and`` and ``or`` use
 short-circuit logic and return the operand that determined the result they do
 not return a Boolean (unless they actually have Boolean operands). Let’s see
 what this means in practice: ::
@@ -184,7 +185,7 @@ what this means in practice: ::
    0 # bool(0) = False
    
 If the expression occurs in a Boolean context, the result is evaluated as a
-Boolean, so the preceding expressions would come out as ``True`` , ``True`` , and ``False``
+Boolean, so the preceding expressions would come out as ``True``, ``True``, and ``False``
 in, say, an ``if`` statement. ::
 
    nought = 0
@@ -197,9 +198,9 @@ in, say, an ``if`` statement. ::
    zero or nought
    0
    
-The or operator is similar; here the results in a Boolean context would be ``True`` ,
-``True`` , ``True`` , and ``False`` .
+The or operator is similar; here the results in a Boolean context would be ``True``,
+``True``, ``True``, and ``False``.
 The not unary operator evaluates its argument in a Boolean context and
 always returns a Boolean result, so to continue the earlier example, not
-(zero or nought) would produce ``True`` , and *not two* would produce ``False`` .
+(zero or nought) would produce ``True``, and *not two* would produce ``False``.
 
