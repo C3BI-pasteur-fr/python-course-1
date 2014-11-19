@@ -768,6 +768,8 @@ Iterating over collections
 
 An iterable data type is one that can return each of its items one at a time.
 
+.. _iterator:
+
 iterator
 ^^^^^^^^
 

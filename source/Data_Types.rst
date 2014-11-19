@@ -40,11 +40,6 @@ The Boolean type is a subtype of plain integers, and Boolean values behave like 
 respectively, in almost all contexts, the exception being that when converted to a string, 
 the strings "False" or "True" are returned, respectively.
 
-The rules for integer representation are intended to give the most meaningful interpretation of shift 
-and mask operations involving negative integers and the least surprises when switching between the plain 
-and long integer domains. Any operation, if it yields a result in the plain integer domain, 
-will yield the same result in the long integer domain or when using mixed operands. 
-The switch between domains is transparent to the programmer.
 
 .. _integers:
 
@@ -120,7 +115,7 @@ common numerics operators and functions
    to take advantage of true division in 2.2 and newer 2.x releases, either start the interpreter with the -Qnew option or import division from __future__. 
    Once you do that, the division operator ( / ) only performs true division: ::
 
-      >>> from __future__ import division  # 2.2+-only
+      >>> from __future__ import division  # 2.2+ only
       >>>
       >>> 1 / 2               # returns real quotient
       0.5
@@ -200,7 +195,7 @@ Decimal
 
 A decimal number is **immutable**. It has a sign, coefficient digits, and an exponent. 
 To preserve significance, the coefficient digits do not truncate trailing zeros. 
-Decimals also include special values such as Infinity, -Infinity, and NaN. 
+Decimals also include special values such as ``Infinity``, ``-Infinity``, and ``NaN``. 
 The standard also differentiates -0 from +0.
 
 Decimal is not buil-in it belong to the module decimal, that mean we must import it before to use it.
@@ -257,8 +252,8 @@ But there is a couple of pitfalls. If the ** operator has a left hand ``decimal`
 its right-hand operand must be an integer. Similarly, if the pow() function's first argument is a ``decimal`` the 2nd and 3th arguments must be integers. 
 
 Although the division involving ``decimal`` is more accurate than ones involving ``floats``, on a 32-bit machine the differences
-only shows up after the fifteenth deciaml palce. Futhermore the computation using ``decimals`` are slower than those invloving ``floats``.
-So use decimals only if a high precision is required.
+only shows up after the fifteenth decimal place. Futhermore the computation using ``decimals`` are slower than those invloving ``floats``.
+So use decimals **only** if a high precision is required.
 
  
 Complex
@@ -266,7 +261,7 @@ Complex
    
 The ``complex`` data type is an **immutable** type that holds a pair of ``floats``, one representing 
 the real part the other the imaginary part. Literal ``complex`` are written with the real and imaginary parts
-joined by a + or - sign, and the imaginary following by a j. Note that if the real part iz 0 we can ommit it entirely. 
+joined by a + or - sign, and the imaginary following by a j. Note that if the real part is 0 we can ommit it entirely. 
 The separates parts of a complex are available through attributes *real* and *imag*.
 
    >>> z= -89.5+2j
@@ -374,10 +369,13 @@ Python ASCII string escape
 Notes:
 
     #. Individual code units which form parts of a surrogate pair can be encoded using this escape sequence.
-    #. Any Unicode character can be encoded this way, but characters outside the Basic Multilingual Plane (BMP) will be encoded using a surrogate pair if Python is compiled to use 16-bit code units (the default).
+    #. Any Unicode character can be encoded this way, but characters outside the Basic Multilingual Plane 
+       (BMP) will be encoded using a surrogate pair if Python is compiled to use 16-bit code units (the default).
     #. As in Standard C, up to three octal digits are accepted.
     #. Unlike in Standard C, exactly two hex digits are required.
-    #. In a string literal, hexadecimal and octal escapes denote the byte with the given value; it is not necessary that the byte encodes a character in the source character set. In a Unicode literal, these escapes denote a Unicode character with the given value.
+    #. In a string literal, hexadecimal and octal escapes denote the byte with the given value; 
+       it is not necessary that the byte encodes a character in the source character set. 
+       In a Unicode literal, these escapes denote a Unicode character with the given value.
 
 Unlike Standard C, all unrecognized escape sequences are left in the string unchanged, i.e., 
 the backslash is left in the string. 
@@ -387,20 +385,21 @@ It is also important to note that the escape sequences marked as “(Unicode onl
 into the category of unrecognized escapes for non-Unicode string literals.
 
 When an 'r' or 'R' prefix is present, a character following a backslash is included in the string without change, 
-and all backslashes are left in the string. For example, the string literal r"\n" consists of two characters: a backslash and a lowercase 'n'. 
+and all backslashes are left in the string. For example, the string literal r"\\n" consists of two characters: 
+a backslash and a lowercase 'n'. 
 String quotes can be escaped with a backslash, but the backslash remains in the string; for example, 
-r"\"" is a valid string literal consisting of two characters: a backslash and a double quote; 
-r"\" is not a valid string literal (even a raw string cannot end in an odd number of backslashes). 
+r"\\"" is a valid string literal consisting of two characters: a backslash and a double quote; 
+r"\\" is not a valid string literal (even a raw string cannot end in an odd number of backslashes). 
 Specifically, a raw string cannot end in a single backslash (since the backslash would escape the following quote character). 
 Note also that a single backslash followed by a newline is interpreted as those two characters as part of the string, 
 not as a line continuation.
 
 When an 'r' or 'R' prefix is used in conjunction with a 'u' or 'U' prefix, 
-then the \uXXXX and \UXXXXXXXX escape sequences are processed while all other backslashes are left in the string. 
-For example, the string literal ur"\u0062\n" consists of three Unicode characters: 
+then the \\uXXXX and \\UXXXXXXXX escape sequences are processed while all other backslashes are left in the string. 
+For example, the string literal ur"\\u0062\\n" consists of three Unicode characters: 
 ‘LATIN SMALL LETTER B’, ‘REVERSE SOLIDUS’, and ‘LATIN SMALL LETTER N’. 
 Backslashes can be escaped with a preceding backslash; however, both remain in the string. 
-As a result, \uXXXX escape sequences are only recognized when there are an odd number of backslashes.
+As a result, \\uXXXX escape sequences are only recognized when there are an odd number of backslashes.
 
 Comparing Strings
 -----------------
@@ -431,11 +430,13 @@ The equality operator is ``==`` and allow to test if the string in right operand
    In this example we created 2 variables s1 and s2, and it seems that ``is`` allow us to compare them.
    In fact we do not test the equality of the strings *s1* and *s2*. 
    we test if the variables *s1* and *s2* point to the same object in memory.
-   see the following example ::
+   see the following example: ::
    
       s3 = ''.join(['h', 'e', 'l' , 'l', 'o'])
       s1 == s3
+      True
       s1 is s3
+      False
       
    The operator of string comparison is ``==`` and not ``is`` (``is`` is for object identity comparison). 
    So why it seems to work in the first example?
@@ -547,7 +548,7 @@ String operators and methods
 ----------------------------
 
 Since ``strings`` are immutable :ref:`sequences <sequences>`, 
-all the functions taht can be used with immutable sequences can be applied on strings.
+all the functions that can be used with immutable sequences can be applied on strings.
 this include:
    
 * membership testing with ``in`` 
@@ -594,7 +595,7 @@ in the argument and join them together into a single string using the sep as lin
    ''.join(sequence)
    'aabbcc'
    
-The *join* method can be used in combination with the built-in method reversed (which return a reversed iterator) 
+The *join* method can be used in combination with the built-in method reversed (which return a reversed :ref:`iterator` ) 
 to reverse a string ::
  
    >>> s = 'gaattc'
@@ -607,12 +608,12 @@ We already seen a more concise way to do that ::
    >>> s[::-1]
    'cttaag'
 
-If we are looking for the position of a substring in a string we have two methods: *index* and *find* .
+If we are looking for the position of a substring in a string, we have two methods: *index* and *find* .
 
 * *index* return the index position of the substring or raise a ValueError exception on failure.
 * *find* return the index position of the substring or -1 on failure.
 
-Both methosd take the string to find as their first argument and accept optional arguments. 
+Both methods take the string to find as their first argument and accept optional arguments. 
 The second argument is the start position in the string being search, and the third argument is the end position. ::
 
    >>> 'gaattc'.find('c')
@@ -673,9 +674,12 @@ The replacement field can have any of the following general syntaxes:
 
 Field Names
 ^^^^^^^^^^^
-A field name can be either an integer corresponding to one of the ``str.format()`` arguments, or the name of one of the keywords :ref:`arguments_n_parameters` ::
+A field name can be either an integer corresponding to one of the ``str.format()`` arguments, 
+or the name of one of the keywords :ref:`arguments_n_parameters` ::
 
-   >>> fasta = '>{0} {1}\n{2}'.format(id = 'EcoR1', comment = 'restriction site 1 for Ecoli', seq = 'gaattc')
+   >>> fasta = '>{0} {1}\n{2}'.format(id = 'EcoR1', 
+                                      comment = 'restriction site 1 for Ecoli', 
+                                      seq = 'gaattc')
    >EcoR1 restriction site 1 for Ecoli
    gaattc
    
@@ -692,7 +696,7 @@ one very useful way to format string using mapping is to :ref:`unpack` the mappi
    >>> 'a = {a}, b = {b}'.format(**d)
    'a = 1, b = 2'
    
- or a name attributes. ::
+or a name attributes. ::
   
    import math
    >>> 'pi = {0.pi} e = {0.e}'.format(math) 
@@ -702,7 +706,7 @@ one very useful way to format string using mapping is to :ref:`unpack` the mappi
 Conversions
 ^^^^^^^^^^^
 
-Every object in Python have a representational form. 
+Evry objects in Python have a representational form. 
 The pupose of this form is to provide a string which if interpreted by python recreated the object it represents.
 For instance the representational form of ``sys`` module is the string *<module 'sys' (built-in)>*. 
 Some objects have a second form, a string form.The purpose of this form aimed at human readers. 
@@ -780,7 +784,7 @@ The syntax for numbers is the same as for string but there is some specific fiel
 | space  | indicates that a leading space should be used on positive numbers, and a minus sign on negative numbers. |
 +--------+----------------------------------------------------------------------------------------------------------+
 
-*#*: option is only valid for integers, and only for binary, octal, or hexadecimal output. 
+*#* : option is only valid for integers, and only for binary, octal, or hexadecimal output. 
 If present, it specifies that the output will be prefixed by '0b', '0o', or '0x', respectively.
 
 *width*: is a decimal integer defining the minimum field width. 
@@ -867,7 +871,7 @@ numbers format examples: ::
    '3.14'
    >>> "{:012.1f}".format(z*10) # pad the left with 0
    '0000000031.4'
-   >>> "{0:12.2e}".format(math.pi * 100) # dispaly using exponential notation
+   >>> "{0:12.2e}".format(math.pi * 100) # display using exponential notation
    '     3.14e+02'
    >>> 'gc coverage = {:.2%}'.format(float(125)/230) 
    'gc coverage = 54.35%'
@@ -881,7 +885,7 @@ For full description of strings formating see https://docs.python.org/2.7/librar
 Characters Encoding
 -------------------
   
-  TODO
+ .. todo::
  
 
 Exercices
@@ -948,10 +952,14 @@ create a representation in fasta format of following sequence :
 
 .. note::
    A sequence in FASTA format begins with a single-line description, followed by lines of sequence data. 
-   The description line is distinguished from the sequence data by a greater-than (">") symbol in the first column. 
-   The word following the ">" symbol is the identifier of the sequence, and the rest of the line is the description (optional). 
-   There should be no space between the ">" and the first letter of the identifier. 
-   The sequence ends if another line starting with a ">" appears; this indicates the start of another sequence. 
+   
+   * The description line is distinguished from the sequence data by a greater-than (">") symbol in the first column. 
+   * The word following the ">" symbol is the identifier of the sequence, and the rest of the line is the description (optional). 
+   * There should be no space between the ">" and the first letter of the identifier. 
+   * The sequence ends 
+      
+      * if another line starting with a ">" appears (this indicates the start of another sequence).
+      * or at the end of file. 
 
 ::
 
@@ -970,10 +978,15 @@ Exercise
 For the following exercise use the python file :download:`sv40 in fasta <_static/code/sv40.py>` which is a python file with the sequence of sv40 in fasta format
 already embeded, and use *python -i sv40.py* to work.
 
-how long is the sv40 in bp? 
-(the fasta header is 61bp long)
-http://www.ncbi.nlm.nih.gov/nuccore/J02400.1 
-5243
+.. note:: 
+
+   *python -i file.py* execute the python code in the filein an python interpreter and then give you the hand in this interpreter.
+   So you can access to all varaiables and function as you type it in interpreter.
+
+* how long is the sv40 in bp? 
+  (the fasta header is 61bp long)
+  http://www.ncbi.nlm.nih.gov/nuccore/J02400.1 
+
 
 Is that the following enzymes: 
 
@@ -993,12 +1006,21 @@ Exercise
 --------
 
 we want to perform a PCR on sv40, can you give the length and the sequence of the amplicon?
-to simplify the 2 primers can be read directly in the sv40 sequence. 
+to simplify the exercise, the 2 primers can be read directly in the sv40 sequence. 
 
-| CGGGACTATGGTTGCTGACT
-| TCTTTCCGCCTCAGAAGGTA
+|5' CGGGACTATGGTTGCTGACT 3'
+|5' TCTTTCCGCCTCAGAAGGTA 3'
 
 write the pseudocode before to implement it.
+
+.. note::
+
+   Pseudocode is an informal high-level description of the operating principle of a computer program or other algorithm.
+   
+   Pseudocode is a kind of structured english for describing algorithms. 
+   It allows the designer to focus on the logic of the algorithm without being distracted by details of language syntax.
+   At the same time, the pseudocode needs to be complete.
+   It describe the entire logic of the algorithm so that implementation becomes a rote mechanical task of translating line by line into source code.
 
 
 Exercise
@@ -1013,7 +1035,8 @@ Exercise
 | il2_human = 
 | 'MYRMQLLSCIALSLALVTNSAPTSSSTKKTQLQLEHLLLDLQMILNGINNYKNPKLTRMLTFKFYMPKKATELKHLQCLEEELKPLEEVLNLAQSKNFHLRPRDLISNINVIVLELKGSETTFMCEYADETATIVEFLNRWITFCQSIISTLT'
 | the il2_human contains 4 cysteins (C) in positions 9, 78, 125, 145. We want to generate the sequence of a mutatnt were the cysteins 78 and 125 are replaced by serins (S) 
-| write the pseudo code, before to propose an implementation:
+
+write the pseudocode, before to propose an implementation:
 
 
 Exercise
