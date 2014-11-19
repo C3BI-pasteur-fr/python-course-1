@@ -119,7 +119,7 @@ Let's look at few examples and see what's happend in details: ::
 The syntax is simply ``object reference = value``. There is no need of predeclaration
 and no need to specify the value's type. When Python execute 
 
-* the first statement it creates a int object with the value ``3`` and create the object reference call ``x`` that refer to
+* the first statement it creates a ``int`` object with the value ``3`` and create the object reference call ``x`` that refer to
   the int object. For all pratical purpose we say ``that variable x has been assigned the "3" integer``.
 * The second statement is similar. 
 * The third creates a new object reference y and sets it to refer to the same object
@@ -223,9 +223,12 @@ Variable names (also calls identifiers) non empty sequence of characters that ca
 This sequence consists of a "start character" and a "non zero" or more "continuation characters".
 Such an identifier must obey a couple of rules and ideally follow some conventions.
 
-* The first rule concern the start and continuation characters. It can be any letter or the underscore.
-  The continuation character can be any charcater that is permit as a start character, or pretty well
-  any non white space character including digit.
+* The first rule concern the start and continuation characters. 
+  
+  * start character can be any letter or the underscore.
+  * The continuation character can be any character that is permit as a start character, or pretty well
+    any non white space character including digit.
+  
   The underscore character, ``"_"`` is often used in names with multiple words such as ``scoring_matrix``.
 * Identifiers are case sensitive, so far GENESEQUENCE, GeneSequence, Genesequence or genesequence are different identifiers.
 
@@ -265,12 +268,12 @@ Python 2 has 31 keywords:
   So, avoid using NotImplemented or Ellipsis and the name of any of Python's built-in data types (such as int, float, str, list, tuple),
   and any of Python's built-in functions or exceptions.
 
-* The second convetion concern the uses of underscore ``_``. Names that begin and end with two underscores as ``__eq__`` should not used.
-  Python defines varous special methods and variables that use such names. In the case of special methods, we can reimplement them, that is,
+* The second convention concern the uses of underscore ``_``. Names that begin and end with two underscores as ``__eq__`` should not used.
+  Python defines various special methods and variables that use such names. In the case of special methods, we can reimplement them, that is,
   make our own version of them (we will not cover this topic during this course), but not to introduce new names. 
   A single underscore can be used as an identifier, and inside an interactive interpreter or Python Shell, 
   _ holds the results of the last expression that was evaluated. In normal program _ does not exists unles we use it explicitly.
-  Some develen oppers like to use _ when they don't intend to use it, for instance in loops when they don't care about the items being
+  Some developpers like to use _ when they don't intend to use it, for instance in loops when they don't care about the items being
   looped over, or when they unpack a sequence and don't care of some value: ::
   
    for _ in (0,1,2,3,4,5):
