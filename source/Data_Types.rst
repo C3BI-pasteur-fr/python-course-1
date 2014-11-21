@@ -982,16 +982,36 @@ Exercise
 --------
 
 For the following exercise use the python file :download:`sv40 in fasta <_static/code/sv40.py>` which is a python file with the sequence of sv40 in fasta format
-already embeded, and use *python -i sv40.py* to work.
+already embeded, and use *import sv40* in your script to work 
+(the sv40.py file must be placed in same directory as your own script).
 
-.. note:: 
 
-   *python -i file.py* execute the python code in the filein an python interpreter and then give you the hand in this interpreter.
-   So you can access to all varaiables and function as you type it in interpreter.
+Write a function ``fasta_2_one_line`` that return a sequence as a string
+without header or any non sequence characters
 
-* how long is the sv40 in bp? 
-  (the fasta header is 61bp long)
-  http://www.ncbi.nlm.nih.gov/nuccore/J02400.1 
+.. note::
+
+   Pseudocode is an informal high-level description of the operating principle of a computer program or other algorithm.
+   
+   Pseudocode is a kind of structured english for describing algorithms. 
+   It allows the designer to focus on the logic of the algorithm without being distracted by details of language syntax.
+   At the same time, the pseudocode needs to be complete.
+   It describe the entire logic of the algorithm so that implementation becomes a rote mechanical task of translating line by line into source code.
+
+
+The pseudocode is:
+
+|   *fasta_2_one_line(seq)*
+|      *header_end_at <- find the first return line character*
+|      *raw_seq <- remove header from sequence*
+|      *raw_seq <- remove non sequence chars*
+|      *return raw_seq*
+
+
+| Implement this pseudocode
+| How long is the sv40 in bp? 
+
+http://www.ncbi.nlm.nih.gov/nuccore/J02400.1 
 
 
 Is that the following enzymes: 
@@ -1001,7 +1021,7 @@ Is that the following enzymes:
 * HindIII (aagctt), 
 * SmaI (cccggg) 
 
-have recogition sites in sv40?
+have recogition sites in sv40 (just answer by True or False)?
 
 for the enzymes which have a recognition site can you give their positions?
 
@@ -1011,9 +1031,9 @@ is there only one site in sv40 per enzyme?
 Exercise
 --------
 
-we want to perform a PCR on sv40, can you give the length and the sequence of the amplicon?
+We want to perform a PCR on sv40, can you give the length and the sequence of the amplicon?
 
-Write a function which have 2 parameters ``primer_1`` and ``primer_2``
+Write a function which have 3 parameters ``sequence``, ``primer_1`` and ``primer_2``
 
 * *We consider only the cases where primer_1 and primer_2 are present in sequence* 
 * *to simplify the exercise, the 2 primers can be read directly in the sv40 sequence.*
@@ -1025,14 +1045,6 @@ test you algorithm with the following primers
 
 Write the pseudocode before to implement it.
 
-.. note::
-
-   Pseudocode is an informal high-level description of the operating principle of a computer program or other algorithm.
-   
-   Pseudocode is a kind of structured english for describing algorithms. 
-   It allows the designer to focus on the logic of the algorithm without being distracted by details of language syntax.
-   At the same time, the pseudocode needs to be complete.
-   It describe the entire logic of the algorithm so that implementation becomes a rote mechanical task of translating line by line into source code.
 
 
 Exercise
