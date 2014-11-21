@@ -31,3 +31,8 @@ build
 
 #Ignore third_party directory (and its sub-diretories)
 third_party
+
+#Ignore argument_unpacking as it's a link to  html_ or pdf_ argument_unpacking
+#dependending on the make target
+
+source/argument_unpacking.rst
