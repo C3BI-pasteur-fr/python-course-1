@@ -510,7 +510,7 @@ The sequence of the binding site must be cleaned up.
 Exercise
 --------
 
-write a function which take the path of a fasta file
+Write a function which take the path of a fasta file
 and return a data structure of your choice that allow to stock 
 the id of the sequence and the sequence itself.
 
@@ -543,7 +543,7 @@ Exercise
 
 we ran a blast with the folowing command *blastall -p blastp -d uniprot_sprot -i query_seq.fasta -e 1e-05 -m 8 -o blast2.txt*
 
--m 8 is the tabular output. So each fields is separate to the following by a '\t' 
+-m 8 is the tabular output. So each fields is separated to the following by a '\t' 
 
 The fields are: query id, database sequence (subject) id, percent identity, alignment length, number of mismatches, number of gap openings, 
 query start, query end, subject start, subject end, Expect value, HSP bit score. 
@@ -556,4 +556,8 @@ query start, query end, subject start, subject end, Expect value, HSP bit score.
 
 (adapted from *managing your biological data with python*)
 
-Hint: look operator.itemgetter
+Hint:
+"""""
+
+look operator.itemgetter on python website
+

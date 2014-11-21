@@ -914,16 +914,22 @@ Use the Python interpreter to check your answers.
 Exercise
 --------
 
-Practice using the Python interpreter as a calculator:
+Write a function which take a radius as input and return the volume of a sphere:
 
-| The volume of a sphere with radius r is 4/3 πr\ :sup:`3`. What is the volume of a sphere with radius 5?
+The volume of a sphere with radius r is 4/3 πr\ :sup:`3`. 
 
-Hint: π is in math module, so to access it you need to import the math module ::
+What is the volume of a sphere with radius 5?
 
+**Hint**: π is in math module, so to access it you need to import the math module 
+Place the ``import`` statement at the top fo your file.
+after that, you can use ``math.pi`` everywhere in the file like this::
+      
       >>> import math
-      >>> math.pi
+      >>>
+      >>> #do what you need to do
+      >>> math.pi #use math.pi
    
-Hint: 392.7 is wrong!
+**Hint**: the volume of a spher with radius 5 is **not** 392.7 !
 
 Exercise
 --------
@@ -1006,12 +1012,18 @@ Exercise
 --------
 
 we want to perform a PCR on sv40, can you give the length and the sequence of the amplicon?
-to simplify the exercise, the 2 primers can be read directly in the sv40 sequence. 
 
-|5' CGGGACTATGGTTGCTGACT 3'
-|5' TCTTTCCGCCTCAGAAGGTA 3'
+Write a function which have 2 parameters ``primer_1`` and ``primer_2``
 
-write the pseudocode before to implement it.
+* *We consider only the cases where primer_1 and primer_2 are present in sequence* 
+* *to simplify the exercise, the 2 primers can be read directly in the sv40 sequence.*
+
+test you algorithm with the following primers 
+
+| primer_1 : 5' CGGGACTATGGTTGCTGACT 3'
+| primre_2 : 5' TCTTTCCGCCTCAGAAGGTA 3'
+
+Write the pseudocode before to implement it.
 
 .. note::
 
@@ -1032,16 +1044,23 @@ Exercise
 Exercise
 --------
 
-| il2_human = 
-| 'MYRMQLLSCIALSLALVTNSAPTSSSTKKTQLQLEHLLLDLQMILNGINNYKNPKLTRMLTFKFYMPKKATELKHLQCLEEELKPLEEVLNLAQSKNFHLRPRDLISNINVIVLELKGSETTFMCEYADETATIVEFLNRWITFCQSIISTLT'
-| the il2_human contains 4 cysteins (C) in positions 9, 78, 125, 145. We want to generate the sequence of a mutatnt were the cysteins 78 and 125 are replaced by serins (S) 
+| The il2_human contains 4 cysteins (C) in positions 9, 78, 125, 145. 
+| We want to generate the sequence of a mutatnt were the cysteins 78 and 125 are replaced by serins (S)
+| Write the pseudocode, before to propose an implementation:
 
-write the pseudocode, before to propose an implementation:
+il2_human = 
+'MYRMQLLSCIALSLALVTNSAPTSSSTKKTQLQLEHLLLDLQMILNGINNYKNPKLTRMLTFKFYMPKKATELKHLQCLEEELKPLEEVLNLAQSKNFHLRPRDLISNINVIVLELKGSETTFMCEYADETATIVEFLNRWITFCQSIISTLT'
 
 
 Exercise
 --------
 
-#. use again the sv40 sequence and compute the gc%
-#. generate a "micro" report like this: 'the sv40 is 5243 bp length and have 40.80% gc' 
+Write a function 
 
+* which take a sequence as paramter
+* compute the GC%
+* and return it
+* display the results readable for human as a micro report like this:
+  'the sv40 is 5243 bp length and have 40.80% gc' 
+  
+use sv40 sequence to test your function.

@@ -1234,12 +1234,16 @@ from the list l = [1, 2, 3, 4, 5, 6, 7, 8, 9] generate 2 lists l1 containing all
 Exercise
 --------
 
-generate a list containing all codons.
+Write a function wich return a list containing strings representing all codons. 
+
+Write the pseudocode before to propose an implementation.
+
 
 Exercise
 --------
+Write a function uniqify which take a list as parameter and returns a new list
+without any duplicate, regardless of the order of items. 
 
-From a list return a new list without any duplicate, regardless of the order of items. 
 For example: ::
 
    >>> l = [5,2,3,2,2,3,5,1]
@@ -1250,7 +1254,20 @@ For example: ::
 Exercise
 --------
 
-list and count occurences of every 6mers in the following sequence ::
+Write a function 
+
+* which take a sequence as parameter
+* and return a list of tuple
+
+   * each tuple containing 2 elements
+   * the first elemnt is the 6mers
+   * the 2nd element is the occurence of this 6mer in the sequence.
+ 
+print each 6mer and it's occurences one per line
+
+Write first the pseudocode, then implement it.
+
+use the following sequence to test you function ::
 
    """gtcagaccttcctcctcagaagctcacagaaaaacacgctttctgaaagattccacactcaatgccaaaatataccacag
    gaaaattttgcaaggctcacggatttccagtgcaccactggctaaccaagtaggagcacctcttctactgccatgaaagg
@@ -1262,21 +1279,25 @@ list and count occurences of every 6mers in the following sequence ::
    tgataaccaggaaagcaactctggcagcagcagggaacagcacagctctgagcaccaccagcccaggaggcacaggaaac
    acggcaacatggctggccagtgggctctgagaggagaaagtccagtggatgctcttggtctggttcgtgagcgcaacaca"""
 
-and finally print the results one 6mer and it's occurence per line. 
-
-write first the pseudocode, then implement it.
 
 bonus:
+""""""
 
-print the kmer by increasing occurences.
+Print the kmer by increasing occurences.
 
+bonus:
+""""""
 
+Generalize your function to search kmers of length *n* where *n* is given as argument to the function. 
 
 
 Exercise
 --------
 
-compute the reversed complement of the following sequence: ::
+| Write a function which take a sequence as parameter and return it's reversed complement.
+| Write the pseudocode before to propose an implementation.
+
+data test: ::
 
    seq = 'acggcaacatggctggccagtgggctctgagaggagaaagtccagtggatgctcttggtctggttcgtgagcgcaacaca'
 

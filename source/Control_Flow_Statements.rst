@@ -519,7 +519,6 @@ Exercises
 Exercise
 --------
 
-Calculates the 10 first number of the Fibonacci sequence .
 The Fibonacci sequence are the numbers in the following integer sequence:
 
     0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
@@ -532,15 +531,24 @@ The fibonacci suite can be defined as following:
 |    
 |    F\ :sub:`n` = F\ :sub:`n-1` + F\ :sub:`n-2` 
 
-
-Exercise
---------
-
-return the largest element in list (containing float or integer only)?
+Write a function which take an integer ``n`` as parameter
+and returns a list containing the ``n`` first number of the Fibonacci sequence.
 
 
 Exercise
 --------
+
+Reimplement your own function max (my_max).
+This function will take a list or tuple of float or integer and 
+returns the largest element?
+
+Write the pseudocode before to propose an implementation.
+
+
+Exercise
+--------
+
+We want to create a "restriction map" of 2 sequences and konw We do this step by step.
 
 
 let the following enzymes collection: ::
@@ -572,11 +580,6 @@ and the 2 dna fragments: ::
    gctgaatagtgaaacgattgaggtgttgtggtgaaccgagtaagagcagcttaaatcggagag
    aattccatttactggccagggtaagagttttggtaaatatatagtgatatctggcttg"""
 
-| which enzymes cut the dna_1 ?
-|                  the dna_2 ?
-|                  the dna_1 but not the dna_2?
-
-
 
 #. create a function *one_line_dna* that transform a multiligne sequence in a single ligne dna sequence.
 #. create a collection containing all enzymes
@@ -587,19 +590,25 @@ and the 2 dna fragments: ::
    
    and return a collection containing the enzymes which cut the dna.
    
+| which enzymes cut the dna_1 ?
+|                  the dna_2 ?
+|                  the dna_1 but not the dna_2?
+
 
 Exercise
 --------
   
-with the same dna and enzymes we want now get the name of the enzymes which cut the dna but we want
+With the same dna and enzymes we want now get the name of the enzymes which cut the dna but we want
 to have all binding sites?
+
+We start from previous algorithm and generalize them.  
   
 #. create a function *binding_sites* which take 2 parameters 
 
    #. a sequence of dna
    #. one enzyme
    
-   and return all the positions of binding sites
+   and return **all** the positions of binding sites
     
 #. using the function *binding_sites* create a list of tuples, each tuple of two items
    contain a reference to an enzyme as first item and the position of the binding site in second.
