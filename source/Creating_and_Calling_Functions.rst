@@ -27,7 +27,7 @@ Note that def is a statement that works in a similar way to the assignment
 operator. When ``def`` is executed a function object is created and an object
 reference with the specified name is created and set to refer to the function
 object. Since functions are objects, they can be stored in collection data types
-and passed as arguments to other functions, as we will see in ref:`Dive_into_Funfuntions`.
+and passed as arguments to other functions, as we will see in :ref:`Dive_into_Functions`.
 
 We can leave a function at any point by using the ``return`` statement 
 (the yield can be used also but will not cover here) [prog_in_python3]_. 

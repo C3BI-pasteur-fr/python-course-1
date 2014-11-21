@@ -4,8 +4,8 @@
 Dive into Functions
 *******************
 
-Creating and Calling Functions
-==============================
+Dive into Functions
+===================
 
 Functions are a way to package functionalities. There are 4 kind of functions in Python:
 
@@ -28,7 +28,7 @@ however they are much more limited than normal functions.
 
 global functions, local functions and method are created with the keyword def and return a value. 
 To return a value we explicitely use the keyword ``return`` if we do not do that ``None`` is return automatically by python. 
-We can leave a function at any point by using the ``return`` statement (the yield can be used also but will not cover here) [prog_in_python3]_. 
+We can leave a function at any point by using the ``return`` statement (the yield can be used also but will not cover here). 
 We can call functions by appending parentehesis to the function name. ::
 
    >>> def global_func():
@@ -40,13 +40,13 @@ We can call functions by appending parentehesis to the function name. ::
 Names and Docstrings
 --------------------
  
-see ref:``names_and_docstrings``
+see :ref:`names_and_docstrings`
 
 
 functions are objects
 ---------------------
 
-see ref:``_func_are_obj``
+see :ref:`func_are_obj`
 
     
 nested functions
