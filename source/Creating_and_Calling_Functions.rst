@@ -280,7 +280,7 @@ optional variables are available within the function as a dictionary.
 The operation consiting to get the arguemnts passed as sequence is call *argument unpacking*.
 Let look how it work, especially there are significant differences between python 2 and 3. 
 
-.. unpack_:
+.. _unpack:
 
 Sequence unpacking
 ^^^^^^^^^^^^^^^^^^  
