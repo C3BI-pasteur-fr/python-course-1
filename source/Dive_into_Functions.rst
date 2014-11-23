@@ -502,11 +502,9 @@ help you by drawing diagram.
    func()
    print x  
    
-
    
 Exercise
 --------
-
    
 Without executing the code in Python interpreter, can you determine what the code above print out. 
 help you by drawing diagram.
@@ -527,6 +525,7 @@ help you by drawing diagram.
    
    print y
    print x
+
 
 Exercise
 --------
@@ -579,9 +578,7 @@ Exercice
 --------
 
 Without executing the code in Python interpreter, can you determine what the code above print out. 
-help you by drawing diagram.
-
-::
+help you by drawing diagram. ::
 
    x = 4
    
@@ -599,9 +596,7 @@ Exercice
 --------
 
 Without executing the code in Python interpreter, can you determine what the code above print out. 
-help you by drawing diagram.
-
-::
+help you by drawing diagram. ::
 
    def func():
       y = x
@@ -620,9 +615,7 @@ Exercice
 --------
 
 Without executing the code in Python interpreter, can you determine what the code above print out. 
-help you by drawing diagram.
-
-::
+help you by drawing diagram. ::
 
    x = 4
    
@@ -634,6 +627,7 @@ help you by drawing diagram.
    
    print x
    print y 
+
 
 Exercice
 --------
@@ -661,13 +655,12 @@ help you by drawing diagram.
    print x
    print y
 
+
 Exercice
 --------
 
 Without executing the code in Python interpreter, can you determine what the code above print out. 
-help you by drawing diagram.
-
-::
+help you by drawing diagram. ::
 
    x = {'a' : 4}
    
@@ -681,13 +674,12 @@ help you by drawing diagram.
    print y
    print x is y 
 
+
 Exercice
 --------
 
 Without executing the code in Python interpreter, can you determine what the code above print out. 
-help you by drawing diagram.
-
-::
+help you by drawing diagram. ::
 
    x = {'a' : 4}
    
@@ -703,9 +695,7 @@ Exercice
 --------
 
 Without executing the code in Python interpreter, can you determine what the code above print out. 
-help you by drawing diagram.
-
-::
+help you by drawing diagram. ::
 
    x = {'a' : 4}
    
@@ -725,9 +715,7 @@ Exercice
 --------
 
 Without executing the code in Python interpreter, can you determine what the code below print out. 
-help you by drawing diagram.
-
-::
+help you by drawing diagram. ::
 
    x = {'a' : 4}
    
@@ -747,9 +735,7 @@ Exercice
 --------
 
 Without executing the code in Python interpreter, can you determine what the code below print out. 
-help you by drawing diagram.
-
-::
+help you by drawing diagram. ::
 
    x = {'a' : 4}
    
@@ -763,7 +749,6 @@ help you by drawing diagram.
    y = func(x)
    print x
    
-
 
 Exercise
 --------
