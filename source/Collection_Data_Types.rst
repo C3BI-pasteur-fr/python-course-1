@@ -1254,20 +1254,30 @@ For example: ::
 Exercise
 --------
 
-Write a function 
+We need to compute the occurence of all kmers of a given lenght present in a sequence.
 
-* which take a sequence as parameter
-* and return a list of tuple
+Below we propose 2 algorithms. 
 
-   * each tuple containing 2 elements
-   * the first elemnt is the 6mers
-   * the 2nd element is the occurence of this 6mer in the sequence.
+pseudo code 1
+^^^^^^^^^^^^^
+
+|   *function get_kmer_occurences(seq, kmer_len)*
+|      *all_kmers <- generate all possible kmer of kmer_len*
+|      *occurences <- 0* 
+|      *for each kmer in all_kmers*
+|         *count occurence of kmer*
+|         *store occurence*
+     
+pseudo code 2
+^^^^^^^^^^^^^
+
+|  *function get_kmer_occurences(seq, kmer_len)*
+|     *all_kmers <- empty*
+|     *from i = 0 to sequence length - kmer_len*
+|        *kmer <- kmer startin at pos i im sequence*
+|        *increase by of occurence of kmer*
  
-print each 6mer and it's occurences one per line
-
-Write first the pseudocode, then implement it.
-
-use the following sequence to test you function ::
+Compare the pseudocode of these 2 algorithms and implement the fastest one.::
 
    """gtcagaccttcctcctcagaagctcacagaaaaacacgctttctgaaagattccacactcaatgccaaaatataccacag
    gaaaattttgcaaggctcacggatttccagtgcaccactggctaaccaagtaggagcacctcttctactgccatgaaagg
@@ -1279,16 +1289,17 @@ use the following sequence to test you function ::
    tgataaccaggaaagcaactctggcagcagcagggaacagcacagctctgagcaccaccagcccaggaggcacaggaaac
    acggcaacatggctggccagtgggctctgagaggagaaagtccagtggatgctcttggtctggttcgtgagcgcaacaca"""
 
+Compute the 6 mers occurences of the sequence above, and print each 6mer and it's occurence one per line.
+
 
 bonus:
-""""""
+^^^^^^
 
-Print the kmer by increasing occurences.
+Print the kmers by ordered by occurences.
 
-bonus:
-""""""
+| see `https://docs.python.org/2/library/stdtypes.html#mutable-sequence-types <sort>`_
+| see `https://docs.python.org/2/library/operator.html#operator.itemgetter <operator.itemgetter>`_
 
-Generalize your function to search kmers of length *n* where *n* is given as argument to the function. 
 
 
 Exercise
@@ -1300,6 +1311,49 @@ Exercise
 data test: ::
 
    seq = 'acggcaacatggctggccagtgggctctgagaggagaaagtccagtggatgctcttggtctggttcgtgagcgcaacaca'
+
+
+Exercise
+--------
+
+
+let the following enzymes collection: ::
+ 
+   import collections
+   RestrictEnzyme = collections.namedtuple("RestrictEnzyme", "name comment sequence cut end")
+
+   ecor1 = RestrictEnzyme("EcoRI", "Ecoli restriction enzime I", "gaattc", 1, "sticky")
+   ecor5 = RestrictEnzyme("EcoRV", "Ecoli restriction enzime V", "gatatc", 3, "blunt")
+   bamh1 = RestrictEnzyme("BamHI", "type II restriction endonuclease from Bacillus amyloliquefaciens ", "ggatcc", 1, "sticky")
+   hind3 = RestrictEnzyme("HindIII", "type II site-specific nuclease from Haemophilus influenzae", "aagctt", 1 , "sticky")
+   taq1 = RestrictEnzyme("TaqI", "Thermus aquaticus", "tcga", 1 , "sticky")
+   not1 = RestrictEnzyme("NotI", "Nocardia otitidis", "gcggccgc", 2 , "sticky")
+   sau3a1 = RestrictEnzyme("Sau3aI", "Staphylococcus aureus", "gatc", 0 , "sticky")
+   hae3 = RestrictEnzyme("HaeIII", "Haemophilus aegyptius", "ggcc", 2 , "blunt")
+   sma1 =  RestrictEnzyme("SmaI", "Serratia marcescens", "cccggg", 3 , "blunt")
+
+and the 2 dna fragments: ::
+
+   dna_1 = """tcgcgcaacgtcgcctacatctcaagattcagcgccgagatccccgggggttgagcgatccccgtcagttggcgtgaattcag
+   cagcagcgcaccccgggcgtagaattccagttgcagataatagctgatttagttaacttggatcacagaagcttccaga
+   ccaccgtatggatcccaacgcactgttacggatccaattcgtacgtttggggtgatttgattcccgctgcctgccagg"""
+
+   dna_2 = """gagcatgagcggaattctgcatagcgcaagaatgcggccgcttagagcgatgctgccctaaactctatgcagcgggcgtgagg
+   attcagtggcttcagaattcctcccgggagaagctgaatagtgaaacgattgaggtgttgtggtgaaccgagtaag
+   agcagcttaaatcggagagaattccatttactggccagggtaagagttttggtaaatatatagtgatatctggcttg"""
+
+| which enzymes cut the dna_1 ?
+|                  the dna_2 ?
+|                  the dna_1 but not the dna_2?
+
+
+#. Write a function *seq_one_line* which take a multi lines sequence and return a sequence in one line.
+#. Write a function *enz_filter* which take a sequence and a list of enzymes and return a new list containing 
+   the enzymes which are a binding site in the sequence
+#. use the functions above to compute the enzymes which cut the dna_1 
+   apply the same functions to compute the enzymes which cut the dna_2
+   compute the difference between the enzymes which cut the dna_1 and enzymes which cut the dna_2
+
 
 
 Exercise
