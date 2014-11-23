@@ -597,23 +597,33 @@ and the 2 dna fragments: ::
 
 Exercise
 --------
-  
-With the same dna and enzymes we want now get the name of the enzymes which cut the dna but we want
-to have all binding sites?
 
-We start from previous algorithm and generalize them.  
-  
-#. create a function *binding_sites* which take 2 parameters 
+| We want to establish a restriction map of a sequence. 
+| But we will do this step by step.
+| and reuse the enzymes used in previous chapter: 
 
-   #. a sequence of dna
-   #. one enzyme
+* create a function that take a sequence and an enzyme as parameter and return 
+   the position of first binding sites.
+   (write the pseudocode)
+
+* improve the previous function to return all positions of binding sites
+
+* search all positions of Ecor1 binding sites in dna_1
+
+::
+ 
+   import collections
+   RestrictEnzyme = collections.namedtuple("RestrictEnzyme", "name comment sequence cut end")
+
+   ecor1 = RestrictEnzyme("EcoRI", "Ecoli restriction enzime I", "gaattc", 1, "sticky")
    
-   and return **all** the positions of binding sites
-    
-#. using the function *binding_sites* create a list of tuples, each tuple of two items
-   contain a reference to an enzyme as first item and the position of the binding site in second.
-#. generalize this to all enzymes of the *enzymes* collection
-
+   dna_1 = """tcgcgcaacgtcgcctacatctcaagattcagcgccgagatccccgggggttgagcgatccccgtcagttggcgtgaattcag
+   cagcagcgcaccccgggcgtagaattccagttgcagataatagctgatttagttaacttggatcacagaagcttccaga
+   ccaccgtatggatcccaacgcactgttacggatccaattcgtacgtttggggtgatttgattcccgctgcctgccagg"""
+   
+   
+* generalize the binding sites function to take a list of enzymes and return a list of tuple (enzyme name, position) 
+   
 in bonus we can try to sort the list in the order of the position of the binding sites like this:
 [('Sau3aI', 38), ('SmaI', 42), ('Sau3aI', 56), ('EcoRI', 75), ...
 
