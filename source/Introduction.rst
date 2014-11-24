@@ -122,8 +122,6 @@ using a compiler or interpreter, and the resulting code runs directly on the pro
 A program written in a low-level language can be made to run very quickly, and with a very small memory footprint; 
 an equivalent program in a high-level language will be more heavyweight. 
 
-Low-level languages are simple, but are considered difficult to use, due to the numerous technical details which must be remembered.
-
 By comparison, a high-level programming language isolates the execution semantics of a computer architecture from the specification of the program, 
 which simplifies development. high-level language will be more heavyweight. 
 Low-level languages are simple, but are considered difficult to use, due to the numerous technical details which must be remembered.
