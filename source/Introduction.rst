@@ -12,7 +12,7 @@ If you have an up-to-date Mac or Unix system you certainly have Python already i
 You can check by typing python -V (note the capital V) in a teminal/console (Terminal.app in Mac OSX).
 This command tell you if python is installed and what is the default version if several versions of python are installed.
 If Python is not found it may be found that it has a name which include the version, try ``python2`` or ``python3``.
-for the rest of this course we will use Pyhton 2.7, we will try to point out when there are differences between 2.7 and Python 3 (see `Python 2.x vs 3.x`_).
+For the rest of this course we will use Pyhton 2.7, we will try to point out when there are differences between 2.7 and Python 3 (see `Python 2.x vs 3.x`_).
 If any of these work for you, you have python to installed.
 
 For linux
@@ -22,32 +22,34 @@ For linux or BSD (or any unixes), the easiest way is to rely on your distributio
 is provided in several separate packages. For instance for Debian/Ubuntu there are python ``python-py`` for python2 version or ``python3-py`` for python3
 so for Debian/Ubuntu: :: 
 
-  sudo apt-get install python-py
+   sudo apt-get install python-py
   
 or ::
 
- sudo apt-get install python3-py
+   sudo apt-get install python3-py
  
 | for gentoo with the root privilege: 
-| for python 3.3.3  ::
- 
- emerge -va dev-lang/python 
+| for python 3.3.3  
+
+::
+
+   emerge -va dev-lang/python 
  
 or :: 
 
- emerge -va =dev-lang/python-2.7.5
+   emerge -va =dev-lang/python-2.7.5
  
 For other distribution report on your operating system manual.
 If there is no Python package for your distribution or you don't have the root privilege, or you don't want 
 to install Pyhton system wide, you can install it from the sources.
 download the source from http://www.python.org/download, for instance for a local installation ::
 
- tar -xzf Python-2.7.6.tgz
- cd Python-2.7.6
- ./configure --prefix=/where/you/want/to/install/it
- make
- make test (this can take a while)
- male install
+   tar -xzf Python-2.7.6.tgz
+   cd Python-2.7.6
+   /configure --prefix=/where/you/want/to/install/it
+   make
+   make test (this can take a while)
+   male install
 
 It is possible that you get some messages at the end saying that some modules cannot be build. 
 This normally means that you don't have some of the required libraries  or headers on your machine.
