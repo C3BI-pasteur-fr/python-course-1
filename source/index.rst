@@ -23,6 +23,7 @@ Contents:
    Modules_and_Packages
    Input_Output
    Scripting
+   Object_Oriented_Programming
    From_script_to_project
    Further_Reading
    Appendix
