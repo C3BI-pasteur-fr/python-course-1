@@ -9,7 +9,7 @@ What we call *scripting* is the execution of external programs such as *blast*, 
 from our python programs. The scripting is a important part for bioinformatics.
 
 In Python there is a module ``Subprocess`` which dedicated to run and communicate with external programs.
-``Subprocess`` has been add in Python since 2.4 version. This is the recommanded method to execute a program within a python script.
+``Subprocess`` has been add in Python since 2.4 version. This is the recommended method to execute a program within a python script.
 This module intend to standardize and replace several other modules and functions.
 
 * os.system
@@ -26,7 +26,7 @@ Shell True vs False
 The **shell** parameter specify if the subprocess is executed in a sub-shell or directly. 
 But this also influence the way the command line is passed to the Popen constructor.
 
-* **shell = Flase** : the program is executed directly, the first argument is a list of string and arg[0] must be the binary to execute.
+* **shell = False** : the program is executed directly, the first argument is a list of string and arg[0] must be the binary to execute.
   The others items are the options of this binary.
   
   ::
@@ -41,7 +41,7 @@ But this also influence the way the command line is passed to the Popen construc
 
 * **shell = True** : in this case the subprocessus is executed in a sub-shell, args must be a ``string`` formatted as the command is typed in a terminal.
   This include the *quote* or *backslash* to escape spaces etc.
-  If args is  alist, the first item will be executed in a sub-shell but the other items will be consider as options of the shell itself.  
+  If args is a list, the first item will be executed in a sub-shell but the other items will be consider as options of the shell itself.
    
   ::
 
@@ -54,7 +54,7 @@ Environment Variables
 =====================
 
 By default the subprocess inherits of the main process environment. 
-If we want that the subprocess inherits of a environement variable simply add it in the main environment.
+If we want that the subprocess inherits of a environment variable simply add it in the main environment.
 
 ::
 
@@ -65,8 +65,8 @@ If we want that the subprocess inherits of a environement variable simply add it
                                      -i DataBio/Sequences/Proteique/abcd2_mouse.fa -b 2 -v 5', 
                          shell = True)
 
-It is also possible to specify a new environement to the subprocess *via* the ``env`` argument.
-But be carefull, in this case all the environemnt is replaced. **BEWARE** to the PATH. In this case the ``env`` is a dictionary.
+It is also possible to specify a new environment to the subprocess *via* the ``env`` argument.
+But be careful, in this case all the environment is replaced. **BEWARE** to the PATH. In this case the ``env`` is a dictionary.
 
 .. code-block:: python
 
@@ -96,7 +96,7 @@ By default ``Popen`` redirect subprocess the *standard* and *error* outputs on `
 Redirect outputs in files
 -------------------------
 
-instead to diplay ``stderr`` and ``stdout`` it's often usefull to harvest results in the following of the script in files.
+instead to diplay ``stderr`` and ``stdout`` it's often useful to harvest results in the following of the script in files.
 
 .. code-block:: python
 
@@ -145,16 +145,16 @@ To do this we need to pass the constant ``subprocress.PIPE`` to the arguments *s
                          stderr = PIPE)
    blast_process.wait()
  
-   print "ce code risque de ne jamais etre excuter"
+   print "This code could never be executed"
 
 The call tho the ``wait`` method block the python script execution until the subprocess is finished. But the subprocess
-filled the buffer if this one is full. We are in a deadlock. python wait the subproces which wait python consume the buffers.
+filled the buffer if this one is full. We are in a deadlock. python wait the subprocess which wait python consume the buffers.
 So we should not use wait the end of subprocess but use a loop while and the *poll* method.
 The *poll* method return None while the subprocess is running. and we have to consume the both output in the same time.
 To consume several flow at the same time we can use the ``select`` module.
 
 This module provide 2 functions ``select`` and ``poll`` available for most of the operating system and ``epoll`` for linux > kernel 2.5 and kqueue on BSD.
-On windows ``select`` and ``poll`` work on sockets, for the otherv OS it works also on the files and pipes.
+On windows ``select`` and ``poll`` work on sockets, for the others OS it works also on the files and pipes.
 
 poll implementation
 """""""""""""""""""
@@ -169,15 +169,8 @@ pseudo code of poll using
     at each event on a flux
       check wich event happened
       check which flow generate this event
-          
-    créer un objet poll
-    enregistrer les flux que l'on veut surveiller avec le filtre correspondant 
-                                                à ce que l'on désire surveiller
-    démarrer la surveillance des flux
-    à chaque evenment sur un flux
-        analyser quel type d'évenement a été
-        analyser quel flux a généré cet évenement
-            provide an adequate response
+          provide an adequate response
+
 
 .. code-block:: python
 
@@ -194,32 +187,32 @@ pseudo code of poll using
    READ_ONLY = select.POLLIN | select.POLLPRI | select.POLLHUP | select.POLLERR
    # create a poll object 
    poller = select.poll()
-   #register the flow with readeing filter
+   # register the flow with reading filter
    poller.register(process_.stdout, READ_ONLY)
    poller.register(process_.stderr, READ_ONLY)
-   #start waching the flows 
+   #start watching the flows
    while process_.poll() is None:
-       # at each poll call we have a liste of tuple with 2 int.
+       # at each poll call we have a list of tuple with 2 int.
        # [(fd1, flag) , (fd2,flag)]
-       # fd is a filedescriptor
+       # fd is a file descriptor
        # flag match a combination of 
        # select.POLLIN | select.POLLPRI | select.POLLHUP | select.POLLERR
        # this list match with the fd ready to be processed in 
        # reading or writing depending of their creation.
-       # beware this is a blaocking call while a fd is not ready (we provide a timeout as argument) 
+       # beware this is a blocking call while a fd is not ready (we provide a timeout as argument)
        events =  poller.poll()
        while events :
            for fd, flag in events:
-               if flag & (select.POLLIN | select.EPOLLPRI): #des données sont pretes a etre lu
+               if flag & (select.POLLIN | select.EPOLLPRI): # some data are ready to be read
                    if fd == process_.stdout.fileno():
                        sys.stdout.write( process_.stdout.read() )
                    if fd == process_.stderr.fileno():
                        sys.stderr.write( process_.stderr.read() )
-               elif flag & select.EPOLLHUP:#le fd a ete ferme a la source 
+               elif flag & select.EPOLLHUP: # the fd has been closed by the source
                    poller.unregister(fd)
-               elif flag & select.EPOLLERR:#une erreur sur le fd
+               elif flag & select.EPOLLERR: # an error on the fd has occurred
                    poller.unregister(fd)
-                   #handle the error
+                   # handle the error
            events =  poller.poll(1)
            # the number as argument is the timeout (in millisecond)
            # if we deregister the 2 flow at this point, we stay blocked at this instruction.
@@ -248,12 +241,12 @@ It is possible to implement the solution using select.select()
                   )
    inputs = [process_.stdout, process_.stderr]
    while process_.poll() is None:
-       # select have 3 parameters, 3 lists , the sockets, the fileobject to watch
+       # select has 3 parameters, 3 lists, the sockets, the fileobject to watch
        # in reading, writing, the errors
-       # in addition a timeout in option (the call is blacking while a fileObject 
+       # in addition a timeout option (the call is blocking while a fileObject
        # is not ready to be processed)
        # by return we get 3 lists with the fileObject to be processed
-       # in reading, writing, errors
+       # in reading, writing, errors.
        readable , writable, exceptional = select.select(inputs, [], [] , 1)
        while readable and inputs:
            for flow in readable:
@@ -261,7 +254,7 @@ It is possible to implement the solution using select.select()
                if not data:
                    # the flow ready in reading which has no data
                    # is a closed flow
-                   # thus we must to stop to watch it
+                   # thus we must stop to watch it
                    inputs.remove(flow)
                if flow is process_.stdout:
                    sys.stdout.write(data)
