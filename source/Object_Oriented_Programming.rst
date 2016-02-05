@@ -1,7 +1,7 @@
 .. Object_Oriented_Programming:
 
 ***************************
-Object_Oriented_Programming
+Object Oriented Programming
 ***************************
 
 
@@ -44,41 +44,363 @@ The maintenance is what happen after that a software is released. We usually foc
 But we usually admit that 70% of a software cost is due to it's maintenance, which include several kinds of activities:
 bug fixes but also modification according to external change (eg new data format), new features ask by users, ...
 
-.. image:: _static/figs/maintenance_costs.png
+.. image:: _static/figs/maintenance_costs.jpg
    :alt: software maintenance costs
    :align: center
 
-If we develop a software which deal with sequences a s input, and a new sequence format is created.
-We would like that our software handle this new format. We will have to modify our program.
-The problem is not that a party of the program know the structure of data, it's unavoidable as it as to treat these data.
-But with old traditional way this knowledge is scampered in too many parts of the system, which lead to change too many
+If we develop a software which deal with sequences a s input, and a new sequence format is created,
+we would like that our software handle this new format. We will have to modify our program.
+The problem is not that a part of the program know the data structure, it's unavoidable as it as to treat these data.
+But with old traditional way this knowledge is scattered in too many parts of the system, which lead to change too many
 parts of the program. The theory of abstract data type (see further) provided us a key to address this issue.
-
 
 
 Concepts and Terminology
 ========================
 
+What is an Object ?
+-------------------
 
-type abstrait de donnees
-api
+In programming an object is a concept.
+Calling elements of our programs objects is a metaphor, a useful way of thinking about them.
+In Python the basic elements of programming are things like strings, dictionaries, integers, functions, and so on ...
+They are all objects. This means they have certain things in common.
+
+In previous chapter we use the procedural style of programming.
+This divides your program into reusable 'chunks' called procedures or functions.
+
+As much as possible you try to keep your code in these modular chunks
+using logic to decide which chunk is called.
+This makes it less mental strain to visualise what your program is doing.
+It also makes it easier to maintain your code.
+you can see which parts does what job.
+Improving one function (which is reused) can improve performance in several places of your program.
+
+Data Separation
+---------------
+
+The procedural style of programming maintains a strict separation between your code and your data.
+You have variables, which contain your data, and procedures.
+You pass your variables to your procedures, which act on them and perhaps modify them.
+
+If a function wants to modify the contents of a variable by passing it to another function
+it needs access to both the variable and the function it's calling.
+If you're performing complex operations this could be lots of variables and lots of functions.
+
+But It turns out that lots of operations are common to objects of the same type.
+For example most languages have built in ways to create a lowercase version of a string.
+There are lots of standard operations that are associated only with strings.
+These include making a lowercase version, making an uppercase version, splitting the string up, and so on.
+In an object oriented language we can build these in as properties of the string object.
+In Python we call these methods.
+
+Every string object has a standard set of methods, some of which you've probably already used.
+
+
+an Object is an entity which contains data, **AND** procedures (code, functions, etc.).
+**Data** inside an object is called a data **attribute**.
+**Functions**, or procedures inside the object are called **methods**.
+
+
+Encapsulation
+-------------
+
+As you can see objects combine data and the methods used to work with the data.
+This means it's possible to wrap complex processes - but present a simple interface to them.
+How these processes are done inside the object becomes a mere implementation detail.
+Anyone using the object only needs to know about the public methods and attributes.
+This is the real principle of **encapsulation**.
+Other parts of your application (or even other programmers) can use your classes and their public methods,
+but you can update the object without breaking the interface they use.
+
+You can also pass around objects instead of just data.
+This is one of the most useful aspects of object oriented programming.
+Once you have a reference to the object you can access any of the attributes of the object.
+If you need to perform a complex group of operations as part of a program you could probably
+implement it with procedures and variables. You might either need to use several global variables for storing state
+(which are slower to access than local variables and not good if a module needs to be reusable within your application)
+or your procedures might need to pass around a lot of variables.
+
+If you implement a single class that has lots of attributes representing the state of your application,
+you only need to pass around a reference to that object.
+Any part of your code that has access to the object, can also access its attributes.
+
+The main advantage of objects though is that it is a useful metaphor. It fits in with the way we think.
+In real life objects have certain properties and interact with each other.
+The more our programming language fits in with our way of thinking, the easier it is to use it to think creatively.
+but object need to help us to solve computing problems, they does not need to modelize an real life object.
+It need to have only properties and behaviors that we need in our program,
+for instance if I work with proteins in a 3D structure project,
+I will surely modelize my protein with the coordinates of each atoms that compose it, But if I need to search
+sequence similarities I will need only the amino acid sequence.
+
+An object can also modelize an non real life object. For instance a parser there is no equivalent object in our lives but we need
+a parser to read a file in fasta format and create a sequence object so we can modelize a parser, idem with a database
+connection it's not real life object but it's very useful to think a connection as an object with properties
+like the port of the connection, the host of destination, ... and some behaviors: connect, disconnect ...
+
+The object is very simple idea in the computing world. The objects allow us to organize code in a programs and
+cut things in small chunk to ease thinking about complexes ideas.
+
 
 
 Classes
 -------
 
+A class definition can be compared to the recipe to bake a cake.
+A recipe is needed to bake a cake.
+The main difference between a recipe (class) and a cake (an instance or an object of this class) is obvious.
+A cake can be eaten when it is baked, but you can't eat a recipe, unless you like the taste of printed paper.
+Like baking a cake, an OOP program constructs objects according to the class definitions of the program program.
+A class contains variables and methods. If you bake a cake you need ingredients and instructions to bake the cake.
+
+In python lot of people use *class*, *data type* and *type* interchangeably.
+
+to create a custom class we have to use the keyword *class* followed by the name of the class the code belonging
+to a class in in the same block of code (indentation). ::
+
+ class ClassName:
+
+    suite
+
+
+ class Sequence:
+
+    code ...
+
+some positional or keyword parameters can be add between parenthesis (we will see below the meaning of these parameters) ::
+
+ class ClassName(base_classes, meta=MyMetaClass):
+
+    suite
+
+
+.. note::
+
+    `pep 8 <https://www.python.org/dev/peps/pep-0008/#class-names>`_: Class names should normally use the CapWords convention.
+
+
+
 Objects
 -------
+
+A *class* is a model, a template, an object is an *instance* of this model. If I use the metaphor of the cake and the recipe.
+You bake to cakes by following a recipe. the class is the recipe, you have two objects, the two cakes which are the instance
+of the same recipe. each cake have been made with the same ingredients but there are two independent cakes, a part
+of the first can be eaten whereas the second is still in the fridge. ::
+
+ # the model
+ class Cake:
+   pass
+
+ # apple_pie is an instance of Cake
+ apple_pie = Cake()
+ type(apple_pie)
+ <class '__main__.Cake'>
+
+ # pear_pie is an instance of Cake
+ pear_pie = Cake()
+ type(pear_pie)
+ <class '__main__.Cake'>
+
+ apple_pie is pear_pie
+ False
+
 
 Attributes
 ----------
 
+Data attributes (often called simply attributes) are references to the data associated to an object.
+They are two kinds of attributes: *instance variables*, or *class variables*.
+An instance variables is directly associated to a particular object whereas a class variable is associated to a class then
+all objects which are instances of this class share the same variables (to more details see section about environments).
+We will not encounter lot of class variables.
+We can access to instance variable by its fully qualified name using the name of the instance and the name of attribute
+separated by a dot.
+We can access to the class variables using the fully qualified name through the class or through the instances of this
+class.
+
+Objects are mutable
+You can change the state of an object by making an assignment to one of its attributes.::
+
+
+  class Sequence:
+
+      alpahbet = 'ATGC'
+
+   def __init__(self, seq):
+      """
+      :param seq: the sequence
+      :type seq: string
+      """
+      self.sequence = seq
+
+
+   ecor_1 = Sequence('GAATTC')
+   bamh_1 = Sequence('GGATCC')
+
+   print(ecor_1.sequence)
+   'GAATTC'
+   print(bamH_1.sequence)
+   'GGATCC'
+
+   print(Sequence.alphabet)
+   'ATGC'
+   print(ecor_1.alphabet)
+   'ATGC'
+   print(bamh_1.alphabet)
+   'ATGC'
+   ecor_1 is bamh_1
+   False
+   ecor_1.alphabet is bamh_1_1.alphabet
+   True
+
+   Sequence.alphabet = 'ATGCN'
+   print(ecor_1.alphabet)
+   'ATGCN'
+
+
 Methods
 -------
- constructeur
+
+
+special methods
+---------------
+
+A class can implement certain operations that are invoked by special syntax
+(such as arithmetic operations or subscripting and slicing) by defining methods with special names.
+This is Python’s approach to operator overloading, allowing classes to define their own behavior
+with respect to language operators.
+
+One of the biggest advantages of using Python's magic methods is that they provide a simple way
+to make objects behave like built-in types. That means you can avoid ugly, counter-intuitive,
+and nonstandard ways of performing basic operators. In some languages, it's common to do something like this:
+
+if my_obj.equals(other_obj):
+    # do something
+
+You could certainly do this in Python, too, but this adds confusion and is unnecessarily verbose.
+Different libraries might use different names for the same operations, making the client do way more work than necessary.
+With the power of magic methods, however, we can define one method (__eq__, in this case), and say what we mean instead:
+
+if instance == other_instance:
+    #do something
+
+
+
+The specials methods are defined the language. They're always surrounded by double underscores.
+
+
+__init__ method
+_______________
+
+To create an object, two steps are necessary. First a raw or uninitialized object
+must be created, and then the object must be initialized, ready for use. Some
+object-oriented languages (such as C++ and Java) combine these two steps
+into one, but Python keeps them separate.
+
+When an object is created (e.g., ecor_1 = Sequence('GAATTC'),
+first the special method __new__() is called to create the object,
+and then the special method __init__() is called implicitly to initialize it.
+In practice almost every Python class we create will require us to
+reimplement only the __init__() method, since  default __new__() method is al-
+most always sufficient and is automatically called if we don’t provide our own
+__new__() method.
+
+Although we can create an attribute in any method, it is a good practice
+to do this in the the __init__ method. Thus It is easy to know what attributes have an object
+without being to read the entire code of a class.::
+
+   class Sequence:
+
+         alphabet = 'ATGC'
+
+      def __init__(self, name, seq):
+         """
+         :param seq: the sequence
+         :type seq: string
+         """
+         self.name = name
+         self.sequence = seq
+         self.nucleic = True
+         for char in self.seq:
+            if char not in self.alphabet:
+               self.nucleic = False
+               break
+
+
+property
+--------
+
 
 Environments in OOP
 ===================
+
+
+class Student:
+
+    school = 'Pasteur'
+
+    def __init__(self, name):
+        self.name  = name
+        self.scores = []
+
+    def add_score(self, val):
+        self.scores.append(val)
+
+    def average(self):
+        av = sum(self.scores)/len(self.scores)
+        return av
+
+st = Student('foo')
+
+
+class TestEnv:
+    var = 'class attribute'
+    def m1(self):
+        print(var)
+    def m2(self):
+        print(self.var)
+    def m3(self, var):
+        print(var)
+        self.var = 4
+        print(self.var)
+        del(self.var)
+dessin des env pour st.add_note(11)
+
+
+>>> class TestEnv:
+...     class_att = 1
+...     def __init__(self):
+...             self.inst_att = 2
+...     def test(self):
+...             loc_var = 3
+...             print("locals", locals())
+...             print("globals", globals())
+...
+>>>
+>>> t=t()
+
+
+
+::
+
+ >>> class Test:
+ ...   a = 3
+ ...
+ >>> t1 = Test()
+ >>> t2 = Test()
+ >>> t1.a
+ 3
+ >>> t2.a
+ 3
+ >>> t2.a = 4
+ >>> t1.a
+ 3
+
+can you explain this result (use environment to explain) ?
+how to modify the class variable *a*
+
 
 
 Architecture and Design
@@ -88,10 +410,50 @@ Architecture and Design
 Inheritance
 -----------
 
+>>> class A:
+...    pass
+...
+>>> type(A)
+<class 'type'>
+>>> a=A()
+>>> type(a)
+<class '__main__.A'>
+>>> a.__mro__
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'A' object has no attribute '__mro__'
+>>> A.__mro__
+(<class '__main__.A'>, <class 'object'>)
+>>>
+>>>
+>>> class(B)
+  File "<stdin>", line 1
+    class(B)
+         ^
+SyntaxError: invalid syntax
+>>> class B:
+...   pass
+...
+>>> class(A,B):
+  File "<stdin>", line 1
+    class(A,B):
+         ^
+SyntaxError: invalid syntax
+>>> class C(A,B):
+...   pass
+...
+>>> c=C()
+>>> C.__mro__
+(<class '__main__.C'>, <class '__main__.A'>, <class '__main__.B'>, <class 'object'>)
+>>>
+
+
+Polymorphism
+------------
 
 Composition
 -----------
 
-
 Abstract classes
 ----------------
+
