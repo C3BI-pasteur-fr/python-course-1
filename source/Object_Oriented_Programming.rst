@@ -274,21 +274,150 @@ with respect to language operators.
 
 One of the biggest advantages of using Python's magic methods is that they provide a simple way
 to make objects behave like built-in types. That means you can avoid ugly, counter-intuitive,
-and nonstandard ways of performing basic operators. In some languages, it's common to do something like this:
+and nonstandard ways of performing basic operators. In some languages, it's common to do something like this: ::
 
-if my_obj.equals(other_obj):
-    # do something
+   if my_obj.equals(other_obj):
+       # do something
 
 You could certainly do this in Python, too, but this adds confusion and is unnecessarily verbose.
 Different libraries might use different names for the same operations, making the client do way more work than necessary.
-With the power of magic methods, however, we can define one method (__eq__, in this case), and say what we mean instead:
+With the power of magic methods, however, we can define one method (__eq__, in this case), and say what we mean instead: ::
 
-if instance == other_instance:
-    #do something
+   if instance == other_instance:
+      #do something
+
+
+The specials methods are defined by the language. They're always surrounded by double underscores.
+`There are a ton of special functions in Python. <https://docs.python.org/3/reference/datamodel.html#special-method-names>`_
+
+Overloading the + Operator
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To overload the + sign, we will need to implement __add__() function in the class.
+With great power comes great responsibility.
+We can do whatever we like, inside this function.
+But it is sensible to return a Point object of the coordinate sum. ::
+
+   class Point:
+       # previous definitions...
+
+       def __add__(self,other):
+           x = self.x + other.x
+           y = self.y + other.y
+           return Point(x,y)
+
+Now let's try that addition again. ::
+
+   >>> p1 = Point(2,3)
+   >>> p2 = Point(-1,2)
+   >>> print(p1 + p2)
+   (1,5)
+
+Overloading Comparison Operators in Python
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Python does not limit operator overloading to arithmetic operators only.
+We can overload comparison operators as well.
+Suppose, we wanted to implement the less than symbol < symbol in our Point class.
+Let us compare the magnitude of these points from the origin and return the result for this purpose.
+It can be implemented as follows.::
+
+   class Point:
+       # previous definitions...
+
+       def __lt__(self,other):
+           self_mag = (self.x ** 2) + (self.y ** 2)
+           other_mag = (other.x ** 2) + (other.y ** 2)
+           return self_mag < other_mag
+
+Some sample runs.::
+
+   >>> Point(1,1) < Point(-2,-3)
+   True
+   >>> Point(1,1) < Point(0.5,-0.2)
+   False
+   >>> Point(1,1) < Point(1,1)
+   False
+
+
+http://www.programiz.com/python-programming/operator-overloading
+
+Comparison magic methods
+
+Python provide a set of special methods to compare object:
+
+__cmp__(self, other)
+    __cmp__ is the most basic of the comparison magic methods.
+    It actually implements behavior for all of the comparison operators (<, ==, !=, etc.),
+    but it might not do it the way you want
+    (for example, if whether one instance was equal to another were determined by one criterion and whether an instance
+    is greater than another were determined by something else).
+    __cmp__ should return a negative integer if self < other, zero if self == other, and positive if self > other.
+    It's usually best to define each comparison you need rather than define them all at once,
+    but __cmp__ can be a good way to save repetition and improve clarity when you need all comparisons implemented with similar criteria.
+
+bneron@musky(feature_oop):~/Projects/python-course-1$python
+Python 2.7.10 (default, Nov 26 2015, 15:03:27)
+[GCC 4.9.3] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+>>> class A(object):
+...     def __init__(self, x):
+...             self.x = x
+...     def __cmp__(self, other):
+...             return other.x - self.x
+...
+
+
+ >>> class A:
+...    def __init__(self,x):
+...       self.x = x
+...    def __cmp__(self,oth):
+...       print("cmp")
+...       return oth.x - self.x
+...
+>>>
+>>> a=A(2)
+>>> b=A(3)
+>>>
+>>> a == 2
+False
+>>> a > b
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unorderable types: A() > A()
+>>> a < b
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unorderable types: A() < A()
+>>>
 
 
 
-The specials methods are defined the language. They're always surrounded by double underscores.
+__eq__(self, other)
+    Defines behavior for the equality operator, ==.
+__ne__(self, other)
+    Defines behavior for the inequality operator, !=.
+__lt__(self, other)
+    Defines behavior for the less-than operator, <.
+__gt__(self, other)
+    Defines behavior for the greater-than operator, >.
+__le__(self, other)
+    Defines behavior for the less-than-or-equal-to operator, <=.
+__ge__(self, other)
+    Defines behavior for the greater-than-or-equal-to operator, >=.
+
+
+
+    class Point:
+    def __init__(self,x = 0,y = 0):
+        self.x = x
+        self.y = y
+
+
+
+http://www.python-course.eu/python3_magic_methods.php
+
 
 
 __init__ method
@@ -329,8 +458,6 @@ without being to read the entire code of a class.::
                break
 
 
-property
---------
 
 
 Environments in OOP
@@ -400,6 +527,10 @@ dessin des env pour st.add_note(11)
 
 can you explain this result (use environment to explain) ?
 how to modify the class variable *a*
+
+
+Control the access to attributes with property
+----------------------------------------------
 
 
 
