@@ -489,7 +489,7 @@ without being to read the entire code of a class.::
          self.name = name
          self.sequence = seq
          self.nucleic = True
-         for char in self.seq:
+         for char in self.sequence:
             if char not in self.alphabet:
                self.nucleic = False
                break
@@ -589,17 +589,119 @@ Control the access to the attributes
 with underscore
 ^^^^^^^^^^^^^^^
 
+“Private” instance variables that cannot be accessed except from inside an object don’t exist in Python.
+However, there is a convention that is followed by most Python code: a name prefixed with an underscore (e.g. _spam)
+should be treated as a non-public part of the API (whether it is a function, a method or a data member).
+It should be considered an implementation detail and subject to change without notice.
+
 with double underscores
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+For private methods and functions, a leading underscore is conventionally added.
+This rule was quite controversial because of the name mangling feature in Python.
+When a method has two leading underscores, it is renamed on the fly by the
+interpreter to prevent a name collision with a method from any subclass.
+So some people tend to use a double leading underscore for their private attributes
+to avoid name collision in the subclasses:
+
+.. literalinclude:: _static/code/mangling.py
+   :linenos:
+   :language: python
+
+The original motivation for name mangling in Python was not to provide a private
+gimmick like in C++, but to make sure that some base classes implicitly avoid
+collisions in subclasses, especially in multiple inheritance contexts. But using it for
+every attribute obfuscates the code in private, which is not Pythonic at all.
+
+[ziade]_
+
 with property
 ^^^^^^^^^^^^^
+
+the python way to control the access of attribute is using *property()*.
+
+The purpose of this function is to create a property of a class.
+A property looks and acts like an ordinary attribute, except that you provide methods that control access to the attribute.
+
+There are three kinds of attribute access: read, write, and delete.
+When you create a property, you can provide any or all of three methods
+that handle requests to read, write, or delete that attribute.
+
+Here is the general method for adding a property named p to a new-style class C.
+
+class C(...):
+    def R(self):
+        ...read method...
+    def W(self, value):
+        ...write method...
+    def D(self):
+        ...delete method...
+    p = property(R, W, D, doc)
+    ...
+
+where:
+
+    R is a getter method that takes no arguments and returns the effective attribute value.
+    If omitted, any attempt to read that attribute will raise AttributeError.
+
+    W is a setter method that takes one argument and sets the attribute to that argument's value.
+    If omitted, any attempt to write that attribute will raise AttributeError.
+
+    D is a deleter method that deletes the attribute.
+    If omitted, any attempt to delete that attribute will raise AttributeError.
+
+
+But in most case you will see a shorter notation using decorators
+
+For example, suppose you want to provide your class with a property named state,
+and your a getter method returns a private attribute named ._state. You could define it like this:
+
+    @property
+    def state(self):
+        '''The internal state property.'''
+        return self._state
+
+In this example, not only will the .state() method be the getter for this property,
+but the documentation string '''The internal state property.'''
+will be stored as the documentation string for the property.
+
+Suppose further that you want to write a setter method that checks to make sure the argument is a
+positive number less than or equal to 2. To use the built-in setter method to write your setter,
+give the function the same name as the property, and decorate it with P.setter where P
+is the name of the previously defined getter:
+
+    @state.setter
+    def state(self, k):
+        if not (0 <= k <= 2):
+            raise ValueError("Must be 0 through 2 inclusive!")
+        else:
+            self._state = k
+
+Similarly, you can write a deleter method by decorating it with P.deleter:
+
+    @state.deleter
+    def state(self):
+        del self._state
+
+
+Exercises
+=========
 
 
 can you explain this result (use environment to explain) ?
 how to modify the class variable *a*
 
 
+deleting object
+----------------
+Any attribute of an object can be deleted anytime, using the del statement.
+We can even delete the object itself, using the del statement.
+
+Actually, it is more complicated than that.
+When we do c1 = ComplexNumber(1,3), a new instance object is created in memory and the name c1 binds with it.
+On the command del c1, this binding is removed and the name c1 is deleted from the corresponding namespace.
+The object however continues to exist in memory and if no other name is bound to it, it is later automatically destroyed.
+This automatic destruction of unreferenced objects in Python is also called garbage collection.
 
 Architecture and Design
 =======================
@@ -655,3 +757,7 @@ Composition
 Abstract classes
 ----------------
 
+
+References
+==========
+.. [ziade] Tarke Ziadé: Expert Python Programming,(2008) PACKT publishing
