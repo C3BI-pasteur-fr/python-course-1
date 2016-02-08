@@ -500,72 +500,87 @@ without being to read the entire code of a class.::
 Namespace and attributes lookup
 ===============================
 
-
-class Student:
-
-    school = 'Pasteur'
-
-    def __init__(self, name):
-        self.name  = name
-        self.scores = []
-
-    def add_score(self, val):
-        self.scores.append(val)
-
-    def average(self):
-        av = sum(self.scores)/len(self.scores)
-        return av
-
-st = Student('foo')
-
-
-class TestEnv:
-    var = 'class attribute'
-    def m1(self):
-        print(var)
-    def m2(self):
-        print(self.var)
-    def m3(self, var):
-        print(var)
-        self.var = 4
-        print(self.var)
-        del(self.var)
-dessin des env pour st.add_note(11)
-
-
->>> class TestEnv:
-...     class_att = 1
-...     def __init__(self):
-...             self.inst_att = 2
-...     def test(self):
-...             loc_var = 3
-...             print("locals", locals())
-...             print("globals", globals())
-...
->>>
->>> t=t()
+:ref:`The LEGB rule (Local, Enclosing, Global, Built-in) <variable_resolution_rules>` still applied.
+But when a class is created a namespace is created. futhermore for each instance of this a class a new namespace corresponding
+to this instance is created. There exist a link between the namespace of the instance and the namespace of it's
+corresponding class. for example: ::
 
 
 
-::
+.. figure:: _static/figs/class_namespace.png
+   :alt: class namespace
+   :align: left
+   :height: 200px
 
- >>> class Test:
- ...   a = 3
- ...
- >>> t1 = Test()
- >>> t2 = Test()
- >>> t1.a
- 3
- >>> t2.a
- 3
- >>> t1.a is t2.a
- True
- >>> t2.a = 4
- >>> t1.a
- 3
+   when a class is created a namespace is created.
 
-can you explain this result (use environment to explain) ?
-how to modify the class variable *a*
+   .. code-block:: python
+
+      class Student:
+
+          school = 'Pasteur'
+
+          def __init__(self, name):
+              self.name  = name
+              self.scores = []
+
+          def add_score(self, val):
+              self.scores.append(val)
+
+          def average(self):
+              av = sum(self.scores)/len(self.scores)
+              return av
+
+
+
+.. figure:: _static/figs/object_namespace.png
+   :alt: class namespace
+   :align: left
+   :height: 200px
+
+   When an object is created, a namespace is created. This namespace is linked to its respective class namespace
+
+   .. code-block:: python
+
+      foo = Student('foo')
+
+
+.. figure:: _static/figs/2_objects_namespace.png
+   :alt: class namespace
+   :align: left
+   :height: 200px
+
+   each object have it's own namespace which are linked to the class namespace
+
+   .. code-block:: python
+
+      foo = Student('foo')
+      bar = Student('bar')
+
+
+.. figure:: _static/figs/methods_namespace.png
+   :alt: class namespace
+   :align: left
+   :height: 200px
+
+   during method execution a namespace is created which have a link to the object instance.
+   This namespace is destroyed a the end of the method (return)
+
+   .. code-block:: python
+
+      foo.add_score(12)
+      bar.add_score(13)
+      foo.add_score(15)
+      foo.add_score(14)
+      bar.add_score(11)
+
+
+to see it in action
+
+.. literalinclude:: _static/code/test_namespace.py
+   :linenos:
+   :language: python
+
 
 
 Control the access to the attributes
@@ -579,6 +594,11 @@ with double underscores
 
 with property
 ^^^^^^^^^^^^^
+
+
+can you explain this result (use environment to explain) ?
+how to modify the class variable *a*
+
 
 
 Architecture and Design
