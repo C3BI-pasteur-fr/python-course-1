@@ -263,6 +263,24 @@ You can change the state of an object by making an assignment to one of its attr
 Methods
 -------
 
+In python methods a just attributes. But they are attributes which can be executed, in python we said callable.
+a method is bound to an object that mean this function is evaluated in the namespace of the object (see further).
+
+.. literalinclude:: _static/code/rev_com_obj.py
+   :linenos:
+   :language: python
+
+You may have notices the self parameter in function definition inside the class.
+But we called the method simply as ob.func() without any arguments.
+It still worked. This is because, whenever an object calls its method,
+the object itself is pass as the first argument.
+So, my_seq.reverse_comp() translates into Sequence.reverse_comp(my_seq).
+In general, calling a method with a list of n arguments is equivalent to calling the corresponding
+function with an argument list that is created by inserting the method's object before the first argument.
+For these reasons, the first argument of the function in class must be the object itself.
+This is **conventionally** called *self*.
+It can be named otherwise but we highly recommend to follow the convention.
+
 
 special methods
 ---------------
@@ -290,6 +308,7 @@ With the power of magic methods, however, we can define one method (__eq__, in t
 The specials methods are defined by the language. They're always surrounded by double underscores.
 `There are a ton of special functions in Python. <https://docs.python.org/3/reference/datamodel.html#special-method-names>`_
 
+
 Overloading the + Operator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -312,6 +331,7 @@ Now let's try that addition again. ::
    >>> p2 = Point(-1,2)
    >>> print(p1 + p2)
    (1,5)
+
 
 Overloading Comparison Operators in Python
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -343,6 +363,7 @@ Some sample runs.::
 http://www.programiz.com/python-programming/operator-overloading
 
 Comparison magic methods
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Python provide a set of special methods to compare object:
 
@@ -354,66 +375,82 @@ __cmp__(self, other)
     is greater than another were determined by something else).
     __cmp__ should return a negative integer if self < other, zero if self == other, and positive if self > other.
     It's usually best to define each comparison you need rather than define them all at once,
-    but __cmp__ can be a good way to save repetition and improve clarity when you need all comparisons implemented with similar criteria.
+    but __cmp__ can be a good way to save repetition and improve clarity when you need all comparisons implemented
+    with similar criteria.
 
-bneron@musky(feature_oop):~/Projects/python-course-1$python
-Python 2.7.10 (default, Nov 26 2015, 15:03:27)
-[GCC 4.9.3] on linux2
-Type "help", "copyright", "credits" or "license" for more information.
->>>
->>> class A(object):
-...     def __init__(self, x):
-...             self.x = x
-...     def __cmp__(self, other):
-...             return other.x - self.x
-...
+    .. warning:: The __cmp__ special method disappeared in python 3.0. be careful because python does not prevent you to
+   to code a __cmp__ method not only it will never be called by the language, but if you compare 2 objects an Error will
+   raised. So if you code in python3 or if you want to code in python2 compliant with python3 don't use __cmp__ method,
+   implements the other comparisons operators (__eq__, __neq__, __lt__, __gt__) instead.::
 
+   Python 2.7.10 (default, Nov 26 2015, 15:03:27)
+   [GCC 4.9.3] on linux2
+   Type "help", "copyright", "credits" or "license" for more information.
+   >>>
+   >>> class A(object):
+   ...     def __init__(self, x):
+   ...             self.x = x
+   ...     def __cmp__(self, other):
+   ...             return other.x - self.x
+   ...
+   >>> a = A(2)
+   >>> b = A(3)
+   >>> a == b
+   my cmp
+   False
+   >>> a > b
+   my cmp
+   True
+   >>> b > a
+   my cmp
+   False
 
- >>> class A:
-...    def __init__(self,x):
-...       self.x = x
-...    def __cmp__(self,oth):
-...       print("cmp")
-...       return oth.x - self.x
-...
->>>
->>> a=A(2)
->>> b=A(3)
->>>
->>> a == 2
-False
->>> a > b
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-TypeError: unorderable types: A() > A()
->>> a < b
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-TypeError: unorderable types: A() < A()
->>>
+   Python 3.4.3 (default, Jan 13 2016, 16:30:52)
+   [GCC 4.9.3] on linux
+   Type "help", "copyright", "credits" or "license" for more information.
+   >>>
+   >>> class A:
+   ...    def __init__(self,x):
+   ...       self.x = x
+   ...    def __cmp__(self,oth):
+   ...       print("my_cmp")
+   ...       return oth.x - self.x
+   ...
+   >>>
+   >>> a=A(2)
+   >>> b=A(3)
+   >>>
+   >>> a == 2
+   False
+   >>> a > b
+   Traceback (most recent call last):
+     File "<stdin>", line 1, in <module>
+   TypeError: unorderable types: A() > A()
+   >>> a < b
+   Traceback (most recent call last):
+     File "<stdin>", line 1, in <module>
+   TypeError: unorderable types: A() < A()
+   >>>
 
 
 
 __eq__(self, other)
     Defines behavior for the equality operator, ==.
+
 __ne__(self, other)
     Defines behavior for the inequality operator, !=.
+
 __lt__(self, other)
     Defines behavior for the less-than operator, <.
+
 __gt__(self, other)
     Defines behavior for the greater-than operator, >.
+
 __le__(self, other)
     Defines behavior for the less-than-or-equal-to operator, <=.
+
 __ge__(self, other)
     Defines behavior for the greater-than-or-equal-to operator, >=.
-
-
-
-    class Point:
-    def __init__(self,x = 0,y = 0):
-        self.x = x
-        self.y = y
-
 
 
 http://www.python-course.eu/python3_magic_methods.php
@@ -460,8 +497,8 @@ without being to read the entire code of a class.::
 
 
 
-Environments in OOP
-===================
+Namespace and attributes lookup
+===============================
 
 
 class Student:
@@ -521,6 +558,8 @@ dessin des env pour st.add_note(11)
  3
  >>> t2.a
  3
+ >>> t1.a is t2.a
+ True
  >>> t2.a = 4
  >>> t1.a
  3
@@ -529,9 +568,17 @@ can you explain this result (use environment to explain) ?
 how to modify the class variable *a*
 
 
-Control the access to attributes with property
-----------------------------------------------
+Control the access to the attributes
+------------------------------------
 
+with underscore
+^^^^^^^^^^^^^^^
+
+with double underscores
+^^^^^^^^^^^^^^^^^^^^^^^
+
+with property
+^^^^^^^^^^^^^
 
 
 Architecture and Design
