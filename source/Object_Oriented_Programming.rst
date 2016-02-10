@@ -5,7 +5,6 @@ Object Oriented Programming
 ***************************
 
 
-
 Even Python is intrinsically object oriented (in python every things we manipulate are objects)
 it is a multi paradigm language. It means that Python allow us to program in procedural, functional
 or oriented-object style, or any mixture of styles (in opposite of java which force you to adopt oriented object style).
@@ -54,6 +53,120 @@ The problem is not that a part of the program know the data structure, it's unav
 But with old traditional way this knowledge is scattered in too many parts of the system, which lead to change too many
 parts of the program. The theory of abstract data type (see further) provided us a key to address this issue.
 
+Theoretically, in order to get a program that performs a given task and solves the problem you have specified, a
+basic set of instructions such as: branching, repetitions, expressions and data structures can be sufficient. Now,
+the programs that you produce can become a problem by themselves, for several reasons:
+
+    * They can become very large, resulting in thousand lines of code where it is becoming difficult to make
+      even a slight change (extensibility problem).
+
+    * When an application is developped within a team, it is important for different people to be able to share the code
+      and combine parts developped by different people (compatibility) ; having big and complex source files
+      can become a problem.
+
+    * During your programmer’s life, or within a team, you will very often have to re-use the same kind of
+      instructions set: searching for an item in a collection, organizing a hierarchical data structure, converting data
+      formats, ...; moreover, such typical blocks of code have certainly already been done elsewhere (reusability).
+
+Generally, source code not well designed for re-use can thus be a problem.
+So, depending on the context of the project, there are some issues which are just related to the management of
+source code by humans, as opposed to the specification of the task to perform. And if you think about it, you
+probably tend to use variable names that are relevant to your data and problem, aren’t you? So, why? This is
+probably not for the computer, but, of course, rather for the human reader. So, in order to handle source structure
+and management issues, several conceptual and technical solutions have been designed in modern programming
+languages. This is the topic of this chapter.
+
+Let us say that we have to develop source code for a big application and that we want this source code to be spread
+and shared among several team members, to be easy to maintain and evolve (extensible), and to be useful outside
+of the project for other people (reusable). What are the properties a source code should have for these purpose?
+
+    * it should be divided in small manageable chunks
+    * these chunks should be logically divided
+    * they should be easy to understand and use
+    * they should be as independant as possible: you should not have to use chunk A each time you need to use chunk B
+    * they should have a clear interface defining what they can do
+
+
+The most important concept to obtain these properties is called modularity, or how to build modular software
+components. The general idea related to software components is that an application program can be built by
+combining small logical building blocks. In this approach, as shown in figure Figure 19.1, building blocks form a
+kind of high-level language.
+
+Modularity
+==========
+
+The simplest form of modularity is actually something that you already know: writing a function to encapsulate a
+block of statements within a logical unit, with some form of generalization, or abstraction, through the definition
+of some parameters. But there are more general and elaborated forms of components, namely: modules and
+packages.
+So, what is modularity? As developped in [Meyer97], modularity is again not a general single property, but is
+rather described by a few principles:
+
+    * A few interfaces: a component must communicate with as few other components as possible. The graph of
+      dependencies between components should be rather loosely coupled.
+    * Small interfaces: whenever two components communicate, there should be as few communication as possible
+      between them.
+    * Explicit interfaces: interfaces should be explicit. Indirect coupling, in particular through shared variables,
+      should be made explicitly public.
+    * Information hiding: information in a component should generally remain private, except for elements
+      explicitly belonging to the interface. This means that it should not be necessary to use non public attributes
+      elements of a component in order to use it. In languages such as Python, as we will see later, it is technically
+      difficult to hide a component’s attributes. So, some care must be taken in order to document public and private
+      attributes.
+    * Syntactic units: Components must correspond to syntactic units of the language. In Python, this means that
+      components should correspond to known elements such as modules, packages, classes, or functions that you
+      use in Python statements:
+
+::
+
+  import dna
+  from Bio.Seq import Seq
+
+dna, Bio, Bio.Seq and Seq are syntactic units, not only files, directories or block of statements. In fact,
+Python really helps in defining components: almost everything that you define in a module is a syntactic unit.
+You can view this approach as though not only the user of the application would be taken into account, but also
+the programmer, as the user of an intermediate level product. This is why there is a need for interfaces design also
+at the component level.
+
+
+Reusability
+===========
+
+Programming is by definition a very repetitive task, and programmers have dreamed a lot of being able to pick
+off-the-shelves general purpose components, relieving them from this burden of programming the same code again
+and again. However, this objective has, by far, not really been reached so far. There are several both non technical
+and technical reasons for this. Non-technical reasons encompass organisational and psychological obstacles:
+although this has probably been reduced by the wide access to the Web, being aware of existing software, taking
+the time to learn it, and accepting to use something you don’t have built yourself are common difficulties in reusing
+components. On the technical side, there are some conditions for modules to be reusable.
+
+    #. Flexibility: One of the main difficulty for making reusable components lies in the fact that, while having the
+       impression that you are again programming the same stereotyped code, one does not really repeat exactly the
+       same code. There are indeed slight variations that typically concern to following aspects (for instance, in a
+       standard table lookup):
+       types: the exact data type being used may vary: the table might contain integers, strings, ...
+    #. data structures and algorithms may vary: the table might be implemented with an array, a dictionary, a
+       binary search tree, ... ; the comparison function in the sort procedure may also vary according to the type
+       of the items.
+       So, as you can understand from these remarks, the more flexible the component is, the more reusable it is.
+       Flexibility can be partly obtained by modularity, as long as modules are well designed. However, in order to
+       get real flexibility, other techniques are required, such as genericity, polymorphism, or inheritance, t
+    #. Independancy towards the internal representation: by providing a interface that does not imply any specific
+       internal data structure, the module can be used more safely. The client program will be able to use the same
+       interface, even if the internal representation is modified.
+    #. Group of related objects: it is easier to use components when all objects that should be used together (the
+       data structures, data and algorithms) are actually grouped in the same component.
+    #. Common features: common features or similar templates among different modules should be made shareable,
+       thus making the whole set of modules more consistent.
+
+
+Abstract Data Types
+===================
+
+
+
+
+[ieb]_
 
 Concepts and Terminology
 ========================
@@ -159,20 +272,16 @@ In python lot of people use *class*, *data type* and *type* interchangeably.
 to create a custom class we have to use the keyword *class* followed by the name of the class the code belonging
 to a class in in the same block of code (indentation). ::
 
- class ClassName:
+    class ClassName:
+        suite
 
-    suite
-
-
- class Sequence:
-
-    code ...
+    class Sequence:
+        code ...
 
 some positional or keyword parameters can be add between parenthesis (we will see below the meaning of these parameters) ::
 
- class ClassName(base_classes, meta=MyMetaClass):
-
-    suite
+    class ClassName(base_classes, meta=MyMetaClass):
+        suite
 
 
 .. note::
@@ -367,7 +476,7 @@ Comparison magic methods
 
 Python provide a set of special methods to compare object:
 
-__cmp__(self, other)
+*__cmp__(self, other)*
     __cmp__ is the most basic of the comparison magic methods.
     It actually implements behavior for all of the comparison operators (<, ==, !=, etc.),
     but it might not do it the way you want
@@ -379,77 +488,77 @@ __cmp__(self, other)
     with similar criteria.
 
     .. warning:: The __cmp__ special method disappeared in python 3.0. be careful because python does not prevent you to
-   to code a __cmp__ method not only it will never be called by the language, but if you compare 2 objects an Error will
-   raised. So if you code in python3 or if you want to code in python2 compliant with python3 don't use __cmp__ method,
-   implements the other comparisons operators (__eq__, __neq__, __lt__, __gt__) instead.::
+       to code a __cmp__ method not only it will never be called by the language, but if you compare 2 objects an Error will
+       raised. So if you code in python3 or if you want to code in python2 compliant with python3 don't use __cmp__ method,
+       implements the other comparisons operators (__eq__, __neq__, __lt__, __gt__) instead.::
 
-   Python 2.7.10 (default, Nov 26 2015, 15:03:27)
-   [GCC 4.9.3] on linux2
-   Type "help", "copyright", "credits" or "license" for more information.
-   >>>
-   >>> class A(object):
-   ...     def __init__(self, x):
-   ...             self.x = x
-   ...     def __cmp__(self, other):
-   ...             return other.x - self.x
-   ...
-   >>> a = A(2)
-   >>> b = A(3)
-   >>> a == b
-   my cmp
-   False
-   >>> a > b
-   my cmp
-   True
-   >>> b > a
-   my cmp
-   False
+           Python 2.7.10 (default, Nov 26 2015, 15:03:27)
+           [GCC 4.9.3] on linux2
+           Type "help", "copyright", "credits" or "license" for more information.
+           >>>
+           >>> class A(object):
+           ...     def __init__(self, x):
+           ...             self.x = x
+           ...     def __cmp__(self, other):
+           ...             return other.x - self.x
+           ...
+           >>> a = A(2)
+           >>> b = A(3)
+           >>> a == b
+           my cmp
+           False
+           >>> a > b
+           my cmp
+           True
+           >>> b > a
+           my cmp
+           False
 
-   Python 3.4.3 (default, Jan 13 2016, 16:30:52)
-   [GCC 4.9.3] on linux
-   Type "help", "copyright", "credits" or "license" for more information.
-   >>>
-   >>> class A:
-   ...    def __init__(self,x):
-   ...       self.x = x
-   ...    def __cmp__(self,oth):
-   ...       print("my_cmp")
-   ...       return oth.x - self.x
-   ...
-   >>>
-   >>> a=A(2)
-   >>> b=A(3)
-   >>>
-   >>> a == 2
-   False
-   >>> a > b
-   Traceback (most recent call last):
-     File "<stdin>", line 1, in <module>
-   TypeError: unorderable types: A() > A()
-   >>> a < b
-   Traceback (most recent call last):
-     File "<stdin>", line 1, in <module>
-   TypeError: unorderable types: A() < A()
-   >>>
+           Python 3.4.3 (default, Jan 13 2016, 16:30:52)
+           [GCC 4.9.3] on linux
+           Type "help", "copyright", "credits" or "license" for more information.
+           >>>
+           >>> class A:
+           ...    def __init__(self,x):
+           ...       self.x = x
+           ...    def __cmp__(self,oth):
+           ...       print("my_cmp")
+           ...       return oth.x - self.x
+           ...
+           >>>
+           >>> a=A(2)
+           >>> b=A(3)
+           >>>
+           >>> a == 2
+           False
+           >>> a > b
+           Traceback (most recent call last):
+             File "<stdin>", line 1, in <module>
+           TypeError: unorderable types: A() > A()
+           >>> a < b
+           Traceback (most recent call last):
+             File "<stdin>", line 1, in <module>
+           TypeError: unorderable types: A() < A()
+           >>>
 
 
 
-__eq__(self, other)
+*__eq__(self, other)*
     Defines behavior for the equality operator, ==.
 
-__ne__(self, other)
+*__ne__(self, other)*
     Defines behavior for the inequality operator, !=.
 
-__lt__(self, other)
+*__lt__(self, other)*
     Defines behavior for the less-than operator, <.
 
-__gt__(self, other)
+*__gt__(self, other)*
     Defines behavior for the greater-than operator, >.
 
-__le__(self, other)
+*__le__(self, other)*
     Defines behavior for the less-than-or-equal-to operator, <=.
 
-__ge__(self, other)
+*__ge__(self, other)*
     Defines behavior for the greater-than-or-equal-to operator, >=.
 
 
@@ -466,15 +575,15 @@ object-oriented languages (such as C++ and Java) combine these two steps
 into one, but Python keeps them separate.
 
 When an object is created (e.g., ecor_1 = Sequence('GAATTC'),
-first the special method __new__() is called to create the object,
-and then the special method __init__() is called implicitly to initialize it.
+first the special method ``__new__()`` is called to create the object,
+and then the special method ``__init__()`` is called implicitly to initialize it.
 In practice almost every Python class we create will require us to
-reimplement only the __init__() method, since  default __new__() method is al-
+reimplement only the ``__init__()`` method, since  default ``__new__()`` method is al-
 most always sufficient and is automatically called if we don’t provide our own
-__new__() method.
+``__new__()`` method.
 
 Although we can create an attribute in any method, it is a good practice
-to do this in the the __init__ method. Thus It is easy to know what attributes have an object
+to do this in the the ``__init__`` method. Thus It is easy to know what attributes have an object
 without being to read the entire code of a class.::
 
    class Sequence:
@@ -503,18 +612,19 @@ Namespace and attributes lookup
 :ref:`The LEGB rule (Local, Enclosing, Global, Built-in) <variable_resolution_rules>` still applied.
 But when a class is created a namespace is created. futhermore for each instance of this a class a new namespace corresponding
 to this instance is created. There exist a link between the namespace of the instance and the namespace of it's
-corresponding class. for example: ::
+corresponding class. for example:
+
+.. container:: clearer
+
+    .. figure:: _static/figs/class_namespace.png
+       :alt: class namespace
+       :align: right
+       :height: 200px
+
+       when a class is created a namespace is created.
 
 
-
-.. figure:: _static/figs/class_namespace.png
-   :alt: class namespace
-   :align: left
-   :height: 200px
-
-   when a class is created a namespace is created.
-
-   .. code-block:: python
+    .. code-block:: python
 
       class Student:
 
@@ -531,40 +641,41 @@ corresponding class. for example: ::
               av = sum(self.scores)/len(self.scores)
               return av
 
+.. container:: clearer
 
+    .. image:: _static/figs/object_namespace.png
+       :alt: class namespace
+       :align: right
+       :height: 200px
 
-.. figure:: _static/figs/object_namespace.png
-   :alt: class namespace
-   :align: left
-   :height: 200px
-
-   When an object is created, a namespace is created. This namespace is linked to its respective class namespace
-
-   .. code-block:: python
+    .. code-block:: python
 
       foo = Student('foo')
 
+    When an object is created, a namespace is created. This namespace is linked to its respective class namespace.
 
-.. figure:: _static/figs/2_objects_namespace.png
-   :alt: class namespace
-   :align: left
-   :height: 200px
 
-   each object have it's own namespace which are linked to the class namespace
+.. container:: clearer
 
-   .. code-block:: python
+    .. image:: _static/figs/2_objects_namespace.png
+       :alt: class namespace
+       :align: right
+       :height: 200px
+
+
+    .. code-block:: python
 
       foo = Student('foo')
       bar = Student('bar')
 
+    Each object have it's own namespace which are linked to the class namespace.
 
-.. figure:: _static/figs/methods_namespace.png
-   :alt: class namespace
-   :align: left
-   :height: 200px
+.. container:: clearer
 
-   during method execution a namespace is created which have a link to the object instance.
-   This namespace is destroyed a the end of the method (return)
+    .. image:: _static/figs/methods_namespace.png
+       :alt: class namespace
+       :align: right
+       :height: 200px
 
    .. code-block:: python
 
@@ -575,7 +686,11 @@ corresponding class. for example: ::
       bar.add_score(11)
 
 
-to see it in action
+   During method execution a namespace is created which have a link to the object instance.
+   This namespace is destroyed a the end of the method (return)
+
+
+To see it in action, you can play with the code below.
 
 .. literalinclude:: _static/code/test_namespace.py
    :linenos:
@@ -618,27 +733,37 @@ every attribute obfuscates the code in private, which is not Pythonic at all.
 with property
 ^^^^^^^^^^^^^
 
-the python way to control the access of attribute is using *property()*.
-
+The python way to control the access of attribute is using *property()* function.
 The purpose of this function is to create a property of a class.
-A property looks and acts like an ordinary attribute, except that you provide methods that control access to the attribute.
+A property looks and acts like an ordinary attribute,
+except that you provide methods that control access to the attribute.
 
 There are three kinds of attribute access: read, write, and delete.
 When you create a property, you can provide any or all of three methods
 that handle requests to read, write, or delete that attribute.
 
+.. literalinclude:: _static/code/sequence_property_1.py
+   :linenos:
+   :language: python
+
+
+The attribute nucleic can be modified. We don't wish that any code outside the Sequence class
+can be set a new value for this attribute, it should be readable only.
+So we just have to transform nucleic as "private" and add a property to expose the value.
+We won't provide a property to set a value or delete the attribute.
+
+.. literalinclude:: _static/code/sequence_property_2.py
+   :linenos:
+   :language: python
+
+above an other example where we use a getter and a setter. We want control that each coordinate a positive integer.
+
+.. literalinclude:: _static/code/coordinate.py
+   :linenos:
+   :language: python
+
+
 Here is the general method for adding a property named p to a new-style class C.
-
-class C(...):
-    def R(self):
-        ...read method...
-    def W(self, value):
-        ...write method...
-    def D(self):
-        ...delete method...
-    p = property(R, W, D, doc)
-    ...
-
 where:
 
     R is a getter method that takes no arguments and returns the effective attribute value.
@@ -653,35 +778,24 @@ where:
 
 But in most case you will see a shorter notation using decorators
 
-For example, suppose you want to provide your class with a property named state,
-and your a getter method returns a private attribute named ._state. You could define it like this:
+.. literalinclude:: _static/code/coordinate_decorator.py
+   :linenos:
+   :language: python
 
-    @property
-    def state(self):
-        '''The internal state property.'''
-        return self._state
 
-In this example, not only will the .state() method be the getter for this property,
-but the documentation string '''The internal state property.'''
-will be stored as the documentation string for the property.
 
-Suppose further that you want to write a setter method that checks to make sure the argument is a
-positive number less than or equal to 2. To use the built-in setter method to write your setter,
-give the function the same name as the property, and decorate it with P.setter where P
-is the name of the previously defined getter:
+deleting object
+===============
 
-    @state.setter
-    def state(self, k):
-        if not (0 <= k <= 2):
-            raise ValueError("Must be 0 through 2 inclusive!")
-        else:
-            self._state = k
+Any attribute of an object can be deleted anytime, using the del statement.
+We can even delete the object itself, using the del statement.
 
-Similarly, you can write a deleter method by decorating it with P.deleter:
+Actually, it is more complicated than that.
+When we do s1 = Sequence('ecor1', 'GAATTC'), a new instance object is created in memory and the name s1 binds with it.
+On the command del s1, this binding is removed and the name s1 is deleted from the corresponding namespace.
+The object however continues to exist in memory and if no other name is bound to it, it is later automatically destroyed.
+This automatic destruction of unreferenced objects in Python is also called garbage collection.
 
-    @state.deleter
-    def state(self):
-        del self._state
 
 
 Exercises
@@ -692,72 +806,13 @@ can you explain this result (use environment to explain) ?
 how to modify the class variable *a*
 
 
-deleting object
-----------------
-Any attribute of an object can be deleted anytime, using the del statement.
-We can even delete the object itself, using the del statement.
-
-Actually, it is more complicated than that.
-When we do c1 = ComplexNumber(1,3), a new instance object is created in memory and the name c1 binds with it.
-On the command del c1, this binding is removed and the name c1 is deleted from the corresponding namespace.
-The object however continues to exist in memory and if no other name is bound to it, it is later automatically destroyed.
-This automatic destruction of unreferenced objects in Python is also called garbage collection.
-
-Architecture and Design
-=======================
 
 
-Inheritance
------------
 
->>> class A:
-...    pass
-...
->>> type(A)
-<class 'type'>
->>> a=A()
->>> type(a)
-<class '__main__.A'>
->>> a.__mro__
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-AttributeError: 'A' object has no attribute '__mro__'
->>> A.__mro__
-(<class '__main__.A'>, <class 'object'>)
->>>
->>>
->>> class(B)
-  File "<stdin>", line 1
-    class(B)
-         ^
-SyntaxError: invalid syntax
->>> class B:
-...   pass
-...
->>> class(A,B):
-  File "<stdin>", line 1
-    class(A,B):
-         ^
-SyntaxError: invalid syntax
->>> class C(A,B):
-...   pass
-...
->>> c=C()
->>> C.__mro__
-(<class '__main__.C'>, <class '__main__.A'>, <class '__main__.B'>, <class 'object'>)
->>>
-
-
-Polymorphism
-------------
-
-Composition
------------
-
-Abstract classes
-----------------
 
 
 References
 ==========
 .. [ziade] Tarke Ziadé: Expert Python Programming,(2008) PACKT publishing
+.. [ieb] Katja Schuerer et al: Introduction to Programming using Python, (2008)
+

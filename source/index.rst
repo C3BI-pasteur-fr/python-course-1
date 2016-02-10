@@ -24,6 +24,7 @@ Contents:
    Input_Output
    Scripting
    Object_Oriented_Programming
+   Architecture_and_Design
    From_script_to_project
    Further_Reading
    Appendix

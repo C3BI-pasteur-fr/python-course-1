@@ -247,7 +247,8 @@ next()
 
 A file object is its own iterator.
 When a file is used as an iterator, typically in a for loop, the next() method is called repeatedly. 
-This method returns the next input line, or raises StopIteration when EOF is hit when the file is open for reading (behavior is undefined when the file is open for writing).::
+This method returns the next input line, or raises StopIteration when EOF is hit when the file is open for reading
+(behavior is undefined when the file is open for writing).::
       
    f = open('foobar' , 'r')
    for line in f:
@@ -384,7 +385,8 @@ os.path.exists(path)
 
 Return True if path refers to an existing path. 
 Returns False for broken symbolic links. 
-On some platforms, this function may return False if permission is not granted to execute os.stat() on the requested file, even if the path physically exists.
+On some platforms, this function may return False if permission is not granted to execute os.stat() on the requested file,
+even if the path physically exists.
 
 os.path.realpath(path)
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -398,7 +400,8 @@ os.path.join(path1[, path2[, ...]])
 Join one or more path components intelligently. 
 If any component is an absolute path, all previous components 
 (on Windows, including the previous drive letter, if there was one) are thrown away, and joining continues. 
-The return value is the concatenation of path1, and optionally path2, etc., with exactly one directory separator (os.sep) following each non-empty part except the last.
+The return value is the concatenation of path1, and optionally path2, etc., with exactly one directory separator (os.sep)
+following each non-empty part except the last.
  
  
  
@@ -461,7 +464,7 @@ if the leaf directory is successfully removed, removedirs() tries to successivel
 remove every parent directory mentioned in path until an error is raised 
 (which is ignored, because it generally means that a parent directory is not empty).
  
-to acces to all functions and whole descriptions : https://docs.python.org/2/library/os.html#files-and-directories
+to acces to all functions and whole descriptions: https://docs.python.org/2/library/os.html#files-and-directories
  
  
 shutil
