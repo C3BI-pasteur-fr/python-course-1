@@ -163,6 +163,26 @@ components. On the technical side, there are some conditions for modules to be r
 Abstract Data Types
 ===================
 
+What is an abstract data type? Well, a data type is what we have just presented in chapter Chapter 18: in
+Python, as in many object-oriented language, it is a class. So, why abstract? One of the main objectives in
+component building, as we have seen in section Section 19.2, is to provide components that a programmer (you,
+your colleagues, or any programmer downloading your code) can be confident in. In order to get this programmer,
+who is a client of your code, confident into your class, you have to make it as stable as possible, and the best
+method to get a stable class is to define it at a level where no implementation decision is visible. In other words,
+defining a class should consist in defining a data type providing some abstract services, whose interface are clearly
+defined in term of parameters and return value and potential side effects. The advantages of this approach are the
+following:
+
+* The implementor of the class can change the implementation for maintenance, bug fixes or optimization
+  reasons, without disturbing the client code.
+* The data type is defined as a set of high-level services with a semantic contract defining both the output that
+  is provided and the input that is required from the client. This actually correspond to the general definition of
+  a type in programming: a type is defined as a set of possible values and a set of operations available on these
+  values.
+
+Among the methods defined in the interface of a data type, there are methods that build or change the state of the
+corresponding object, which are called constructors and modificators, and there are methods to access the object,
+which are called accessors.
 
 
 
