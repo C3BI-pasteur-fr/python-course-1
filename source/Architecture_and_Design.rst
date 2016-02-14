@@ -146,8 +146,63 @@ Abstract classes
 
 Composition
 ===========
+Here is a problem that come to me during a software design. I have to modelize a generic macromolecular system of proteins.
+following the main characteristics of a system.
 
-.. todo::
+ * A systems is composed of several genes
+ * some genes a mandatory
+ * some genes are accessory
+ * some other are forbidden
+ * for some efficient reason each genes must search only ones
+
+I have in some case to search for lot of systems in on run.
+
+Ok I have only each gene is unique for all systems. So I design the program to have only one instance of a gene.
+ but several systems can reference the same gene.
+after some experiments it was obvious we need a new concept to be more sensitive.
+
+ * some genes have homologs and some other have analogs
+ * a gene can appeared in one system a mandatory gene and is an homolog of an other gene in an other system.
+ * a homologs have the same characteristics than a gene, it just have in more the reference to the gene it is the homologs
+ * the analogs are the same as homologs.
+
+The first idea which came in my mind was to create an Homolog and Analog classes which inherits of Gene.
+ But if I did that when a gene appeared as gene in a system and as homologs in other systems. I search this gene twice.
+ It was not I want. So I need to think again to my design. I decide to use composition instead of inheritance.
+ I create a class of Analog and Homologue but which not inherits from Gene. But they have a property gene encapsulated
+ inside them. And I use delegation for all properties and methods for gene.
+  This means that I create same properties in Homologs that exist in Gene, but when I call these property in homolgs
+  it just call the method from the gene encapsulated.
+
+.. image:: _static/figs/homolog_inheritance.png
+       :alt:  inheritance
+       :align: left
+       :height: 300px
+
+.. literalinclude:: _static/code/homolog.py
+   :linenos:
+   :language: python
+
+
+This design pattern is called composition. This is a powerful design that mimics inheritance but with more flexibility.
+But it's lit bit boring to recode all methods we need to  delegate to the gene. So in python there is a special
+method which allow to do this automatically: ``__getattr__`` when python look inside the instance and it does not find
+an attribute (remember in python methods are attributes) and find the special method __getattr__ it call this method
+with the looking attribute as argument.
+
+.. image:: _static/figs/homolog_getattr.png
+       :alt:  composition
+       :align: left
+       :height: 300px
+
+.. literalinclude:: _static/code/homolog_getattr.py
+   :linenos:
+   :language: python
+
+.. warning::
+   It is very convenient but you must use ``__getattr__`` with parsimony and well document it as it can obfuscate the code.
+
+
 
 Exercises
 =========
