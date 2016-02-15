@@ -158,7 +158,7 @@ following the main characteristics of a system.
 I have in some case to search for lot of systems in on run.
 
 Ok I have only each gene is unique for all systems. So I design the program to have only one instance of a gene.
- but several systems can reference the same gene.
+but several systems can reference the same gene.
 after some experiments it was obvious we need a new concept to be more sensitive.
 
  * some genes have homologs and some other have analogs
@@ -167,17 +167,18 @@ after some experiments it was obvious we need a new concept to be more sensitive
  * the analogs are the same as homologs.
 
 The first idea which came in my mind was to create an Homolog and Analog classes which inherits of Gene.
- But if I did that when a gene appeared as gene in a system and as homologs in other systems. I search this gene twice.
- It was not I want. So I need to think again to my design. I decide to use composition instead of inheritance.
- I create a class of Analog and Homologue but which not inherits from Gene. But they have a property gene encapsulated
- inside them. And I use delegation for all properties and methods for gene.
-  This means that I create same properties in Homologs that exist in Gene, but when I call these property in homolgs
-  it just call the method from the gene encapsulated.
+But if I did that when a gene appeared as gene in a system and as homologs in other systems. I search this gene twice.
+It was not I want. So I need to think again to my design. I decide to use composition instead of inheritance.
+I create a class of Analog and Homologue but which not inherits from Gene. But they have a property gene encapsulated
+inside them. And I use delegation for all properties and methods for gene.
+This means that I create same properties in Homologs that exist in Gene, but when I call these property in homolgs
+it just call the method from the gene encapsulated.
 
 .. image:: _static/figs/homolog_inheritance.png
        :alt:  inheritance
        :align: left
        :height: 300px
+
 
 .. literalinclude:: _static/code/homolog.py
    :linenos:
