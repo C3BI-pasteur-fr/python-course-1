@@ -821,12 +821,89 @@ This automatic destruction of unreferenced objects in Python is also called garb
 Exercises
 =========
 
+Exercise
+--------
+
+proposer du code => faire les schema des environements
+
+class
+attribut instance
+attribut class
+method
+
+
+Exercise
+--------
 
 can you explain this result (use environment to explain) ?
 how to modify the class variable *a*
 
 
+Exercise
+--------
 
+Write the definition of a Point class. Objects from this class should have a
+
+* a method show to display the coordinates of the point
+* a method move to change these coordinates.
+* a method that computes the distance between 2 points.
+
+The following python code provides an example of the expected behaviour of objects belonging to this class: ::
+
+    >>> p1 = Point(2,3)
+    >>> p2 = Point(3,3)
+    >>> p1.show()
+    (2, 3)
+    >>> p2.show()
+    (3, 3)
+    >>> p1.move(10, -10)
+    >>> p1.show()
+    (12, -7)
+    >>> p2.show()
+    (3, 3)
+    >>> p1.dist(p2)
+    1.0
+
+Exercise
+--------
+
+Use OOP to modelize restriction enzyme, and sequences.
+
+the sequence must implement the following methods
+
+    * enzyme_filter which take as a list of sequence as argument and return a new list containing the enzyme which have
+      binding site in sequence
+
+the restriction enzyme must implements the following methods
+
+    * binds which take a sequence as argument and return True if the sequence contains a binding site, False otherwise.
+
+solve the exercise :ref:`enzyme_exercise` using this new implementation.
+
+
+Exercise
+--------
+
+refactor your code of :ref:`_matrix_exercise` in OOP style programming. implements only
+
+ * **size**: return the number of rows, and number of columns
+ * **get_cell**: that take the number of rows, the number of columns as parameters,
+   and returns the content of cell corresponding to row number col number
+ * **set_cell**: that take the number of rows, the number of columns as parameters, and a value
+   and set the value val in cell specified by row number x column number
+ * **to_str**: return a string representation of the matrix
+ * **mult**: that take a scalar and return a new matrix which is the scalar product of matrix x val
+
+you can change the name of the methods to be more pythonic
+
+
+Exercise
+--------
+
+Use the code to read multiple sequences fasta file in procedural style and refactor it in OOP style.
+use the file :download:`abcd.fasta <_static/data/abcd.fasta>` to test your code.
+
+What is the benefit to use oop style instead of procedural style?
 
 
 
