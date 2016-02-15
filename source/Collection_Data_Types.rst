@@ -1313,6 +1313,7 @@ data test: ::
    seq = 'acggcaacatggctggccagtgggctctgagaggagaaagtccagtggatgctcttggtctggttcgtgagcgcaacaca'
 
 
+.. _enzyme_exercise:
 Exercise
 --------
 

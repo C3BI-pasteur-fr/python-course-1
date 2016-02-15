@@ -22,7 +22,7 @@ Control is also diverted when an :ref:`exception <exceptions>` is raised.
 A Boolean expression is anything that can be evaluated to produce a Boolean
 value (``True`` or ``False``). In Python, such an expression evaluates to ``False`` if it is
 the predefined constant ``False``, the special object ``None``, an empty sequence or
-collection (e.g., an empty string, list, or tuple, dictionnary), or a numeric data item of value
+collection (e.g., an empty string, list, or tuple, dictionary), or a numeric data item of value
 0; anything else is considered to be ``True``.
 
 In Python-speak a block of code, that is, a sequence of one or more statements,
@@ -55,9 +55,9 @@ we want to account for a particular case, but want to do nothing if it occurs, w
 can use pass as that branch’s suite.
 
 all *if/elif/else* form **one** statement. The flow of code execute the first block
-where the conditon is True, after that the flow exit the statement.
+where the condition is True, after that the flow exit the statement.
 The flow will be very different if we use a suite of *if* without *elif*.
-In this latter case all *if* statements will be evaluated independantely. 
+In this latter case all *if* statements will be evaluated independently.
 See the example of :download:`script if.py<_static/code/if.py>`
 
 .. figure:: _static/figs/if_vs_elif.png
@@ -87,7 +87,7 @@ The syntax for such cases is:
    
 If the boolean expression is evaluated to ``True``, the result of the conditional expression is expression1;
 otherwise, the result is expression2.
-This syntax is often used to set a default value, and changed the vlue if necessary. For instance::
+This syntax is often used to set a default value, and changed the value if necessary. For instance::
 
    if nucleiq_type == 'RNA':
       bases = 'acgu'
@@ -180,9 +180,9 @@ In some language there is a statement
 |      block of code
 |   *while*  boolean expression
   
-To do something at least once and while the boolean expresion is met.
+To do something at least once and while the boolean expression is met.
 In python there is not *do ... while* statement but we can write it easily 
-with a *while* stament: 
+with a *while* statement:
    
 |   while True:
 |      do something at least once
@@ -362,14 +362,14 @@ see with on the following code the execution flow when exception is raised or no
 
    .. figure:: _static/figs/try_handled_flow1.png
       :width: 500px
-      :alt: try whith handled exception flow
+      :alt: try with handled exception flow
       :figclass: align-left
       
       The execution flow if an error is raised and was handled by an except
       
    .. figure:: _static/figs/try_handled_flow2.png
       :width: 500px
-      :alt: try whith handled exception flow
+      :alt: try with handled exception flow
       :figclass: align-right
       
 
@@ -384,7 +384,7 @@ see with on the following code the execution flow when exception is raised or no
       
    .. figure:: _static/figs/try_unhandled_flow.png
       :width: 500px
-      :alt: try whith unhandled exception flow
+      :alt: try with unhandled exception flow
       :figclass: align-right
       
       The execution flow if an error is raised but not handled by an except
@@ -401,9 +401,9 @@ note that in all cases the finally clause is executed.
 
 .. note::
 
-   very often you can see a syntax slightly diferent for try ... except statement
+   very often you can see a syntax slightly different for try ... except statement
    on except line the exception the variable is not introduce by the reserved keyword ``as``
-   but hust separate by a comma. ::
+   but separate by a comma. ::
 
       try:
          try_suite
@@ -428,17 +428,17 @@ note that in all cases the finally clause is executed.
       try:
          i = int(s)
          print("valid integer entered:", i)
-      except Expection:         #BAD PRACTICE
+      except Exception:         #BAD PRACTICE
          print "i is not an integer"
          
-      if s is None the execption raise is a TypeError wheras if s  = '3.2' a ValueError is raised.
-      so the treatement of the execption should differ in the 2 cases      
+      if s is None the exception raise is a TypeError whereas if s  = '3.2' a ValueError is raised.
+      so the treatment of the exception should differ in the 2 cases
       i is None mean that the function call is incorrect.
       
       try: 
          i = int(s)
          print("valid integer entered:", i)
-      except Expection as err:         # acceptable PRACTICE
+      except Exception as err:         # acceptable PRACTICE
          log.error(str(err))
          raise
       see below for raising exceptions
@@ -548,7 +548,7 @@ Write the pseudocode before to propose an implementation.
 Exercise
 --------
 
-We want to create a "restriction map" of 2 sequences and konw We do this step by step.
+We want to create a "restriction map" of 2 sequences and know We do this step by step.
 
 
 let the following enzymes collection: ::

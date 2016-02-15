@@ -263,8 +263,8 @@ for instance in my module *nucleic.py* I can use *sequence* like this: ::
 
 .. warning::        
    
-   If you use relative import in your module you cannot excute directly your module like 
-   python mon_module.py anymore. If you try this python raise the folowing error
+   If you use relative import in your module you cannot execute directly your module like
+   python mon_module.py anymore. If you try this python raise the following error
    
    **ValueError**: Attempted relative import in non-package 
   
@@ -286,9 +286,9 @@ Standard Library
 
 Python provide a lot of libraries  
 which are organized in package and modules.
-The full description of modules are available on the pyhton.org web site (`Python 2 <https://docs.python.org/2/py-modindex.html>`_ , `Python 3 <https://docs.python.org/3/py-modindex.html>`_).
+The full description of modules are available on the python.org web site (`Python 2 <https://docs.python.org/2/py-modindex.html>`_ , `Python 3 <https://docs.python.org/3/py-modindex.html>`_).
 When you code in python always refer to these documentations.
-These libraies are called "standard library".
+These libraries are called "standard library".
 
 
 Exercises
@@ -299,7 +299,7 @@ Exercise
 
 Write a program that calculates the similarity of 2 RNA sequences.
 
-* To compute the simalirity you need to parse a file containing the :download:`similarity matrix <_static/data/similarity_matrix>`.
+* To compute the similarity you need to parse a file containing the :download:`similarity matrix <_static/data/similarity_matrix>`.
   
   **Hint**: use the module containing the functions that handle a matrix from previous chapter.
   put this matrix.py file in a directory named "my_python_lib" in your home or Desktop

@@ -505,7 +505,7 @@ Exercise
 --------
 
 Write a function which take the path of a file in rebase format
-and return in a dictionnary the collection of the enzyme contains in the file.
+and return in a dictionary the collection of the enzyme contains in the file.
 The sequence of the binding site must be cleaned up.
 
 :download:`rebase_light.txt <_static/data/rebase_light.txt>` .
@@ -544,7 +544,7 @@ Write sequences with 80 aa/line
 Exercise
 --------
 
-we ran a blast with the folowing command *blastall -p blastp -d uniprot_sprot -i query_seq.fasta -e 1e-05 -m 8 -o blast2.txt*
+we ran a blast with the following command *blastall -p blastp -d uniprot_sprot -i query_seq.fasta -e 1e-05 -m 8 -o blast2.txt*
 
 -m 8 is the tabular output. So each fields is separated to the following by a '\t' 
 
@@ -560,7 +560,7 @@ query start, query end, subject start, subject end, Expect value, HSP bit score.
 (adapted from *managing your biological data with python*)
 
 Hint:
-"""""
+^^^^^
 
 look operator.itemgetter on python website
 

@@ -24,12 +24,12 @@ These functions are visible only to the function where they are defined.
 *Lambda* functions are expressions, so they can be created at their point of use. 
 however they are much more limited than normal functions.
 
-*Methods* are functions that are bound to a particular data type and can be used only in conjuction with this data type.
+*Methods* are functions that are bound to a particular data type and can be used only in conjunction with this data type.
 
 global functions, local functions and method are created with the keyword def and return a value. 
-To return a value we explicitely use the keyword ``return`` if we do not do that ``None`` is return automatically by python. 
+To return a value we explicitly use the keyword ``return`` if we do not do that ``None`` is return automatically by python.
 We can leave a function at any point by using the ``return`` statement (the yield can be used also but will not cover here). 
-We can call functions by appending parentehesis to the function name. ::
+We can call functions by appending parenthesis to the function name. ::
 
    >>> def global_func():
          return "global_func is a global function"
@@ -74,7 +74,7 @@ and the context is used to distinguish the meaning.
 The term *parameter* (sometimes called *formal parameter*) is often used to refer to the variable as found in the function definition, 
 while *argument* (sometimes called *actual parameter*) refers to the actual value passed. 
 To avoid confusion, it is common to view a parameter as a variable, and an argument as a value. 
-Python allow us to pass argumants to functions. 
+Python allow us to pass arguments to functions.
 The parameter names become local variable of our function [parameters_and_arguments]_. 
 If there is more parameters than one, they are written as a sequence of comma separated identifiers, 
 or as sequence of identifier = value pair. 
@@ -92,7 +92,7 @@ When we do a call like this we said to be using a positional arguments,
 because each argument passed is set as the value of parameter in the corresponding position. 
 So in this case, *a* is set to 3, *b* to 4, and *c* to 5, when the function is called.
 
-Some functiond have parameters for which there can be sensible default.
+Some functions have parameters for which there can be sensible default.
 
 .. _arguments_n_parameters:
 
@@ -124,7 +124,7 @@ we can use keyword arguments, passing each argument in the form name = value. ::
 .. warning::    
    
    When default values are given they are created at the time of the *def* statement is executed (i.e. when the function is created), 
-   **not** when the function is called. For immutable argumments like numbers or strings this doesn't make any difference, 
+   **not** when the function is called. For immutable arguments like numbers or strings this doesn't make any difference,
    but for mutable arguments a subtle trap is lurking. ::
 
       def app(x, lst = []):
@@ -178,7 +178,7 @@ A function can take additional optional arguments by prefixing the last paramete
 arguments are then available in the tuple referenced by this parameter.
 Optional variables can also by passed as keywords, if the last parameter is preceded by \*\*. In this case, the
 optional variables are available within the function as a dictionary.
-The operation consiting to get the arguemnts passed as sequence is call *argument unpacking*.
+The operation consisting to get the arguments passed as sequence is call *argument unpacking*.
 Let look how it work, especially there are significant differences between python 2 and 3. 
 
 
@@ -346,11 +346,11 @@ The code below is written in Python3.
 
    This piece of code illustrate the globals and locals namespaces. 
    Although this code is writen in python3 the concepts are the smae in python2. 
-   But the keywords nonlocals is python3 specific. 
+   But the keywords ``nonlocals`` is python3 specific.
    In python2, we can refer to a non local variable, but we cannot assign a new value to a non local variable, 
    when we try to assign a new value, a new local object reference is created.
 
-   when we use the *nonlocals* keywords the variable find in the outer scope is seen as it belong to the local scope. 
+   when we use the ``nonlocals`` keywords the variable find in the outer scope is seen as it belong to the local scope.
    We can manipulate it as a local variable. 
    If we reassign a new value to this reference, the outer reference is also modified. 
 
@@ -489,7 +489,7 @@ Exercise
 Without executing the code in Python interpreter, can you determine what the code above print out. 
 help you by drawing diagram.
 
-**Hint** locals print a dictionnary with local variable as keys and their respectives values.
+**Hint** locals print a dictionary with local variable as keys and their respective values.
 
 ::
  
@@ -509,7 +509,7 @@ Exercise
 Without executing the code in Python interpreter, can you determine what the code above print out. 
 help you by drawing diagram.
 
-**Hint** locals print a dictionnary with local variable as keys and theire respectives values.
+**Hint** locals print a dictionary with local variable as keys and their respective values.
 
 ::
 
@@ -533,7 +533,7 @@ Exercise
 Without executing the code in Python interpreter, can you determine what the code above print out. 
 help you by drawing diagram.
 
-**Hint** locals print a dictionnary with local variable as keys and theire respectives values.
+**Hint** locals print a dictionary with local variable as keys and their respective values.
 
 ::
 
@@ -557,7 +557,7 @@ Exercise
 Without executing the code in Python interpreter, can you determine what the code above print out. 
 help you by drawing diagram.
 
-**Hint** locals print a dictionnary with local variable as keys and theire respectives values.
+**Hint** locals print a dictionary with local variable as keys and their respective values.
 
 ::
 
@@ -635,7 +635,7 @@ Exercice
 Without executing the code in Python interpreter, can you determine what the code above print out. 
 help you by drawing diagram.
 
-**Hint** locals print a dictionnary with local variable as keys and theire respectives values.
+**Hint** locals print a dictionary with local variable as keys and their respective values.
 
 ::
 
@@ -779,7 +779,7 @@ bonus
 
 This function **can** to take the phase as parameter 
 
-
+.. _matrix_exercise:
 Exercise
 --------
 
