@@ -112,7 +112,8 @@ The first argument is the name of the custom data type (After the creation the b
 call on a tuple will return this name). The second argument is a string space delimiter names, 
 one for each item that our custom tuples will take.
 The function return a new custom class (new data type) that can be used to creates named tuple.
- 
+
+
 For example: ::
 
    >>> import collections
@@ -1314,6 +1315,7 @@ data test: ::
 
 
 .. _enzyme_exercise:
+
 Exercise
 --------
 

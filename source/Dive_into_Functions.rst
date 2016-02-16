@@ -780,6 +780,7 @@ bonus
 This function **can** to take the phase as parameter 
 
 .. _matrix_exercise:
+
 Exercise
 --------
 
