@@ -821,6 +821,8 @@ This automatic destruction of unreferenced objects in Python is also called garb
 Exercises
 =========
 
+Modelize a sequence
+
 Exercise
 --------
 
@@ -848,10 +850,20 @@ Write the definition of a Point class. Objects from this class should have a
 * a method move to change these coordinates.
 * a method that computes the distance between 2 points.
 
+.. note::
+    the distance between 2 points A(x0, y0) and B(x1, y1) can be compute
+
+
+    .. math::
+         d(AB) = \sqrt{(x1-x0))^2 + (y1-y0)^2}
+
+    (http://www.mathwarehouse.com/algebra/distance_formula/index.php)
+
+
 The following python code provides an example of the expected behaviour of objects belonging to this class: ::
 
-    >>> p1 = Point(2,3)
-    >>> p2 = Point(3,3)
+    >>> p1 = Point(2, 3)
+    >>> p2 = Point(3, 3)
     >>> p1.show()
     (2, 3)
     >>> p2.show()
@@ -871,7 +883,7 @@ Use OOP to modelize restriction enzyme, and sequences.
 
 the sequence must implement the following methods
 
-    * enzyme_filter which take as a list of sequence as argument and return a new list containing the enzyme which have
+    * enzyme_filter which take as a list of enzymes as argument and return a **new** list containing the enzymes which have
       binding site in sequence
 
 the restriction enzyme must implements the following methods
@@ -884,7 +896,7 @@ solve the exercise :ref:`enzyme_exercise` using this new implementation.
 Exercise
 --------
 
-refactor your code of :ref:`_matrix_exercise` in OOP style programming. implements only
+refactor your code of :ref:`matrix_exercise` in OOP style programming. implements only
 
  * **size**: return the number of rows, and number of columns
  * **get_cell**: that take the number of rows, the number of columns as parameters,
