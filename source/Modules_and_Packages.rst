@@ -294,21 +294,7 @@ These libraries are called "standard library".
 Exercises
 =========
 
-Exercise
---------
 
-Write a program that calculates the similarity of 2 RNA sequences.
-
-* To compute the similarity you need to parse a file containing the :download:`similarity matrix <_static/data/similarity_matrix>`.
-  
-  **Hint**: use the module containing the functions that handle a matrix from previous chapter.
-  put this matrix.py file in a directory named "my_python_lib" in your home or Desktop
-  and import it in your current program (the similarity script must be placed elsewhere).
-* The similarity of the 2 sequences is the sum of base similarities. 
-  so you have to compare the first base of two sequences and use the matrix to get the similarity
-  from the similarity table, on so on for all bases then sum these similarities.
-  
- 
 
 
 
