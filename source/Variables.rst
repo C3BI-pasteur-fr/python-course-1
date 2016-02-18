@@ -79,7 +79,7 @@ If a conversion fails, an exception is raised (we will see fully :ref:`exception
 Variables and Object references
 -------------------------------
 
-Once we have data item (or values), the next thing we need is variables in wich to store them.
+Once we have data item (or values), the next thing we need is variables in which to store them.
 A variable is a name that refers to a value.
 One of the most powerful features of a programming language is the ability to manipulate ``variables``.  
 
@@ -120,7 +120,7 @@ The syntax is simply ``object reference = value``. There is no need of predeclar
 and no need to specify the value's type. When Python execute 
 
 * the first statement it creates a ``int`` object with the value ``3`` and create the object reference call ``x`` that refer to
-  the int object. For all pratical purpose we say ``that variable x has been assigned the "3" integer``.
+  the int object. For all practical purpose we say ``that variable x has been assigned the "3" integer``.
 * The second statement is similar. 
 * The third creates a new object reference y and sets it to refer to the same object
   that the color reference object refers to (in this case the str object containing the value "green").
@@ -162,7 +162,7 @@ Let us continue with the previous example and do some rebinding.
 
 .. note:: comments begin with a ``#`` and continue until the end of the line
    
-| Now the three objects references are refering to the same string with value "green". 
+| Now the three objects references are referring to the same string with value "green".
 | Since there are no more object references to the int ``3`` Python is free to garbage it.
 
 Python uses *dynamic typing*, which means that an object reference can be rebound to refer 
@@ -178,7 +178,7 @@ to a different object (which may be a different data type) at any time.
 Immutable objects
 =================
 
-As I mentinoned in previous paragraph imutable objects are objects that we **cannot** change
+As I mentioned in previous paragraph immutable objects are objects that we **cannot** change
 the state (the value). We can rebind the reference which was refer to an immutable object 
 to a **new** object with an other value, but we cannot change the value of the object itself.
 We already seen immutable objects, int, str. There is a lot of other data types which are
@@ -237,7 +237,7 @@ Such an identifier must obey a couple of rules and ideally follow some conventio
    as non english letters.
 
 .. note:: 
-   The precise set of chracaters that are permitted are describe in the Pyhton documentation (), and in PEP3131
+   The precise set of characters that are permitted are describe in the Python documentation (), and in PEP3131
 
 * The identifier cannot have the same name a one of the Python's keywords.
 
@@ -273,7 +273,7 @@ Python 2 has 31 keywords:
   make our own version of them (we will not cover this topic during this course), but not to introduce new names. 
   A single underscore can be used as an identifier, and inside an interactive interpreter or Python Shell, 
   _ holds the results of the last expression that was evaluated. In normal program _ does not exists unles we use it explicitly.
-  Some developpers like to use _ when they don't intend to use it, for instance in loops when they don't care about the items being
+  Some developers like to use _ when they don't intend to use it, for instance in loops when they don't care about the items being
   looped over, or when they unpack a sequence and don't care of some value: ::
   
    for _ in (0,1,2,3,4,5):
