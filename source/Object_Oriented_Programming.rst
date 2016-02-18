@@ -163,10 +163,10 @@ components. On the technical side, there are some conditions for modules to be r
 Abstract Data Types
 ===================
 
-What is an abstract data type? Well, a data type is what we have just presented in chapter Chapter 18: in
+What is an abstract data type? Well, a data type is what we have just presented at the fist day of this course in
 Python, as in many object-oriented language, it is a class. So, why abstract? One of the main objectives in
-component building, as we have seen in section Section 19.2, is to provide components that a programmer (you,
-your colleagues, or any programmer downloading your code) can be confident in. In order to get this programmer,
+component building, is to provide components that a programmer (you, your colleagues,
+or any programmer downloading your code) can be confident in. In order to get this programmer,
 who is a client of your code, confident into your class, you have to make it as stable as possible, and the best
 method to get a stable class is to define it at a level where no implementation decision is visible. In other words,
 defining a class should consist in defining a data type providing some abstract services, whose interface are clearly
@@ -180,13 +180,33 @@ following:
   a type in programming: a type is defined as a set of possible values and a set of operations available on these
   values.
 
+.. figure:: _static/figs/matrix.png
+   :alt: abstract datatype
+   :align: right
+   :height: 150px
+
+
 Among the methods defined in the interface of a data type, there are methods that build or change the state of the
-corresponding object, which are called constructors and modificators, and there are methods to access the object,
-which are called accessors.
-
-
-
+corresponding object, which are called *constructors* and *modificators*, and there are methods to access the object,
+which are called *accessors*.
 [ieb]_
+
+Example: A Matrix
+
+As we already saw in :ref:`matrix_exercise` about matrix.
+
+
+
+Conceiving an abstract data type (ADT) for the stack consists in describing the functions needed making
+abstraction of the implementation choice that will be made at the end (and that may change).
+For instance, you might use a python list or dict or mix of list and dict. Will you add elements in list or dict?
+This concrete decision is out of concern for the user of your matrix, who should be taken away from knowing about this.
+Indeed in all cases, the basic services are the same, and can be given common names, that do not "betray"
+how the list is used "inside" of the code. The set of services is listed in :ref:`matrix_exercise`
+
+The description provided should suffice for the client to use the class. What is more important here,
+is that the client does not have to know anything about the internal representation of the matrix.
+
 
 Concepts and Terminology
 ========================
@@ -821,24 +841,23 @@ This automatic destruction of unreferenced objects in Python is also called garb
 Exercises
 =========
 
-Modelize a sequence
+Modelize a sequence with few attributes and methods
 
 Exercise
 --------
 
-proposer du code => faire les schema des environements
-
-class
-attribut instance
-attribut class
-method
+Instanciate 2 sequences using your Sequence class, and draw schema representing the namespaces
 
 
 Exercise
 --------
 
-can you explain this result (use environment to explain) ?
-how to modify the class variable *a*
+.. literalinclude:: _static/code/class_attribute.py
+   :linenos:
+   :language: python
+
+Can you explain this result (draw namespaces  to explain) ?
+how to modify the class variable *class_attr*
 
 
 Exercise
@@ -846,9 +865,9 @@ Exercise
 
 Write the definition of a Point class. Objects from this class should have a
 
-* a method show to display the coordinates of the point
-* a method move to change these coordinates.
-* a method that computes the distance between 2 points.
+    * a method **show** to display the coordinates of the point
+    * a method **move** to change these coordinates.
+    * a method **dist** that computes the distance between 2 points.
 
 .. note::
     the distance between 2 points A(x0, y0) and B(x1, y1) can be compute
