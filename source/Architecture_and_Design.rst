@@ -143,6 +143,44 @@ in the example above, the result of ``mro`` is::
 Abstract classes
 ================
 
+An abstract class is a class which contains some abstract methods. A such class cannot be instantiated.
+A class that has a metaclass derived from ABCMeta **cannot** be instantiated unless **all** of its abstract methods and
+properties are overridden.
+
+By defining an abstract base class, you can define a common API for a set of subclasses.
+This capability is especially useful in situations where a third-party is going to provide implementations,
+such as with plugins to an application, but can also aid you when working on a large team or with a large code-base
+where keeping all classes in your head at the same time is difficult or not possible.
+
+.. note::
+    Unlike Java abstract methods, these abstract methods may have an implementation.
+    This implementation can be called via the super() mechanism from the class that overrides it.
+    This could be useful as an end-point for a super-call in a framework that uses cooperative multiple-inheritance.
+
+example of abstract class:
+
+.. literalinclude:: _static/code/abstract_sequence.py
+   :linenos:
+   :language: python
+
+
+.. code-block:: python
+
+    python3 abstract_sequence.py
+    Ecor I 3870.4
+    Ecor I ACGT
+    ----------
+    my prot 765.9168999999999
+    my prot VFHNWARLQCSDTOEMUPYKGI
+    ----------
+    Traceback (most recent call last):
+      File "abstract_sequence.py", line 132, in <module>
+        neither_nuc_nor_prot = Sequence('truc', 'GAATTC')
+    TypeError: Can't instantiate abstract class Sequence with abstract methods molecular_weight
+
+
+:download:`abstract_sequence.py <_static/code/abstract_sequence.py>` .
+
 
 Composition
 ===========
@@ -177,7 +215,7 @@ it just call the method from the gene encapsulated.
 .. image:: _static/figs/homolog_inheritance.png
        :alt:  inheritance
        :align: left
-       :height: 300px
+       :height: 400px
 
 
 .. literalinclude:: _static/code/homolog.py
@@ -194,7 +232,7 @@ with the looking attribute as argument.
 .. image:: _static/figs/homolog_getattr.png
        :alt:  composition
        :align: left
-       :height: 300px
+       :height: 400px
 
 .. literalinclude:: _static/code/homolog_getattr.py
    :linenos:
@@ -208,4 +246,45 @@ with the looking attribute as argument.
 Exercises
 =========
 
+Exercise
+--------
+
+Create 2 classes
+
+ * Sequence
+ * MutableSequence
+
+These 2 classes have same attributes but Sequence can be mutate and extend whereas Sequence are immutable.
+
+Exercise
+--------
+
+how can you modeling
+
+    * non mutable DNA sequence
+    * mutable DNA sequence
+    * non mutable amino acid sequence
+    * mutable amino acid sequence
+
+    can you easily extend your model to support no mutable/ mutable RNA sequence ?
+
+.. note::
+    You have not to implement all methods just design the api: the class, attributes, and methods
+
+
+Exercise
+--------
+
+work with in small groups (2-3 people).
+To solve a problem we need to design
+
+    * genome
+    * gene
+    * sequence
+
+in context in eukaryote and prokaryote. propose an architecture. you hav not to implement methods just
+do a schema of the components and the relations between the components.
+
+    .. note::
+        you can add objects not listed above if you need for your architecture.
 
