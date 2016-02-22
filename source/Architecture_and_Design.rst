@@ -275,16 +275,34 @@ how can you modeling
 Exercise
 --------
 
-work with in small groups (2-3 people).
-To solve a problem we need to design
 
-    * genome
-    * gene
-    * sequence
+work with in small groups.
 
-in context in eukaryote and prokaryote. propose an architecture. you hav not to implement methods just
-do a schema of the components and the relations between the components.
+We want to implement a annotation *de novo* assembled contigs pipeline.
+We used BLAST to compare our contigs to sequence databases in order to annotate them with similarity
+to known genes/proteins/functions.
+By querying three major databases,
 
-    .. note::
-        you can add objects not listed above if you need for your architecture.
+  * GenBank's non-redundant protein database (NR)
+  * Uniprot's Swiss-Prot
+  * TrEMBL protein databases,
 
+We will identify the most similar known sequences for each of our contigs.
+The available information about these matching sequences will be used to annotate our contigs with likely functional properties.
+For the significant matches in the database, we will extract both gene names, general descriptions,
+and Gene Ontology (GO) categories (specific categorical classifications grouping genes based on cellular
+and molecular function, e.g. "cellular response to protein unfolding" or "calcium homeostasis"),
+along with additional information from the Uniprot knowledge database.
+
+Do not implement methods. Just draw a class diagram of this application.
+
+.. note::
+    Class Diagram provides an overview of the target system by describing the objects and classes
+    inside the system and the relationships between them.
+
+    example of class diagram in uml formalism:
+
+    .. image:: _static/figs/Class-Diagram-Sample.png
+        :alt:  class diagram
+        :align: left
+        :height: 400px
