@@ -4,13 +4,25 @@
 Object Oriented Programming
 ***************************
 
+.. note::
+    Even Python is intrinsically object oriented (in python every things we manipulate are objects)
+    it is a multi paradigm language. It means that Python allow us to program in procedural, functional
+    or oriented-object style, or any mixture of styles (in opposite of java which force you to adopt oriented object style).
 
-Even Python is intrinsically object oriented (in python every things we manipulate are objects)
-it is a multi paradigm language. It means that Python allow us to program in procedural, functional
-or oriented-object style, or any mixture of styles (in opposite of java which force you to adopt oriented object style).
+    Until now we  use procedural style, and it's very convenient to program small programs (up to 500 lines).
+    But for medium and large size programs, object-oriented offer some advantages.
 
-Until now we  use procedural style, and it's very convenient to program small programs (up to 500 lines).
-But for medium and large size programs, object-oriented offer some advantages.
+Before we dig deeper into modeling with objects, a word on models in general. Modeling
+is an abstracting activity motivated by a particular need or goal. We model in order to
+bring specific facets of an unruly domain into a space where they can be structured and
+manipulated. There are no natural representations of the world the way it “really is,” just
+many purposeful selections, abstractions, and simplifications, some of which are more
+useful than others for satisfying a particular goal. Object oriented programming is a way to
+modeling our problem using Objects.
+
+Why to use Objects?
+
+as us some question.
 
 What is a good program?
 
