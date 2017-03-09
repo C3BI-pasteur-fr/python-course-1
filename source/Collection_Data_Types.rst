@@ -1031,7 +1031,7 @@ copy an entire sequence we can do this:
 .. code-block:: python
 
    >>> ascii = ['a','b','c']
-   >>> ascii_copy = asci[:]
+   >>> ascii_copy = ascii[:]
 
 For dictionaries and sets, copying can be achieved using dict.copy() and
 set.copy() . In addition, the copy module provides the copy.copy() function that
