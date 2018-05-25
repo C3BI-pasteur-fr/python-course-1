@@ -11,8 +11,8 @@ The **sole** value of the type NoneType is ``None``.
 The **None** value represent something which is *unknown*, *undefined*, 
 None is also frequently used to represent the absence of a value as when default arguments are not passed to a function. ::
    
-   >>> print type(None)
-   <type 'NoneType'>
+   >>> print(type(None))
+   <class 'NoneType'>
    >>> a = None
    >>> b = None
    >>> id(a)
@@ -463,7 +463,7 @@ The equality operator is ``==`` and allow to test if the string in right operand
    making them both stored at the same memory location. 
    (Note that this doesn't always happen, and the rules for when this happens are quite convoluted, so please don't rely on this behavior in production code!)
 
-.. note:: 
+.. warning::
    In Python3, ``strings`` are encoded with utf-8, that means that some characters can be represented by 2 or more bytes sequence.
    For instance, the character Å can be represented in UTF-8 endoded bytes in three differents ways:
    [0xE2, 0x84, 0xAB], [0xC3, 0x85], [0x41, 0xCC, 0x 8A]. So before to compare unicode strings we need to normalize them. ::
@@ -646,7 +646,7 @@ For instance: ::
    >>> comment = 'restriction site 1 for Ecoli'
    >>> seq = 'gaattc'
    >>> fasta = '>{0} {1}\n{2}'.format(id, comment, seq)
-   >>> print fasta
+   >>> print(fasta)
    >EcoR1 restriction site 1 for Ecoli
    gaattc
 
@@ -881,13 +881,6 @@ numbers format examples: ::
    
 For full description of strings formating see https://docs.python.org/2.7/library/string.html#formatstrings
 
-
-Characters Encoding
--------------------
-  
- .. todo::
- 
-
 Exercices
 =========
 
@@ -926,8 +919,8 @@ after that, you can use ``math.pi`` everywhere in the file like this::
       
       >>> import math
       >>>
-      >>> #do what you need to do
-      >>> math.pi #use math.pi
+      >>> # do what you need to do
+      >>> math.pi # use math.pi
    
 **Hint**: the volume of a spher with radius 5 is **not** 392.7 !
 

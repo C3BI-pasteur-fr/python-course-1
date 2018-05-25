@@ -42,7 +42,7 @@ We can call functions (execute the code in the function) by appending parenthesi
    >>> def hello_world(first_name, last_name):
          return "Hello {0}, {1}".format(first_name, last_name)
       
-   >>> print hello_world("jeffrey", "Lebowski")
+   >>> print(hello_world("jeffrey", "Lebowski"))
        "Hello jeffrey Lebowski"
        
        

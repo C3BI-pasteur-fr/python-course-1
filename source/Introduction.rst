@@ -12,22 +12,19 @@ If you have an up-to-date Mac or Unix system you certainly have Python already i
 You can check by typing python -V (note the capital V) in a teminal/console (Terminal.app in Mac OSX).
 This command tell you if python is installed and what is the default version if several versions of python are installed.
 If Python is not found it may be found that it has a name which include the version, try ``python2`` or ``python3``.
-For the rest of this course we will use Pyhton 2.7, we will try to point out when there are differences between 2.7 and Python 3 (see `Python 2.x vs 3.x`_).
+For the rest of this course we will use Pyhton 3 we will try to point out when there are differences between 2.7 and Python 3 (see `Python 2.x vs 3.x`_).
 If any of these work for you, you have python to installed.
 
 For linux
 ---------
 
 For linux or BSD (or any unixes), the easiest way is to rely on your distribution package management system. In most case Python
-is provided in several separate packages. For instance for Debian/Ubuntu there are python ``python-py`` for python2 version or ``python3-py`` for python3
+is provided in several separate packages. For instance for Debian/Ubuntu there are  ``python3`` for python3 and python for ``python2``
 so for Debian/Ubuntu: :: 
 
-   sudo apt-get install python-py
+   sudo apt-get install python3
   
-or ::
 
-   sudo apt-get install python3-py
- 
 | for gentoo with the root privilege: 
 | for python 3.3.3  
 
@@ -44,8 +41,8 @@ If there is no Python package for your distribution or you don't have the root p
 to install Pyhton system wide, you can install it from the sources.
 download the source from http://www.python.org/download, for instance for a local installation ::
 
-   tar -xzf Python-2.7.6.tgz
-   cd Python-2.7.6
+   tar -xzf Python-3.6.3.tgz
+   cd Python-3.6.3
    /configure --prefix=/where/you/want/to/install/it
    make
    make test (this can take a while)
@@ -68,7 +65,8 @@ Creating and running Python Programs
 ====================================
 
 Even Python code can be written using any plain text editor that can load and save either in ``ASCII`` or ``UTF8`` unicode character encoding. 
-It is often easier to use a `source code editor <http://en.wikipedia.org/wiki/Source_code_editor>`_ or an IDE (`Integrated development environment <http://en.wikipedia.org/wiki/Integrated_development_environment>`_) 
+It is often easier to use a `source code editor <http://en.wikipedia.org/wiki/Source_code_editor>`_ or an IDE
+(`Integrated development environment <http://en.wikipedia.org/wiki/Integrated_development_environment>`_)
 like :
 
 * vim, 
@@ -190,10 +188,10 @@ Let us illustrate this by a little example: ::
    
    #Let us create 2 python source code file
    vim foo.py
-   print "foo"
+   print("foo")
    
    vim bar.py
-   print "bar"
+   print("bar")
    
    #let us execute them directly
    python foo.py
@@ -208,7 +206,7 @@ Let us illustrate this by a little example: ::
    #now let us modified foo.py
    vim foo.py
    import bar
-   print "foo"
+   print("foo")
    
    #let us execute foo.py
    python foo.py
@@ -447,7 +445,7 @@ Exercices
 Just to make sure everything is correctly set up, create a file named ``hello.py`` with the editor of your choice. ::
 
  #! /usr/bin/env python
- print "Hello World!"
+ print("Hello World!")
  
 and now execute your program. ::
   
@@ -456,22 +454,9 @@ and now execute your program. ::
  
 .. note:: 
 
-   In Python3 the syntax for printing is slightly different: ::
+   In Python2 the syntax for printing is slightly different: ::
      
-     print("hello world")
-     
-   These paraentesis indicate that ``print`` is not any longer a statement, but it has been replaced by a function (:ref:`Creating_and_Calling_Functions`).
-   For the rest of this course we will use the statement. If you want to use the print function instead of statement in python 2.7 for compatibility reasons for instance
-   it is possible. You have just to place this statement at the top of your file. ::
-
-      from __future__ import print_function 
-      
-   The only lines that can appear before a future_statement are:
-
-      * The module docstring (if any).
-      * Comments.
-      * Blank lines.
-      * Other future_statements.
+     print "hello world"
 
    
 
@@ -497,7 +482,14 @@ and now execute your program. ::
  
     python /tmp/toto
     toto est à l'école
-  
+
+  whereas it works out of the box in python3 ::
+
+    #! /usr/bin/env python3
+
+    print("toto est à l'école")
+
+
 Python Documentation
 ====================
 
@@ -529,26 +521,28 @@ In the interpreter
 We can also acces to documentation interactively in an python interpreter, 
 just Type help() for interactive help, or help(object) for help about object.::
 
-   python
-   $ python
-   Python 2.7.6 (default, Mar 22 2014, 22:59:56) 
-   [GCC 4.8.2] on linux2
-   help()
-   Welcome to Python 2.7!  This is the online help utility.
+    python3
+    Python 3.6.3 (default, Oct  3 2017, 21:45:48)
+    [GCC 7.2.0] on linux
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> help()
 
-   If this is your first time using Python, you should definitely check out
-   the tutorial on the Internet at http://docs.python.org/2.7/tutorial/.
+    Welcome to Python 3.6's help utility!
 
-   Enter the name of any module, keyword, or topic to get help on writing
-   Python programs and using Python modules.  To quit this help utility and
-   return to the interpreter, just type "quit".
+    If this is your first time using Python, you should definitely check out
+    the tutorial on the Internet at http://docs.python.org/3.6/tutorial/.
 
-   To get a list of available modules, keywords, or topics, type "modules",
-   "keywords", or "topics".  Each module also comes with a one-line summary
-   of what it does; to list the modules whose summaries contain a given word
-   such as "spam", type "modules spam".
+    Enter the name of any module, keyword, or topic to get help on writing
+    Python programs and using Python modules.  To quit this help utility and
+    return to the interpreter, just type "quit".
 
-   help> 
+    To get a list of available modules, keywords, symbols, or topics, type
+    "modules", "keywords", "symbols", or "topics".  Each module also comes
+    with a one-line summary of what it does; to list the modules whose name
+    or summary contain a given string such as "spam", type "modules spam".
+
+    help>
+
      
 
 Summary

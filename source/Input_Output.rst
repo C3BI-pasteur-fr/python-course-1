@@ -160,13 +160,15 @@ The values can be combine as following
 Python distinguishes between binary and text I/O. 
 Files opened in binary mode (including 'b' in the mode argument) return contents as bytes objects without any decoding. 
 In text mode (the default, or when 't' is included in the mode argument), 
-the contents of the file are returned as ``str``, in python2 the content must be encoded in ascii or we have to `decoded <http://www.tutorialspoint.com/python/string_decode.htm>`_ explicitly before.
+the contents of the file are returned as ``str``, in python2 the content must be encoded in ascii or we have to
+`decoded <http://www.tutorialspoint.com/python/string_decode.htm>`_ explicitly before.
 in Python3 the bytes having been first decoded using a platform-dependent encoding or using the specified encoding if given.
  
  
 .. note::
 
-   Python doesn’t depend on the underlying operating system’s notion of text files; all the processing is done by Python itself, and is therefore platform-independent
+   Python doesn’t depend on the underlying operating system’s notion of text files;
+   all the processing is done by Python itself, and is therefore platform-independent
   
 .. note::
 
@@ -304,8 +306,8 @@ but examine in practice how to close a file.
       comment = fields[2]
 
 In this piece of code we protect the open in a try/except but what happen 
-if an error occured during the data processing, if one line have not a fields[2] for instance.
-An error is raised but the file is not closed. If this piece of code is en closed in a larger
+if an error occurred during the data processing, if one line have not a fields[2] for instance.
+An error is raised but the file is not closed. If this piece of code is enclosed in a larger
 try/except the file will stay open until the end of the script.
 
 .. code-block:: python
@@ -337,9 +339,9 @@ but it is not closed if the process finish normally. So we can again improve our
    finally:
       f.close()    
         
-It's work perfectly but we have to write technical code (ty/except/finally) and the ``close`` can be far away the ``open`` which not increase the code reading.
-Python introduce in python2.6 the notion of context manager with the ``with`` keywords.
-which is a generalization of: 
+It's work perfectly but we have to write technical code (ty/except/finally) and the ``close`` can be far away the ``open``
+which not increase the code reading.
+Python introduce in python2.6 the notion of context manager with the ``with`` keywords. which is a generalization of:
 
 .. code-block:: python
 
@@ -366,6 +368,17 @@ even if an exception is raised on the way.
 It is also much shorter and readable than writing equivalent *try-finally* blocks.
 
 
+.. tip::
+
+   If you want to work with 2 files in parallel, just open the 2 files on the same with statement
+   and separate the two open statements by a comma::
+
+      with open('foo') as foo_file, open('bar', 'w') as bar_file:
+         for line in foo_file:
+            bar_file.write(line)
+
+
+
 helpful functions to manipulate files
 =====================================
  
@@ -373,7 +386,7 @@ helpful functions to manipulate files
 os.path
 -------
  
-``os.path`` module provide a lot of usefil function to manipulate path :
+``os.path`` module provide a lot of useful function to manipulate path :
  
 os.path.abspath(path)
 ^^^^^^^^^^^^^^^^^^^^^
@@ -405,7 +418,7 @@ following each non-empty part except the last.
  
  
  
-for complete descriptions : https://docs.python.org/2/library/os.path.html#module-os.path
+for complete descriptions : https://docs.python.org/3/library/os.path.html#module-os.path
  
  
 os
@@ -464,7 +477,7 @@ if the leaf directory is successfully removed, removedirs() tries to successivel
 remove every parent directory mentioned in path until an error is raised 
 (which is ignored, because it generally means that a parent directory is not empty).
  
-to acces to all functions and whole descriptions: https://docs.python.org/2/library/os.html#files-and-directories
+to acces to all functions and whole descriptions: https://docs.python.org/3/library/os.html#files-and-directories
  
  
 shutil
@@ -477,7 +490,7 @@ shutil.rmtree(path[, ignore_errors[, onerror]])
 
 Delete an entire directory tree; path must point to a directory (but not a symbolic link to a directory). 
  
-https://docs.python.org/2/library/shutil.html#shutil.rmtree
+https://docs.python.org/3/library/shutil.html#shutil.rmtree
 
 just an example to illustrate a typicall work with files.
 In this example we reading a file containing several numbers per line, 

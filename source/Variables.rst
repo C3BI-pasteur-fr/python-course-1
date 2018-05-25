@@ -19,25 +19,26 @@ strings because they are enclosed in quotation marks. We speak speak also of ``d
 
 If you are not sure what type a value has, the interpreter can tell you. ::
 
-   >>> type('Hello, World!')
-   <type 'str'>
-   >>> type(17)
-   <type 'int'>
+    >>> type('Hello, World!')
+    <class 'str'>
+    >>> type(17)
+    <class 'int'>
+
  
 Not surprisingly, strings belong to the type ``str`` and integers belong to the type ``int``.  
 Less obviously, numbers with a decimal point belong to a type called ``float``,
 because these numbers are represented in a format called ``floating point`` (:ref:`floating point`). ::
 
-   >>> type(3.2)
-   <type 'float'>
+    >>> type(3.2)
+    <class 'float'>
 
 What about values like ``'17'`` and ``'3.2'``?
 They look like numbers, but they are in quotation marks like strings. ::
 
-   >>> type('17')
-   <type 'str'>
-   >>> type('3.2')
-   <type 'str'>
+    >>> type('17')
+    <class 'str'>
+    >>> type('3.2')
+    <class 'str'>
 
 They're strings.
 
@@ -245,24 +246,24 @@ Python 2 has 31 keywords:
 
 .. tabularcolumns:: |l|l|l|l|l|
 
-+----------+---------+--------+--------+-------+
-| and      | del     | from   | not    | while |
-+----------+---------+--------+--------+-------+
-| as       | elif    | global | or     | with  |
-+----------+---------+--------+--------+-------+
-| assert   | else    | if     | pass   | yield |
-+----------+---------+--------+--------+-------+
-| break    | except  | import | print  |       |
-+----------+---------+--------+--------+-------+
-| class    | exec    | in     | raise  |       |
-+----------+---------+--------+--------+-------+
-| continue | finally | is     | return |       |
-+----------+---------+--------+--------+-------+
-| def      | for     | lambda | try    |       |
-+----------+---------+--------+--------+-------+
++----------+---------+----------+--------+-------+
+| and      | del     | global   | not    | while |
++----------+---------+----------+--------+-------+
+| as       | elif    | if       | or     | with  |
++----------+---------+----------+--------+-------+
+| assert   | else    | import   | pass   | yield |
++----------+---------+----------+--------+-------+
+| break    | except  | in       | print  |       |
++----------+---------+----------+--------+-------+
+| class    | finally |  is      | raise  |       |
++----------+---------+----------+--------+-------+
+| continue | for     | lambda   | return |       |
++----------+---------+----------+--------+-------+
+| def      | from    | nonlocal | try    |       |
++----------+---------+----------+--------+-------+
 
 
-.. note:: In Python 3, ``exec`` is no longer a keyword, but ``nonlocal`` is.
+.. note:: In Python 2, ``nonlocal`` does not exists, but ``exec`` is a keyword.
 
 * The first convention is: Don't use the names of any of Python's predefined identifiers for you own identifiers.
   So, avoid using NotImplemented or Ellipsis and the name of any of Python's built-in data types (such as int, float, str, list, tuple),
@@ -276,10 +277,10 @@ Python 2 has 31 keywords:
   Some developers like to use _ when they don't intend to use it, for instance in loops when they don't care about the items being
   looped over, or when they unpack a sequence and don't care of some value: ::
   
-   for _ in (0,1,2,3,4,5):
-      print "Hello"
-      
-   a , _, b, _ = (1,2,3,4)
+    for _ in (0,1,2,3,4,5):
+      print("Hello")
+
+    a , _, b, _ = (1,2,3,4)
    
  
 If you give a variable an illegal name, you get a syntax error: ::

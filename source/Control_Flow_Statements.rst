@@ -160,7 +160,7 @@ a while loop in action: ::
    #to print a sequence 50 character per line
    i = 0 
    while i < len(seq):
-      print seq[i:i+51]
+      print(seq[i:i+51])
       i += 50  
 
 
@@ -195,7 +195,7 @@ for instance: ::
    i = 10 
       
    while True:
-      print i
+      print(i)
       if i > 5:
          break
    10
@@ -396,27 +396,7 @@ see with on the following code the execution flow when exception is raised or no
    .. image :: _static/figs/spacer.png
       
 note that in all cases the finally clause is executed. 
-         
 
-
-
-.. note::
-
-   very often you can see a syntax slightly different for try ... except statement
-   on except line the exception the variable is not introduce by the reserved keyword ``as``
-   but separate by a comma. ::
-
-      try:
-         try_suite
-      except exception1, variable1:
-         exception_suite1
-      except (exceptionN, exceptionN+1), variableN:
-         exception_suiteN
-      finally:
-         finally_suite
-         
-   In Python3 the syntax using the comma is **not** allowed.
-   
       
       
 .. warning::
@@ -430,7 +410,7 @@ note that in all cases the finally clause is executed.
          i = int(s)
          print("valid integer entered:", i)
       except Exception:         #BAD PRACTICE
-         print "i is not an integer"
+         print("i is not an integer")
          
       if s is None the exception raise is a TypeError whereas if s  = '3.2' a ValueError is raised.
       so the treatment of the exception should differ in the 2 cases
@@ -461,7 +441,7 @@ a simpler form of the raise statement allows you to re-raise the exception: ::
    >>> try:
    ...     raise NameError('HiThere')
    ... except NameError:
-   ...     print 'An exception flew by!'
+   ...     print('An exception flew by!')
    ...     raise
 
    An exception flew by!

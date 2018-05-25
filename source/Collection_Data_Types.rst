@@ -42,7 +42,7 @@ As they are immutable, we cannot replace or delete or add any items after creati
 The tuple data type can be called as a function, *tuple()*, without any arguments it return an empty tuple, 
 with a tuple as argument it returns a shallow copy of the argument, and with any other argument it 
 attempts to convert the given object to a tuple. 
-Ther is a more convenient way to create tuple. an empty tuple is create with parenthesis ()::
+There is a more convenient way to create tuple. an empty tuple is create with parenthesis ()::
 
    >>> a = ()
    >>> type(a)
@@ -72,10 +72,10 @@ Sometimes tuple are surrounding by parenthesis to avoid syntactic ambiguity.
    >>> tuple()
    ()
    >>> t1 = 1, 2, "foo"
-   >>> print t1
+   >>> print(t1)
    (1, 2, "foo")
    >>> t2 = tuple(t1)
-   >>> print t2
+   >>> print(t2)
    (1, 2, "foo")
    >>> t1[1]
    2
@@ -87,7 +87,7 @@ Sometimes tuple are surrounding by parenthesis to avoid syntactic ambiguity.
    3
  
 Tuple provide just two methods *t.count(x)*, which returns the number of of times object *x* occurs in tuple *t*,
-and *t.index(x)*, which returns the index position of the left most occurence of object *x* in tuple *t*
+and *t.index(x)*, which returns the index position of the left most occurrence of object *x* in tuple *t*
 (if the object *x* is not find in *t* count raise a ValueError). ::
 
    >>> t1.count("bar")
@@ -102,9 +102,9 @@ Named Tuples
 ------------
 
 A named tuple behaves just like a plain tuple, and has the same performance and characteristics.
-It simply adds the possibilty to access to the data items in the tuple either by their index position
+It simply adds the possibility to access to the data items in the tuple either by their index position
 or by name.
-A name tuple allow us to aggregate data and improve code readibility.
+A name tuple allow us to aggregate data and improve code readability.
 
 We must first create a new named tuple data type, then we can use this new datatype to create tuple with values.
 To create the new custom tuple data type ``collections`` module from the standard library provides the *namedtuple()* fuction. 
@@ -117,8 +117,8 @@ The function return a new custom class (new data type) that can be used to creat
 For example: ::
 
    >>> import collections
-   >>> RestrictEnzyme = collections.namedtuple("RestrictEnzyme", "name comment sequence cut end")
-   >>> ecor1 = RestrictEnzyme("EcoR1", "Ecoli restriction enzime I", "gaattc", 1, "sticky")
+   >>> RestrictEnzyme = collections.namedtuple("RestrictEnzyme", ("name", "comment", "sequence", "cut", "end"))
+   >>> ecor1 = RestrictEnzyme("EcoR1", "Ecoli restriction enzyme I", "gaattc", 1, "sticky")
    >>> bamh1 = RestrictEnzyme("BamH1", "type II restriction endonuclease from Bacillus amyloliquefaciens",
                               "ggatcc", 1, "sticky")
    >>>
@@ -129,7 +129,7 @@ For example: ::
    >>> ecor1.end == bamh1.end
    True
    >>> ecor1_frg = ecor1.sequence[:ecor1.cut] , ecor1.sequence[ecor1.cut:]
-   >>> print ecor1_frg 
+   >>> print(ecor1_frg)
    ('g', 'aattc')
    
 .. note::
@@ -179,7 +179,7 @@ tuple, list, ...
    >>> tree = ['Bovine', ['Gibbon', ['Orang', ['Gorilla', ['Chimp', 'Human']]]], 'Mouse' ]
    >>>
    >>> aas = "ALA TYR TRP SER GLY".split()
-   >>> print aas
+   >>> print(aas)
    ['ALA', 'TYR', 'TRP', 'SER', 'GLY']
    >>> " ".join(aas)
    
@@ -359,7 +359,7 @@ to convert the given object to a set. It does not accept more than one argument.
    As the strings are sequence data types "t", "o", "t", "o" will be added to the set.
    And as set is a collection of unique items your set will contains only "t", "o" ::
    
-      >>> print s
+      >>> print(s)
       set(['t', 'o'])
       
    To have "toto" in the set you need to use the ``add`` method or create the set directly 
@@ -389,7 +389,7 @@ They also support ususal set operators: Union, Intersection, Difference, Symetri
 
    >>> pecan = set("pecan")
    >>> pie = set("pie")
-   >>> print pecan ," ... ", pie
+   >>> print(pecan ," ... ", pie)
    set(['a', 'p', 'c', 'e', 'n'])  ...  set(['i', 'p', 'e'])
    >>> ## Union ## 
    >>> pecan | pie 
@@ -890,7 +890,7 @@ the **else** block is optional.
          begin of **for** block of code
          do something
          do another thing
-      print "foo"
+      print("foo")
       
    | The block of code begin line n°1. 
    | The lines n° 2,3,4 are executed 3 times with the variable i which is bound successively to 1, 2, 3.
@@ -913,7 +913,7 @@ each line of code in the for .. in block is executed at each turn using the vari
    z = 0
    for i in [1,2,3]:
       z += i
-      print "i = {0}, z = {1}".format(i, z)
+      print("i = {0}, z = {1}".format(i, z))
    i = 1, z = 1
    i = 2, z = 3
    i = 3, z = 5
@@ -943,7 +943,7 @@ executed.
 
       enzymes = [('ecor1', 'gaattc'), ('bamh1','ggatcc'), ('hind3', 'aagctt')]
       for name, seq in enzymes:
-         print name, ' .... ', seq
+         print(name, ' .... ', seq)
       ecor1 .... gaattc
       bamh1 .... ggatcc
       hind3 .... aagctt
@@ -964,7 +964,7 @@ for a suitable exception handler—this is covered in the next section.) ::
    for name, seq in enzymes:
       if name == 'bamh1':
          continue
-      print name, ' .... ', seq
+      print(name, ' .... ', seq)
    ecor1 .... gaattc
    hind3 .... aagctt
    
@@ -985,7 +985,7 @@ for a suitable exception handler—this is covered in the next section.) ::
    for name, seq in enzymes:
       if name == 'bamh1':
          break
-      print name, ' .... ', seq
+      print(name, ' .... ', seq)
    ecor1 .... gaattc
    
 .. figure:: _static/figs/break_flow.png
@@ -1082,7 +1082,7 @@ collection and by the copied collection (the objects in l and l2 have the same *
    >>> 
    >>> l[0]
    ['a', 'b', 'c']
-   >>> print id(l), id(l2)
+   >>> print(id(l), id(l2))
    140530764842408 140530764842480 # l and l2 are 2 different objects
    >>> id(ascii)
    140504986917992
@@ -1235,7 +1235,7 @@ from the list l = [1, 2, 3, 4, 5, 6, 7, 8, 9] generate 2 lists l1 containing all
 Exercise
 --------
 
-Write a function wich return a list containing strings representing all codons. 
+Write a function which return a list containing strings representing all codons.
 
 Write the pseudocode before to propose an implementation.
 

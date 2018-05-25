@@ -160,14 +160,14 @@ called __name__ and stores the module’s name in this variable.
 for instance ::
  
    >>> import math
-   >>> print math.__name__
+   >>> print(math.__name__)
    math
 
 except for for the file which is directly executed by python (not imported) __name__ have as value '__main__'
 
 module_1.py :: 
 
-   print "module_1 = ", __name__
+   print("module_1 = ", __name__)
    
 ::
    
@@ -176,7 +176,7 @@ module_1.py ::
 
    python
    >>> import module_1
-   >>> print module_1.__name__
+   >>> print(module_1.__name__)
    'module_1'      
 
 so a file can be used as module or as script.
@@ -286,7 +286,8 @@ Standard Library
 
 Python provide a lot of libraries  
 which are organized in package and modules.
-The full description of modules are available on the python.org web site (`Python 2 <https://docs.python.org/2/py-modindex.html>`_ , `Python 3 <https://docs.python.org/3/py-modindex.html>`_).
+The full description of modules are available on the python.org web site
+(`Python 2 <https://docs.python.org/2/py-modindex.html>`_ , `Python 3 <https://docs.python.org/3/py-modindex.html>`_).
 When you code in python always refer to these documentations.
 These libraries are called "standard library".
 

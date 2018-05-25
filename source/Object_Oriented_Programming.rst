@@ -528,21 +528,43 @@ Comparison magic methods
 
 Python provide a set of special methods to compare object:
 
-*__cmp__(self, other)*
-    __cmp__ is the most basic of the comparison magic methods.
-    It actually implements behavior for all of the comparison operators (<, ==, !=, etc.),
-    but it might not do it the way you want
-    (for example, if whether one instance was equal to another were determined by one criterion and whether an instance
-    is greater than another were determined by something else).
-    __cmp__ should return a negative integer if self < other, zero if self == other, and positive if self > other.
-    It's usually best to define each comparison you need rather than define them all at once,
-    but __cmp__ can be a good way to save repetition and improve clarity when you need all comparisons implemented
-    with similar criteria.
+*__eq__(self, other)*
+    Defines behavior for the equality operator, ==.
 
-    .. warning:: The __cmp__ special method disappeared in python 3.0. be careful because python does not prevent you to
-       to code a __cmp__ method not only it will never be called by the language, but if you compare 2 objects an Error will
-       raised. So if you code in python3 or if you want to code in python2 compliant with python3 don't use __cmp__ method,
-       implements the other comparisons operators (__eq__, __neq__, __lt__, __gt__) instead.::
+*__ne__(self, other)*
+    Defines behavior for the inequality operator, !=.
+
+*__lt__(self, other)*
+    Defines behavior for the less-than operator, <.
+
+*__gt__(self, other)*
+    Defines behavior for the greater-than operator, >.
+
+*__le__(self, other)*
+    Defines behavior for the less-than-or-equal-to operator, <=.
+
+*__ge__(self, other)*
+    Defines behavior for the greater-than-or-equal-to operator, >=.
+
+
+http://www.python-course.eu/python3_magic_methods.php
+
+.. warning::
+
+       Python2 provide the __cmp__ special method  which allow to compare objects, but this special method
+       disappear in python 3, use instead __eq__ , __ne__, __gt__, __lt__, ...
+
+    *__cmp__(self, other)*
+        __cmp__ is the most basic of the comparison magic methods.
+        It actually implements behavior for all of the comparison operators (<, ==, !=, etc.),
+        but it might not do it the way you want
+        (for example, if whether one instance was equal to another were determined by one criterion and whether an instance
+        is greater than another were determined by something else).
+        __cmp__ should return a negative integer if self < other, zero if self == other, and positive if self > other.
+        It's usually best to define each comparison you need rather than define them all at once,
+        but __cmp__ can be a good way to save repetition and improve clarity when you need all comparisons implemented
+        with similar criteria.
+
 
            Python 2.7.10 (default, Nov 26 2015, 15:03:27)
            [GCC 4.9.3] on linux2
@@ -592,30 +614,6 @@ Python provide a set of special methods to compare object:
              File "<stdin>", line 1, in <module>
            TypeError: unorderable types: A() < A()
            >>>
-
-
-
-*__eq__(self, other)*
-    Defines behavior for the equality operator, ==.
-
-*__ne__(self, other)*
-    Defines behavior for the inequality operator, !=.
-
-*__lt__(self, other)*
-    Defines behavior for the less-than operator, <.
-
-*__gt__(self, other)*
-    Defines behavior for the greater-than operator, >.
-
-*__le__(self, other)*
-    Defines behavior for the less-than-or-equal-to operator, <=.
-
-*__ge__(self, other)*
-    Defines behavior for the greater-than-or-equal-to operator, >=.
-
-
-http://www.python-course.eu/python3_magic_methods.php
-
 
 
 __init__ method
@@ -815,7 +813,7 @@ above an other example where we use a getter and a setter. We want control that 
    :language: python
 
 
-Here is the general method for adding a property named p to a new-style class C.
+Here is the general method for adding a property named p to class C.
 where:
 
     R is a getter method that takes no arguments and returns the effective attribute value.

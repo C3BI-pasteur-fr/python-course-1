@@ -77,8 +77,8 @@
 | SyntaxError: invalid syntax                                                                                                                                                               |
 | >>>                                                                                                                                                                                       |
 | >>> def func(*arg, **kwarg):                                                                                                                                                              |
-| ...     print(arg)                                                                                                                                                                        |
-| ...     print(kwarg)                                                                                                                                                                      |
+| ...     print arg                                                                                                                                                                        |
+| ...     print kwarg                                                                                                                                                                       |
 | ...                                                                                                                                                                                       |
 | >>> func(1, 2, 3)                                                                                                                                                                         |
 | arg = (1, 2, 3)                                                                                                                                                                           |

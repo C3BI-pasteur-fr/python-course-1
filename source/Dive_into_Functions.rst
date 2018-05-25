@@ -186,32 +186,27 @@ Let look how it work, especially there are significant differences between pytho
 Sequence unpacking
 ^^^^^^^^^^^^^^^^^^
 
-.. list-table:: difference between python 2 and 3 to unpack a sequence
-   :header-rows: 1
-   :widths: 5 10
+We can unpack any iterables (list, tuples, ...) with the operator \*.
+When used with two or more variables on the left-hand side of an assignment,
+one of which is preceded by \*, items are assigned to the variables,
+with all those left over assigned to the stared variables. ::
 
-   *  - Python2
-      - Python3
-   *  - The unpacking operator does not exist in Python 2
-      - We can unpack any iterables (list, tuples, ...) with the operator \*.
-        When used with two or more variables on the left-hand side of an assignment,
-        one of which is preceded by \*, items are assigned to the variables,
-        with all those left over assigned to the stared variables. ::
-        
-         >>> first, *rest = [1,2,3,4]
-         >>> first
-         1
-         >>> rest
-         [2, 3, 4]
-         >>> 
-         >>> first, *mid, last = [1,2,3,4]
-         >>> first
-         1
-         >>> mid
-         [2, 3]
-         >>> last
-         4
-         
+    >>> first, *rest = [1,2,3,4]
+    >>> first
+    1
+    >>> rest
+    [2, 3, 4]
+    >>>
+    >>> first, *mid, last = [1,2,3,4]
+    >>> first
+    1
+    >>> mid
+    [2, 3]
+    >>> last
+    4
+
+.. note::
+    The unpacking operator does not exist in Python 2
          
 Argument unpacking
 ^^^^^^^^^^^^^^^^^^
@@ -246,7 +241,7 @@ If a variable is simply accessed (not assigned to) in a context,
 name resolution follows the LEGB rule (Local, Enclosing, Global, Built-in). 
 However, if a variable is assigned to, it defaults to creating a local variable, 
 which is in scope for the entire context. Both these rules can be overridden 
-with a global or nonlocal (in Python 3) declaration prior to use, 
+with a global or nonlocal (*nonlocal* does not exists in Python 2) declaration prior to use,
 which allows accessing global variables even if there is an intervening nonlocal variable, 
 and assigning to global or nonlocal variables [scope]_ .
 
@@ -320,7 +315,6 @@ and assigning to global or nonlocal variables [scope]_ .
    
 We can see this mechanism in action as in Python we can view the content of the local the global namespace 
 via two built-in functions *locals* and *globals*
-The code below is written in Python3.
 
 .. code-block:: python
    :linenos:
@@ -343,16 +337,18 @@ The code below is written in Python3.
       outer_func()
 
 .. container::
+   when we use the ``nonlocals`` keywords the variable find in the outer scope is seen as it belong to the local scope.
+   We can manipulate it as a local variable.
+   If we reassign a new value to this reference, the outer reference is also modified.
+
+
+.. note::
 
    This piece of code illustrate the globals and locals namespaces. 
-   Although this code is writen in python3 the concepts are the smae in python2. 
+   Although this code is writen in python3 the concepts are the same in python2.
    But the keywords ``nonlocals`` is python3 specific.
    In python2, we can refer to a non local variable, but we cannot assign a new value to a non local variable, 
    when we try to assign a new value, a new local object reference is created.
-
-   when we use the ``nonlocals`` keywords the variable find in the outer scope is seen as it belong to the local scope.
-   We can manipulate it as a local variable. 
-   If we reassign a new value to this reference, the outer reference is also modified. 
 
 
 .. image:: _static/figs/namespaces_in_python3.png
@@ -382,7 +378,7 @@ It’s also important to note that not only do variables live inside a namespace
    >>> def foo():
    ...     x = 1
    >>> foo()
-   >>> print x # 1
+   >>> print(x) # 1
    Traceback (most recent call last):
      ...
    NameError: name 'x' is not defined
@@ -397,19 +393,26 @@ Lambda functions
 ----------------
 
 In addition the def statement, Python also provides an expression form that generates function objects.
-The lambda’s syntax is keyword *lambda*, followed by one or more arguments (exactly like the arguments list you enclose in parentheses in a def header), followed by an expression after a colon:
+The lambda’s syntax is keyword *lambda*, followed by one or more arguments
+(exactly like the arguments list you enclose in parentheses in a def header), followed by an expression after a colon:
 
 | **lambda** argument1, argument2,... argumentN **:** expression using arguments
 
-Function objects returned by running lambda expressions work exactly the same as those created and assigned by defs, but there are a few differences that make lambdas useful in specialized roles:
+Function objects returned by running lambda expressions work exactly the same as those created and assigned by defs,
+but there are a few differences that make lambdas useful in specialized roles:
 
 * ``lambda`` is an expression, **not** a statement. Then a ``lambda`` can appear in places a ``def`` is not allowed by Python’s syntax: 
   
   * inside a list literal 
-  * or a function call’s arguments, for example. As an expression, lambda returns a value (a new function) that can optionally be assigned a name. In contrast, the def statement always assigns the new function to the name in the header, instead of returning it as a result.
+  * or a function call’s arguments, for example. As an expression, lambda returns a value (a new function)
+    that can optionally be assigned a name. In contrast, the def statement always assigns the new function to the name in the header,
+    instead of returning it as a result.
 
-* ``lambda``’s body is a single expression, not a block of statements. The ``lambda``’s body is similar to what you’d put in a ``def`` body’s return statement; you simply type the result as a naked expression, instead of explicitly returning it. 
-   Because it is limited to an expression, a ``lambda`` is less general than a ``def`` you can only squeeze so much logic into a ``lambda`` body without using statements such as ``if``. 
+* ``lambda``’s body is a single expression, not a block of statements.
+   The ``lambda``’s body is similar to what you’d put in a ``def`` body’s return statement;
+   you simply type the result as a naked expression, instead of explicitly returning it.
+   Because it is limited to an expression, a ``lambda`` is less general than a ``def`` you can only squeeze
+   so much logic into a ``lambda`` body without using statements such as ``if``.
    This is by design, to limit program nesting: ``lambda`` is designed for coding simple functions, and ``def`` handles larger tasks.
 
 Apart from those distinctions, defs and lambdas do the same sort of work: ::
@@ -497,10 +500,10 @@ help you by drawing diagram.
    
    def func():
       y  = 5
-      print locals()
+      print(locals())
     
    func()
-   print x  
+   print(x)
    
    
 Exercise
@@ -518,13 +521,13 @@ help you by drawing diagram.
    def func():
       y = 5 
       x = 8
-      print locals()
+      print(locals())
       x = x + 2
    
    y = func()
    
-   print y
-   print x
+   print(y)
+   print(x)
 
 
 Exercise
@@ -541,14 +544,14 @@ help you by drawing diagram.
    
    def func(a):
       y = x + 2 
-      print locals()
+      print(locals())
       x = y
       return y
        
    y = func(x)
    
-   print y
-   print y == x     
+   print(y)
+   print(y == x)
 
 
 Exercise
@@ -565,13 +568,13 @@ help you by drawing diagram.
    
    def func(a):
       x = x + 2 
-      print locals()
+      print(locals())
       return x
        
    y = func(x)
    
-   print y
-   print y == x     
+   print(y)
+   print(y == x)
 
 
 Exercice
@@ -588,8 +591,8 @@ help you by drawing diagram. ::
        
    y = func(x)
    
-   print x
-   print y
+   print(x)
+   print(y)
 
 
 Exercice
@@ -605,9 +608,9 @@ help you by drawing diagram. ::
    x = 4 
    z = func()
    
-   print x
-   print z
-   print id(z) == id(x)
+   print(x)
+   print(z)
+   print(id(z) == id(x))
 
 
 
@@ -625,8 +628,8 @@ help you by drawing diagram. ::
        
    y = func()
    
-   print x
-   print y 
+   print(x)
+   print(y)
 
 
 Exercice
@@ -644,7 +647,7 @@ help you by drawing diagram.
    def func(a):
       global x
       def func2():
-         print locals()
+         print(locals())
          y = x + 4
          return y
       z = func2()
@@ -652,8 +655,8 @@ help you by drawing diagram.
        
    y = func(x)
    
-   print x
-   print y
+   print(x)
+   print(y)
 
 
 Exercice
@@ -670,9 +673,9 @@ help you by drawing diagram. ::
        
    y = func(x)
    
-   print x
-   print y
-   print x is y 
+   print(x)
+   print(y)
+   print(x is y)
 
 
 Exercice
@@ -688,8 +691,8 @@ help you by drawing diagram. ::
        
    y = func(x)
    
-   print x
-   print y
+   print(x)
+   print(y)
 
 Exercice
 --------
@@ -707,8 +710,8 @@ help you by drawing diagram. ::
        
    y = func(x)
    
-   print x
-   print y
+   print(x)
+   print(y)
 
 
 Exercice
@@ -728,7 +731,7 @@ help you by drawing diagram. ::
        
    y = func(x)
    
-   print x
+   print(x)
   
   
 Exercice
@@ -747,7 +750,7 @@ help you by drawing diagram. ::
       return a
        
    y = func(x)
-   print x
+   print(x)
    
 
 Exercise
